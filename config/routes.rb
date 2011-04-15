@@ -1,8 +1,10 @@
 Sm::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  root :to => "devise/sessions#new"
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  root :to => "devise/registrations#edit"
+  devise_for :users, :controllers => { 
+                                      :omniauth_callbacks => "users/omniauth_callbacks", 
+                                      :registrations => "users/registrations" }
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
