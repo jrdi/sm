@@ -1,1 +1,1 @@
-rvm ruby-1.9.2-p180@devise_with_oauth
+rvm use ruby-1.9.2-p180@devise_with_oauth

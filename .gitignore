@@ -15,4 +15,3 @@ capybara-*.html
 config/*.yml
 rerun.txt
 pickle-email-*.html
-config/initializers/devise.rb
