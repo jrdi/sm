@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sm</title>
+  <title>Socorro mamá! <%= " - #{yield(:title)}" if yield(:title).present? %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <h1><%= link_to 'Socorro mamá!', root_path %></h1>
   <%= render :partial => "users/shared/nav_bar" %>
   
   <p class="notice"><%= notice %></p>
