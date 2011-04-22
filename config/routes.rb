@@ -1,7 +1,7 @@
 Sm::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  root :to => "home#home"
+  root :to => "site#home"
   devise_for :users, :controllers => { 
                                       :omniauth_callbacks => "users/omniauth_callbacks", 
                                       :registrations => "users/registrations" }
