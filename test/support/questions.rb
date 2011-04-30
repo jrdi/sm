@@ -1,12 +1,12 @@
 module Sm
   module Data
     
-    DEFAULT_RESOURCE = :question
+    DEFAULT_QUESTION = :question
 
     def attributes_for_question(attributes_or_fixture = {})
       if attributes_or_fixture.is_a?(Hash)
         attributes = attributes_or_fixture
-        fixture = DEFAULT_RESOURCE
+        fixture = DEFAULT_QUESTION
       else
         attributes = {}
         fixture = attributes_or_fixture
@@ -15,9 +15,9 @@ module Sm
       default_attributes = case fixture
         when :question
           {
-            :repetitions => 20,
-            :kind => Exercise::KINDS[0].first,
-            :variation => Exercise::VARIATIONS[0][2].first
+            :title => "Como se cambia el butano?",
+            :description => "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivia un hidalgo",
+            :user => create_user
           }
         else
           raise "Invalid fixture name"
@@ -26,7 +26,7 @@ module Sm
     end 
     
     def new_question(attributes_or_fixture = {})
-      Exercise.new(attributes_for_question(attributes_or_fixture))
+      Question.new(attributes_for_question(attributes_or_fixture))
     end
 
     def create_question(attributes_or_fixture = {})
