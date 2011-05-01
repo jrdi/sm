@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
 
   # GET /questions/1/answers/new
   def new
-    @answer = @questions.answers.build
+    @answer = @question.answers.build
   end
 
   # GET /questions/1/answers/1/edit
@@ -22,11 +22,11 @@ class AnswersController < ApplicationController
 
   # POST /questions/1/answers
   def create
-    @answer = @questions.answers.build(params[:answer])
+    @answer = @question.answers.build(params[:answer])
     @answer.user = current_user
     
     if @answer.save
-      redirect_to(@answer, :notice => 'La respuesta ha sido guardada correctamente.')
+      redirect_to([@question, @answer], :notice => 'La respuesta ha sido guardada correctamente.')
     else
       render :action => "new"     
     end
@@ -35,7 +35,7 @@ class AnswersController < ApplicationController
   # PUT /questions/1/answers/1
   def update
     if @answer.update_attributes(params[:answer])
-      redirect_to(@answer, :notice => 'La respuesta ha sido editada correctamente.')
+      redirect_to([@question, @answer], :notice => 'La respuesta ha sido editada correctamente.')
     else
       render :action => "edit"
     end
@@ -45,7 +45,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
 
-    redirect_to(answers_url)
+    redirect_to(question_answers_url)
   end
   
   protected
