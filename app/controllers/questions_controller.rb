@@ -26,7 +26,7 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     
     if @question.save
-      redirect_to(@question, :notice => 'La pregunta ha sido añadida correctamente.')
+      redirect_to(question_answers_path(@question), :notice => 'La pregunta ha sido guardada correctamente.')
     else
       render :action => "new"     
     end
