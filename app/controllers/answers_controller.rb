@@ -26,7 +26,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     
     if @answer.save
-      redirect_to(@answer, :notice => 'Answer was successfully created.')
+      redirect_to(@answer, :notice => 'La respuesta ha sido guardada correctamente.')
     else
       render :action => "new"     
     end
@@ -35,7 +35,7 @@ class AnswersController < ApplicationController
   # PUT /questions/1/answers/1
   def update
     if @answer.update_attributes(params[:answer])
-      redirect_to(@answer, :notice => 'Answer was successfully updated.')
+      redirect_to(@answer, :notice => 'La respuesta ha sido editada correctamente.')
     else
       render :action => "edit"
     end
