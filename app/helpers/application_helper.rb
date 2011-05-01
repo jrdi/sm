@@ -5,4 +5,10 @@ module ApplicationHelper
     end
     title
   end
+  
+  def selected?(controller, action)
+    if params[:controller] == controller && params[:action] == action
+      return :class => 'selected'
+    end
+  end
 end
