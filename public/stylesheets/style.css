@@ -1,9 +1,21 @@
+h1, h2 {
+	margin-bottom: 15px;
+}
+
 h1 {
 	font-size: 30px;
 }
 
 h2 {
 	font-size: 18px;
+}
+
+h3 {
+	margin-bottom: 10px;
+}
+
+a {
+	color: #C3560D;
 }
 
 body {
@@ -18,6 +30,9 @@ body {
 	width: 960px;
 }
 
+
+/* HEADER */
+
 header {
 	background: url('/images/header-bg.png') repeat-x center 0;
 	height: 150px;
@@ -28,7 +43,7 @@ header .title {
 	background: url('/images/socorromama-logo.png') no-repeat 0 10px;
 	color: #EBBF95;
 	display: block;
-	height: 130px;
+	height: 103px;
 	font: normal 40px 'Copse', Georgia, serif;
 	margin-left: -20px;
 	padding: 20px 0 0 100px;
@@ -68,20 +83,20 @@ header .title {
 	);
 	border: 2px solid #5B2D09;
 	padding: 8px 20px;
-	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 	-webkit-box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, .15),
-		inset 0 0 2px rgba(255,255,255,.2),
+		inset 0 1px 0 rgba(255, 255, 255, .2),
+		inset 0 0 1px rgba(255,255,255,.3),
 		0 1px 2px rgba(255, 255, 255, .15);
 	-moz-box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, .15),
-		inset 0 0 2px rgba(255,255,255,.2),
+		inset 0 1px 0 rgba(255, 255, 255, .2),
+		inset 0 0 1px rgba(255,255,255,.3),
 		0 1px 2px rgba(255, 255, 255, .15);
 	box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, .15),
-		inset 0 0 2px rgba(255,255,255,.2),
+		inset 0 1px 0 rgba(255, 255, 255, .2),
+		inset 0 0 1px rgba(255,255,255,.3),
 		0 1px 2px rgba(255, 255, 255, .15);
 }
 
@@ -103,6 +118,76 @@ header .title {
 	text-shadow: 0 -1px 1px rgba(255, 255, 255, .1);
 }
 
+#content {
+	float: left;
+	width: 700px;
+}
+
+#sidebar {
+	float: left;
+	margin-left: 20px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+	width: 240px;
+}
+
+#sidebar .widget {
+	margin-bottom: 30px;
+}
+
+#sidebar h3 {
+	color: #A14E14;
+	font: bold 12px 'Copse', Georgia, serif;
+	text-transform: uppercase;
+}
+
+#sidebar p, ul, ol {
+	font: bold 11px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin-bottom: 15px;
+}
+
+#sidebar p {
+	color: #94694B;
+}
+
+#sidebar #tuits {
+	background: url('/images/socorromama-logo-small.png') no-repeat 0 5px;
+	padding-left: 40px;
+}
+
+#sidebar #tuits span + a {
+	display: block;
+	margin-top: 5px;
+}
+
+#sidebar #twitter_update_list li {
+	color: #A9876F;
+}
+
+#sidebar #trending p {
+	margin-bottom: 5px;
+}
+
+#sidebar #trending a.trending-item {
+	font: bold 12px/2.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-transform: lowercase;
+}
+
+#sidebar #trending a.follow-trending {
+	background: url('/images/sprittes_buttons.png') no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
+	margin: 7px 7px 0 0;
+	width: 16px;
+}
+
+#sidebar #trending a.follow-trending span {
+	display: none;
+}
+
+
+/* FOOTER */
+
 #colophon {
 	color: #94694B;
 	font-size: 11px;
@@ -121,15 +206,12 @@ header .title {
 	clear: right;
 }
 
-#colophon a {
-	color: #C3550D;
-}
-
 #colophon .meta {
 	float: left;
 	font: normal 20px 'Copse', Georgia, serif;
-	margin: -3px 10px 0 0;
+	margin: -5px 5px 0 0;
 	text-decoration: none;
+	text-transform: lowercase;
 }
 
 #colophon #footer-menu {

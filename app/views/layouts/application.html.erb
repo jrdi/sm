@@ -13,11 +13,11 @@
 			<div class="inner">
 				<%= render :partial => "users/shared/nav_bar" %>
 
-				<h1><%= link_to "Socorro mamá!", root_path, :title => "Go to the Home page", :class => "title" %></h1>
+				<h1><%= link_to "Socorro mamá!", root_path, :title => "Ve a la Portada", :class => "title" %></h1>
 			</div>
 		</header><!-- #banner -->
 
-		<div id="main">
+		<div id="main" class="clearfix">
 			<div class="inner">
 				<p class="notice"><%= notice %></p>
 				<p class="alert"><%= alert %></p>
@@ -25,12 +25,36 @@
 				<div id="content">
 					<%= yield %>
 				</div><!-- #content -->
+
+				<div id="sidebar">
+					<aside id="description" class="widget">
+						<h3>¿Qué es Socorro mamá?</h3>
+						<p>Nuestras mamás son un encanto, pero ya están cansadas de que las llamemos para cualquier duda del hogar. Por eso hemos montado Socorro Mamá, que aún no sabe preparar tortilla, pero ya ha aprendido a soltar perlas de madre.</p>
+					</aside>
+
+					<aside id="tuits" class="widget">
+						<ul id="twitter_update_list"></ul>
+					</aside>
+
+					<aside id="trending" class="widget">
+						<h3>Temas populares</h3>
+						<p>Estos son los temas con mayor actividad. Guarda los temas que más te interesen.</p>
+						<ul>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Cocina", :class => "follow-trending" %><%= link_to "Cocina", root_path, :title => "Ve al tema Cocina", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Limpieza", :class => "follow-trending" %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Dinero", :class => "follow-trending" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Salud", :class => "follow-trending" %><%= link_to "Salud", root_path, :title => "Ve al tema Salud", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Urgencias", :class => "follow-trending" %><%= link_to "Urgencias", root_path, :title => "Ve al tema Urgencias", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Reparaciones", :class => "follow-trending" %><%= link_to "Reparaciones", root_path, :title => "Ve al tema Reparaciones", :class => "trending-item" %></li>
+						</ul>
+					</aside>
+				</div><!-- #sidebar -->
 			</div>
 		</div><!-- #main -->
 
 		<footer id="colophon">
 			<div class="inner">
-				<p><%= link_to 'socorro mamá!', root_path, :class => "meta" %> es una pequeña idea de <%= link_to "@alv", 'http://twitter.com/alv' %>, <%= link_to "@jrdi", 'http://twitter.com/jrdi' %> y <%= link_to "@matallo", 'http://twitter.com/matallo' %>.</p>
+				<p><%= link_to 'Socorro mamá!', root_path, :class => "meta" %> es una pequeña idea de <%= link_to "@alv", 'http://twitter.com/alv' %>, <%= link_to "@jrdi", 'http://twitter.com/jrdi' %> y <%= link_to "@matallo", 'http://twitter.com/matallo' %>.</p>
 				<ul id="footer-menu">
 					<li><%= link_to "Aviso legal", root_path %></li>
 					<li><%= link_to "Contacto", root_path %></li>
@@ -38,5 +62,7 @@
 			</div>
 		</footer><!-- #colophon -->
 	</div><!-- #wrapper -->
-</body>
+
+	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/socorromama.json?callback=twitterCallback2&count=1"></script></body>
 </html>
