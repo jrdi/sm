@@ -40,12 +40,22 @@
 						<h3>Temas populares</h3>
 						<p>Estos son los temas con mayor actividad. Guarda los temas que más te interesen.</p>
 						<ul>
-							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Cocina", :class => "follow-trending" %><%= link_to "Cocina", root_path, :title => "Ve al tema Cocina", :class => "trending-item" %></li>
-							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Limpieza", :class => "follow-trending" %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "trending-item" %></li>
-							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Dinero", :class => "follow-trending" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "trending-item" %></li>
-							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Salud", :class => "follow-trending" %><%= link_to "Salud", root_path, :title => "Ve al tema Salud", :class => "trending-item" %></li>
-							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Urgencias", :class => "follow-trending" %><%= link_to "Urgencias", root_path, :title => "Ve al tema Urgencias", :class => "trending-item" %></li>
-							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Reparaciones", :class => "follow-trending" %><%= link_to "Reparaciones", root_path, :title => "Ve al tema Reparaciones", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Cocina", :class => "trending-follow" %><%= link_to "Cocina", root_path, :title => "Ve al tema Cocina", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Dejar de seguir el tema Limpieza", :class => "trending-follow trending-followed " %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Dinero", :class => "trending-follow" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Salud", :class => "trending-follow" %><%= link_to "Salud", root_path, :title => "Ve al tema Salud", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Urgencias", :class => "trending-follow" %><%= link_to "Urgencias", root_path, :title => "Ve al tema Urgencias", :class => "trending-item" %></li>
+							<li><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Reparaciones", :class => "trending-follow" %><%= link_to "Reparaciones", root_path, :title => "Ve al tema Reparaciones", :class => "trending-item" %></li>
+						</ul>
+					</aside>
+
+					<aside id="share" class="widget">
+						<p>Compartir</p>
+						<ul>
+							<li><%= link_to content_tag(:span, "Twitter"), root_path, :title => "Compartir en Twitter", :class => "share-twitter" %></li>
+							<li><%= link_to content_tag(:span, "Facebook"), root_path, :title => "Compartir en Facebook", :class => "share-facebook" %></li>
+							<li><%= link_to content_tag(:span, "Email"), root_path, :title => "Compartir por Email", :class => "share-email" %></li>
+							<li><%= link_to content_tag(:span, "Share"), root_path, :title => "Compartir en otras redes sociales", :class => "share-social" %></li>
 						</ul>
 					</aside>
 				</div><!-- #sidebar -->

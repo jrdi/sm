@@ -140,7 +140,7 @@ header .title {
 	text-transform: uppercase;
 }
 
-#sidebar p, ul, ol {
+#sidebar p, #sidebar ul, #sidebar ol {
 	font: bold 11px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin-bottom: 15px;
 }
@@ -159,7 +159,7 @@ header .title {
 	margin-top: 5px;
 }
 
-#sidebar #twitter_update_list li {
+#sidebar #tuits #twitter_update_list li {
 	color: #A9876F;
 }
 
@@ -172,8 +172,8 @@ header .title {
 	text-transform: lowercase;
 }
 
-#sidebar #trending a.follow-trending {
-	background: url('/images/sprittes_buttons.png') no-repeat;
+#sidebar #trending a.trending-follow {
+	background: url('/images/sprittes-buttons.png') no-repeat;
 	display: block;
 	float: left;
 	height: 16px;
@@ -181,7 +181,56 @@ header .title {
 	width: 16px;
 }
 
-#sidebar #trending a.follow-trending span {
+#sidebar #trending a.trending-followed {
+	background-position: -16px 0;
+}
+
+#sidebar #trending a.trending-follow span {
+	display: none;
+}
+
+#sidebar #share {
+	border: 2px solid rgba(0, 0, 0, 0.05);
+	padding: 9px 25px;
+	text-align: center;
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+}
+
+#sidebar #share p {
+	color: #A9876F;
+	float: left;
+	font-size: 10px;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+#sidebar #share a {
+	display: block;
+	float: left;
+	height: 16px;
+	margin-left: 15px;
+	width: 16px;
+}
+
+#sidebar #share a {
+	background: url('/images/sprittes-share.png');
+}
+
+#sidebar #share a.share-facebook {
+	background-position: 0 -16px;
+}
+
+#sidebar #share a.share-email {
+	background-position: 0 -32px;
+}
+
+#sidebar #share a.share-social {
+	background-position: 0 -48px;
+}
+
+#sidebar #share a span {
 	display: none;
 }
 
@@ -192,6 +241,7 @@ header .title {
 	color: #94694B;
 	font-size: 11px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+	padding-bottom: 15px;
 }
 
 #colophon .inner {
