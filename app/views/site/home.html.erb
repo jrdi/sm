@@ -1,9 +1,28 @@
-<%= render 'questions/form' %> 
+<div id="ask-box">
+	<%= render 'questions/form' %> 
+</div>
 
-<%- @questions.each do |question| %>
-  <%= link_to question.title, question_answers_path(question) %>
-  <%= question.description %>
-  <%= question.user.email %>
-  <%= question.answers.count %>
-  <%= question.created_at %>
-<% end -%>
+<div id="questions-box">
+	<div id="questions-header">
+		<ul id="questions-header-menu">
+			<li><%= link_to "Recientes", root_path, :title => "Ver las preguntas recientes", :class => "questions-header-menu-item selected" %></li>
+			<li><%= link_to "Sin responder", root_path, :title => "Ver las preguntas sin responder", :class => "questions-header-menu-item" %></li>
+			<li><%= link_to "Populares", root_path, :title => "Ver las preguntas populares", :class => "questions-header-menu-item" %></li>
+		</ul>
+	</div>
+
+	<ul id="questions-list">
+		<%- @questions.each do |question| %>
+			<li class="question">
+				<%= link_to question.title, question_answers_path(question) %>
+				<%= question.description %>
+				<%= question.user.email %>
+				<%= question.answers.count %>
+				<%= question.created_at %>
+			</li>
+		<% end -%>
+	</ul>
+
+	<div id="questions-footer">
+	</div>
+</div>
