@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # Relations
   has_many :questions
+  has_many :answers, :dependent => :destroy
   
   protected
   

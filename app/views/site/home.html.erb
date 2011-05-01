@@ -13,3 +13,7 @@
     <a class="tweet-button button disabled" href="#">Tweet</a>
   </div>
 </div>
+
+<%- @questions.each do |question| %>
+  <%= question.title %>
+<% end -%>

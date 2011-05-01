@@ -1,12 +1,12 @@
 <ul id="navbar">
-	<li><%= link_to 'Portada', root_path, :class => "selected" %></li>
-	<li><%= link_to 'Acerca de', root_path %></li>
+	<li><%= link_to 'Portada', root_path, selected?('site', 'home') %></li>
+	<li><%= link_to 'Acerca de', '/about' %></li>
 	<li><%= link_to 'Blog', root_path %></li>
 	<%- if user_signed_in? %>
-		<li><%= link_to 'Mi cuenta', edit_user_registration_path %></li>
+		<li><%= link_to 'Mi cuenta', edit_user_registration_path, selected?('users/registrations', 'edit') %></li>
 		<li><%= link_to 'Desconectar', destroy_session_path(current_user) %></li>
 	<% else -%>
-		<li><%= link_to 'Accede', root_path %></li>
+		<li><%= link_to 'Accede', new_user_session_path, selected?('devise/sessions', 'new') %></li>
 		<li><%= link_to 'Regístrate', root_path, :class => "signup" %></li>
 	<% end -%>
 </ul>

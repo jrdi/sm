@@ -7,7 +7,11 @@ Sm::Application.routes.draw do
                                       :omniauth_callbacks => "users/omniauth_callbacks", 
                                       :registrations => "users/registrations" }
   
-  resources :questions
+  resources :questions do
+    resources :answers
+  end
+  
+  match '/:action', :controller => 'site', :action => ':action'
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
