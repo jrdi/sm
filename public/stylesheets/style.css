@@ -102,3 +102,41 @@ header .title {
 	color: #72300A;
 	text-shadow: 0 -1px 1px rgba(255, 255, 255, .1);
 }
+
+#colophon {
+	color: #94694B;
+	font-size: 11px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+#colophon .inner {
+	background: url('/images/socorromama-logo-footer.png') no-repeat 15px bottom;
+	overflow: hidden;
+	padding: 15px 20px 0 75px;
+	width: 885px;
+}
+
+#colophon p {
+	line-height: 20px;
+	clear: right;
+}
+
+#colophon a {
+	color: #C3550D;
+}
+
+#colophon .meta {
+	float: left;
+	font: normal 20px 'Copse', Georgia, serif;
+	margin: -3px 10px 0 0;
+	text-decoration: none;
+}
+
+#colophon #footer-menu {
+	clear: left;
+}
+
+#colophon #footer-menu li a {
+	float: left;
+	margin-right: 15px;
+}

@@ -15,7 +15,7 @@
 
 				<h1><%= link_to "Socorro mamá!", root_path, :title => "Go to the Home page", :class => "title" %></h1>
 			</div>
-		</header>
+		</header><!-- #banner -->
 
 		<div id="main">
 			<div class="inner">
@@ -24,13 +24,19 @@
 
 				<div id="content">
 					<%= yield %>
-				</div>
+				</div><!-- #content -->
 			</div>
-		</div>
+		</div><!-- #main -->
 
-		<footer>
-			<p class="inner">© 2011 <%= link_to 'Socorro mamá!', root_path %>. All right reserved.</p>
-		</footer>
-	</div>
+		<footer id="colophon">
+			<div class="inner">
+				<p><%= link_to 'socorro mamá!', root_path, :class => "meta" %> es una pequeña idea de <%= link_to "@alv", 'http://twitter.com/alv' %>, <%= link_to "@jrdi", 'http://twitter.com/jrdi' %> y <%= link_to "@matallo", 'http://twitter.com/matallo' %>.</p>
+				<ul id="footer-menu">
+					<li><%= link_to "Aviso legal", root_path %></li>
+					<li><%= link_to "Contacto", root_path %></li>
+				</ul>
+			</div>
+		</footer><!-- #colophon -->
+	</div><!-- #wrapper -->
 </body>
 </html>
