@@ -1,6 +1,6 @@
 <ul id="navbar">
 	<li><%= link_to 'Portada', root_path, selected?('site', 'home') %></li>
-	<li><%= link_to 'Acerca de', root_path %></li>
+	<li><%= link_to 'Acerca de', '/about' %></li>
 	<li><%= link_to 'Blog', root_path %></li>
 	<%- if user_signed_in? %>
 		<li><%= link_to 'Mi cuenta', edit_user_registration_path, selected?('users/registrations', 'edit') %></li>
