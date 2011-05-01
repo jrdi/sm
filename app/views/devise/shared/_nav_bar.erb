@@ -7,6 +7,6 @@
 		<li><%= link_to 'Desconectar', destroy_session_path(current_user) %></li>
 	<% else -%>
 		<li><%= link_to 'Accede', root_path %></li>
-		<li><%= link_to 'Regístrate', root_path %></li>
+		<li><%= link_to 'Regístrate', root_path, :class => "signup" %></li>
 	<% end -%>
 </ul>

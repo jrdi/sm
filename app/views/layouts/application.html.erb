@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
   <title>Socorro mamá! <%= " - #{yield(:title)}" if yield(:title).present? %></title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :all %>
@@ -12,7 +13,7 @@
 			<div class="inner">
 				<%= render :partial => "devise/shared/nav_bar" %>
 
-				<%= link_to image_tag("socorromama-logo.png", :title => "Go to the Home page", :alt => "Socorro mamá!"), root_path %>
+				<h1><%= link_to "Socorro mamá!", root_path, :title => "Go to the Home page", :class => "title" %></h1>
 			</div>
 		</header>
 
