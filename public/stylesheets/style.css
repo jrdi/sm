@@ -274,7 +274,6 @@ header .title {
 
 .question .star {
 	background-position: center -90px;
-	display: none;
 	position: absolute;
 	right: 20px;
 	top: 60px;
@@ -282,10 +281,6 @@ header .title {
 
 .question:first-child .star {
 	top: 30px;
-}
-
-.question:hover .star {
-	display: block;
 }
 
 .question .starred {
