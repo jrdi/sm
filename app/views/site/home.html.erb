@@ -21,7 +21,7 @@
   			<li class="question">
   				<div class="question-commands">
   					<div class="replies clearfix">
-  						<%= link_to question.answers.count, question, :title => "Ver las respuestas", :class => "comments" %>
+  						<%= link_to question.answers_count, question, :title => "Ver las respuestas", :class => "comments" %>
   						<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "question-command-item reply" %>
   					</div>
 
