@@ -16,7 +16,7 @@
 			<li class="question">
 				<div class="question-commands">
 					<div class="replies clearfix">
-						<%= link_to "15", root_path, :title => "Ver las respuestas", :class => "comments" %>
+						<%= link_to question.answers.count, root_path, :title => "Ver las respuestas", :class => "comments" %>
 						<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "question-command-item reply" %>
 					</div>
 
@@ -26,11 +26,18 @@
 					</div>
 				</div>
 
-				<h2><%= link_to question.title, question_answers_path(question), :title => "Enlace permanente a #{question.title}" %></h2>
-				<p><%= question.description %></p>
-				<%= question.user.email %>
-				<%= question.answers.count %>
-				<%= question.created_at %>
+				<h2 class="question-title"><%= link_to question.title, question_answers_path(question), :title => "Enlace permanente a #{question.title}" %></h2>
+				<p class="question-description"><%= question.description %></p>
+
+				<div class="question-meta">
+					<ul class="question-tags">
+						<li class="question-tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Cocina", :class => "tag-follow" %><%= link_to "Cocina", root_path, :title => "Ve al tema Cocina", :class => "question-tag-link" %></li>
+						<li class="question-tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Limpieza", :class => "tag-follow" %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "question-tag-link" %></li>
+						<li class="question-tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Dinero", :class => "tag-follow" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "question-tag-link" %></li>
+					</ul>
+
+					<p>Por <%= link_to question.user.email, root_path %> <%= question.created_at %></p>
+				</div>
 			</li>
 		<% end -%>
 	</ul>

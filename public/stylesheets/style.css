@@ -248,10 +248,42 @@ header .title {
 	background-position: center -120px;
 }
 
-.question p {
+.question .question-description {
 	color: rgba(90, 108, 115, 1);
 	font: normal 13px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin-bottom: 15px;
 }
+
+.question-meta {
+	color: rgba(173, 186, 191, 1);
+	font: bold 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.question-meta a {
+	color: rgba(106, 138, 153, 1)
+}
+
+.question .question-tags {
+	float: right;
+}
+
+.question .question-tag {
+	float: left;
+	margin-left: 15px;
+}
+
+.question a.question-tag-link {
+	text-transform: lowercase;
+}
+
+.question .question-meta a.tag-follow {
+	background-position: 0 -16px;
+}
+
+.question .question-meta a.tag-followed {
+	background-position: -16px -16px;
+}
+
 
 #sidebar {
 	float: left;
@@ -297,17 +329,26 @@ header .title {
 	margin-bottom: 5px;
 }
 
-#sidebar #trending a.trending-item {
-	font: bold 12px/2.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+#sidebar #trending ul {
+	margin: 15px 0 0;
+}
+
+#sidebar #trending .trending-item {
+	color: #A9876F;
+	margin-bottom: 15px;
+}
+
+#sidebar #trending a.trending-item-link {
+	font: bold 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-transform: lowercase;
 }
 
-#sidebar #trending a.trending-follow {
+#sidebar #trending a.trending-follow, .question a.tag-follow {
 	background: url('/images/sprittes-buttons.png') no-repeat;
 	display: block;
 	float: left;
 	height: 16px;
-	margin: 7px 7px 0 0;
+	margin-right: 7px;
 	width: 16px;
 }
 
@@ -315,7 +356,7 @@ header .title {
 	background-position: -16px 0;
 }
 
-#sidebar #trending a.trending-follow span {
+#sidebar #trending a.trending-follow span, .question .question-meta a.tag-follow span {
 	display: none;
 }
 
@@ -337,15 +378,12 @@ header .title {
 }
 
 #sidebar #share a {
+	background: url('/images/sprittes-share.png');
 	display: block;
 	float: left;
 	height: 16px;
 	margin-left: 15px;
 	width: 16px;
-}
-
-#sidebar #share a {
-	background: url('/images/sprittes-share.png');
 }
 
 #sidebar #share a.share-facebook {
