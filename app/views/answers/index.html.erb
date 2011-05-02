@@ -1,6 +1,6 @@
 <%= link_to @question.title, question_answers_path(@question) %>
 <%= @question.description %>
-<%= @question.user.email %>
+<%= @question.user.name %>
 <%= @question.answers.count %>
 <%= @question.created_at %>
 
@@ -9,7 +9,7 @@
   <tr>
     <td><%= answer.content %></td>
     <td><%= answer.created_at %></td>
-    <td><%= answer.user.email %></td>
+    <td><%= answer.user.name %></td>
     <td><%= link_to 'Show', [@question, answer] %></td>
     <td><%= link_to 'Edit', edit_question_answer_path(@question, answer) %></td>
     <td><%= link_to 'Destroy', [@question, answer], :confirm => 'Are you sure?', :method => :delete %></td>

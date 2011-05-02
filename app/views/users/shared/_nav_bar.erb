@@ -7,6 +7,6 @@
 		<li><%= link_to 'Desconectar', destroy_session_path(current_user) %></li>
 	<% else -%>
 		<li><%= link_to 'Accede', new_user_session_path, selected?('devise/sessions', 'new') %></li>
-		<li><%= link_to 'Regístrate', root_path, :class => "signup" %></li>
+		<li><%= link_to 'Regístrate', new_user_registration_path, :class => "signup" %></li>
 	<% end -%>
 </ul>

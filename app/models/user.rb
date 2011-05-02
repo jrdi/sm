@@ -5,19 +5,27 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :uid, :name, :oauth, :email, :password, :password_confirmation, :remember_me
   # Relations
   has_many :questions
   has_many :answers, :dependent => :destroy
+  # Validations
+  validates_uniqueness_of :uid, :scope => :oauth
   
   protected
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
-    if user = User.find_by_email(data["email"])
-      user
-    else # Create a user with a stub password. 
-      user = User.new(:email => data["email"], :password => Devise.friendly_token[0,20])
+    users = User.find(:all, :conditions => "uid = #{data['id']} AND oauth = 'Facebook'", :limit => 1)
+    unless users.empty?
+      users.first
+    else # Create a user with a stub password.
+      logger.info "@@@@@@@@@@@@@@@@@@@@@@" 
+      user = User.new(:email => data["email"], 
+                      :password => Devise.friendly_token[0,20], 
+                      :uid => data['id'], 
+                      :name => data['name'],
+                      :oauth => 'Facebook')
       user.skip_confirmation!
       user.save 
       user
@@ -26,10 +34,15 @@ class User < ActiveRecord::Base
   
   def self.find_for_twitter_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
-    if user = User.find_by_email("#{data['screen_name']}@example.com")
-      user
+    users = User.find(:all, :conditions => "uid = #{data['id']} AND oauth = 'Twitter'", :limit => 1)
+    unless users.empty?
+      users.first
     else # Create a user with a stub password. 
-      user = User.new(:email => "#{data['screen_name']}@example.com", :password => Devise.friendly_token[0,20])
+      user = User.new(:email => "#{data['screen_name']}@example.com", 
+                      :password => Devise.friendly_token[0,20], 
+                      :uid => data['id'], 
+                      :name => data['screen_name'],
+                      :oauth => 'Twitter')
       user.skip_confirmation!
       user.save
       user

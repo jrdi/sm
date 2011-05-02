@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110502090724) do
+ActiveRecord::Schema.define(:version => 20110502100644) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(:version => 20110502090724) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "uid"
+    t.string   "name"
+    t.string   "oauth"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
