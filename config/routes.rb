@@ -7,8 +7,8 @@ Sm::Application.routes.draw do
                                       :omniauth_callbacks => "users/omniauth_callbacks", 
                                       :registrations => "users/registrations" }
   
-  resources :questions do
-    resources :answers
+  resources :questions, :only => [:create, :edit, :update, :destroy] do
+    resources :answers, :only => [:index, :create, :edit, :update, :destroy]
   end
   
   match '/:action', :controller => 'site', :action => ':action'
