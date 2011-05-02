@@ -14,8 +14,20 @@
 	<ul id="questions-list">
 		<%- @questions.each do |question| %>
 			<li class="question">
-				<%= link_to question.title, question_answers_path(question) %>
-				<%= question.description %>
+				<div class="question-commands">
+					<div class="replies clearfix">
+						<%= link_to "15", root_path, :title => "Ver las respuestas", :class => "comments" %>
+						<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "question-command-item reply" %>
+					</div>
+
+					<div class="votes">
+						<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "question-command-item up" %>
+						<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "question-command-item down" %>
+					</div>
+				</div>
+
+				<h2><%= link_to question.title, question_answers_path(question), :title => "Enlace permanente a #{question.title}" %></h2>
+				<p><%= question.description %></p>
 				<%= question.user.email %>
 				<%= question.answers.count %>
 				<%= question.created_at %>

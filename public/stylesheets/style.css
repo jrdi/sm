@@ -109,12 +109,9 @@ header .title {
 	-webkit-border-radius: 7px 7px 0 0;
 	-moz-border-radius: 7px 7px 0 0;
 	border-radius: 7px 7px 0 0;
-	-webkit-box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, .3);
-	-moz-box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, .3);
-	box-shadow:
-		inset 0 1px 0 rgba(255, 255, 255, .3);
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3);
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .3);
 }
 
 #questions-header li {
@@ -159,6 +156,101 @@ header .title {
 	-webkit-border-radius: 0 5px 5px 0;
 	-moz-border-radius: 0 5px 5px 0;
 	border-radius: 0 5px 5px 0;
+}
+
+#questions-list {
+	background: url('/images/questions-list-bg.png');
+	border: 1px solid rgba(0, 0, 0, .3);
+	border-top: 0;
+}
+
+.question {
+	background: url('/images/question-bg.png') repeat-x;
+	padding: 60px 15px 0 90px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+.question:first-child {
+	padding-top: 30px;
+	background-position: 0 -32px;
+}
+
+.question:last-child {
+	padding-bottom: 30px;
+}
+
+.question .question-commands {
+	float: left;
+	margin-left: -75px;
+}
+
+.question .comments, .question .reply, .question .up, .question .down {
+	display: block;
+	float: left;
+	height: 30px;
+	width: 30px;
+	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.question .replies span, .question .votes span {
+	display: none;
+}
+
+.question .replies {
+	margin-bottom: 10px;
+}
+
+.question .comments, .question .up {
+	border: 1px solid rgba(175, 210, 223, 1);
+	border-right: 0;
+	-webkit-border-radius: 5px 0 0 5px;
+	-moz-border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px;
+}
+
+.question .reply, .question .down {
+	border: 1px solid rgba(175, 210, 223, 1);
+	-webkit-border-radius: 0 5px 5px 0;
+	-moz-border-radius: 0 5px 5px 0;
+	border-radius: 0 5px 5px 0;
+}
+
+.question .comments {
+	color: #7D96A0;
+	font: bold 14px/30px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: center;
+}
+
+.question .question-command-item {
+	background: url('/images/sprites-question-commands.png') no-repeat;
+}
+
+.question .reply {
+	border-left: 0;
+	width: 31px;
+}
+
+.question .up {
+	background-position: center -30px;
+}
+
+.question .down {
+	background-position: center -60px;
+}
+
+.question .star {
+	background-position: center -90px;
+}
+
+.question .starred {
+	background-position: center -120px;
+}
+
+.question p {
+	color: rgba(90, 108, 115, 1);
+	font: normal 13px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #sidebar {
@@ -279,6 +371,7 @@ header .title {
 	color: #94694B;
 	font-size: 11px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+	margin-top: 40px;
 	padding-bottom: 15px;
 }
 
