@@ -26,6 +26,21 @@ body {
 	width: 960px;
 }
 
+/* TAGS */
+
+a.tag-follow {
+	background: url('/images/sprittes-buttons.png') no-repeat;
+	display: block;
+	float: left;
+	height: 16px;
+	margin-right: 7px;
+	width: 16px;
+}
+
+a.tag-follow span {
+	display: none;
+}
+
 
 /* HEADER */
 
@@ -165,6 +180,7 @@ header .title {
 .question {
 	background: url('/images/question-bg.png') repeat-x 0 -4px;
 	padding: 60px 20px 0 100px;
+	position: relative;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
@@ -177,12 +193,12 @@ header .title {
 	padding-bottom: 30px;
 }
 
-.question .question-commands {
+.question .commands {
 	float: left;
 	margin-left: -80px;
 }
 
-.question .comments, .question .reply, .question .up, .question .down {
+.question .comments, .question .reply, .question .up, .question .down, .question .star {
 	display: block;
 	float: left;
 	height: 28px;
@@ -192,7 +208,7 @@ header .title {
 	box-shadow: 0 1px 0 rgba(255, 255, 255, 1);
 }
 
-.question .replies span, .question .votes span {
+.question .replies span, .question .votes span, .question .star span {
 	display: none;
 }
 
@@ -223,8 +239,8 @@ header .title {
 	text-align: center;
 }
 
-.question .question-command-item {
-	background: url('/images/sprites-question-commands.png') no-repeat;
+.question .command-item {
+	background: url('/images/sprites-commands.png') no-repeat;
 }
 
 .question .reply {
@@ -242,6 +258,18 @@ header .title {
 
 .question .star {
 	background-position: center -90px;
+	display: none;
+	position: absolute;
+	right: 20px;
+	top: 60px;
+}
+
+.question:first-child .star {
+	top: 30px;
+}
+
+.question:hover .star {
+	display: block;
 }
 
 .question .starred {
@@ -334,31 +362,22 @@ header .title {
 	margin: 15px 0 0;
 }
 
-#sidebar #trending .trending-item {
+#sidebar #trending .tag {
 	color: #A9876F;
 	margin-bottom: 15px;
 }
 
-#sidebar #trending a.trending-item-link {
+#sidebar #trending a.tag-link {
 	font: bold 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
 	text-transform: lowercase;
 }
 
-#sidebar #trending a.trending-follow, .question a.tag-follow {
-	background: url('/images/sprittes-buttons.png') no-repeat;
-	display: block;
-	float: left;
-	height: 16px;
-	margin-right: 7px;
-	width: 16px;
+#sidebar #trending a.tag-follow {
+	margin-top: 3px;
 }
 
-#sidebar #trending a.trending-followed {
+#sidebar #trending a.tag-followed {
 	background-position: -16px 0;
-}
-
-#sidebar #trending a.trending-follow span, .question .question-meta a.tag-follow span {
-	display: none;
 }
 
 #sidebar #share {

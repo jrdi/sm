@@ -15,36 +15,38 @@
 
 	<ul id="questions-list">
 		<%- if @questions.empty? %>
-		  Aún no hay preguntas disponibles.
+			Aún no hay preguntas disponibles.
 		<% else %>
-		  <%- @questions.each do |question| %>
-  			<li class="question">
-  				<div class="question-commands">
-  					<div class="replies clearfix">
-  						<%= link_to question.answers.count, question, :title => "Ver las respuestas", :class => "comments" %>
-  						<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "question-command-item reply" %>
-  					</div>
+			<%- @questions.each do |question| %>
+				<li class="question">
+					<%= link_to content_tag(:span, "☆"), root_path, :title => "Fav", :class => "command-item star" %>
 
-  					<div class="votes">
-  						<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "question-command-item up" %>
-  						<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "question-command-item down" %>
-  					</div>
-  				</div>
+					<div class="commands">
+						<div class="replies clearfix">
+							<%= link_to question.answers.count, question, :title => "Ve a las respuestas", :class => "comments" %>
+							<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "command-item reply" %>
+						</div>
 
-  				<h2 class="question-title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
-  				<p class="question-description"><%= question.description %></p>
+						<div class="votes">
+							<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
+							<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
+						</div>
+					</div>
 
-  				<div class="question-meta">
-  					<ul class="tags">
-  						<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Cocina", :class => "tag-follow" %><%= link_to "Cocina", root_path, :title => "Ve al tema Cocina", :class => "tag-link" %></li>
-  						<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Limpieza", :class => "tag-follow" %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "tag-link" %></li>
-  						<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Dinero", :class => "tag-follow" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "tag-link" %></li>
-  					</ul>
+					<h2 class="question-title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
+					<p class="question-description"><%= question.description %></p>
 
-  					<p>Por <%= link_to question.user.name, root_path %> <%= question.created_at %></p>
-  				</div>
-  			</li>
-  		<% end -%>
+					<div class="question-meta">
+						<ul class="tags">
+							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Cocina", :class => "tag-follow" %><%= link_to "Cocina", root_path, :title => "Ve al tema Cocina", :class => "tag-link" %></li>
+							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Limpieza", :class => "tag-follow" %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "tag-link" %></li>
+							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Dinero", :class => "tag-follow" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "tag-link" %></li>
+						</ul>
+
+						<p>Por <%= link_to question.user.name, root_path %> <%= question.created_at %></p>
+					</div>
+				</li>
+			<% end -%>
 		<% end -%>
 	</ul>
 
