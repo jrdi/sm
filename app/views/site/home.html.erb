@@ -21,7 +21,7 @@
   			<li class="question">
   				<div class="question-commands">
   					<div class="replies clearfix">
-  						<%= link_to question.answers.count, question_answers_path(question), :title => "Ver las respuestas", :class => "comments" %>
+  						<%= link_to question.answers.count, question, :title => "Ver las respuestas", :class => "comments" %>
   						<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "question-command-item reply" %>
   					</div>
 
@@ -31,7 +31,7 @@
   					</div>
   				</div>
 
-  				<h2 class="question-title"><%= link_to question.title, question_answers_path(question), :title => "Enlace permanente a #{question.title}" %></h2>
+  				<h2 class="question-title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
   				<p class="question-description"><%= question.description %></p>
 
   				<div class="question-meta">

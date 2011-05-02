@@ -1,7 +1,6 @@
 class AnswersController < ApplicationController
   before_filter :current_user_permissions, :only => [ :edit, :update, :destroy ]
   before_filter :load_question
-  skip_before_filter :authenticate_user!, :only => :index
   # GET /questions/1/answers
   def index
     @answers = @question.answers
@@ -28,7 +27,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     
     if @answer.save
-      redirect_to(question_answers_url(@question), :notice => 'La respuesta ha sido guardada correctamente.')
+      redirect_to(@question, :notice => 'La respuesta ha sido guardada correctamente.')
     else
       render :action => "new"     
     end
@@ -37,7 +36,7 @@ class AnswersController < ApplicationController
   # PUT /questions/1/answers/1
   def update
     if @answer.update_attributes(params[:answer])
-      redirect_to(question_answers_url(@question), :notice => 'La respuesta ha sido editada correctamente.')
+      redirect_to(@question, :notice => 'La respuesta ha sido editada correctamente.')
     else
       render :action => "edit"
     end

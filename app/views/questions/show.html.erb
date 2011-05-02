@@ -1,20 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%= link_to @question.title, @question %>
+<%= @question.description %>
+<%= @question.user.name %>
+<%= @question.answers.count %>
+<%= @question.created_at %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @question.title %>
-</p>
+<table>
+<% @answers.each do |answer| %>
+  <%- unless answer.id.blank? %>
+    <tr>
+      <td><%= answer.content %></td>
+      <td><%= answer.created_at %></td>
+      <td><%= answer.user.name %></td>
+      <td><%= link_to 'Edit', edit_question_answer_path(@question, answer) %></td>
+      <td><%= link_to 'Destroy', [@question, answer], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end -%>
+<% end %>
+</table>
 
-<p>
-  <strong>Description:</strong>
-  <%= @question.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @question.user.email %>
-</p>
-
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<br />
+<%- if user_signed_in? %>
+  <%= render 'answers/form' %>
+<% end -%>
