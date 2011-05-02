@@ -1,5 +1,5 @@
-h1, h2 {
-	margin-bottom: 15px;
+h1, h2, h3 {
+	margin-bottom: 10px;
 }
 
 h1 {
@@ -10,10 +10,6 @@ h2 {
 	font-size: 18px;
 }
 
-h3 {
-	margin-bottom: 10px;
-}
-
 a {
 	color: #C3560D;
 }
@@ -21,7 +17,7 @@ a {
 body {
 	background: url('/images/background.png');
 	color: #333;
-	font: normal 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: 300 .74em/1.6 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .inner {
@@ -63,9 +59,9 @@ header .title {
 
 #navbar li a {
 	color: #FFCBAC;
-	font: bold 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 16px;
 	margin-left: 20px;
-	text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4);
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
 }
 
 #navbar li a.selected, #navbar li a.signup {
@@ -78,21 +74,21 @@ header .title {
 	-webkit-box-shadow:
 		inset 0 1px 0 rgba(255, 255, 255, .2),
 		inset 0 0 1px rgba(255,255,255,.3),
-		0 1px 2px rgba(255, 255, 255, .15);
+		0 1px 1px rgba(255, 255, 255, .1);
 	-moz-box-shadow:
 		inset 0 1px 0 rgba(255, 255, 255, .2),
 		inset 0 0 1px rgba(255,255,255,.3),
-		0 1px 2px rgba(255, 255, 255, .15);
+		0 1px 1px rgba(255, 255, 255, .1);
 	box-shadow:
 		inset 0 1px 0 rgba(255, 255, 255, .2),
 		inset 0 0 1px rgba(255,255,255,.3),
-		0 1px 2px rgba(255, 255, 255, .15);
+		0 1px 1px rgba(255, 255, 255, .1);
 }
 
 #navbar li a.signup {
 	background: url('/images/signup-bg.png') repeat-x;
 	color: #72300A;
-	text-shadow: 0 -1px 1px rgba(255, 255, 255, .1);
+	text-shadow: -1px -1px 0 rgba(255, 255, 255, .2);
 }
 
 
@@ -135,7 +131,9 @@ header .title {
 	border-left: 1px solid rgba(255, 255, 255, .1);
 	color: rgba(255, 255, 255, 1);
 	display: block;
-	font: bold 14px/35px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 35px;
 	height: 35px;
 	padding: 0 15px;
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, .5);
@@ -165,14 +163,14 @@ header .title {
 }
 
 .question {
-	background: url('/images/question-bg.png') repeat-x;
-	padding: 60px 15px 0 90px;
+	background: url('/images/question-bg.png') repeat-x 0 -4px;
+	padding: 60px 20px 0 100px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
 
 .question:first-child {
 	padding-top: 30px;
-	background-position: 0 -32px;
+	background-position: 0 -34px;
 }
 
 .question:last-child {
@@ -181,7 +179,7 @@ header .title {
 
 .question .question-commands {
 	float: left;
-	margin-left: -75px;
+	margin-left: -80px;
 }
 
 .question .comments, .question .reply, .question .up, .question .down {
@@ -219,7 +217,9 @@ header .title {
 
 .question .comments {
 	color: #7D96A0;
-	font: bold 14px/30px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	line-height: 30px;
 	text-align: center;
 }
 
@@ -250,29 +250,30 @@ header .title {
 
 .question .question-description {
 	color: rgba(90, 108, 115, 1);
-	font: normal 13px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 13px;
 	margin-bottom: 15px;
 }
 
 .question-meta {
 	color: rgba(173, 186, 191, 1);
-	font: bold 11px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 11px;
 }
 
 .question-meta a {
 	color: rgba(106, 138, 153, 1)
 }
 
-.question .question-tags {
+.question .tags {
 	float: right;
 }
 
-.question .question-tag {
+.question .tag {
 	float: left;
 	margin-left: 15px;
 }
 
-.question a.question-tag-link {
+.question a.tag-link {
+	font-weight: bold;
 	text-transform: lowercase;
 }
 
@@ -303,7 +304,7 @@ header .title {
 }
 
 #sidebar p, #sidebar ul, #sidebar ol {
-	font: bold 11px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
 	margin-bottom: 15px;
 }
 
@@ -409,8 +410,7 @@ header .title {
 	color: #94694B;
 	font-size: 11px;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-	margin-top: 40px;
-	padding-bottom: 15px;
+	margin: 30px 0;
 }
 
 #colophon .inner {
