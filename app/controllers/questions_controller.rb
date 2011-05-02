@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_filter :current_user_permissions, :only => [ :edit, :update, :destroy ]
-  
+  skip_before_filter :authenticate_user!, :only => :show
   # GET /questions
   def index
     @questions = Question.all
