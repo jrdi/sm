@@ -2,7 +2,7 @@ class SiteController < ApplicationController
   skip_before_filter :authenticate_user!
   def home
     @question = Question.new
-    @questions = Question.all(:order => 'created_at DESC')
+    @questions = Question.all(:order => 'created_at DESC', :include => :user)
     @questions_without_answer = Question.without_answer
     @questions_populars = Question.populars
   end
