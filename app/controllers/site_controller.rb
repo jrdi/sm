@@ -3,6 +3,8 @@ class SiteController < ApplicationController
   def home
     @question = Question.new
     @questions = Question.all(:order => 'created_at DESC')
+    @questions_without_answer = Question.without_answer
+    @questions_populars = Question.populars
   end
   
   def about
