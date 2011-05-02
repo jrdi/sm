@@ -39,7 +39,7 @@
 					<div class="question-meta">
 						<ul class="tags">
 							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Cocina", :class => "tag-follow" %><%= link_to "Cocina", root_path, :title => "Ve al tema Cocina", :class => "tag-link" %></li>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Limpieza", :class => "tag-follow" %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "tag-link" %></li>
+							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Limpieza", :class => "tag-follow tag-followed" %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "tag-link" %></li>
 							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Dinero", :class => "tag-follow" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "tag-link" %></li>
 						</ul>
 
@@ -51,5 +51,9 @@
 	</ul>
 
 	<div id="questions-footer">
+		<%= link_to 'Cargar más', root_path, :title => "Carga más preguntas", :class => "load-more" %>
+		<%- if user_signed_in? %>
+			<%= link_to 'Nueva preguna', root_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
+		<% end -%>
 	</div>
 </div>
