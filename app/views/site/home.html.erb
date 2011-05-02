@@ -1,6 +1,8 @@
-<div id="ask-box">
-	<%= render 'questions/form' %> 
-</div>
+<%- if user_signed_in? %>
+  <div id="ask-box">
+  	<%= render 'questions/form' %> 
+  </div>
+<% end -%>
 
 <div id="questions-box">
 	<div id="questions-header">

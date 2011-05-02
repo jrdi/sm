@@ -1,9 +1,11 @@
 class AnswersController < ApplicationController
   before_filter :current_user_permissions, :only => [ :edit, :update, :destroy ]
   before_filter :load_question
+  skip_before_filter :authenticate_user!, :only => :index
   # GET /questions/1/answers
   def index
     @answers = @question.answers
+    @answer = @question.answers.build
   end
 
   # GET /questions/1/answers/1
