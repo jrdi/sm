@@ -15,7 +15,7 @@ class SiteController < ApplicationController
       @questions = Question.populars.limit("#{(page-1)*10}, 10")
       @question_pages = (Question.populars.count/10.0).floor+1
     else
-      @questions = Question.all(:order => 'created_at DESC', :include => :user, :limit => "#{page-1}, 10")
+      @questions = Question.all(:order => 'created_at DESC', :include => :user, :limit => "#{(page-1)*10}, 10")
       @question_pages = (Question.count/10.0).floor+1
     end
     
