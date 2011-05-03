@@ -11,7 +11,7 @@ Sm::Application.routes.draw do
     resources :answers, :only => [:create, :edit, :update, :destroy]
   end
   
-  match '/:action', :controller => 'site', :action => ':action'
+  match '/:action(.:format)', :controller => 'site', :action => ':action'
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

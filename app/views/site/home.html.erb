@@ -23,7 +23,7 @@
 
 					<div class="commands">
 						<div class="replies clearfix">
-							<%= link_to question.answers.count, question, :title => "Ve a las respuestas", :class => "comments" %>
+							<%= link_to question.answers_count, question, :title => "Ve a las respuestas", :class => "comments" %>
 							<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "command-item reply" %>
 						</div>
 
@@ -43,7 +43,7 @@
 							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Dinero", :class => "tag-follow" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "tag-link" %></li>
 						</ul>
 
-						<p>Por <%= link_to question.user.name, root_path %> <%= question.created_at %></p>
+						<p>Por <%= link_to question.user.name, root_path %> hace <%= humanize_time_ago(question.created_at) %></p>
 					</div>
 				</li>
 			<% end -%>
