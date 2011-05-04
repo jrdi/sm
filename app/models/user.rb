@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   attr_accessible :uid, :name, :oauth, :email, :password, :password_confirmation, :remember_me
   # Relations
   has_many :questions
-  has_many :answers, :dependent => :destroy
+  has_many :answers
+  has_many :votes
   # Validations
   validates_uniqueness_of :uid, :scope => :oauth
   
@@ -20,7 +21,6 @@ class User < ActiveRecord::Base
     unless users.empty?
       users.first
     else # Create a user with a stub password.
-      logger.info "@@@@@@@@@@@@@@@@@@@@@@" 
       user = User.new(:email => data["email"], 
                       :password => Devise.friendly_token[0,20], 
                       :uid => data['id'], 
