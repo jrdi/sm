@@ -64,7 +64,7 @@
 							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Dinero", :class => "tag-follow" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "tag-link" %></li>
 						</ul>
 
-						<p>Por <%= link_to question.user.name, root_path %> hace <%= humanize_time_ago(question.created_at) %></p>
+						<p>Por <%= link_to question.user.name, root_path %> hace <%= time_ago_in_words(question.created_at) %></p>
 					</div>
 				</li>
 			<% end -%>
