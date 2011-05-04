@@ -3,6 +3,7 @@ class SiteController < ApplicationController
   def home
     if user_signed_in?
       @question = Question.new
+      @vote = Vote.new
     end
     
     page = params[:page].present? ? params[:page].to_i : 1

@@ -26,11 +26,32 @@
 							<%= link_to question.answers_count, question, :title => "Ve a las respuestas", :class => "comments" %>
 							<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "command-item reply" %>
 						</div>
-
-						<div class="votes">
-							<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
-							<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
-						</div>
+						<%- if user_signed_in? %>
+							<div class="votes">
+								<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
+								<%= form_for(@vote, :format => :html) do |f| %>
+		              <%= f.hidden_field :user_id, :value => current_user.id %>
+									<%= f.hidden_field :value, :value => 1 %>
+									<%= f.hidden_field :votable_id, :value => question.id %>
+									<%= f.hidden_field :votable_type, :value => question.class %>
+									<div class="actions">
+		              	<%= f.submit '+', :id => "vote_submit_#{question.id}" %>
+		              </div>
+		            <% end %>
+								<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
+								<%= form_for(@vote, :format => :html) do |f| %>
+		              <%= f.hidden_field :user_id, :value => current_user.id %>
+									<%= f.hidden_field :value, :value => -1 %>
+									<%= f.hidden_field :votable_id, :value => question.id %>
+									<%= f.hidden_field :votable_type, :value => question.class %>
+									<div class="actions">
+		              	<%= f.submit '-', :id => "vote_submit_#{question.id}" %>
+		              </div>
+		            <% end %>
+								<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
+								<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
+							</div>
+						<% end -%>
 					</div>
 
 					<h2 class="question-title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
