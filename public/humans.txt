@@ -1,0 +1,23 @@
+/* TEAM */
+	UI designer: Alvaro Castano
+	Twitter: @alv
+	From: Oviedo, Asturias, Spain
+
+	UI developer: Carlos Matallin
+	Twitter: @matallo
+	From: Valencia, Spain
+
+	Web developer: Jordi Villar
+	Twitter: @jrdi
+	From: Barcelona, Catalonia, Spain
+
+/* THANKS */
+	Godmother: Angela
+	Twitter: @angeladini
+	From: Malaga, Spain
+
+/* SITE */
+	Last update:2011/05/05
+	Language: Castellano
+	Doctype: HTML5 with CSS3
+	IDE: Textmate, Fireworks, Photoshop, Rails
