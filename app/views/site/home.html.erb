@@ -24,7 +24,7 @@
 					<div class="commands">
 						<div class="replies clearfix">
 							<%= link_to question.answers_count, question, :title => "Ve a las respuestas", :class => "comments" %>
-							<%= link_to content_tag(:span, "Responder"), root_path, :title => "Responder", :class => "command-item reply" %>
+							<%= link_to content_tag(:span, "Responder"), question_path(question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
 						</div>
 						<%- if 1 == 0 #if user_signed_in? %>
 							<div class="votes">
@@ -74,7 +74,7 @@
 	<div id="questions-footer">
 		<%= link_to 'Cargar más', "javascript:void(0);", :title => "Carga más preguntas", :class => "load-more" %>
 		<%- if user_signed_in? %>
-			<%= link_to 'Nueva pregunta', root_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
+			<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
 		<% end -%>
 	</div>
 </div>
