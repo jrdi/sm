@@ -8,8 +8,8 @@
 	<div id="questions-header">
 		<ul id="questions-header-menu">
 			<li><%= link_to "Recientes", root_path, :title => "Ver las preguntas recientes", :class => "questions-header-menu-item selected" %></li>
-			<li><%= link_to "Sin responder", root_path, :title => "Ver las preguntas sin responder", :class => "questions-header-menu-item" %></li>
-			<li><%= link_to "Populares", root_path, :title => "Ver las preguntas populares", :class => "questions-header-menu-item" %></li>
+			<li><%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers'), :title => "Ver las preguntas sin responder", :class => "questions-header-menu-item" %></li>
+			<li><%= link_to "Populares", root_path(:scoped_questions => 'populars'), :title => "Ver las preguntas populares", :class => "questions-header-menu-item" %></li>
 		</ul>
 	</div>
 
