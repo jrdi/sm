@@ -6,18 +6,19 @@ class SiteController < ApplicationController
       # @vote = Vote.new
     end
     
-    page = params[:page].present? ? params[:page].to_i : 1
+    page            = params[:page].present? ? (params[:page].to_i-1)*10 : 0
+    @question_pages = params[:question_pages].present? ? params[:question_pages].to_i : nil
     
     case params[:scoped_questions]
     when 'without_answers'
-      @questions = Question.without_answer.limit("#{(page-1)*10}, 10")
-      @question_pages = (Question.without_answer.count/10.0).floor+1
+      @questions      = Question.without_answers(:limit => "#{page}, 10")
+      @question_pages ||= (Question.without_answers_count/10.0).floor+1
     when 'populars'
-      @questions = Question.populars.limit("#{(page-1)*10}, 10")
-      @question_pages = (Question.populars.count/10.0).floor+1
+      @questions      = Question.populars(:limit => "#{page}, 10")
+      @question_pages ||= (Question.populars_count/10.0).floor+1
     else
-      @questions = Question.all(:order => 'created_at DESC', :include => :user, :limit => "#{(page-1)*10}, 10")
-      @question_pages = (Question.count/10.0).floor+1
+      @questions      = Question.all(:order => 'created_at DESC', :include => :user, :limit => "#{page}, 10")
+      @question_pages ||= (Question.count/10.0).floor+1
     end
     
     respond_to do |format|

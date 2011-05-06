@@ -8,11 +8,23 @@ class Question < ActiveRecord::Base
   validates_presence_of :user_id, :on => :create
   validates_uniqueness_of :title
   
-  scope :without_answer, where('answers_count = 0')
-  scope :populars, where('answers_count > 0').order('answers_count DESC')
+  def self.without_answers(options = {})
+    Question.all(:conditions => 'answers_count = 0', :include => :user, :order => 'created_at DESC', :limit => options[:limit])
+  end
+  
+  def self.without_answers_count(options = {})
+    Question.count(:conditions => 'answers_count = 0')
+  end
+  
+  def self.populars(options = {})
+    Question.all(:conditions => 'answers_count > 0', :include => :user, :order => 'answers_count DESC', :limit => options[:limit])
+  end
+  
+  def self.populars_count(options = {})
+    Question.count(:conditions => 'answers_count > 0')
+  end
   
   def as_json(options={})
     super(:include => {:user => {:only => [:name]}})
   end
-  
 end
