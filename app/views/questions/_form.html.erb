@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.label :title %>
+    <%= f.text_field :title, :placeholder => "Escribe aquí tu pregunta" %>
+
+    <%= f.label :description %>
+    <%= f.text_area :description, :rows => "1", :placeholder => "Escribe aquí la descripción (opcional)" %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+	<div id="ask-box-footer">
+		<%= f.submit :class => "new-question" %>
+	</div>
 <% end %>
