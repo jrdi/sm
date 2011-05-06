@@ -10,4 +10,9 @@ class Question < ActiveRecord::Base
   
   scope :without_answer, where('answers_count = 0')
   scope :populars, where('answers_count > 0').order('answers_count DESC')
+  
+  def as_json(options={})
+    super(:include => {:user => {:only => [:name]}})
+  end
+  
 end
