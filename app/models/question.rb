@@ -2,7 +2,7 @@ class Question < ActiveRecord::Base
   # Relations
   belongs_to :user
   has_many :answers, :dependent => :destroy
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :tags, :uniq => true
   #has_many :votes, :as => :votable, :dependent => :destroy
   # Validations
   validates_presence_of :title
@@ -28,9 +28,10 @@ class Question < ActiveRecord::Base
   def as_json(options={})
     super(:include => {:user => {:only => [:name]}, :tags => {:only => [:id, :name]}})
   end
-
+  
+  # TO-DO: Research to rewritte << method and stop using this
   def tags=(string_tags)
     tags = string_tags.split(',')
-    tags.each{ |tag| self.tags.find_or_create_by_name(tag) }
+    tags.each{ |tag| self.tags << Tag.find_or_create_by_name(tag) }
   end
 end
