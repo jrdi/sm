@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
   validates_uniqueness_of :title
   
   def self.without_answers(options = {})
-    Question.all(:conditions => 'answers_count = 0', :include => [:user, :tags], :order => 'created_at DESC', :limit => options[:limit])
+    Question.all(:conditions => 'answers_count = 0', :include => [:user], :order => 'created_at DESC', :limit => options[:limit])
   end
   
   def self.without_answers_count(options = {})
@@ -18,7 +18,7 @@ class Question < ActiveRecord::Base
   end
   
   def self.populars(options = {})
-    Question.all(:conditions => 'answers_count > 0', :include => [:user, :tags], :order => 'answers_count DESC', :limit => options[:limit])
+    Question.all(:conditions => 'answers_count > 0', :include => [:user], :order => 'answers_count DESC', :limit => options[:limit])
   end
   
   def self.populars_count(options = {})
@@ -31,7 +31,7 @@ class Question < ActiveRecord::Base
   
   # TO-DO: Research to rewritte << method and stop using this
   def tags=(string_tags)
-    tags = string_tags.split(',')
+    tags = string_tags.split(%r{,\s*})
     tags.each{ |tag| self.tags << Tag.find_or_create_by_name(tag) }
   end
 end
