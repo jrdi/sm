@@ -26,7 +26,7 @@ class Question < ActiveRecord::Base
   end
   
   def as_json(options={})
-    super(:include => {:user => {:only => [:name]}})
+    super(:include => {:user => {:only => [:name]}, :tags => {:only => [:id, :name]}})
   end
 
   def tags=(string_tags)
