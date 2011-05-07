@@ -32,6 +32,12 @@ GEM
     arel (2.0.9)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
+    capistrano (2.6.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     capybara (0.4.1.2)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
@@ -58,6 +64,7 @@ GEM
       rack (>= 1.1.0, < 2)
     ffi (1.0.7)
       rake (>= 0.8.7)
+    highline (1.6.1)
     i18n (0.5.0)
     json_pure (1.5.1)
     mail (2.2.17)
@@ -69,6 +76,13 @@ GEM
     multi_json (0.0.5)
     multipart-post (1.1.0)
     mysql2 (0.2.7)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.1.4)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
     oa-core (0.2.4)
     oa-oauth (0.2.4)
@@ -137,6 +151,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  capistrano
   capybara
   devise
   mysql2
