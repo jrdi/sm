@@ -8,7 +8,7 @@ class SiteController < ApplicationController
     
     page            = params[:page].present? ? (params[:page].to_i-1)*10 : 0
     @question_pages = params[:question_pages].present? ? params[:question_pages].to_i : nil
-    
+
     case params[:scoped_questions]
     when 'without_answers'
       @questions        = Question.without_answers(:limit => "#{page}, 10")

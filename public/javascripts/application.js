@@ -17,8 +17,8 @@ $(document).ready(function() {
       page.currentPage = parseInt($.urlParam('page'));
     }
 
-    if($.urlParam('questions_pages') != 0) {
-      page.lastPage = $.urlParam('questions_pages');
+    if($.urlParam('question_pages') != 0) {
+      page.lastPage = $.urlParam('question_pages');
     }
 
     if($.urlParam('scoped_questions') != 0) {
@@ -42,7 +42,7 @@ $(document).ready(function() {
       url: "home.json",
       data: {
         page: page.currentPage,
-        questions_pages: page.lastPage,
+        question_pages: page.lastPage,
         scoped_questions: page.scope
       },
       success: function(data) {
@@ -62,7 +62,7 @@ $(document).ready(function() {
       url: "home.json",
       data: {
         page: page.currentPage+1,
-        questions_pages: page.lastPage,
+        question_pages: page.lastPage,
         scoped_questions: page.scope
       },
       success: function(data) {
