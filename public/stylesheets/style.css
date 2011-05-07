@@ -149,7 +149,7 @@ form#new_question input[type="text"] {
   margin-bottom: 15px;
 }
 
-form#new_question textarea:focus {
+form#new_question textarea:focus, form#new_question textarea.focus {
   height: 110px;
 }
 
@@ -216,7 +216,8 @@ form#new_question textarea:focus {
 	background: url('/images/questions-list-bg.png');
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 0;
-	border-bottom: 0;
+	border-bottom: 1px solid rgba(62, 116, 140, .3);
+	padding-bottom: 30px;
 }
 
 .question {
@@ -229,11 +230,6 @@ form#new_question textarea:focus {
 .question:first-child {
 	padding-top: 30px;
 	background-position: 0 -34px;
-}
-
-.question:last-child {
-	border-bottom: 1px solid rgba(62, 116, 140, .3);
-	padding-bottom: 30px;
 }
 
 .question .commands {

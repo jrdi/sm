@@ -55,7 +55,6 @@ $(document).ready(function() {
     });
   };
 
-
   $.loadMoreQuestions = function() {
     $.ajax({
       type: "GET",
@@ -77,6 +76,15 @@ $(document).ready(function() {
   $.getParams();
 
   $.loadMoreQuestions();
+
+  $('#new_question textarea').blur(function() {
+    description = $(this).val();
+    if(description) {
+      $(this).addClass("focus");
+    } else {
+      $(this).removeClass("focus");
+    }
+  });
 
   $('.load-more').live("click", function() {
     if(page.currentPage+1 <= page.lastPage) {
