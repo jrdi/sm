@@ -92,7 +92,7 @@ $(document).ready(function() {
       $('#questions-list').append(Questions.join(''));
       $.resetQuestions();
       page.currentPage++;
-      if(page.currentPage+1 === page.lastPage) {
+      if(page.currentPage+1 <= page.lastPage) {
         $.loadMoreQuestions();
       }
     } else {
