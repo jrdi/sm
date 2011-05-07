@@ -19,7 +19,7 @@
 		<% else %>
 			<%- @questions.each do |question| %>
 				<li class="question">
-					<%= link_to content_tag(:span, "☆"), root_path, :title => "Favorito", :class => "command-item star" %>
+					<%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito", :class => "command-item star" %>
 
 					<div class="commands">
 						<div class="replies clearfix">
@@ -59,9 +59,12 @@
 
 					<div class="question-meta">
 						<ul class="tags">
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Cocina", :class => "tag-follow" %><%= link_to "Cocina", root_path, :title => "Ir al tema Cocina", :class => "tag-link" %></li>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Limpieza", :class => "tag-follow tag-followed" %><%= link_to "Limpieza", root_path, :title => "Ir al tema Limpieza", :class => "tag-link" %></li>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema Dinero", :class => "tag-follow" %><%= link_to "Dinero", root_path, :title => "Ir al tema Dinero", :class => "tag-link" %></li>
+							<%- question.tags.each do |tag| %>
+								<li class="tag">
+									<%#= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema #{tag.name.capitalize}", :class => "tag-follow" %>
+									<%= link_to tag.name.capitalize, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
+								</li>
+							<% end -%>
 						</ul>
 
 						<p>Por <%= link_to question.user.name, root_path %> hace <%= time_ago_in_words(question.created_at) %></p>

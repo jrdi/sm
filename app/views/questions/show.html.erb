@@ -5,7 +5,7 @@
 <%= @question.created_at %>
 
 <table>
-<% @answers.each do |answer| %>
+<% @question.answers.each do |answer| %>
   <%- unless answer.id.blank? %>
     <tr>
       <td><%= answer.content %></td>

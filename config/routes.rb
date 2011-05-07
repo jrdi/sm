@@ -11,6 +11,7 @@ Sm::Application.routes.draw do
     resources :answers, :only => [:create, :edit, :update, :destroy]
   end
   
+  resources :tags, :only => :show
   resources :votes, :only => :create
   
   match '/:action(.:format)', :controller => 'site', :action => ':action'

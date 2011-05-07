@@ -9,7 +9,6 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   def show
     @question = Question.find(params[:id])
-    @answers = @question.answers
     @answer = @question.answers.build
   end
 
@@ -28,6 +27,7 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     
     if @question.save
+      @question.tags = params[:question_tags]
       redirect_to(@question, :notice => 'La pregunta ha sido guardada correctamente.')
     else
       render :action => "new"     

@@ -1,5 +1,6 @@
 class SiteController < ApplicationController
   skip_before_filter :authenticate_user!
+  
   def home
     if user_signed_in?
       @question = Question.new
@@ -17,7 +18,7 @@ class SiteController < ApplicationController
       @questions        = Question.populars(:limit => "#{page}, 10")
       @question_pages ||= (Question.populars_count/10.0).floor+1
     else
-      @questions        = Question.all(:order => 'created_at DESC', :include => :user, :limit => "#{page}, 10")
+      @questions        = Question.all(:order => 'created_at DESC', :include => [:user, :tags], :limit => "#{page}, 10")
       @question_pages ||= (Question.count/10.0).floor+1
     end
     
