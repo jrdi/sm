@@ -4,6 +4,7 @@ gem 'rails', '3.0.7'
 gem 'mysql2'        
 gem 'devise'
 gem "oa-oauth", :require => "omniauth/oauth"
+gem 'capistrano'
 
 group :development, :test do  
   gem 'rspec-rails'

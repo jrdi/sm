@@ -14,5 +14,6 @@ capybara-*.html
 /spec/tmp/*
 **.orig
 config/*.yml
+config/deploy.rb
 rerun.txt
 pickle-email-*.html
