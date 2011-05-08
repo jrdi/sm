@@ -17,4 +17,10 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+	<div id="questions-footer">
+		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
+	</div>
+
+
 <% end %>
