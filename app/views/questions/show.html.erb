@@ -13,32 +13,6 @@
   			<%= link_to @question.answers_count, @question, :title => "Ir a las respuestas", :class => "comments" %>
   			<%= link_to content_tag(:span, "Responder"), question_path(@question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
   		</div>
-  		<%- if 1 == 0 #if user_signed_in? %>
-  			<div class="votes">
-  				<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
-  				<%= form_for(@vote, :format => :html) do |f| %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-  					<%= f.hidden_field :value, :value => 1 %>
-  					<%= f.hidden_field :votable_id, :value => @question.id %>
-  					<%= f.hidden_field :votable_type, :value => @question.class %>
-  					<div class="actions">
-            	<%= f.submit '+', :id => "vote_submit_#{@question.id}" %>
-            </div>
-          <% end %>
-  				<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
-  				<%= form_for(@vote, :format => :html) do |f| %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-  					<%= f.hidden_field :value, :value => -1 %>
-  					<%= f.hidden_field :votable_id, :value => @question.id %>
-  					<%= f.hidden_field :votable_type, :value => @question.class %>
-  					<div class="actions">
-            	<%= f.submit '-', :id => "vote_submit_#{@question.id}" %>
-            </div>
-          <% end %>
-  				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
-  				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
-  			</div>
-  		<% end -%>
   	</div>
 
   	<h2 class="question-title"><%= link_to @question.title, @question, :title => "Enlace permanente a #{@question.title}" %></h2>
@@ -69,39 +43,39 @@
 <ul id="questions-list">
   <% @question.answers.each do |answer| %>
     <%- unless answer.id.blank? %>
-        <li class="question">
-        	<div class="commands">
-        		<div class="replies clearfix">
-        			<%= link_to @question.answers_count, @question, :title => "Ir a las respuestas", :class => "comments" %>
-        			<%= link_to content_tag(:span, "Responder"), question_path(@question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
-        		</div>
-        		<%- if 1 == 0 #if user_signed_in? %>
-        			<div class="votes">
-        				<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
-        				<%= form_for(@vote, :format => :html) do |f| %>
-                  <%= f.hidden_field :user_id, :value => current_user.id %>
-        					<%= f.hidden_field :value, :value => 1 %>
-        					<%= f.hidden_field :votable_id, :value => @question.id %>
-        					<%= f.hidden_field :votable_type, :value => @question.class %>
-        					<div class="actions">
-                  	<%= f.submit '+', :id => "vote_submit_#{@question.id}" %>
-                  </div>
-                <% end %>
-        				<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
-        				<%= form_for(@vote, :format => :html) do |f| %>
-                  <%= f.hidden_field :user_id, :value => current_user.id %>
-        					<%= f.hidden_field :value, :value => -1 %>
-        					<%= f.hidden_field :votable_id, :value => @question.id %>
-        					<%= f.hidden_field :votable_type, :value => @question.class %>
-        					<div class="actions">
-                  	<%= f.submit '-', :id => "vote_submit_#{@question.id}" %>
-                  </div>
-                <% end %>
-        				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
-        				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
-        			</div>
-        		<% end -%>
-        	</div>
+      <li class="question">
+      	<div class="commands">
+      		<div class="replies clearfix">
+      			<%= link_to @question.answers_count, @question, :title => "Ir a las respuestas", :class => "comments" %>
+      			<%= link_to content_tag(:span, "Responder"), question_path(@question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
+      		</div>
+      		<%- if user_signed_in? %>
+      			<div class="votes">
+      				<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
+      				<%= form_for(answer.votes.build, :format => :html) do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+      					<%= f.hidden_field :value, :value => 1 %>
+      					<%= f.hidden_field :votable_id, :value => answer.id %>
+      					<%= f.hidden_field :votable_type, :value => answer.class %>
+      					<div class="actions">
+                	<%= f.submit '+', :id => "vote_submit_#{answer.id}" %>
+                </div>
+              <% end %>
+      				<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
+      				<%= form_for(answer.votes.build, :format => :html) do |f| %>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+      					<%= f.hidden_field :value, :value => -1 %>
+      					<%= f.hidden_field :votable_id, :value => answer.id %>
+      					<%= f.hidden_field :votable_type, :value => answer.class %>
+      					<div class="actions">
+                	<%= f.submit '-', :id => "vote_submit_#{answer.id}" %>
+                </div>
+              <% end %>
+      				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
+      				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
+      			</div>
+      		<% end -%>
+      	</div>
 
         	<p class="question-description"><%= answer.content %></p>
 
