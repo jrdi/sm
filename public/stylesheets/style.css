@@ -116,11 +116,11 @@ header .title {
 	width: 700px;
 }
 
-form#new_question {
+#new_question {
   margin-bottom: 30px;
 }
 
-form#new_question .field {
+#new_question .field {
   background: rgba(255, 255, 255, 1);
 	border: 1px solid rgba(62, 116, 140, .5);
   color: rgba(142, 156, 163, 1);
@@ -132,25 +132,26 @@ form#new_question .field {
   border-radius: 7px 7px 0 0;
 }
 
-form#new_question .field label {
+#new_question .field label {
   display: none;
 }
 
-form#new_question input[type="text"], form#new_question textarea {
+#new_question input[type="text"], form#new_question textarea {
   border: 0;
   color: rgba(142, 156, 163, 1);
-  font: normal 20px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: normal 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   resize: none;
   width: 658px;
 }
 
-form#new_question input[type="text"] {
+#new_question #question_title {
   font: bold 24px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  margin-bottom: 15px;
 }
 
-form#new_question textarea:focus, form#new_question textarea.focus {
+#new_question #question_description {
+  font-size: 20px;
   height: 110px;
+  margin-top: 15px;
 }
 
 #questions-header {
