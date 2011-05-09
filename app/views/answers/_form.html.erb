@@ -10,17 +10,13 @@
       </ul>
     </div>
   <% end %>
+
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.label :content %>
+    <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta" %>
   </div>
 
 	<div id="questions-footer">
-		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
+	  <button type="submit" class="new-question">Publicar respuesta</button>
 	</div>
-
-
 <% end %>

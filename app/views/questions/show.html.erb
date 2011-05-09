@@ -1,87 +1,82 @@
 <div id="questions-box">
+  <div id="questions-header">
+  	<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
+  </div>
 
+  <ul id="questions-list">
+    <li id="question" class="question"> <!-- While class not applied to page -->
+    	<%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito", :class => "command-item star" %>
 
-<div id="questions-header">
-</div>
+    	<div class="commands">
+    		<div class="replies clearfix">
+    			<%= link_to @question.answers_count, @question, :title => "Ir a las respuestas", :class => "comments" %>
+    			<%= link_to content_tag(:span, "Responder"), question_path(@question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
+    		</div>
+    	</div>
 
-<ul id="questions-list">
-  <li class="question">
-  	<%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito", :class => "command-item star" %>
+    	<h2 class="question-title"><%= link_to @question.title, @question, :title => "Enlace permanente a #{@question.title}" %></h2>
+    	<p class="question-description"><%= @question.description %></p>
 
-  	<div class="commands">
-  		<div class="replies clearfix">
-  			<%= link_to @question.answers_count, @question, :title => "Ir a las respuestas", :class => "comments" %>
-  			<%= link_to content_tag(:span, "Responder"), question_path(@question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
-  		</div>
-  	</div>
+    	<div class="question-meta">
+    		<ul class="tags">
+    			<%- @question.tags.each do |tag| %>
+    				<li class="tag">
+    					<%#= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema #{tag.name.capitalize}", :class => "tag-follow" %>
+    					<%= link_to "##{tag.name.capitalize}", tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
+    				</li>
+    			<% end -%>
+    		</ul>
 
-  	<h2 class="question-title"><%= link_to @question.title, @question, :title => "Enlace permanente a #{@question.title}" %></h2>
-  	<p class="question-description"><%= @question.description %></p>
+    		<p>Por <%= link_to @question.user.name, root_path %> hace <%= time_ago_in_words(@question.created_at) %> <%= link_to 'editar', edit_question_path(@question) %> <%= link_to 'eliminar', [@question], :confirm => 'Estás seguro?', :method => :delete %></p>
+    	</div>
+    </li>
+  </ul>
 
-  	<div class="question-meta">
-  		<ul class="tags">
-  			<%- @question.tags.each do |tag| %>
-  				<li class="tag">
-  					<%#= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-  					<%= link_to tag.name.capitalize, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
-  				</li>
-  			<% end -%>
-  		</ul>
+  <div id="answers-header">
+  	<ul id="answers-header-menu">
+  		<li><%= link_to "Votos", question_path(@question, :ordered_answers => 'votes_desc'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item selected", :id => "votes_desc" %></li>
+  		<li><%= link_to "Fecha", question_path(@question, :ordered_answers => 'date_asc'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "date_asc" %></li>
+  	</ul>
+  </div>
 
-  		<p>Por <%= link_to @question.user.name, root_path %> hace <%= time_ago_in_words(@question.created_at) %></p>
-  	</div>
-  </li>
-</ul>
-
-<div id="answers-header">
-	<ul id="answers-header-menu">
-		<li><%= link_to "Votos", question_path(@question, :ordered_answers => 'votes_desc'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item selected", :id => "votes_desc" %></li>
-		<li><%= link_to "Fecha", question_path(@question, :ordered_answers => 'date_asc'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "date_asc" %></li>
-	</ul>
-</div>
-
-<ul id="questions-list">
-  <% @question.answers.each do |answer| %>
-    <%- unless answer.id.blank? %>
-      <li class="question">
-      	<div class="commands">
-      		<div class="replies clearfix">
-      			<%= link_to @question.answers_count, @question, :title => "Ir a las respuestas", :class => "comments" %>
-      			<%= link_to content_tag(:span, "Responder"), question_path(@question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
-      		</div>
-      		<%- if user_signed_in? %>
-      			<div class="votes">
-      				<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
-      				<%= form_for(answer.votes.build, :format => :html) do |f| %>
-                <%= f.hidden_field :user_id, :value => current_user.id %>
-      					<%= f.hidden_field :value, :value => 1 %>
-      					<%= f.hidden_field :votable_id, :value => answer.id %>
-      					<%= f.hidden_field :votable_type, :value => answer.class %>
-      					<div class="actions">
-                	<%= f.submit '+', :id => "vote_submit_#{answer.id}" %>
-                </div>
-              <% end %>
-      				<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
-      				<%= form_for(answer.votes.build, :format => :html) do |f| %>
-                <%= f.hidden_field :user_id, :value => current_user.id %>
-      					<%= f.hidden_field :value, :value => -1 %>
-      					<%= f.hidden_field :votable_id, :value => answer.id %>
-      					<%= f.hidden_field :votable_type, :value => answer.class %>
-      					<div class="actions">
-                	<%= f.submit '-', :id => "vote_submit_#{answer.id}" %>
-                </div>
-              <% end %>
-      				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
-      				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
-      			</div>
-      		<% end -%>
-      	</div>
-
-        	<p class="question-description"><%= answer.content %></p>
-
-        	<div class="question-meta">
-        		<p>Por <%= link_to answer.user.name, root_path %> hace <%= time_ago_in_words(answer.created_at) %> <%= link_to 'Edit', edit_question_answer_path(@question, answer) %> <%= link_to 'Destroy', [@question, answer], :confirm => 'Are you sure?', :method => :delete %></p>
+  <ul id="questions-list">
+    <% @question.answers.each do |answer| %>
+      <%- unless answer.id.blank? %>
+        <li class="question">
+        	<div class="commands">
+        		<%- if user_signed_in? %>
+        			<div class="votes">
+        				<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
+        				<%= form_for(answer.votes.build, :format => :html) do |f| %>
+                  <%= f.hidden_field :user_id, :value => current_user.id %>
+        					<%= f.hidden_field :value, :value => 1 %>
+        					<%= f.hidden_field :votable_id, :value => answer.id %>
+        					<%= f.hidden_field :votable_type, :value => answer.class %>
+        					<div class="actions">
+                  	<%= f.submit '+', :id => "vote_submit_#{answer.id}" %>
+                  </div>
+                <% end %>
+        				<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
+        				<%= form_for(answer.votes.build, :format => :html) do |f| %>
+                  <%= f.hidden_field :user_id, :value => current_user.id %>
+        					<%= f.hidden_field :value, :value => -1 %>
+        					<%= f.hidden_field :votable_id, :value => answer.id %>
+        					<%= f.hidden_field :votable_type, :value => answer.class %>
+        					<div class="actions">
+                  	<%= f.submit '-', :id => "vote_submit_#{answer.id}" %>
+                  </div>
+                <% end %>
+        				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
+        				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
+        			</div>
+        		<% end -%>
         	</div>
+
+          <p class="question-description"><%= answer.content %></p>
+
+          <div class="question-meta">
+            <p>Por <%= link_to answer.user.name, root_path %> hace <%= time_ago_in_words(answer.created_at) %> <%= link_to 'editar', edit_question_answer_path(@question, answer) %> <%= link_to 'eliminar', [@question, answer], :confirm => 'Estás seguro?', :method => :delete %></p>
+          </div>
         </li>
       <% end -%>
     <% end %>

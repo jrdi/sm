@@ -102,6 +102,16 @@ $(document).ready(function() {
     }
   });
 
+  $('#question .reply').live("click", function() {
+    $("#answer_content").focus();
+    return false;
+  });
+
+  $('#questions-footer .new-question').live("click", function() {
+    $("#question_title").focus();
+    return false;
+  });
+
   $('.load-more').live("click", function() {
     if(page.currentPage+1 <= page.lastPage) {
       $('#questions-list').append(Questions.join(''));

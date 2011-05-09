@@ -123,10 +123,9 @@ header .title {
 #new_question .field {
   background: rgba(255, 255, 255, 1);
 	border: 1px solid rgba(62, 116, 140, .5);
-  color: rgba(142, 156, 163, 1);
+	border-bottom: 0;
   font: normal 20px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   padding: 20px;
-  width: 658px;
   -webkit-border-radius: 7px 7px 0 0;
   -moz-border-radius: 7px 7px 0 0;
   border-radius: 7px 7px 0 0;
@@ -136,7 +135,7 @@ header .title {
   display: none;
 }
 
-#new_question input[type="text"], form#new_question textarea {
+#new_question input[type="text"], #new_question textarea {
   border: 0;
   color: rgba(142, 156, 163, 1);
   font: normal 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -184,7 +183,7 @@ header .title {
 		0 1px 0 rgba(255, 255, 255, .2);
 }
 
-#questions-header a {
+#questions-header li a {
 	border-left: 1px solid rgba(255, 255, 255, .1);
 	color: rgba(255, 255, 255, 1);
 	display: block;
@@ -241,7 +240,7 @@ header .title {
 		0 1px 0 rgba(255, 255, 255, .2);
 }
 
-#answers-header a {
+#answers-header li a {
 	border-left: 1px solid rgba(255, 255, 255, .1);
 	color: rgba(255, 255, 255, 1);
 	display: block;
@@ -274,7 +273,7 @@ header .title {
 	background: url('/images/questions-list-bg.png');
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 0;
-	border-bottom: 1px solid rgba(62, 116, 140, .3);
+	border-bottom: 0;
 	padding-bottom: 30px;
 }
 
@@ -312,8 +311,8 @@ header .title {
 	display: none;
 }
 
-.question .replies {
-	margin-bottom: 10px;
+.question .votes form {
+	display: none;
 }
 
 .question .comments, .question .up {
@@ -408,10 +407,35 @@ header .title {
 	background-position: -16px -16px;
 }
 
+#new_answer label {
+  display: none;
+}
+
+#new_answer .field {
+  background: rgba(255, 255, 255, 1);
+	border: 1px solid rgba(62, 116, 140, .5);
+	border-top: 1px solid rgba(62, 116, 140, .3);
+	border-bottom: 0;
+  font: normal 20px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  padding: 20px;
+}
+
+#new_answer textarea {
+  border: 0;
+  color: rgba(142, 156, 163, 1);
+  font: normal 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  resize: none;
+  width: 658px;
+}
+
+#new_answer textarea {
+  height: 90px;
+}
+
 #ask-box-footer, #questions-footer {
 	background: url('/images/questions-footer-bg.png') repeat-x;
 	border: 1px solid rgba(62, 116, 140, .5);
-	border-top: 0;
+	border-top: 1px solid rgba(62, 116, 140, .3);
 	height: 36px;
 	padding: 10px;
 	-webkit-border-radius: 0 0 7px 7px;
@@ -422,7 +446,7 @@ header .title {
 	box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 }
 
-#questions-footer a {
+#ask-box-footer button, #questions-footer a, .new-question {
 	background: url('/images/question-footer-button-bg.png') repeat-x;
 	border: 1px solid rgba(92, 123, 137, 0.4);
 	color: rgba(101, 121, 131, 1);
@@ -447,8 +471,13 @@ header .title {
 		0 1px 0 rgba(255, 255, 255, 1);
 }
 
-#questions-footer a.new-question {
-	float: right;
+#ask-box-footer button, #questions-footer button {
+  line-height: 1;
+  padding: 7px 20px;
+}
+
+#ask-box-footer button, #questions-footer button, .new-question {
+	float: right !important;
 }
 
 /* SIDEBAR */
