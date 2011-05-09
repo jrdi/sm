@@ -6,7 +6,7 @@ gem 'devise'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem 'capistrano'
 
-group :development, :test do  
+group :test do  
   gem 'rspec-rails'
   gem 'steak'
   gem 'capybara'  
