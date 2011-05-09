@@ -8,8 +8,12 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   def show
-    @question = Question.find(params[:id])
-    @answer = @question.answers.build
+    @question = Question.find(params[:id], :include => :answers, :order => "answers.#{Answer.ordered(params[:order])} DESC")
+    
+    respond_to do |format|
+      format.html
+      format.json { render :json => @question }
+    end
   end
 
   # GET /questions/new
