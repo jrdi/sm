@@ -10,7 +10,7 @@ class Question < ActiveRecord::Base
   validates_uniqueness_of :title
   
   def self.without_answers(options = {})
-    Question.all(:conditions => 'answers_count = 0', :include => [:user], :order => 'created_at DESC', :limit => options[:limit])
+    Question.all(:conditions => 'answers_count = 0', :include => [:user], :order => 'created_at DESC', :limit => options[:limit], :offset => options[:offset])
   end
   
   def self.without_answers_count(options = {})
@@ -18,7 +18,7 @@ class Question < ActiveRecord::Base
   end
   
   def self.populars(options = {})
-    Question.all(:conditions => 'answers_count > 0', :include => [:user], :order => 'answers_count DESC', :limit => options[:limit])
+    Question.all(:conditions => 'answers_count > 0', :include => [:user], :order => 'answers_count DESC', :limit => options[:limit], :offset => options[:offset])
   end
   
   def self.populars_count(options = {})
