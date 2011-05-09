@@ -83,6 +83,7 @@
   </ul>
 
   <%- if user_signed_in? %>
+		<% @answer = @question.answers.build %>
     <%= render 'answers/form' %>
   <% end -%>
 </div>
