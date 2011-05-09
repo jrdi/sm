@@ -1,11 +1,12 @@
-$(document).ready(function() {
-  page = {
-    currentPage: 1,
-    lastPage: "",
-    scope: ""
-  }
-  Questions = [];
+page = {
+  currentPage: 1,
+  lastPage: "",
+  scope: ""
+}
+Questions = [];
+isNewQuestionFocus = false;
 
+$(document).ready(function() {
   $.urlParam = function(name){
     results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (!results) { return 0; }
@@ -78,13 +79,37 @@ $(document).ready(function() {
 
   $.loadMoreQuestions();
 
-  $('#new_question textarea').blur(function() {
-    description = $(this).val();
-    if(description) {
-      $(this).addClass("focus");
-    } else {
-      $(this).removeClass("focus");
+  $('#question_description, #question_tags').hide();
+  $('#question_title').focus(function() {
+    $("#new_question").addClass("focus");
+    $('#question_description, #question_tags').show();
+  });
+
+  $('#new_question').hover(function(){ 
+      isNewQuestionFocus = true; 
+  }, function(){ 
+      isNewQuestionFocus = false; 
+  });
+
+  $(document).mouseup(function(){
+    title = $("#question_title").val();
+    desc = $("#question_description").val();
+    tags = $("#question_tags").val();
+
+    if(!isNewQuestionFocus && !title && !desc && !tags) {
+      $("#new_question").removeClass("focus");
+      $('#question_description, #question_tags').hide();
     }
+  });
+
+  $('#question .reply').live("click", function() {
+    $("#answer_content").focus();
+    return false;
+  });
+
+  $('#questions-footer .new-question').live("click", function() {
+    $("#question_title").focus();
+    return false;
   });
 
   $('.load-more').live("click", function() {

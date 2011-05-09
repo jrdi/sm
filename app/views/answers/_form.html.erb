@@ -10,11 +10,13 @@
       </ul>
     </div>
   <% end %>
+
   <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
+    <%= f.label :content %>
+    <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+	<div id="questions-footer">
+	  <button type="submit" class="new-question">Publicar respuesta</button>
+	</div>
 <% end %>

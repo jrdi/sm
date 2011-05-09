@@ -26,32 +26,6 @@
 							<%= link_to question.answers_count, question, :title => "Ir a las respuestas", :class => "comments" %>
 							<%= link_to content_tag(:span, "Responder"), question_path(question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
 						</div>
-						<%- if 1 == 0 #if user_signed_in? %>
-							<div class="votes">
-								<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
-								<%= form_for(@vote, :format => :html) do |f| %>
-		              <%= f.hidden_field :user_id, :value => current_user.id %>
-									<%= f.hidden_field :value, :value => 1 %>
-									<%= f.hidden_field :votable_id, :value => question.id %>
-									<%= f.hidden_field :votable_type, :value => question.class %>
-									<div class="actions">
-		              	<%= f.submit '+', :id => "vote_submit_#{question.id}" %>
-		              </div>
-		            <% end %>
-								<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
-								<%= form_for(@vote, :format => :html) do |f| %>
-		              <%= f.hidden_field :user_id, :value => current_user.id %>
-									<%= f.hidden_field :value, :value => -1 %>
-									<%= f.hidden_field :votable_id, :value => question.id %>
-									<%= f.hidden_field :votable_type, :value => question.class %>
-									<div class="actions">
-		              	<%= f.submit '-', :id => "vote_submit_#{question.id}" %>
-		              </div>
-		            <% end %>
-								<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
-								<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
-							</div>
-						<% end -%>
 					</div>
 
 					<h2 class="question-title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
@@ -62,12 +36,12 @@
 							<%- question.tags.each do |tag| %>
 								<li class="tag">
 									<%#= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-									<%= link_to tag.name.capitalize, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
+									<%= link_to "##{tag.name.capitalize}", tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
 								</li>
 							<% end -%>
 						</ul>
 
-						<p>Por <%= link_to question.user.name, root_path %> hace <%= time_ago_in_words(question.created_at) %></p>
+						<p>Por <%= link_to question.user.name, root_path %> hace <%= time_ago_in_words(question.created_at) %> <%= link_to 'editar', edit_question_path(question) %> <%= link_to 'eliminar', [question], :confirm => 'Estás seguro?', :method => :delete %></p>
 					</div>
 				</li>
 			<% end -%>
