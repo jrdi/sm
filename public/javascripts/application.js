@@ -1,8 +1,10 @@
-page = {
+timeline = {
   currentPage: 1,
   lastPage: "",
   scope: ""
 }
+isLastPage = false;
+isURLized = true;
 Questions = [];
 isNewQuestionFocus = false;
 
@@ -14,23 +16,27 @@ $(document).ready(function() {
   }
 
   $.getParams = function() {
-    if($.urlParam('page') != 0) {
-      page.currentPage = parseInt($.urlParam('page'));
-    }
+    if(isURLized) {
+      if($.urlParam('page') != 0) {
+        timeline.currentPage = parseInt($.urlParam('page'));
+      }
 
-    if($.urlParam('question_pages') != 0) {
-      page.lastPage = $.urlParam('question_pages');
-    }
+      if($.urlParam('question_pages') != 0) {
+        timeline.lastPage = $.urlParam('question_pages');
+      }
 
-    if($.urlParam('scoped_questions') != 0) {
-      page.scope = $.urlParam('scoped_questions');
+      if($.urlParam('scoped_questions') != 0) {
+        timeline.scope = $.urlParam('scoped_questions');
+      }
     }
   }
 
   $.resetParams = function() {
-    page.currentPage = 1;
-    page.lastPage = "";
-    page.scope = "";
+    timeline.currentPage = 1;
+    timeline.lastPage = "";
+    timeline.scope = "";
+    isLastPage = false;
+    isURLized = false;
   }
 
   $.resetQuestions = function() {
@@ -42,17 +48,20 @@ $(document).ready(function() {
       type: "GET",
       url: "home.json",
       data: {
-        page: page.currentPage,
-        question_pages: page.lastPage,
-        scoped_questions: page.scope
+        page: timeline.currentPage,
+        question_pages: timeline.lastPage,
+        scoped_questions: timeline.scope
       },
       success: function(data) {
-        page.lastPage = data[1];
+        timeline.lastPage = data[1];
         $.each(data[0], function(key, value) {
           Questions.push('<li class="question"><a title="Favorito" class="command-item star" href="/"><span>☆</span></a><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + value["question"].id + '">' + value["question"].answers_count + '</a><a title="Responder" class="command-item reply" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + value["question"].title + '" href="/questions/' + value["question"].id + '">' + value["question"].title + '</a></h2><p class="question-description">' + value["question"].description + '</p><div class="question-meta"><ul class="tags"><li class="tag"><a title="Seguir el tema Cocina" class="tag-follow" href="/"><span>+</span></a><a title="Ir al tema Cocina" class="tag-link" href="/">Cocina</a></li><li class="tag"><a title="Seguir el tema Limpieza" class="tag-follow tag-followed" href="/"><span>+</span></a><a title="Ir al tema Limpieza" class="tag-link" href="/">Limpieza</a></li><li class="tag"><a title="Seguir el tema Dinero" class="tag-follow" href="/"><span>+</span></a><a title="Ir al tema Dinero" class="tag-link" href="/">Dinero</a></li></ul><p>Por <a href="/">' + value["question"]["user"].name + '</a> ' + value["question"].created_at + '</p></div></li>');
         });
         $('#questions-list').html(Questions.join(''));
         $.resetQuestions();
+        if (timeline.currentPage === timeline.lastPage) {
+          isLastPage = true;
+        }
       }
     });
   };
@@ -62,22 +71,28 @@ $(document).ready(function() {
       type: "GET",
       url: "home.json",
       data: {
-        page: page.currentPage+1,
-        question_pages: page.lastPage,
-        scoped_questions: page.scope
+        page: timeline.currentPage+1,
+        question_pages: timeline.lastPage,
+        scoped_questions: timeline.scope
       },
       success: function(data) {
-        page.lastPage = data[1];
+        timeline.lastPage = data[1];
         $.each(data[0], function(key, value) {
           Questions.push('<li class="question"><a title="Favorito" class="command-item star" href="/"><span>☆</span></a><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + value["question"].id + '">' + value["question"].answers_count + '</a><a title="Responder" class="command-item reply" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + value["question"].title + '" href="/questions/' + value["question"].id + '">' + value["question"].title + '</a></h2><p class="question-description">' + value["question"].description + '</p><div class="question-meta"><ul class="tags"><li class="tag"><a title="Seguir el tema Cocina" class="tag-follow" href="/"><span>+</span></a><a title="Ir al tema Cocina" class="tag-link" href="/">Cocina</a></li><li class="tag"><a title="Seguir el tema Limpieza" class="tag-follow tag-followed" href="/"><span>+</span></a><a title="Ir al tema Limpieza" class="tag-link" href="/">Limpieza</a></li><li class="tag"><a title="Seguir el tema Dinero" class="tag-follow" href="/"><span>+</span></a><a title="Ir al tema Dinero" class="tag-link" href="/">Dinero</a></li></ul><p>Por <a href="/">' + value["question"]["user"].name + '</a> ' + value["question"].created_at + '</p></div></li>');
         });
+        $('#questions-list').append(Questions.join(''));
+        $.resetQuestions();
+        if (timeline.currentPage+1 >= timeline.lastPage) {
+          isLastPage = true;
+          if (timeline.currentPage+1 > timeline.lastPage) {
+            alert("Has llegado al final, campeon!");
+          }
+        }
+        timeline.currentPage++;
       }
     });
   };
 
-  $.getParams();
-
-  $.loadMoreQuestions();
 
   $('#question_description, #question_tags').hide();
   $('#question_title').focus(function() {
@@ -112,14 +127,11 @@ $(document).ready(function() {
     return false;
   });
 
+
   $('.load-more').live("click", function() {
-    if(page.currentPage+1 <= page.lastPage) {
-      $('#questions-list').append(Questions.join(''));
-      $.resetQuestions();
-      page.currentPage++;
-      if(page.currentPage+1 <= page.lastPage) {
-        $.loadMoreQuestions();
-      }
+    $.getParams();
+    if(!isLastPage) {
+      $.loadMoreQuestions();
     } else {
       alert("Has llegado al final, campeon!")
     }
@@ -128,9 +140,7 @@ $(document).ready(function() {
   $('.questions-header-menu-item').live("click", function(e) {
     e.preventDefault();
     $.resetParams();
-    $.resetQuestions();
-    page.scope = $(this).attr('id');
+    timeline.scope = $(this).attr('id');
     $.loadQuestions();
-    $.loadMoreQuestions();
   });
 });
