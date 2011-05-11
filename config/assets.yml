@@ -1,0 +1,17 @@
+javascripts:
+  common:
+    - public/javascripts/lib/jquery.js
+    - public/javascripts/lib/modernizr-1.7.min.js
+    - public/javascripts/lib/rails.js
+    - public/javascripts/application.js
+
+  home:
+    - public/javascripts/home.js
+
+  question:
+    - public/javascripts/question.js
+
+stylesheets:
+  common:
+    - public/stylesheets/reset.css
+    - public/stylesheets/application.css
