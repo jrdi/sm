@@ -12,7 +12,7 @@
     	<div class="commands">
     		<div class="replies clearfix">
     			<%= link_to @question.answers_count, @question, :title => "Ir a las respuestas", :class => "comments" %>
-    			<%= link_to content_tag(:span, "Responder"), question_path(@question) + '#new_answer', :title => "Responder", :class => "command-item reply" %>
+    			<%= link_to content_tag(:span, "Responder"), question_path(@question) + '#new_answer', :title => "Responder", :class => "command-item reply #{'replied' if @question.answered?}" %>
     		</div>
     	</div>
 
@@ -42,8 +42,8 @@
 
   <div id="answers-header">
   	<ul id="answers-header-menu">
-  		<li><%= link_to "Votos", question_path(@question, :ordered_answers => 'votes_desc'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item selected", :id => "votes_desc" %></li>
-  		<li><%= link_to "Fecha", question_path(@question, :ordered_answers => 'date_asc'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "date_asc" %></li>
+  		<li><%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item selected", :id => "votes_count" %></li>
+  		<li><%= link_to "Fecha", question_path(@question, :order => 'created_at'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "created_at" %></li>
   	</ul>
   </div>
 
