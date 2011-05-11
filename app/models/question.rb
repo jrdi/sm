@@ -25,8 +25,16 @@ class Question < ActiveRecord::Base
     Question.count(:conditions => 'answers_count > 0')
   end
   
+  def answered?
+    answers.each{|a| return true if a.votes.sum(:value) > 0}
+    return false
+  end
+  
   def as_json(options={})
-    super(:include => {:user => {:only => [:name]}, :tags => {:only => [:id, :name]}})
+    super(:methods => [:answered?], 
+          :include => { 
+                        :user => {:only => [:name]}, 
+                        :tags => {:only => [:id, :name]}})
   end
   
   # TO-DO: Research to rewritte << method and stop using this

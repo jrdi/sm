@@ -24,7 +24,7 @@
 					<div class="commands">
 						<div class="replies clearfix">
 							<%= link_to question.answers_count, question, :title => "Ir a las respuestas", :class => "comments" %>
-							<%= link_to content_tag(:span, "Responder"), question_path(question) + '#new_answer', :title => "Responder", :class => "command-item reply replied" %>
+							<%= link_to content_tag(:span, "Responder"), question_path(question) + '#new_answer', :title => "Responder", :class => "command-item reply #{'replied' if question.answered?}" %>
 						</div>
 					</div>
 
