@@ -56,7 +56,7 @@
 
           <div class="question-meta">
             <p>
-							Por <%= link_to answer.user.name, root_path %> hace <%= time_ago_in_words(answer.created_at) %>
+							Por <%= link_to answer.user.name, root_path %> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
 							<%- if current_user === answer.user %> 
 								<%= link_to 'editar', edit_question_answer_path(@question, answer) %> 
 								<%= link_to 'eliminar', [@question, answer], :confirm => 'Estás seguro?', :method => :delete %>

@@ -560,6 +560,10 @@ header .title {
 	margin-top: 5px;
 }
 
+#sidebar #tuits #twitter_update_list {
+	font-size: 11px;
+}
+
 #sidebar #tuits #twitter_update_list li {
 	color: #A9876F;
 }
