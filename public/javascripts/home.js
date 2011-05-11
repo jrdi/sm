@@ -80,8 +80,15 @@ $(document).ready(function() {
 
   $('.questions-header-menu-item').live("click", function(e) {
     e.preventDefault();
-    $.resetParams();
-    timeline.scope = $(this).attr('id');
+    clickedItem = $(this);
+    selectedItem = $("#questions-header-menu").find(".selected a");
+
+    if (clickedItem != selectedItem){
+      $(selectedItem).parent().removeClass('selected');
+      $(clickedItem).parent().addClass('selected');
+      $.resetParams();
+      timeline.scope = clickedItem.attr('id');
+    }
     $.loadQuestions();
   });
 
