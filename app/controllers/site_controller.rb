@@ -13,13 +13,13 @@ class SiteController < ApplicationController
     case params[:scoped_questions]
     when 'without_answers'
       @questions        = Question.without_answers(:limit => "#{page}, 10")
-      @question_pages ||= (Question.without_answers_count/10.0).floor+1
+      @question_pages ||= (Question.without_answers_count/10.0).ceil
     when 'populars'
       @questions        = Question.populars(:limit => "#{page}, 10")
-      @question_pages ||= (Question.populars_count/10.0).floor+1
+      @question_pages ||= (Question.populars_count/10.0).ceil
     else
       @questions        = Question.all(:order => 'created_at DESC', :include => [:user], :limit => "#{page}, 10")
-      @question_pages ||= (Question.count/10.0).floor+1
+      @question_pages ||= (Question.count/10.0).ceil
     end
     
     respond_to do |format|
