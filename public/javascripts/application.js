@@ -7,7 +7,6 @@ timeline = {
 
 isLastPage = false;
 isURLized = true;
-Questions = [];
 
 $(document).ready(function() {
   // init functions
