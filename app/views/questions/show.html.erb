@@ -29,7 +29,13 @@
     			<% end -%>
     		</ul>
 
-    		<p>Por <%= link_to @question.user.name, root_path %> hace <%= time_ago_in_words(@question.created_at) %> <%= link_to 'editar', edit_question_path(@question) %> <%= link_to 'eliminar', [@question], :confirm => 'Estás seguro?', :method => :delete %></p>
+    		<p>
+					Por <%= link_to @question.user.name, root_path %> hace <%= time_ago_in_words(@question.created_at) %> 
+					<%- if current_user === @question.user %>
+						<%= link_to 'editar', edit_question_path(@question) %> 
+						<%= link_to 'eliminar', [@question], :confirm => 'Estás seguro?', :method => :delete %>
+					<% end -%>
+				</p>
     	</div>
     </li>
   </ul>
@@ -77,7 +83,13 @@
           <p class="question-description"><%= answer.content %></p>
 
           <div class="question-meta">
-            <p>Por <%= link_to answer.user.name, root_path %> hace <%= time_ago_in_words(answer.created_at) %> <%= link_to 'editar', edit_question_answer_path(@question, answer) %> <%= link_to 'eliminar', [@question, answer], :confirm => 'Estás seguro?', :method => :delete %></p>
+            <p>
+							Por <%= link_to answer.user.name, root_path %> hace <%= time_ago_in_words(answer.created_at) %>
+							<%- if current_user === answer.user %> 
+								<%= link_to 'editar', edit_question_answer_path(@question, answer) %> 
+								<%= link_to 'eliminar', [@question, answer], :confirm => 'Estás seguro?', :method => :delete %>
+							<% end -%>
+						</p>
           </div>
         </li>
       <% end -%>

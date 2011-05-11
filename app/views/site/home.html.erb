@@ -41,7 +41,13 @@
 							<% end -%>
 						</ul>
 
-						<p>Por <%= link_to question.user.name, root_path %> hace <%= time_ago_in_words(question.created_at) %> <%= link_to 'editar', edit_question_path(question) %> <%= link_to 'eliminar', [question], :confirm => 'Estás seguro?', :method => :delete %></p>
+						<p>
+							Por <%= link_to question.user.name, root_path %> hace <%= time_ago_in_words(question.created_at) %> 
+							<%- if current_user === question.user %>
+								<%= link_to 'editar', edit_question_path(question) %> 
+								<%= link_to 'eliminar', [question], :confirm => 'Estás seguro?', :method => :delete %>
+							<% end -%>
+						</p>
 					</div>
 				</li>
 			<% end -%>
