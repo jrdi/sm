@@ -1,3 +1,8 @@
+package_assets: off # (on, off, always)
+embed_assets: off # (on, off, datauri)
+compress_assets: off # (on, off)
+gzip_assets: off
+
 javascripts:
   common:
     - public/javascripts/lib/jquery.js
