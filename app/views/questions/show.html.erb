@@ -1,7 +1,9 @@
 <div id="questions-box">
-  <div id="questions-header">
-  	<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
-  </div>
+  <ul id="questions-header">
+    <li class="new-question">
+  	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta"%>
+  	</li>
+  </ul>
 
   <ul id="questions-list">
     <li id="question" class="question"> <!-- While class not applied to page -->
@@ -66,8 +68,8 @@
                   	<%= f.submit '-', :id => "vote_submit_#{answer.id}" %>
                   </div>
                 <% end %>
-        				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
-        				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
+        				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up voted" %>
+        				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down voted" %>
         			</div>
         		<% end -%>
         	</div>
