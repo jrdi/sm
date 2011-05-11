@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json { render :json => @question }
+      format.json { render :json => @question.to_json(:include => {:answers => {:include => {:user => {:only => [:name, :id]}}}}) }
     end
   end
 
