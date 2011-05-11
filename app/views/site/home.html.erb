@@ -18,38 +18,7 @@
 			Aún no hay preguntas disponibles.
 		<% else %>
 			<%- @questions.each do |question| %>
-				<li class="question">
-					<%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito", :class => "command-item star starred" %>
-
-					<div class="commands">
-						<div class="replies clearfix">
-							<%= link_to question.answers_count, question, :title => "Ir a las respuestas", :class => "comments" %>
-							<%= link_to content_tag(:span, "Responder"), question_path(question) + '#new_answer', :title => "Responder", :class => "command-item reply #{'replied' if question.answered?}" %>
-						</div>
-					</div>
-
-					<h2 class="question-title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
-					<p class="question-description"><%= question.description %></p>
-
-					<div class="question-meta">
-						<ul class="tags">
-							<%- question.tags.each do |tag| %>
-								<li class="tag">
-									<%#= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-									<%= link_to "##{tag.name.capitalize}", tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
-								</li>
-							<% end -%>
-						</ul>
-
-						<p>
-							Por <%= link_to question.user.name, root_path %> hace <%= time_ago_in_words(question.created_at) %> 
-							<%- if current_user === question.user %>
-								<%= link_to 'editar', edit_question_path(question) %> 
-								<%= link_to 'eliminar', [question], :confirm => 'Estás seguro?', :method => :delete %>
-							<% end -%>
-						</p>
-					</div>
-				</li>
+				<%= render :partial => 'shared/question', :locals => { :question => question } %>
 			<% end -%>
 		<% end -%>
 	</ul>

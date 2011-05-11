@@ -14,4 +14,15 @@ class Answer < ActiveRecord::Base
     return order if ORDERS.include? order
     return 'votes_count'
   end
+  
+  def as_json(options={})
+    json = { :include => { 
+                          :user => {:only => [:id, :name]}
+                         }
+           }
+    json.merge! :methods => options[:methods] if options[:methods].present?
+    json.merge! :include => options[:include] if options[:include].present?
+    
+    super(json)
+  end
 end
