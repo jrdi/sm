@@ -17,7 +17,7 @@ a {
 body {
 	background: url('/images/background.png');
 	color: #333;
-	font: 300 .74em/1.6 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font: normal 62.5%/1.5 "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .inner {
@@ -124,7 +124,7 @@ header .title {
   background: rgba(255, 255, 255, 1);
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-bottom: 0;
-  font: normal 20px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: normal 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   padding: 20px;
   -webkit-border-radius: 7px 7px 0 0;
   -moz-border-radius: 7px 7px 0 0;
@@ -138,13 +138,13 @@ header .title {
 #new_question input[type="text"], #new_question textarea {
   border: 0;
   color: rgba(142, 156, 163, 1);
-  font: normal 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: normal 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   resize: none;
   width: 658px;
 }
 
 #new_question #question_title {
-  font: bold 24px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: bold 24px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 #new_question #question_description {
@@ -416,14 +416,14 @@ header .title {
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 1px solid rgba(62, 116, 140, .3);
 	border-bottom: 0;
-  font: normal 20px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: normal 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   padding: 20px;
 }
 
 #new_answer textarea {
   border: 0;
   color: rgba(142, 156, 163, 1);
-  font: normal 14px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font: normal 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   resize: none;
   width: 658px;
 }
