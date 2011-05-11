@@ -21,8 +21,8 @@
       <%- unless answer.id.blank? %>
         <li class="question">
         	<div class="commands">
-        		<%- if user_signed_in? %>
-        			<div class="votes">
+      			<div class="votes">
+          		<%- if user_signed_in? %>
         				<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
         				<%= form_for(answer.votes.build, :format => :html) do |f| %>
                   <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -45,8 +45,11 @@
                 <% end %>
         				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up voted" %>
         				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down voted" %>
-        			</div>
-        		<% end -%>
+              <% else -%>
+        				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
+        				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
+            	<% end -%>
+      			</div>
         	</div>
 
           <p class="question-description"><%= answer.content %></p>
