@@ -40,8 +40,12 @@ $(document).ready(function() {
     isURLized = false;
   }
 
+  $.resetTags = function() {
+    Tags = [];
+  }
+
   $.resetQuestions = function() {
     Questions = [];
-    Tags = [];
+    $.resetTags();
   }
 });
