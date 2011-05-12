@@ -43,11 +43,11 @@
                   	<%= f.submit '-', :id => "vote_submit_#{answer.id}" %>
                   </div>
                 <% end %>
-        				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up voted" %>
-        				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down voted" %>
-              <% else -%>
         				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
         				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
+              <% else -%>
+        				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
+        				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
             	<% end -%>
       			</div>
         	</div>
