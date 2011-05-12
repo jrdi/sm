@@ -17,7 +17,7 @@ $(document).ready(function() {
       success: function(data) {
         timeline.lastPage = data[1];
         $.each(data[0], function(qKey, qVal) {
-          if(qVal["question"].answers_count > 0) { // answers_count -> answered
+          if(qVal['question']['answered?']) { // answers_count -> answered
             replied = "replied"
           } else {
             replied = ""
@@ -50,7 +50,7 @@ $(document).ready(function() {
       success: function(data) {
         timeline.lastPage = data[1];
         $.each(data[0], function(qKey, qVal) {
-          if(qVal["question"].answers_count > 0) { // answers_count -> answered
+          if(qVal['question']['answered?']) { // answers_count -> answered
             replied = "replied"
           } else {
             replied = ""
