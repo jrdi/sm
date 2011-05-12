@@ -42,5 +42,6 @@ $(document).ready(function() {
 
   $.resetQuestions = function() {
     Questions = [];
+    Tags = [];
   }
 });
