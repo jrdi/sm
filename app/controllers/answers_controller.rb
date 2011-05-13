@@ -46,7 +46,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
 
-    redirect_to(question_answers_url)
+    redirect_to(@question)
   end
   
   protected

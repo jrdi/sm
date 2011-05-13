@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
 
-    redirect_to(questions_url)
+    redirect_to(root_url)
   end
   
   protected
