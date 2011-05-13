@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json { render :json => @question.to_json(:include => {:answers => {:include => {:user => {:only => [:name, :id]}}}}) }
+      format.json { render :json => @question.to_json(:include => {:answers => {:include => {:user => {:only => [:name, :id]}}}}), :status => :ok }
     end
   end
 
@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
 
-    redirect_to(questions_url)
+    redirect_to(root_url)
   end
   
   protected

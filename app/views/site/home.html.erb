@@ -11,6 +11,15 @@
 			<li <%= tab_selected?(params[:scoped_questions], 'without_answers')%>><%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers'), :title => "Ver las preguntas sin responder", :class => "questions-header-menu-item", :id => "without_answers" %></li>
 			<li <%= tab_selected?(params[:scoped_questions], 'populars')%>><%= link_to "Populares", root_path(:scoped_questions => 'populars'), :title => "Ver las preguntas populares", :class => "questions-header-menu-item", :id => "populars" %></li>
 		</ul>
+		<ul>
+      <li class="new-question">
+    		<%- if user_signed_in? %>
+    			<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
+    		<% else -%>
+    		  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta" %>
+    		<% end -%>
+    	</li>
+    </ul>
 	</div>
 
 	<ul id="questions-list">
@@ -26,7 +35,9 @@
 	<div id="questions-footer">
 		<%= link_to 'Cargar más', "javascript:void(0);", :title => "Carga más preguntas", :class => "load-more" %>
 		<%- if user_signed_in? %>
-			<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
+			<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
+		<% else -%>
+		  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
 		<% end -%>
 	</div>
 </div>

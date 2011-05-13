@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="description" content="Socorro Mamá es una aplicación de preguntas y respuestas para resolver tus dudas del hogar (cocina, limpieza, mantenimiento...) sin tener que molestar a tu madre una vez más." />
+  <meta name="keywords" content="consejos, respuestas, hogar, casa, limpieza, cocina, recetas, mantenimiento" />
 	<link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
-  <title>Socorro mamá! <%= " - #{yield(:title)}" if yield(:title).present? %></title>
+  <title><%= "#{yield(:title)} — " if yield(:title).present? %>Socorro mamá! &mdash; Consejos de limpieza, recetas y cocina, mantenimiento del hogar y más</title>
   <%= include_stylesheets :common, :media => 'all' %>
-  <%= include_javascripts :common, :home %>
+  <%= include_javascripts :common, :home, :question %>
   <%= csrf_meta_tag %>
 </head>
 <body>

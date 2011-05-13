@@ -384,6 +384,7 @@ header .title {
 	background-position: -30px -30px;
 	border-color: rgba(191, 235, 139, 1);
 	border-right: 1px solid rgba(195, 222, 161, 1);
+	margin-left: -1px;
 }
 
 .question .down {
@@ -558,6 +559,10 @@ header .title {
 #sidebar #tuits span + a {
 	display: block;
 	margin-top: 5px;
+}
+
+#sidebar #tuits #twitter_update_list {
+	font-size: 11px;
 }
 
 #sidebar #tuits #twitter_update_list li {

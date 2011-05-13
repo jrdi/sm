@@ -1,6 +1,7 @@
 // init variables
 isNewQuestionFocus = false;
 Questions = [];
+Tags = []
 
 $(document).ready(function() {
   // init functions
@@ -15,8 +16,18 @@ $(document).ready(function() {
       },
       success: function(data) {
         timeline.lastPage = data[1];
-        $.each(data[0], function(key, value) {
-          Questions.push('<li class="question"><a title="Favorito" class="command-item star" href="/"><span>☆</span></a><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + value["question"].id + '">' + value["question"].answers_count + '</a><a title="Responder" class="command-item reply" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + value["question"].title + '" href="/questions/' + value["question"].id + '">' + value["question"].title + '</a></h2><p class="question-description">' + value["question"].description + '</p><div class="question-meta"><ul class="tags"><li class="tag"><a title="Seguir el tema Cocina" class="tag-follow" href="/"><span>+</span></a><a title="Ir al tema Cocina" class="tag-link" href="/">Cocina</a></li><li class="tag"><a title="Seguir el tema Limpieza" class="tag-follow tag-followed" href="/"><span>+</span></a><a title="Ir al tema Limpieza" class="tag-link" href="/">Limpieza</a></li><li class="tag"><a title="Seguir el tema Dinero" class="tag-follow" href="/"><span>+</span></a><a title="Ir al tema Dinero" class="tag-link" href="/">Dinero</a></li></ul><p>Por <a href="/">' + value["question"]["user"].name + '</a> ' + value["question"].created_at + '</p></div></li>');
+        $.each(data[0], function(qKey, qVal) {
+          if(qVal['question']['answered?']) { // answers_count -> answered
+            replied = "replied"
+          } else {
+            replied = ""
+          }
+          $.each(qVal["question"].tags, function(tKey, tVal) {
+            Tags.push('<li class="tag"><!-- a title="Seguir el tema ' + tVal["name"] + '" class="tag-follow" href="/' + tVal["id"] + '"><span>+</span></a --><a title="Ir al tema ' + tVal["name"] + '" class="tag-link" href="/' + tVal["id"] + '">#' + tVal["name"] + '</a></li>')
+          });
+          tags = Tags.join('');
+          $.resetTags();
+          Questions.push('<li class="question"><!-- a title="Favorito" class="command-item star" href="/"><span>☆</span></a --><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + qVal["question"].id + '">' + qVal["question"].answers_count + '</a><a title="Responder" class="command-item reply ' + replied + '" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + qVal["question"].title + '" href="/questions/' + qVal["question"].id + '">' + qVal["question"].title + '</a></h2><p class="question-description">' + qVal["question"].description + '</p><div class="question-meta"><ul class="tags">' + tags + '</ul><p>Por <a href="/">' + qVal["question"]["user"].name + '</a> hace ' + time_ago_in_words(qVal["question"].created_at) + '</p></div></li>');
         });
         $('#questions-list').html(Questions.join(''));
         $.resetQuestions();
@@ -38,8 +49,17 @@ $(document).ready(function() {
       },
       success: function(data) {
         timeline.lastPage = data[1];
-        $.each(data[0], function(key, value) {
-          Questions.push('<li class="question"><a title="Favorito" class="command-item star" href="/"><span>☆</span></a><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + value["question"].id + '">' + value["question"].answers_count + '</a><a title="Responder" class="command-item reply" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + value["question"].title + '" href="/questions/' + value["question"].id + '">' + value["question"].title + '</a></h2><p class="question-description">' + value["question"].description + '</p><div class="question-meta"><ul class="tags"><li class="tag"><a title="Seguir el tema Cocina" class="tag-follow" href="/"><span>+</span></a><a title="Ir al tema Cocina" class="tag-link" href="/">Cocina</a></li><li class="tag"><a title="Seguir el tema Limpieza" class="tag-follow tag-followed" href="/"><span>+</span></a><a title="Ir al tema Limpieza" class="tag-link" href="/">Limpieza</a></li><li class="tag"><a title="Seguir el tema Dinero" class="tag-follow" href="/"><span>+</span></a><a title="Ir al tema Dinero" class="tag-link" href="/">Dinero</a></li></ul><p>Por <a href="/">' + value["question"]["user"].name + '</a> ' + value["question"].created_at + '</p></div></li>');
+        $.each(data[0], function(qKey, qVal) {
+          if(qVal['question']['answered?']) { // answers_count -> answered
+            replied = "replied"
+          } else {
+            replied = ""
+          }
+          $.each(qVal["question"].tags, function(tKey, tVal) {
+            Tags.push('<li class="tag"><!-- a title="Seguir el tema ' + tVal["name"] + '" class="tag-follow" href="/' + tVal["id"] + '"><span>+</span></a --><a title="Ir al tema ' + tVal["name"] + '" class="tag-link" href="/' + tVal["id"] + '">#' + tVal["name"] + '</a></li>')
+          });
+          tags = Tags.join('');
+          Questions.push('<li class="question"><!-- a title="Favorito" class="command-item star" href="/"><span>☆</span></a --><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + qVal["question"].id + '">' + qVal["question"].answers_count + '</a><a title="Responder" class="command-item reply ' + replied + '" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + qVal["question"].title + '" href="/questions/' + qVal["question"].id + '">' + qVal["question"].title + '</a></h2><p class="question-description">' + qVal["question"].description + '</p><div class="question-meta"><ul class="tags">' + tags + '</ul><p>Por <a href="/">' + qVal["question"]["user"].name + '</a> hace ' + time_ago_in_words(qVal["question"].created_at) + '</p></div></li>');
         });
         $('#questions-list').append(Questions.join(''));
         $.resetQuestions();
@@ -101,8 +121,10 @@ $(document).ready(function() {
     }
   });
 
-  $('#questions-footer .new-question').live("click", function() {
-    $("#question_title").focus();
-    return false;
+  $('.new-question').live("click", function() {
+    if($(this).hasClass("disabled")){
+      $("#question_title").focus();
+      return false;
+    }
   });
 });

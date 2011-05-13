@@ -24,7 +24,7 @@ class SiteController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json { render :json => [@questions, @question_pages] }
+      format.json { render :json => [@questions, @question_pages], :status => :ok }
     end
   end
   

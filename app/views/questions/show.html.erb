@@ -11,8 +11,8 @@
 
   <div id="answers-header">
   	<ul id="answers-header-menu">
-  		<li><%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item selected", :id => "votes_count" %></li>
-  		<li><%= link_to "Fecha", question_path(@question, :order => 'created_at'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "created_at" %></li>
+  		<li <%= tab_selected?(params[:order]) %>><%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item", :id => "votes_count" %></li>
+  		<li <%= tab_selected?(params[:order], 'created_at') %>><%= link_to "Fecha", question_path(@question, :order => 'created_at'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "created_at" %></li>
   	</ul>
   </div>
 
@@ -43,11 +43,11 @@
                   	<%= f.submit '-', :id => "vote_submit_#{answer.id}" %>
                   </div>
                 <% end %>
-        				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up voted" %>
-        				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down voted" %>
-              <% else -%>
         				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
         				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
+              <% else -%>
+        				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
+        				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
             	<% end -%>
       			</div>
         	</div>
@@ -56,7 +56,7 @@
 
           <div class="question-meta">
             <p>
-							Por <%= link_to answer.user.name, root_path %> hace <%= time_ago_in_words(answer.created_at) %>
+							Por <%= link_to answer.user.name, root_path %> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
 							<%- if current_user === answer.user %> 
 								<%= link_to 'editar', edit_question_answer_path(@question, answer) %> 
 								<%= link_to 'eliminar', [@question, answer], :confirm => 'Estás seguro?', :method => :delete %>
