@@ -1,21 +1,6 @@
 class AnswersController < ApplicationController
   before_filter :current_user_permissions, :only => [ :edit, :update, :destroy ]
   before_filter :load_question
-  # GET /questions/1/answers
-  def index
-    @answers = @question.answers
-    @answer = @question.answers.build
-  end
-
-  # GET /questions/1/answers/1
-  def show
-    @answer = Answer.find(params[:id])
-  end
-
-  # GET /questions/1/answers/new
-  def new
-    @answer = @question.answers.build
-  end
 
   # GET /questions/1/answers/1/edit
   def edit
@@ -46,7 +31,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
 
-    redirect_to(question_answers_url)
+    redirect_to(@question)
   end
   
   protected

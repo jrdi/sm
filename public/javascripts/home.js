@@ -23,11 +23,11 @@ $(document).ready(function() {
             replied = ""
           }
           $.each(qVal["question"].tags, function(tKey, tVal) {
-            Tags.push('<li class="tag"><!-- a title="Seguir el tema ' + tVal["name"] + '" class="tag-follow" href="/tags/' + tVal["id"] + '"><span>+</span></a --><a title="Ir al tema ' + tVal["name"] + '" class="tag-link" href="/tags/' + tVal["id"] + '">#' + tVal["name"] + '</a></li>')
+            Tags.push('<li class="tag"><!-- a title="Seguir el tema ' + tVal["name"] + '" class="tag-follow" href="/' + tVal["to_param"] + '"><span>+</span></a --><a title="Ir al tema ' + tVal["name"] + '" class="tag-link" href="/tags/' + tVal["to_param"] + '">#' + tVal["name"] + '</a></li>')
           });
           tags = Tags.join('');
           $.resetTags();
-          Questions.push('<li class="question"><!-- a title="Favorito" class="command-item star" href="/"><span>☆</span></a --><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + qVal["question"].id + '">' + qVal["question"].answers_count + '</a><a title="Responder" class="command-item reply ' + replied + '" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + qVal["question"].title + '" href="/questions/' + qVal["question"].id + '">' + qVal["question"].title + '</a></h2><p class="question-description">' + qVal["question"].description + '</p><div class="question-meta"><ul class="tags">' + tags + '</ul><p>Por <a href="/">' + qVal["question"]["user"].name + '</a> ' + qVal["question"].created_at + '</p></div></li>');
+          Questions.push('<li class="question"><!-- a title="Favorito" class="command-item star" href="/"><span>☆</span></a --><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + qVal["question"].to_param + '">' + qVal["question"].answers_count + '</a><a title="Responder" class="command-item reply ' + replied + '" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + qVal["question"].title + '" href="/questions/' + qVal["question"].to_param + '">' + qVal["question"].title + '</a></h2><p class="question-description">' + qVal["question"].description + '</p><div class="question-meta"><ul class="tags">' + tags + '</ul><p>Por <a href="/">' + qVal["question"]["user"].name + '</a> hace ' + time_ago_in_words(qVal["question"].created_at) + '</p></div></li>');
         });
         $('#questions-list').html(Questions.join(''));
         $.resetQuestions();
@@ -56,10 +56,10 @@ $(document).ready(function() {
             replied = ""
           }
           $.each(qVal["question"].tags, function(tKey, tVal) {
-            Tags.push('<li class="tag"><!-- a title="Seguir el tema ' + tVal["name"] + '" class="tag-follow" href="/tags/' + tVal["id"] + '"><span>+</span></a --><a title="Ir al tema ' + tVal["name"] + '" class="tag-link" href="/tags/' + tVal["id"] + '">#' + tVal["name"] + '</a></li>')
+            Tags.push('<li class="tag"><!-- a title="Seguir el tema ' + tVal["name"] + '" class="tag-follow" href="/tags/' + tVal["to_param"] + '"><span>+</span></a --><a title="Ir al tema ' + tVal["name"] + '" class="tag-link" href="/tags/' + tVal["to_param"] + '">#' + tVal["name"] + '</a></li>')
           });
           tags = Tags.join('');
-          Questions.push('<li class="question"><!-- a title="Favorito" class="command-item star" href="/"><span>☆</span></a --><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + qVal["question"].id + '">' + qVal["question"].answers_count + '</a><a title="Responder" class="command-item reply ' + replied + '" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + qVal["question"].title + '" href="/questions/' + qVal["question"].id + '">' + qVal["question"].title + '</a></h2><p class="question-description">' + qVal["question"].description + '</p><div class="question-meta"><ul class="tags">' + tags + '</ul><p>Por <a href="/">' + qVal["question"]["user"].name + '</a> ' + qVal["question"].created_at + '</p></div></li>');
+          Questions.push('<li class="question"><!-- a title="Favorito" class="command-item star" href="/"><span>☆</span></a --><div class="commands"><div class="replies clearfix"><a title="Ir a las respuestas" class="comments" href="/questions/' + qVal["question"].to_param + '">' + qVal["question"].answers_count + '</a><a title="Responder" class="command-item reply ' + replied + '" href="/"><span>Responder</span></a></div></div><h2 class="question-title"><a title="Enlace permanente a ' + qVal["question"].title + '" href="/questions/' + qVal["question"].to_param + '">' + qVal["question"].title + '</a></h2><p class="question-description">' + qVal["question"].description + '</p><div class="question-meta"><ul class="tags">' + tags + '</ul><p>Por <a href="/">' + qVal["question"]["user"].name + '</a> hace ' + time_ago_in_words(qVal["question"].created_at) + '</p></div></li>');
         });
         $('#questions-list').append(Questions.join(''));
         $.resetQuestions();

@@ -1,10 +1,6 @@
 class QuestionsController < ApplicationController
   before_filter :current_user_permissions, :only => [ :edit, :update, :destroy ]
   skip_before_filter :authenticate_user!, :only => :show
-  # GET /questions
-  def index
-    @questions = Question.all
-  end
 
   # GET /questions/1
   def show
@@ -14,11 +10,6 @@ class QuestionsController < ApplicationController
       format.html
       format.json { render :json => @question.to_json(:include => {:answers => {:include => {:user => {:only => [:name, :id]}}}}), :status => :ok }
     end
-  end
-
-  # GET /questions/new
-  def new
-    @question = Question.new
   end
 
   # GET /questions/1/edit
@@ -51,7 +42,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
 
-    redirect_to(questions_url)
+    redirect_to(root_url)
   end
   
   protected

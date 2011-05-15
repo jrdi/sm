@@ -17,7 +17,7 @@ module ApplicationHelper
   def tab_selected?(param, tab = 'default')
     if param == tab
       return "class = 'selected'"
-    elsif (param.blank? || param == 'all') && tab == 'default'
+    elsif (param.blank? || param == 'all' || param == 'votes_count') && tab == 'default'
       return "class = 'selected'"
     end
   end

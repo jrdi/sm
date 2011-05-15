@@ -31,16 +31,20 @@ class Question < ActiveRecord::Base
   end
   
   def as_json(options={})
-    json = { :methods => [:answered?], 
+    json = { :methods => [:answered?, :to_param], 
              :include => { 
                           :user => {:only => [:id, :name]}, 
-                          :tags => {:only => [:id, :name]}
+                          :tags => {:only => [:name], :methods => [:to_param]}
                          }
            }
     json.merge! :methods => options[:methods] if options[:methods].present?
     json.merge! :include => options[:include] if options[:include].present?
     
     super(json)
+  end
+  
+  def to_param
+    "#{id}-#{title.parameterize}"
   end
   
   # TO-DO: Research to rewritte << method and stop using this
