@@ -16,10 +16,10 @@
   	</ul>
   </div>
 
-  <ul id="questions-list">
+  <ul id="answers-list">
     <% @question.answers.each do |answer| %>
       <%- unless answer.id.blank? %>
-        <li class="question">
+        <li class="answer">
         	<div class="commands">
       			<div class="votes">
           		<%- if user_signed_in? %>
@@ -52,9 +52,9 @@
       			</div>
         	</div>
 
-          <p class="question-description"><%= answer.content %></p>
+          <p class="answer-description"><%= answer.content %></p>
 
-          <div class="question-meta">
+          <div class="answer-meta">
             <p>
 							Por <%= link_to answer.user.name, root_path %> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
 							<%- if current_user === answer.user %> 

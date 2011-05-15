@@ -48,4 +48,8 @@ $(document).ready(function() {
     Questions = [];
     $.resetTags();
   }
+
+  $.resetAnswers = function() {
+    Answers = [];
+  }
 });
