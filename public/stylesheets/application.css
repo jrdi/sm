@@ -201,8 +201,8 @@ header .title {
 #questions-header, #answers-header {
 	background: url('/images/questions-header-bg.png') repeat-x;
 	border: 1px solid rgba(54, 54, 54, .8);
-	height: 36px;
-	padding: 10px;
+	height: 35px;
+	padding: 10px 20px;
 	-webkit-border-radius: 7px 7px 0 0;
 	-moz-border-radius: 7px 7px 0 0;
 	border-radius: 7px 7px 0 0;
@@ -334,8 +334,36 @@ header .title {
 	  0 1px 0 rgba(255, 255, 255, 1);
 }
 
-#questions-header li.selected a, #questions-header li:active a {
+#answers-header li.selected a, #answers-header li:active a {
   color: rgba(134, 152, 159, 1);
+}
+
+#questions-breadcrumb {
+  float: left;
+}
+
+#questions-breadcrumb li {
+  float: left;
+}
+
+#questions-breadcrumb li a {
+  color: #FFCBAC;
+  display: inline-block;
+  font: bold 12px Helvetica;
+  height: 56px;
+  line-height: 60px;
+  padding: 0 20px;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
+}
+
+#questions-breadcrumb li:first-child a {
+  background: url('/images/question-header-sep.png') no-repeat right 0;
+  padding: 0;
+  width: 55px;
+}
+
+#questions-breadcrumb li:first-child a > span {
+  display: none;
 }
 
 #questions-list, #answers-list {
@@ -347,9 +375,9 @@ header .title {
 }
 
 #answers-list {
-  -webkit-box-shadow: inset 0 8px 0 rgba(0, 0, 0, 0.03);
-  -moz-box-shadow: inset 0 8px 0 rgba(0, 0, 0, 0.03);
-  box-shadow: inset 0 8px 0 rgba(0, 0, 0, 0.03);
+  -webkit-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.03);
+  -moz-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.03);
+  box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.03);
 }
 
 .question, .answer {
@@ -534,7 +562,7 @@ header .title {
 	background: url('/images/questions-footer-bg.png') repeat-x;
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 1px solid rgba(62, 116, 140, .3);
-	height: 36px;
+	height: 35px;
 	padding: 10px;
 	-webkit-border-radius: 0 0 7px 7px;
 	-moz-border-radius: 0 0 7px 7px;

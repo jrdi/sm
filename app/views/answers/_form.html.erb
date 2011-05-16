@@ -1,22 +1,29 @@
-<%= form_for([@question, @answer]) do |f| %>
-  <% if @answer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+<%- if user_signed_in? %>
+	<% @answer = @question.answers.build %>
+	<%= form_for([@question, @answer]) do |f| %>
+    <% if @answer.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
 
-      <ul>
-      <% @answer.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @answer.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :content %>
+      <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta" %>
-  </div>
-
-	<div id="questions-footer">
-	  <button type="submit" class="new-answer">Publicar respuesta</button>
-	</div>
 <% end %>
+
+<div id="questions-footer">
+  <%- if user_signed_in? %>
+    <button type="submit" class="new-answer">Publicar respuesta</button>
+  <% else %>
+    <%= link_to "Publicar respuesta", new_user_session_path, :class => "new-answer" %>
+  <% end %>
+</div>

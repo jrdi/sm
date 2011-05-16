@@ -1,6 +1,10 @@
 <%= include_javascripts :question %>
 
 <div id="questions-box">
+  <ul id="questions-breadcrumb">
+    <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/" itemprop="url"><span itemprop="title">Home</span></a></li>
+    <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/tags/limpieza" itemprop="url"><span itemprop="title">Limpieza</span></a></li>
+  </ul>
   <ul id="questions-header">
     <li class="new-question">
   	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta"%>
@@ -70,8 +74,5 @@
     <% end %>
   </ul>
 
-  <%- if user_signed_in? %>
-		<% @answer = @question.answers.build %>
-    <%= render 'answers/form' %>
-  <% end -%>
+  <%= render 'answers/form' %>
 </div>
