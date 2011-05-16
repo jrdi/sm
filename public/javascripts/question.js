@@ -1,6 +1,8 @@
-$(document).ready(function() {
-  Answers = [];
+// init variables
+Answers = [];
 
+$(document).ready(function() {
+  // init functions
   $.loadAnswers = function() {
     $.ajax({
       type: "GET",
