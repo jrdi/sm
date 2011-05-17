@@ -17,13 +17,14 @@
       <%= f.label :content %>
       <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta" %>
     </div>
-  <% end %>
-<% end %>
 
-<div id="questions-footer">
-  <%- if user_signed_in? %>
-    <button type="submit" class="new-answer">Publicar respuesta</button>
-  <% else %>
-    <%= link_to "Publicar respuesta", new_user_session_path, :class => "new-answer" %>
+    <div id="questions-footer">
+      <button type="submit" class="new-answer">Publicar respuesta</button>
+    </div>
+
   <% end %>
-</div>
+<% else %>
+  <div id="questions-footer">
+    <%= link_to "Publicar respuesta", new_user_session_path, :class => "new-answer" %>
+  </div>
+<% end %>

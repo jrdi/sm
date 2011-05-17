@@ -29,9 +29,9 @@ $(document).ready(function() {
     return a.created_at < b.created_at ? 1 : -1;  
   };
 
+  // fire functions
   $.loadAnswers();
 
-  // fire functions
   $('.answers-header-menu-item').live("click", function(e) {
     e.preventDefault();
     clickedItem = $(this);
@@ -54,12 +54,6 @@ $(document).ready(function() {
     }
   });
 
-
-  $('#question .reply').live("click", function() {
-    $("#answer_content").focus();
-    return false;
-  });
-
   $('#question .reply').live("click", function() {
     $("#answer_content").focus();
     return false;
@@ -67,8 +61,42 @@ $(document).ready(function() {
 
   $('.command-item').live("click", function(e) {
     e.preventDefault();
-    if($(this).parent().hasClass('votes')) {
-      $(this).addClass('voted');
+
+    vote = [];
+    vote["vote[votable_id]"] = $(this).attr('id');
+
+    if($(this).hasClass('up')) {
+      vote["vote[value]"] = 1;
+    } else if($(this).hasClass('down')) {
+      vote["vote[value]"] = -1;
     }
+
+    $.each($('#' + vote["vote[votable_id]"] + ' form #vote_value[value="' + vote["vote[value]"] + '"]').parent().serializeArray(), function(pKey,pValue) { vote[pValue.name] = pValue.value; });
+
+    $.ajax({
+      type: "POST",
+      url: "/votes.json",
+      data: {
+        "vote": {
+          "user_id": vote["vote[user_id]"],
+          "value": vote["vote[value]"],
+          "votable_type": vote["vote[votable_type]"],
+          "votable_id": vote["vote[votable_id]"]
+        }
+      },
+      success: function(data) {
+        if(vote["vote[value]"] === 1) {
+          $('#' + vote["vote[votable_id]"] + '.up').addClass('voted');
+        } else if(vote["vote[value]"] === -1) {
+          $('#' + vote["vote[votable_id]"] + '.down').addClass('voted');
+        }
+        alert('Tu voto ha sido recibido, gracias!');
+      },
+      statusCode: {
+        422: function() {
+          alert('No hemos podido recibir tu voto, seguramente ya has votado antes, lo sentimos!');
+        }
+      }
+    });      
   });
 });

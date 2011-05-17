@@ -343,7 +343,13 @@ header .title {
 }
 
 #questions-breadcrumb li {
+  background: url('/images/question-header-sep.png') no-repeat right 0;
   float: left;
+  padding-right: 0;
+}
+
+#questions-breadcrumb li:last-child {
+  background: none;
 }
 
 #questions-breadcrumb li a {
@@ -352,14 +358,13 @@ header .title {
   font: bold 12px Helvetica;
   height: 56px;
   line-height: 60px;
-  padding: 0 20px;
+  padding: 0 35px 0 20px;
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
 }
 
-#questions-breadcrumb li:first-child a {
-  background: url('/images/question-header-sep.png') no-repeat right 0;
-  padding: 0;
-  width: 55px;
+#questions-breadcrumb li.breadcrumb-home a {
+  background: url('/images/breadcrumb-home.png') no-repeat center center;
+  width: 15px;
 }
 
 #questions-breadcrumb li:first-child a > span {
