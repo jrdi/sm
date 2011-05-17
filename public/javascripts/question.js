@@ -62,8 +62,9 @@ $(document).ready(function() {
   $('.command-item').live("click", function(e) {
     e.preventDefault();
 
+    answerId = $(this).parent().parent().parent().attr('id');
     vote = [];
-    vote["vote[votable_id]"] = $(this).attr('id');
+    vote["vote[votable_id]"] = answerId.replace(/answer-/, '');
 
     if($(this).hasClass('up')) {
       vote["vote[value]"] = 1;
@@ -71,7 +72,7 @@ $(document).ready(function() {
       vote["vote[value]"] = -1;
     }
 
-    $.each($('#' + vote["vote[votable_id]"] + ' form #vote_value[value="' + vote["vote[value]"] + '"]').parent().serializeArray(), function(pKey,pValue) { vote[pValue.name] = pValue.value; });
+    $.each($('#' + answerId + ' form #vote_value[value="' + vote["vote[value]"] + '"]').parent().serializeArray(), function(pKey,pValue) { vote[pValue.name] = pValue.value; });
 
     $.ajax({
       type: "POST",
@@ -85,10 +86,10 @@ $(document).ready(function() {
         }
       },
       success: function(data) {
-        if(vote["vote[value]"] === 1) {
-          $('#' + vote["vote[votable_id]"] + '.up').addClass('voted');
-        } else if(vote["vote[value]"] === -1) {
-          $('#' + vote["vote[votable_id]"] + '.down').addClass('voted');
+        if(vote["vote[value]"] === "1") {
+          $('#' + answerId + ' .up').addClass('voted');
+        } else if(vote["vote[value]"] === "-1") {
+          $('#' + answerId + ' .down').addClass('voted');
         }
         alert('Tu voto ha sido recibido, gracias!');
       },
