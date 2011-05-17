@@ -26,7 +26,7 @@
   <ul id="answers-list">
     <% @question.answers.each do |answer| %>
       <%- unless answer.id.blank? %>
-        <li class="answer">
+        <li id="answer-<%= answer.id %>" class="answer">
         	<div class="commands">
       			<div class="votes">
           		<%- if user_signed_in? %>
