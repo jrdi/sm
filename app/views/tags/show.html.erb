@@ -1,1 +1,6 @@
 <h2><%= title @tag.name.capitalize %></h2>
+<ul id="questions-list">
+	<%- @tag.questions.each do |question| %>
+    <%= render :partial => 'shared/question', :locals => { :question => question } %>
+	<% end -%>
+</ul>
