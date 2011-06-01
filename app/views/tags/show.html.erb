@@ -1,3 +1,6 @@
+<% meta(:description, @tag.name) %>
+<% meta(:keywords, @tag.questions.first.description.to_keywords) unless @tag.questions.empty? %>
+
 <h2><%= title @tag.name.capitalize %></h2>
 <ul id="questions-list">
 	<%- @tag.questions.each do |question| %>

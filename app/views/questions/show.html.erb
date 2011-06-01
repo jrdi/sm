@@ -1,5 +1,8 @@
 <%= include_javascripts :question %>
 
+<% meta(:description, @question.title) %>
+<% meta(:keywords, @question.description.to_keywords) %>
+
 <div id="questions-box">
   <ul id="questions-breadcrumb">
     <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb-item breadcrumb-home"><a href="/" itemprop="url" title="Ir a la Portada"><span itemprop="title">Home</span></a></li>
