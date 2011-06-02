@@ -165,37 +165,67 @@ header .title {
   margin-bottom: 30px;
 }
 
-#new_question .field {
+#new_question fieldset {
   background: rgba(255, 255, 255, 1);
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-bottom: 0;
-  font: normal 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  padding: 20px;
   -webkit-border-radius: 7px 7px 0 0;
   -moz-border-radius: 7px 7px 0 0;
   border-radius: 7px 7px 0 0;
 }
 
-#new_question .field label {
-  display: none;
+#new_question .field {
+  background: rgba(255, 243, 214, 1);
+  overflow: hidden;
+}
+
+#new_question .field + .field {
+  border-top: 1px solid rgba(241, 228, 194, 1);
+}
+
+#new_question label {
+  color: rgba(204, 185, 134, 1);
+  float: left;
+  font: bold 12px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  padding: 15px 0 0 15px;
+  width: 85px;
 }
 
 #new_question input[type="text"], #new_question textarea {
+  background: url('/images/notefield.png') repeat-x;
   border: 0;
-  color: rgba(142, 156, 163, 1);
-  font: normal 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  border-left: 1px solid rgba(241, 228, 194, 1);
+  color: rgba(204, 185, 134, 1);
+  font: 500 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  margin: 0 0 -1px;
+  padding: 15px 15px 12px;
   resize: none;
-  width: 658px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, .5);
+  width: 567px;
 }
 
-#new_question #question_title {
-  font: bold 24px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+#new_question input[type="text"]::-webkit-input-placeholder, #new_question textarea::-webkit-input-placeholder {
+  color: rgba(204, 185, 134, 1);
+}
+
+#new_question input[type="text"]:focus, #new_question textarea:focus {
+  color: rgba(157, 136, 81, 1);
+}
+
+#new_question #field_title {
+  -webkit-border-radius: 7px 7px 0 0;
+  -moz-border-radius: 7px 7px 0 0;
+  border-radius: 7px 7px 0 0;
 }
 
 #new_question #question_description {
-  font-size: 20px;
-  height: 110px;
-  margin-top: 15px;
+  height: 80px;
+  margin: 0 0 -4px;
+}
+
+#new_question #question_tags {
+  font-size: 14px;
+  padding-bottom: 15px;
 }
 
 #questions-header, #answers-header {
