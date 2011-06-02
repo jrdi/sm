@@ -204,11 +204,11 @@ header .title {
   width: 567px;
 }
 
-#new_question input[type="text"]::-webkit-input-placeholder, #new_question textarea::-webkit-input-placeholder {
+#new_question input[type="text"]::-webkit-input-placeholder, #new_question textarea::-webkit-input-placeholder, #new_answer textarea::-webkit-input-placeholder {
   color: rgba(204, 185, 134, 1);
 }
 
-#new_question input[type="text"]:focus, #new_question textarea:focus {
+#new_question input[type="text"]:focus, #new_question textarea:focus, #new_answer textarea:focus {
   color: rgba(157, 136, 81, 1);
 }
 
@@ -597,26 +597,25 @@ header .title {
   display: none;
 }
 
-#new_answer .field {
-  background: rgba(255, 255, 255, 1);
+#new_answer fieldset {
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 1px solid rgba(62, 116, 140, .3);
 	border-bottom: 0;
-  font: normal 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  padding: 20px;
 }
 
 #new_answer textarea {
+  background: url('/images/notefield.png') repeat-x;
   border: 0;
-  color: rgba(142, 156, 163, 1);
+  border-bottom: 1px solid rgba(62, 116, 140, .3);
+  color: rgba(204, 185, 134, 1);
   font: normal 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  height: 90px;
+  margin: 0 0 -6px;
+  padding: 20px;
   resize: none;
   width: 658px;
 }
 
-#new_answer textarea {
-  height: 90px;
-}
 
 #ask-box-footer, #questions-footer {
 	background: url('/images/questions-footer-bg.png') repeat-x;
