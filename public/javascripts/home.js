@@ -75,14 +75,21 @@ $(document).ready(function() {
   // }; 
 
   // fire functions
-  $('#field_description, #field_tags').delay(1000).slideUp();
+  if (window.location.hash.substring(1) === "new_question") {
+    $('#question_title').focus();
+    $('label[for="question_title"]').css("color", "rgba(157, 136, 81, 1)");
+    $("#new_question").addClass("focus");
+  } else {
+    $('#field_description, #field_tags').delay(2000).slideUp();
+  }
+
   $('#question_title').focus(function() {
     $('label[for="question_title"]').css("color", "rgba(157, 136, 81, 1)");
     $("#new_question").addClass("focus");
     $('#field_description, #field_tags').slideDown();
   }).blur(function() {
     $('label[for="question_title"]').css("color", "rgba(204, 185, 134, 1)");
-  });
+  });    
 
   $('#question_description').focus(function() {
     $('label[for="question_description"]').css("color", "rgba(157, 136, 81, 1)");
