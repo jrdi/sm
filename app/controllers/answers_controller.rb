@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
     if @answer.save
       redirect_to(@question, :notice => 'La respuesta ha sido guardada correctamente.')
     else
-      render :action => "new"     
+      render :action => "edit"     
     end
   end
 
