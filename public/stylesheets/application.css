@@ -449,10 +449,6 @@ header .title {
 	display: none;
 }
 
-.votes form {
-	display: none;
-}
-
 .comments, .up {
 	border: 1px solid rgba(175, 210, 223, 1);
 	border-right: 0;

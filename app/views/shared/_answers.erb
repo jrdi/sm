@@ -4,28 +4,24 @@
     	<div class="commands">
   			<div class="votes">
       		<%- if user_signed_in? %>
-    				<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
     				<%= form_for(answer.votes.build, :remote => true) do |f| %>
               <%= f.hidden_field :user_id, :value => current_user.id %>
     					<%= f.hidden_field :value, :value => 1 %>
     					<%= f.hidden_field :votable_id, :value => answer.id %>
     					<%= f.hidden_field :votable_type, :value => answer.class %>
     					<div class="actions">
-              	<%= f.submit '+', :id => "vote_submit_#{answer.id}" %>
+              	<%= button_tag '+', :id => "vote_submit_#{answer.id}", :class => "command-item up #{voted?(answer, 1)}" %>
               </div>
             <% end %>
-    				<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
     				<%= form_for(answer.votes.build, :remote => :true) do |f| %>
               <%= f.hidden_field :user_id, :value => current_user.id %>
     					<%= f.hidden_field :value, :value => -1 %>
     					<%= f.hidden_field :votable_id, :value => answer.id %>
     					<%= f.hidden_field :votable_type, :value => answer.class %>
     					<div class="actions">
-              	<%= button_tag '-', :id => "vote_submit_#{answer.id}" %>
+              	<%= button_tag '-', :id => "vote_submit_#{answer.id}", :class => "command-item down #{voted?(answer, -1)}" %>
               </div>
             <% end %>
-    				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up #{voted?(answer, 1)}" %>
-    				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down #{voted?(answer, -1)}" %>
           <% else -%>
     				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
     				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
