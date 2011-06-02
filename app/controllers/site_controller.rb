@@ -4,7 +4,6 @@ class SiteController < ApplicationController
   def home
     if user_signed_in?
       @question = Question.new
-      # @vote = Vote.new
     end
     
     page            = params[:page].present? ? (params[:page].to_i-1)*10 : 0
@@ -20,11 +19,6 @@ class SiteController < ApplicationController
     else
       @questions        = Question.all(:order => 'created_at DESC', :include => [:user], :limit => "#{page}, 10")
       @question_pages ||= (Question.count/10.0).ceil
-    end
-    
-    respond_to do |format|
-      format.html
-      format.json { render :json => [@questions, @question_pages], :status => :ok }
     end
   end
   

@@ -5,12 +5,6 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   def show
     @question = Question.find(params[:id], :include => :answers, :order => "answers.#{Answer.ordered(params[:order])} DESC")
-    # 
-    # respond_to do |format|
-    #   format.html
-    #   format.js
-    #   #format.json { render :json => @question.to_json(:include => {:answers => {:include => {:user => {:only => [:name, :id]}}}}), :status => :ok }
-    # end  
   end
 
   # GET /questions/1/edit

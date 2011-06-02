@@ -11,9 +11,9 @@
 <div id="questions-box">
 	<div id="questions-header">
 		<ul id="questions-header-menu">
-			<li <%= tab_selected?(params[:scoped_questions])%>><%= link_to "Recientes", root_path, :title => "Ver las preguntas recientes", :class => "questions-header-menu-item", :id => "all" %></li>
-			<li <%= tab_selected?(params[:scoped_questions], 'without_answers')%>><%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers'), :title => "Ver las preguntas sin responder", :class => "questions-header-menu-item", :id => "without_answers" %></li>
-			<li <%= tab_selected?(params[:scoped_questions], 'populars')%>><%= link_to "Populares", root_path(:scoped_questions => 'populars'), :title => "Ver las preguntas populares", :class => "questions-header-menu-item", :id => "populars" %></li>
+			<li <%= tab_selected?(params[:scoped_questions])%>><%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :class => "questions-header-menu-item", :id => "all", :remote => true %></li>
+			<li <%= tab_selected?(params[:scoped_questions], 'without_answers')%>><%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :class => "questions-header-menu-item", :id => "without_answers", :remote => true %></li>
+			<li <%= tab_selected?(params[:scoped_questions], 'populars')%>><%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :class => "questions-header-menu-item", :id => "populars", :remote => true %></li>
 		</ul>
 		<ul>
       <li class="new-question">
@@ -37,7 +37,7 @@
 	</ul>
 
 	<div id="questions-footer">
-		<%= link_to 'Cargar más', "javascript:void(0);", :title => "Carga más preguntas", :class => "load-more" %>
+		<%= link_to( 'Cargar más', root_path(:scope_questions => params[:scope_questions], :page => ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), :title => "Carga más preguntas", :class => "load-more", :remote => true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
 		<%- if user_signed_in? %>
 			<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
 		<% else -%>
