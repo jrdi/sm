@@ -8,7 +8,8 @@ class QuestionsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.json { render :json => @question.to_json(:include => {:answers => {:include => {:user => {:only => [:name, :id]}}}}), :status => :ok }
+      format.js
+      #format.json { render :json => @question.to_json(:include => {:answers => {:include => {:user => {:only => [:name, :id]}}}}), :status => :ok }
     end
   end
 
