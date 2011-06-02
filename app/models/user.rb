@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
   # Validations
   validates_uniqueness_of :uid, :scope => :oauth
   
+  def answer_vote(answer)
+    votes.where(:votable_id => answer.id, :votable_type => answer.class)
+  end
+  
   protected
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)

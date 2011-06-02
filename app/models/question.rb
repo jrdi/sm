@@ -26,7 +26,7 @@ class Question < ActiveRecord::Base
   end
   
   def answered?
-    answers.each{|a| return true if a.votes.sum(:value) > 0}
+    answers.each{|a| return true if a.votes_count > 0}
     return false
   end
   
