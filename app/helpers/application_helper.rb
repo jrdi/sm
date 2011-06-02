@@ -56,4 +56,22 @@ module ApplicationHelper
       return tags.join("\n")
     end
   end
+  
+  def button_tag(content_or_options = nil, options = nil, &block)
+    options = content_or_options if block_given? && content_or_options.is_a?(Hash)
+    options ||= {}
+    options.stringify_keys!
+
+    if disable_with = options.delete("disable_with")
+      options["data-disable-with"] = disable_with
+    end
+
+    if confirm = options.delete("confirm")
+      options["data-confirm"] = confirm
+    end
+
+    options.reverse_merge! 'name' => 'button', 'type' => 'submit'
+
+    content_tag :button, content_or_options || 'Button', options, &block
+  end 
 end
