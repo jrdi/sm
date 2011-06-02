@@ -1,4 +1,6 @@
-<%= include_javascripts :question %>
+<% content_for :javascript do %>
+	<%= include_javascripts :question %>
+<% end %>
 
 <% meta(:description, @question.title) %>
 <% meta(:keywords, @question.description.to_keywords) %>
@@ -6,7 +8,9 @@
 <div id="questions-box">
   <ul id="questions-breadcrumb">
     <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb-item breadcrumb-home"><a href="/" itemprop="url" title="Ir a la Portada"><span itemprop="title">Home</span></a></li>
-    <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb-item breadcrumb-tag"><a href="/tags/limpieza" itemprop="url" title="Ir a la categoría Limpieza"><span itemprop="title">Limpieza</span></a></li>
+    <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb-item breadcrumb-tag">
+			<%= link_to content_tag(:span, @question.tags.first.name.capitalize, :itemprop => 'title'), @question.tags.first, :title => "Ir al tema #{@question.tags.first.name.capitalize}", :itemprop => 'url' %>
+		</li>
   </ul>
   <ul id="questions-header">
     <li class="new-question">

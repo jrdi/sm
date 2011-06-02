@@ -4,7 +4,8 @@
 	<link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
   <title><%= "#{yield(:title)} — " if yield(:title).present? %>Socorro mamá! &mdash; Consejos de limpieza, recetas y cocina, mantenimiento del hogar y más</title>
   <%= include_stylesheets :common, :media => 'all' %>
-  <%= include_javascripts :common, :home %>
+  <%= include_javascripts :common %>
+	<%= yield(:javascript)%>
 	<%= meta(:description) %>
 	<%= meta(:keywords) %>
   <%= csrf_meta_tag %>

@@ -1,3 +1,7 @@
+<% content_for :javascript do %>
+	<%= include_javascripts :home %>
+<% end %>
+
 <%- if user_signed_in? %>
   <div id="ask-box">
   	<%= render 'questions/form' %> 
