@@ -568,6 +568,31 @@ header .title {
 	background-position: -16px -16px;
 }
 
+.edit, .delete {
+  background: url('/images/edit.png') no-repeat right bottom;
+  display: inline-block;
+  height: 20px;
+  opacity: .5;
+  width: 20px;
+}
+
+.edit {
+  margin-left: 15px;
+}
+
+.delete {
+  background: url('/images/delete.png') no-repeat center bottom;
+  width: 13px;
+}
+
+.edit:hover, .delete:hover {
+  opacity: 1;
+}
+
+.edit span, .delete span {
+  display: none;
+}
+
 #new_answer label {
   display: none;
 }

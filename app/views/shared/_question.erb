@@ -24,8 +24,8 @@
 		<p>
 			Por <%= link_to question.user.name, question.user %> hace <abbr title="<%= question.created_at %>"><%= time_ago_in_words(question.created_at) %></abbr>
 			<%- if current_user === question.user %>
-				<%= link_to 'editar', edit_question_path(question) %> 
-				<%= link_to 'eliminar', [question], :confirm => 'Estás seguro?', :method => :delete %>
+				<%= link_to content_tag(:span, 'editar'), edit_question_path(question), :class => "edit", :title => "Editar" %> 
+				<%= link_to content_tag(:span, 'eliminar'), [question], :confirm => 'Estás seguro?', :method => :delete, :class => "delete", :title => "Eliminar" %>
 			<% end -%>
 		</p>
 	</div>
