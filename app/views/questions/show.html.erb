@@ -9,7 +9,7 @@
   <ul id="questions-breadcrumb">
     <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb-item breadcrumb-home"><a href="/" itemprop="url" title="Ir a la Portada"><span itemprop="title">Home</span></a></li>
     <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb-item breadcrumb-tag">
-			<%= link_to content_tag(:span, @question.tags.first.name.capitalize, :itemprop => 'title'), @question.tags.first, :title => "Ir al tema #{@question.tags.first.name.capitalize}", :itemprop => 'url' %>
+			<%= link_to( content_tag(:span, @question.tags.first.name.capitalize, :itemprop => 'title'), @question.tags.first, :title => "Ir al tema #{@question.tags.first.name.capitalize}", :itemprop => 'url') unless @question.tags.empty? %>
 		</li>
   </ul>
   <ul id="questions-header">
