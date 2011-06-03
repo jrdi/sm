@@ -26,6 +26,8 @@
     				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
     				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
         	<% end -%>
+				
+				<%= answer.votes_count %>
   			</div>
     	</div>
 
