@@ -27,8 +27,11 @@
   		<li <%= tab_selected?(params[:order]) %>>
 				<%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item", :id => "votes_count", :remote => true %>
 			</li>
-  		<li <%= tab_selected?(params[:order], 'created_at') %>>
-				<%= link_to "Fecha", question_path(@question, :order => 'created_at'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "created_at", :remote => true %>
+  		<li <%= tab_selected?(params[:order], 'oldest') %>>
+				<%= link_to "Antiguas", question_path(@question, :order => 'oldest'), :title => "Ordenar respuestas por antiguas", :class => "answers-header-menu-item", :id => "oldest", :remote => true %>
+			</li>
+			<li <%= tab_selected?(params[:order], 'created_at') %>>
+				<%= link_to "Recientes", question_path(@question, :order => 'active'), :title => "Ordenar respuestas por recientes", :class => "answers-header-menu-item", :id => "active", :remote => true %>
 			</li>
   	</ul>
   </div>
