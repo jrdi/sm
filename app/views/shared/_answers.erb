@@ -1,0 +1,45 @@
+<% question.answers.each do |answer| %>
+  <%- unless answer.id.blank? %>
+    <li id="answer-<%= answer.id %>" class="answer">
+    	<div class="commands">
+  			<div class="votes">
+      		<%- if user_signed_in? %>
+    				<%= form_for(answer.votes.build, :remote => true) do |f| %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+    					<%= f.hidden_field :value, :value => 1 %>
+    					<%= f.hidden_field :votable_id, :value => answer.id %>
+    					<%= f.hidden_field :votable_type, :value => answer.class %>
+    					<div class="actions">
+              	<%= button_tag '+', :id => "vote_submit_#{answer.id}", :class => "command-item up #{voted?(answer, 1)}" %>
+              </div>
+            <% end %>
+    				<%= form_for(answer.votes.build, :remote => :true) do |f| %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+    					<%= f.hidden_field :value, :value => -1 %>
+    					<%= f.hidden_field :votable_id, :value => answer.id %>
+    					<%= f.hidden_field :votable_type, :value => answer.class %>
+    					<div class="actions">
+              	<%= button_tag '-', :id => "vote_submit_#{answer.id}", :class => "command-item down #{voted?(answer, -1)}" %>
+              </div>
+            <% end %>
+          <% else -%>
+    				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
+    				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
+        	<% end -%>
+  			</div>
+    	</div>
+
+      <p class="answer-description"><%= answer.content %></p>
+
+      <div class="answer-meta">
+        <p>
+					Por <%= link_to answer.user.name, answer.user %> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
+					<%- if current_user === answer.user %>
+					  <%= link_to content_tag(:span, 'editar'), edit_question_answer_path(question, answer), :class => "edit", :title => "Editar" %> 
+    				<%= link_to content_tag(:span, 'eliminar'), [question, answer], :confirm => 'Estás seguro?', :method => :delete, :class => "delete", :title => "Eliminar" %>
+					<% end -%>
+				</p>
+      </div>
+    </li>
+  <% end -%>
+<% end %>

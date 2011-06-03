@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="description" content="Socorro Mamá es una aplicación de preguntas y respuestas para resolver tus dudas del hogar (cocina, limpieza, mantenimiento...) sin tener que molestar a tu madre una vez más." />
-  <meta name="keywords" content="consejos, respuestas, hogar, casa, limpieza, cocina, recetas, mantenimiento" />
 	<link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
   <title><%= "#{yield(:title)} — " if yield(:title).present? %>Socorro mamá! &mdash; Consejos de limpieza, recetas y cocina, mantenimiento del hogar y más</title>
   <%= include_stylesheets :common, :media => 'all' %>
-  <%= include_javascripts :common, :home %>
+  <%= include_javascripts :common %>
+	<%= yield(:javascript)%>
+	<%= meta(:description) %>
+	<%= meta(:keywords) %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -38,12 +39,14 @@
 						<h3>Temas populares</h3>
 						<p>Estos son los temas con mayor actividad. Guarda los temas que más te interesen.</p>
 						<ul>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Cocina", :class => "tag-follow" %><%= link_to "Cocina", root_path, :title => "Ve al tema Cocina", :class => "tag-link" %> 16 seguidores</li>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Deja de seguir el tema Limpieza", :class => "tag-follow tag-followed " %><%= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "tag-link" %> 16 seguidores</li>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Dinero", :class => "tag-follow" %><%= link_to "Dinero", root_path, :title => "Ve al tema Dinero", :class => "tag-link" %> 16 seguidores</li>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Salud", :class => "tag-follow" %><%= link_to "Salud", root_path, :title => "Ve al tema Salud", :class => "tag-link" %> 16 seguidores</li>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Urgencias", :class => "tag-follow" %><%= link_to "Urgencias", root_path, :title => "Ve al tema Urgencias", :class => "tag-link" %> 16 seguidores</li>
-							<li class="tag"><%= link_to content_tag(:span, "+"), root_path, :title => "Sigue el tema Reparaciones", :class => "tag-follow" %><%= link_to "Reparaciones", root_path, :title => "Ve al tema Reparaciones", :class => "tag-link" %> 16 seguidores</li>
+							<%- @featured_tags.each do |tag| %>
+								<li class="tag">
+									<%= link_to content_tag(:span, "+"), tag, :title => "Sigue el tema #{tag.name.capitalize}", :class => "tag-follow" %>
+									<%= link_to tag.name.capitalize, tag, :title => "Ve al tema #{tag.name.capitalize}", :class => "tag-link" %> 
+									<!-- 16 seguidores -->
+								</li>
+							<% end -%>
+							<!-- <li class="tag"><%#= link_to content_tag(:span, "+"), root_path, :title => "Deja de seguir el tema Limpieza", :class => "tag-follow tag-followed " %><%#= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "tag-link" %> 16 seguidores</li> -->
 						</ul>
 					</aside>
 

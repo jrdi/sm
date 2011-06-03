@@ -11,16 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title, :placeholder => "Escribe aquí tu pregunta" %>
+  <fieldset>
+    <div class="field" id="field_title">
+      <%= f.label :title %>
+      <%= f.text_field :title, :placeholder => "Escribe aquí tu pregunta" %>
+    </div>
 
-    <%= f.label :description %>
-    <%= f.text_area :description, :rows => "1", :placeholder => "Escribe aquí la descripción (opcional)" %>
+    <div class="field" id="field_description">
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => "1", :placeholder => "Escribe aquí la descripción (opcional)" %>
+    </div>
 
-    <label for="question_tags">Tags</label>
-    <input type="text" size="30" placeholder="Escribe aquí los temas separados por comas (opcional)" name="question_tags" id="question_tags">
-  </div>
+    <div class="field" id="field_tags">
+      <label for="question_tags">Temas</label>
+      <input type="text" size="30" placeholder="Escribe aquí los temas separados por comas (opcional)" name="question_tags" id="question_tags">
+    </div>
+  </fieldset>
 
 	<div id="ask-box-footer">
 	  <button type="submit" class="new-question">Publicar pregunta</button>

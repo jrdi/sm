@@ -165,37 +165,67 @@ header .title {
   margin-bottom: 30px;
 }
 
-#new_question .field {
+#new_question fieldset {
   background: rgba(255, 255, 255, 1);
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-bottom: 0;
-  font: normal 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  padding: 20px;
   -webkit-border-radius: 7px 7px 0 0;
   -moz-border-radius: 7px 7px 0 0;
   border-radius: 7px 7px 0 0;
 }
 
-#new_question .field label {
-  display: none;
+#new_question .field {
+  background: rgba(255, 243, 214, 1);
+  overflow: hidden;
+}
+
+#new_question .field + .field {
+  border-top: 1px solid rgba(241, 228, 194, 1);
+}
+
+#new_question label {
+  color: rgba(204, 185, 134, 1);
+  float: left;
+  font: bold 12px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  padding: 15px 0 0 15px;
+  width: 85px;
 }
 
 #new_question input[type="text"], #new_question textarea {
+  background: url('/images/notefield.png') repeat-x;
   border: 0;
-  color: rgba(142, 156, 163, 1);
-  font: normal 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  border-left: 1px solid rgba(241, 228, 194, 1);
+  color: rgba(204, 185, 134, 1);
+  font: 500 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  margin: 0 0 -1px;
+  padding: 15px 15px 12px;
   resize: none;
-  width: 658px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, .5);
+  width: 567px;
 }
 
-#new_question #question_title {
-  font: bold 24px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+#new_question input[type="text"]::-webkit-input-placeholder, #new_question textarea::-webkit-input-placeholder, #new_answer textarea::-webkit-input-placeholder {
+  color: rgba(204, 185, 134, 1);
+}
+
+#new_question input[type="text"]:focus, #new_question textarea:focus, #new_answer textarea:focus {
+  color: rgba(157, 136, 81, 1);
+}
+
+#new_question #field_title {
+  -webkit-border-radius: 7px 7px 0 0;
+  -moz-border-radius: 7px 7px 0 0;
+  border-radius: 7px 7px 0 0;
 }
 
 #new_question #question_description {
-  font-size: 20px;
-  height: 110px;
-  margin-top: 15px;
+  height: 80px;
+  margin: 0 0 -4px;
+}
+
+#new_question #question_tags {
+  font-size: 14px;
+  padding-bottom: 15px;
 }
 
 #questions-header, #answers-header {
@@ -419,10 +449,6 @@ header .title {
 	display: none;
 }
 
-.votes form {
-	display: none;
-}
-
 .comments, .up {
 	border: 1px solid rgba(175, 210, 223, 1);
 	border-right: 0;
@@ -538,30 +564,54 @@ header .title {
 	background-position: -16px -16px;
 }
 
+.edit, .delete {
+  background: url('/images/edit.png') no-repeat right bottom;
+  display: inline-block;
+  height: 20px;
+  opacity: .5;
+  width: 20px;
+}
+
+.edit {
+  margin-left: 15px;
+}
+
+.delete {
+  background: url('/images/delete.png') no-repeat center bottom;
+  width: 13px;
+}
+
+.edit:hover, .delete:hover {
+  opacity: 1;
+}
+
+.edit span, .delete span {
+  display: none;
+}
+
 #new_answer label {
   display: none;
 }
 
-#new_answer .field {
-  background: rgba(255, 255, 255, 1);
+#new_answer fieldset {
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 1px solid rgba(62, 116, 140, .3);
 	border-bottom: 0;
-  font: normal 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  padding: 20px;
 }
 
 #new_answer textarea {
+  background: url('/images/notefield.png') repeat-x;
   border: 0;
-  color: rgba(142, 156, 163, 1);
+  border-bottom: 1px solid rgba(62, 116, 140, .3);
+  color: rgba(204, 185, 134, 1);
   font: normal 14px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  height: 90px;
+  margin: 0 0 -6px;
+  padding: 20px;
   resize: none;
   width: 658px;
 }
 
-#new_answer textarea {
-  height: 90px;
-}
 
 #ask-box-footer, #questions-footer {
 	background: url('/images/questions-footer-bg.png') repeat-x;

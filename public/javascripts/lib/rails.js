@@ -42,30 +42,6 @@
  *       return ! confirm("Would you like to submit the form with missing info?");
  *     });
  */
-function time_ago_in_words(from) {
- return distance_of_time_in_words(new Date().getTime(), new Date(from))
-}
-
-function distance_of_time_in_words(to, from) {
-  seconds_ago = ((to  - from) / 1000);
-  minutes_ago = Math.floor(seconds_ago / 60)
-
-  if(minutes_ago == 0) { return "menos de 1 minuto";}
-  if(minutes_ago == 1) { return "1 minuto";}
-  if(minutes_ago < 45) { return minutes_ago + " minutos";}
-  if(minutes_ago < 90) { return " alrededor de 1 hora";}
-  hours_ago  = Math.round(minutes_ago / 60);
-  if(minutes_ago < 1440) { return "alrededor de " + hours_ago + " horas";}
-  if(minutes_ago < 2880) { return "1 día";}
-  days_ago  = Math.round(minutes_ago / 1440);
-  if(minutes_ago < 43200) { return days_ago + " días";}
-  if(minutes_ago < 86400) { return "alrededor de 1 mes";}
-  months_ago  = Math.round(minutes_ago / 43200);
-  if(minutes_ago < 525960) { return months_ago + " meses";}
-  if(minutes_ago < 1051920) { return "alrededor de 1 año";}
-  years_ago  = Math.round(minutes_ago / 525960);
-  return "más de " + years_ago + " años"
-}
 (function($) {
   // Shorthand to make it a little easier to call public rails functions from within rails.js
   var rails;

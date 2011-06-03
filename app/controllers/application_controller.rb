@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :featured_tags
+  
+  def featured_tags
+    @featured_tags = Tag.order('rand()').limit(6)
+  end
   
   protected
   

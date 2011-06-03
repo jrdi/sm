@@ -6,6 +6,7 @@ Sm::Application.routes.draw do
   devise_for :users, :controllers => { 
                                       :omniauth_callbacks => "users/omniauth_callbacks", 
                                       :registrations => "users/registrations" }
+  match '/user/:id' => 'profiles#show', :as => :user                                                                            
   
   resources :questions, :only => [:show, :create, :edit, :update, :destroy] do
     resources :answers, :only => [:create, :edit, :update, :destroy]
