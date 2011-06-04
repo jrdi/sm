@@ -1,7 +1,6 @@
 class VotesController < ApplicationController
   def create
-    @vote = Vote.new(params[:vote])
-    @vote.user = current_user
+    @vote = current_user.votes.build(params[:vote])
     
     if @vote.save
       respond_to do |format|

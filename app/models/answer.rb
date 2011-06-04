@@ -1,20 +1,21 @@
 class Answer < ActiveRecord::Base
-  ORDERS = [
-      'votes_count', 'created_at'
-    ]
+  ORDERS = {
+    'votes_count' => 'votes_count DESC',
+    'oldest' => 'created_at ASC',
+    'active' => 'created_at DESC'
+  }
+
   # Relations
   belongs_to :user
   belongs_to :question, :counter_cache => true
-  has_many :votes, :as => :votable, :dependent => :destroy,
-    :after_add => :add_votes_count,
-    :after_remove => :remove_votes_count
+  has_many :votes, :as => :votable, :dependent => :destroy
   # Validations
   validates_presence_of :content
   validates_presence_of :user_id, :on => :create
   
   def self.ordered(order=nil)
-    return order if ORDERS.include? order
-    return 'votes_count'
+    return ORDERS[order] if ORDERS.keys.include? order
+    return 'votes_count DESC'
   end
   
   def as_json(options={})
@@ -30,14 +31,5 @@ class Answer < ActiveRecord::Base
   
   def update_votes_count
     update_attribute(:votes_count, votes.sum(:value))
-  end
-  
-  private
-  def add_votes_count(vote = nil)
-    update_attribute(:votes_count, votes_count + vote.value) unless vote.value.blank?
-  end
-  
-  def remove_votes_count(vote = nil)
-    update_attribute(:votes_count, votes_count - vote.value) unless vote.value.blank?
   end
 end
