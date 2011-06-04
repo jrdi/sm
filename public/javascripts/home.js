@@ -103,20 +103,20 @@ $(document).ready(function() {
     $('label[for="question_tags"]').css("color", "rgba(204, 185, 134, 1)");
   });
 
-  $('#new_question').hover(function(){ 
+  $('#new_question, .new-question').hover(function() { 
       isNewQuestionFocus = true; 
   }, function(){ 
       isNewQuestionFocus = false; 
   });
 
-  $(document).mouseup(function(){
+  $(document).mouseup(function() {
     title = $("#question_title").val();
     desc = $("#question_description").val();
     tags = $("#question_tags").val();
 
     if(!isNewQuestionFocus && !title && !desc && !tags) {
       $("#new_question").removeClass("focus");
-      $('#field_description, #field_tags').slideUp();
+      $('#field_description, #field_tags').delay(500).slideUp();
     }
   });
 
@@ -144,9 +144,7 @@ $(document).ready(function() {
   // }); 
 
   $('.new-question').live("click", function() {
-    if($(this).hasClass("disabled")){
-      $("#question_title").focus();
-      return false;
-    }
+    $("#question_title").focus();
+    return false;
   });
 });

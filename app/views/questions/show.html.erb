@@ -6,16 +6,22 @@
 <% meta(:keywords, @question.description.to_keywords) %>
 
 <div id="questions-box">
-  <ul id="questions-breadcrumb">
-    <li itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb-item breadcrumb-home"><a href="/" itemprop="url" title="Ir a la Portada"><span itemprop="title">Home</span></a></li>
-    <li itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb" class="breadcrumb-item breadcrumb-tag">
-			<%= link_to content_tag(:span, @question.tags.first.name.capitalize, :itemprop => 'title'), @question.tags.first, :title => "Ir al tema #{@question.tags.first.name.capitalize}", :itemprop => 'url' %>
-		</li>
-  </ul>
   <ul id="questions-header">
-    <li class="new-question">
-  	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta"%>
-  	</li>
+    <ul id="questions-breadcrumb" itemprop="breadcrumb">
+      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
+      <li class="breadcrumb-item breadcrumb-tag">
+        <%= link_to( @question.tags.first.name.capitalize, @question.tags.first, :title => "Ir al tema #{@question.tags.first.name.capitalize}") unless @question.tags.empty? %>
+      </li>
+      <li class="breadcrumb-item breadcrumb-tag">
+        <%= link_to "Pregunta", root_path %>
+      </li>
+    </ul>
+
+		<ul id="questions-header-action">
+      <li class="new-question menu-item">
+    	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta"%>
+    	</li>
+  	</ul>
   </ul>
 
   <ul id="questions-list">
@@ -24,17 +30,20 @@
 
   <div id="answers-header">
   	<ul id="answers-header-menu">
-  		<li <%= tab_selected?(params[:order]) %>>
+  	  <!-- to fix -->
+  		<li class="menu-item" <%= tab_selected?(params[:order]) %>>
 				<%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item", :id => "votes_count", :remote => true %>
 			</li>
-  		<li <%= tab_selected?(params[:order], 'created_at') %>>
+  		<li class="menu-item" <%= tab_selected?(params[:order], 'created_at') %>>
 				<%= link_to "Fecha", question_path(@question, :order => 'created_at'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "created_at", :remote => true %>
 			</li>
   	</ul>
   </div>
 
-  <!-- if answers -->
   <ul id="answers-list">
+    <!-- if answers > 0-->
+    <p>Esta pregunta no tiene respuestas</p>
+    <!-- else-->
     <%= render :partial => 'shared/answers', :locals => { :question => @question } %>
   </ul>
 

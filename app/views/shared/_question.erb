@@ -8,10 +8,10 @@
 		</div>
 	</div>
 
-	<h2 class="question-title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
-	<p class="question-description"><%= question.description %></p>
+	<h2 class="title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
+	<p class="description"><%= question.description %></p>
 
-	<div class="question-meta">
+	<div class="meta">
 		<ul class="tags">
 			<%- question.tags.each do |tag| %>
 				<li class="tag">

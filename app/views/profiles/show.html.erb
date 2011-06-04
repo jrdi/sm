@@ -1,39 +1,70 @@
-<h2><%= title @user.name || @user.email %></h2>
-<h3>Preguntas del usuario</h3>
-<ul id="questions-list">
-	<%- @user.questions.each do |question| %>
-    <%= render :partial => 'shared/question', :locals => { :question => question } %>
-	<% end -%>
-</ul> 
-<h3>Respuestas del usuario</h3>
-<ul id="answers-list">
-  <% @user.answers.each do |answer| %>
+<div id="questions-box">
+  <ul id="questions-header">
+    <ul id="questions-breadcrumb" itemprop="breadcrumb">
+      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
+      <li class="breadcrumb-item breadcrumb-tag">
+        <%= link_to current_user.name, root_path, :title => "Página de preguntas y respuestas de #{current_user.name}" %>
+      </li>
+    </ul>
+
+		<ul id="questions-header-action">
+      <li class="new-question menu-item">
+    	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta"%>
+    	</li>
+  	</ul>
+  </ul>
+
+  <div id="answers-header">
+		<ul id="answers-header-menu">
+		  <!-- to fix -->
+			<li class="menu-item" <%= tab_selected?(params[:scoped_questions]) %>><%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :id => "all", :remote => true %></li>
+			<li <%= tab_selected?(params[:scoped_questions], 'without_answers') %> class="menu-item"><%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :id => "without_answers", :remote => true %></li>
+			<li <%= tab_selected?(params[:scoped_questions], 'populars') %> class="menu-item"><%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :id => "populars", :remote => true %></li>
+		</ul>
+
+  	<p>Preguntas del usuario</p>
+  </div>
+
+  <ul id="questions-list">
+  	<%- @user.questions.each do |question| %>
+      <%= render :partial => 'shared/question', :locals => { :question => question } %>
+  	<% end -%>
+  </ul> 
+  
+  <div id="answers-header">
+  	<ul id="answers-header-menu">
+  	  <!-- to fix -->
+  		<li class="menu-item" <%= tab_selected?(params[:order]) %>>
+				<%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item", :id => "votes_count", :remote => true %>
+			</li>
+  		<li class="menu-item" <%= tab_selected?(params[:order], 'created_at') %>>
+				<%= link_to "Fecha", question_path(@question, :order => 'created_at'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "created_at", :remote => true %>
+			</li>
+  	</ul>
+
+  	<p>Respuestas del usuario</p>
+  </div>
+
+  <ul id="answers-list">
+    <% @user.answers.each do |answer| %>
     <li id="answer-<%= answer.id %>" class="answer">
     	<div class="commands">
   			<div class="votes">
       		<%- if user_signed_in? %>
-    				<!-- Positive vote form: Change format (:html to :json) to do this with JS -->
-    				<%= form_for(answer.votes.build, :format => :html) do |f| %>
+    				<%= form_for(answer.votes.build, :remote => true, :html => {:class => "vote"}) do |f| %>
               <%= f.hidden_field :user_id, :value => current_user.id %>
     					<%= f.hidden_field :value, :value => 1 %>
     					<%= f.hidden_field :votable_id, :value => answer.id %>
     					<%= f.hidden_field :votable_type, :value => answer.class %>
-    					<div class="actions">
-              	<%= f.submit '+', :id => "vote_submit_#{answer.id}" %>
-              </div>
+              <%= button_tag content_tag(:span, '+'), :class => "command-item up #{voted?(answer, 1)}" %>
             <% end %>
-    				<!-- Negative vote form: Change format (:html to :json) to do this with JS  -->
-    				<%= form_for(answer.votes.build, :format => :html) do |f| %>
+    				<%= form_for(answer.votes.build, :remote => :true, :html => {:class => "vote"}) do |f| %>
               <%= f.hidden_field :user_id, :value => current_user.id %>
     					<%= f.hidden_field :value, :value => -1 %>
     					<%= f.hidden_field :votable_id, :value => answer.id %>
     					<%= f.hidden_field :votable_type, :value => answer.class %>
-    					<div class="actions">
-              	<%= f.submit '-', :id => "vote_submit_#{answer.id}" %>
-              </div>
+              <%= button_tag content_tag(:span, '-'), :class => "command-item down #{voted?(answer, -1)}" %>
             <% end %>
-    				<%= link_to content_tag(:span, "+"), root_path, :title => "Voto positivo", :class => "command-item up" %>
-    				<%= link_to content_tag(:span, "-"), root_path, :title => "Voto negativo", :class => "command-item down" %>
           <% else -%>
     				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
     				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
@@ -41,17 +72,22 @@
   			</div>
     	</div>
 
-      <p class="answer-description"><%= answer.content %></p>
+      <p class="description"><%= answer.content %></p>
 
-      <div class="answer-meta">
+      <div class="meta">
         <p>
-				Por <%= link_to answer.user.name, answer.user %> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
-				<%- if current_user === answer.user %> 
-					<%= link_to 'editar', edit_question_answer_path(answer.question, answer) %> 
-					<%= link_to 'eliminar', [answer.question, answer], :confirm => 'Estás seguro?', :method => :delete %>
-				<% end -%>
-			</p>
+          Por <%= link_to answer.user.name, answer.user %> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
+					<%- if current_user === answer.user %>
+					  <%= link_to content_tag(:span, 'editar'), edit_question_answer_path(answer.question, answer), :class => "edit", :title => "Editar" %> 
+    				<%= link_to content_tag(:span, 'eliminar'), [answer.question, answer], :confirm => 'Estás seguro?', :method => :delete, :class => "delete", :title => "Eliminar" %>
+					<% end -%>
+				</p>
       </div>
-    </li> 
-  <% end %>
-</ul>
+    </li>
+    <% end %>
+  </ul>
+
+  <div id="questions-footer">
+		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
+	</div>
+</div>

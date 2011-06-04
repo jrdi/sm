@@ -4,23 +4,19 @@
     	<div class="commands">
   			<div class="votes">
       		<%- if user_signed_in? %>
-    				<%= form_for(answer.votes.build, :remote => true) do |f| %>
+    				<%= form_for(answer.votes.build, :remote => true, :html => {:class => "vote"}) do |f| %>
               <%= f.hidden_field :user_id, :value => current_user.id %>
     					<%= f.hidden_field :value, :value => 1 %>
     					<%= f.hidden_field :votable_id, :value => answer.id %>
     					<%= f.hidden_field :votable_type, :value => answer.class %>
-    					<div class="actions">
-              	<%= button_tag '+', :id => "vote_submit_#{answer.id}", :class => "command-item up #{voted?(answer, 1)}" %>
-              </div>
+              <%= button_tag content_tag(:span, '+'), :class => "command-item up #{voted?(answer, 1)}" %>
             <% end %>
-    				<%= form_for(answer.votes.build, :remote => :true) do |f| %>
+    				<%= form_for(answer.votes.build, :remote => :true, :html => {:class => "vote"}) do |f| %>
               <%= f.hidden_field :user_id, :value => current_user.id %>
     					<%= f.hidden_field :value, :value => -1 %>
     					<%= f.hidden_field :votable_id, :value => answer.id %>
     					<%= f.hidden_field :votable_type, :value => answer.class %>
-    					<div class="actions">
-              	<%= button_tag '-', :id => "vote_submit_#{answer.id}", :class => "command-item down #{voted?(answer, -1)}" %>
-              </div>
+              <%= button_tag content_tag(:span, '-'), :class => "command-item down #{voted?(answer, -1)}" %>
             <% end %>
           <% else -%>
     				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
@@ -29,9 +25,9 @@
   			</div>
     	</div>
 
-      <p class="answer-description"><%= answer.content %></p>
+      <p class="description"><%= answer.content %></p>
 
-      <div class="answer-meta">
+      <div class="meta">
         <p>
 					Por <%= link_to answer.user.name, answer.user %> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
 					<%- if current_user === answer.user %>
