@@ -31,22 +31,19 @@
   <div id="answers-header">
   	<ul id="answers-header-menu">
   	  <!-- to fix -->
-  		<li class="menu-item" <%= tab_selected?(params[:order]) %>>
+  		<li class="menu-item <%= tab_selected?(params[:order]) %>">
 				<%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item", :id => "votes_count", :remote => true %>
 			</li>
-  		<li class="menu-item" <%= tab_selected?(params[:order], 'oldest') %>>
+  		<li class="menu-item <%= tab_selected?(params[:order], 'oldest') %>">
 				<%= link_to "Antiguas", question_path(@question, :order => 'oldest'), :title => "Ordenar respuestas por antiguas", :class => "answers-header-menu-item", :id => "oldest", :remote => true %>
 			</li>
-			<li class="menu-item" <%= tab_selected?(params[:order], 'created_at') %>>
+			<li class="menu-item <%= tab_selected?(params[:order], 'created_at') %>">
 				<%= link_to "Recientes", question_path(@question, :order => 'active'), :title => "Ordenar respuestas por recientes", :class => "answers-header-menu-item", :id => "active", :remote => true %>
 			</li>
   	</ul>
   </div>
 
   <ul id="answers-list">
-    <!-- if answers > 0-->
-    <p>Esta pregunta no tiene respuestas</p>
-    <!-- else-->
     <%= render :partial => 'shared/answers', :locals => { :question => @question } %>
   </ul>
 
