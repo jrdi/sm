@@ -9,12 +9,11 @@
 	<ul>
 		<%- @featured_tags.each do |tag| %>
 			<li class="tag">
-				<%= link_to content_tag(:span, "+"), tag, :title => "Sigue el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-				<%= link_to tag.name.capitalize, tag, :title => "Ve al tema #{tag.name.capitalize}", :class => "tag-link" %> 
+				<%#= link_to content_tag(:span, "+"), tag, :title => "Sigue el tema #{tag.name.capitalize}", :class => "tag-follow" %>
+				<%= link_to "\##{tag.name.capitalize}", tag, :title => "Ve al tema #{tag.name.capitalize}", :class => "tag-link" %> 
 				<!-- 16 seguidores -->
 			</li>
 		<% end -%>
-		<!-- <li class="tag"><%#= link_to content_tag(:span, "+"), root_path, :title => "Deja de seguir el tema Limpieza", :class => "tag-follow tag-followed " %><%#= link_to "Limpieza", root_path, :title => "Ve al tema Limpieza", :class => "tag-link" %> 16 seguidores</li> -->
 	</ul>
 </aside>
 

@@ -466,6 +466,7 @@ header .title a {
 
 .question, .answer {
 	background: url('/images/question-bg.png') repeat-x 0 -4px;
+	overflow: auto;
 	padding: 60px 20px 0 100px;
 	position: relative;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
@@ -591,16 +592,18 @@ header .title a {
 	color: rgba(106, 138, 153, 1)
 }
 
-.question .tags, .answer .tags {
+.question .tags {
 	float: right;
+	text-align: right;
+	width: 50%;
 }
 
-.question .tag, .answer .tag {
-	float: left;
+.question .tag {
+	display: inline-block;
 	margin-left: 15px;
 }
 
-.question a.tag-link, .answer a.tag-link {
+.question a.tag-link {
 	font-weight: bold;
 	text-transform: lowercase;
 }
