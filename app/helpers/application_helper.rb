@@ -10,15 +10,15 @@ module ApplicationHelper
   
   def selected?(controller, action)
     if params[:controller] == controller && params[:action] == action
-      return :class => 'selected'
+      return 'selected'
     end
   end
   
   def tab_selected?(param, tab = 'default')
     if param == tab
-      return "class = 'selected'"
+      return 'selected'
     elsif (param.blank? || param == 'all' || param == 'votes_count') && tab == 'default'
-      return "class = 'selected'"
+      return 'selected'
     end
   end
   

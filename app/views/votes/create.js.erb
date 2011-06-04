@@ -1,6 +1,6 @@
 <% if @vote.errors.blank? %>
 	var value = { "1": ".up", "-1":".down"};
-	$("#vote_submit_" + "<%= @vote.votable.id %>" + value["<%= @vote.value %>"]).addClass('voted');
+	$("#answer-" + "<%= @vote.votable.id %>" + " " + value["<%= @vote.value %>"]).addClass('voted');
 <% else %>
 	alert("Ya has votado esto amigo!");
 <% end %>

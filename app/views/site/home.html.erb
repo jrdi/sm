@@ -11,12 +11,20 @@
 <div id="questions-box">
 	<div id="questions-header">
 		<ul id="questions-header-menu">
-			<li <%= tab_selected?(params[:scoped_questions])%>><%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :class => "questions-header-menu-item", :id => "all", :remote => true %></li>
-			<li <%= tab_selected?(params[:scoped_questions], 'without_answers')%>><%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :class => "questions-header-menu-item", :id => "without_answers", :remote => true %></li>
-			<li <%= tab_selected?(params[:scoped_questions], 'populars')%>><%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :class => "questions-header-menu-item", :id => "populars", :remote => true %></li>
+		  <!-- to fix -->
+			<li class="menu-item <%= tab_selected?(params[:scoped_questions]) %>">
+				<%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :class => "questions-header-menu-item", :id => "all", :remote => true %>
+			</li>
+			<li class="menu-item <%= tab_selected?(params[:scoped_questions], 'without_answers') %>">
+				<%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :class => "questions-header-menu-item", :id => "without_answers", :remote => true %>
+			</li>
+			<li class="menu-item <%= tab_selected?(params[:scoped_questions], 'populars') %>">
+				<%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :class => "questions-header-menu-item", :id => "populars", :remote => true %>
+			</li>
 		</ul>
-		<ul>
-      <li class="new-question">
+
+		<ul id="questions-header-action">
+      <li class="menu-item new-question">
     		<%- if user_signed_in? %>
     			<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
     		<% else -%>
@@ -28,7 +36,7 @@
 
 	<ul id="questions-list">
 		<%- if @questions.empty? %>
-			Aún no hay preguntas disponibles.
+			<p>Aún no hay preguntas disponibles.</p>
 		<% else %>
 			<%- @questions.each do |question| %>
 				<%= render :partial => 'shared/question', :locals => { :question => question } %>
