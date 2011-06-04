@@ -171,7 +171,7 @@ header .title a {
 #new_answer textarea {
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 0;
-	border-bottom: 0;
+	border-bottom: 1px solid rgba(62, 116, 140, .3);
 }
 
 #ask fieldset {
@@ -203,7 +203,7 @@ header .title a {
   border-left: 1px solid rgba(241, 228, 194, 1);
   color: rgba(204, 185, 134, 1);
   font: 200 20px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  margin: 0 0 -4px;
+  margin: 0 0 -1px;
   padding: 15px 15px 12px;
   resize: none;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, .5);
@@ -219,6 +219,7 @@ header .title a {
 }
 
 #field_title {
+  height: 52px;
   -webkit-border-radius: 7px 7px 0 0;
   -moz-border-radius: 7px 7px 0 0;
   border-radius: 7px 7px 0 0;
@@ -462,6 +463,10 @@ header .title a {
   box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.03);
 }
 
+#question #answers-list {
+  border-bottom: 1px solid rgba(62, 116, 140, .3);
+}
+
 .question, .answer {
 	background: url('/images/question-bg.png') repeat-x 0 -4px;
 	overflow: auto;
@@ -673,7 +678,13 @@ a.tag-follow span {
 
 #questions-footer {
   border: 1px solid rgba(62, 116, 140, .5);
+	border-top: 0;
 	border-top: 1px solid rgba(62, 116, 140, .3);
+}
+
+#question #questions-footer {
+	border-top: 0;
+	margin-top: -4px;
 }
 
 .questions-footer button, #questions-footer a {
@@ -686,6 +697,7 @@ a.tag-follow span {
 	float: right;
 	font-weight: bold;
 	line-height: 30px;
+	margin-top: 2px;
 	padding: 0 15px;
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
