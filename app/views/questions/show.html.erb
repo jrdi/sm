@@ -45,7 +45,7 @@
   </div>
 
   <ul id="answers-list">
-    <%= render :partial => 'shared/answers', :locals => { :question => @question } %>
+    <%= render :partial => 'shared/answers', :locals => { :answers => @question.answers, :valid_answer => @question.valid_answer } %>
   </ul>
 
   <%= render 'answers/form' %>

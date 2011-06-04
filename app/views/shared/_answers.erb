@@ -1,7 +1,8 @@
-<% if question.answers.empty? %>
+<% valid_answer ||= nil %>
+<% if answers.empty? %>
 	<p>Aún no hay respuestas disponibles.</p>
 <% else %>
-	<% question.answers.each do |answer| %>
+	<% answers.each do |answer| %>
 	  <%- unless answer.id.blank? %>
 	    <li id="answer-<%= answer.id %>" class="answer">
 	    	<div class="commands">
@@ -27,6 +28,9 @@
 	        	<% end -%>
 
 					<%= answer.votes_count %>
+					<% if valid_answer.present? && answer == valid_answer %>
+						<p>Respuesta correcta!</p>
+					<% end %>
 	  			</div>
 	    	</div>
 
