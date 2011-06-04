@@ -1,18 +1,23 @@
 <% meta(:description, @tag.name) %>
 <% meta(:keywords, @tag.questions.first.description.to_keywords) unless @tag.questions.empty? %>
+<% title "Consejos de #{@tag.name}" %>
 
-<div id="questions-box">
+<div id="tag">
   <ul id="questions-header">
-    <ul id="questions-breadcrumb" itemprop="breadcrumb">
+    <ul id="breadcrumb" itemprop="breadcrumb">
       <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
       <li class="breadcrumb-item breadcrumb-tag">
-        <%= link_to @tag.name, root_path, :title => "Página de preguntas de #{@tag.name}" %>
+        <%= content_tag(:h3, link_to(@tag.name, @tag, :title => "Página de preguntas de #{@tag.name}")) %>
       </li>
     </ul>
 
-		<ul id="questions-header-action">
-      <li class="new-question menu-item">
-    	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta"%>
+		<ul id="tag-header-action" class="questions-header-action">
+      <li class="menu-item">
+      	<%- if user_signed_in? %>
+      		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
+      	<% else -%>
+      	  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
+        <% end -%>
     	</li>
   	</ul>
   </ul>
@@ -27,7 +32,9 @@
 		<% end -%>
   </ul> 
 
-  <div id="questions-footer">
-		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
-	</div>
+	<%- if user_signed_in? %>
+		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
+	<% else -%>
+	  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
+	<% end -%>
 </div>

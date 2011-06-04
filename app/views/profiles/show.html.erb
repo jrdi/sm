@@ -1,15 +1,17 @@
-<div id="questions-box">
+<% title "Preguntas y respuestas de #{@user.name}" %>
+
+<div id="user">
   <ul id="questions-header">
-    <ul id="questions-breadcrumb" itemprop="breadcrumb">
+    <ul id="breadcrumb" itemprop="breadcrumb">
       <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
       <li class="breadcrumb-item breadcrumb-tag">
-        <%= link_to current_user.name, root_path, :title => "Página de preguntas y respuestas de #{current_user.name}" %>
+        <%= content_tag(:h3, link_to(current_user.name, root_path, :title => "Preguntas y respuestas de #{@user.name}")) %>
       </li>
     </ul>
 
 		<ul id="questions-header-action">
-      <li class="new-question menu-item">
-    	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta"%>
+      <li class="menu-item">
+    	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
     	</li>
   	</ul>
   </ul>
@@ -53,7 +55,9 @@
   	<%= render :partial => 'shared/answers', :locals => { :question => @user } %>
   </ul>
 
-  <div id="questions-footer">
-		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>
-	</div>
+	<%- if user_signed_in? %>
+		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
+	<% else -%>
+	  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
+	<% end -%>
 </div>
