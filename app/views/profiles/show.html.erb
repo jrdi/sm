@@ -1,9 +1,11 @@
+<% title "Preguntas y respuestas de #{@user.name}" %>
+
 <div id="questions-box">
   <ul id="questions-header">
-    <ul id="questions-breadcrumb" itemprop="breadcrumb">
+    <ul id="breadcrumb" itemprop="breadcrumb">
       <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
       <li class="breadcrumb-item breadcrumb-tag">
-        <%= link_to current_user.name, root_path, :title => "Página de preguntas y respuestas de #{current_user.name}" %>
+        <%= content_tag(:h3, link_to(current_user.name, root_path, :title => "Preguntas y respuestas de #{@user.name}")) %>
       </li>
     </ul>
 

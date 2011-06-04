@@ -1,3 +1,5 @@
+/* Tipografia */
+
 h1, h2, h3 {
 	margin-bottom: 10px;
 }
@@ -6,8 +8,13 @@ h1 {
 	font-size: 30px;
 }
 
-h2 {
+h2.title {
 	font-size: 18px;
+}
+
+.static h2 {
+  color: rgba(101, 122, 131, 1);
+	font-size: 40px;
 }
 
 a {
@@ -35,7 +42,7 @@ header {
 	width: 100%;
 }
 
-header .title {
+header .title a {
 	background: url('/images/socorromama-logo.png') no-repeat 0 10px;
 	color: #EBBF95;
 	display: block;
@@ -148,7 +155,7 @@ header .title {
 	width: 700px;
 }
 
-/* Question box */
+/* Libretita */
 
 #new_question {
   margin-bottom: 30px;
@@ -232,13 +239,13 @@ header .title {
   width: 658px;
 }
 
-/* Questions & answers menu */
+/* Cabeceras */
 
-#questions-header, #answers-header {
+#questions-header, #answers-header, #static-header {
 	background: url('/images/questions-header-bg.png') repeat-x;
 	border: 1px solid rgba(54, 54, 54, .8);
 	height: 35px;
-	padding: 10px 20px;
+	padding: 10px 15px;
 	-webkit-border-radius: 7px 7px 0 0;
 	-moz-border-radius: 7px 7px 0 0;
 	border-radius: 7px 7px 0 0;
@@ -313,9 +320,13 @@ header .title {
 	border-left: 0;
 }
 
-#answers-header {
+#answers-header, #static-header {
 	background-image: url('/images/answers-header-bg.png');
   border-color: rgba(173, 189, 197, 1);
+}
+
+
+#answers-header {
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
 	border-radius: 0;
@@ -340,15 +351,6 @@ header .title {
 	border-right-color: rgba(92, 124, 137, .3);
 }
 
-#answers-header li a {
-	border-left: 1px solid rgba(255, 255, 255, .1);
-	color: rgba(101, 122, 131, 1);
-	line-height: 30px;
-	height: 30px;
-	padding: 0 15px;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
-}
-
 #answers-header li:hover {
 	background-image: url('/images/question-footer-button-hover-bg.png');
   border-color: rgba(92, 124, 137, .6);
@@ -371,27 +373,43 @@ header .title {
 	  0 1px 0 rgba(255, 255, 255, 1);
 }
 
+#answers-header a {
+	border-left: 1px solid rgba(255, 255, 255, .1);
+	color: rgba(101, 122, 131, 1);
+	line-height: 30px;
+	height: 30px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+#static-header a {
+	color: rgba(101, 122, 131, 1);
+	line-height: 35px;
+	height: 35px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+}
+
 #answers-header li.selected a, #answers-header li:active a {
   color: rgba(134, 152, 159, 1);
 }
 
-#questions-breadcrumb {
+#breadcrumb {
   float: left;
-  margin: -10px 0 0 -20px;
+  margin: -10px 0 0 -15px;
 }
 
-#questions-breadcrumb li {
-  background: url('/images/question-header-sep.png') no-repeat right 0;
+#breadcrumb li {
+  background: url('/images/question-header-sep.png') no-repeat right -1px;
   border: 0;
   float: left;
+  height: 56px;
 }
 
-#questions-breadcrumb li:last-child {
+#breadcrumb li:last-child {
   background: none;
 }
 
-#questions-breadcrumb li a {
-  color: #FFCBAC;
+#breadcrumb a, #breadcrumb p {
+  color: rgba(255, 203, 172, 1);
   display: inline-block;
   font: bold 12px Helvetica;
   height: 56px;
@@ -400,20 +418,33 @@ header .title {
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
 }
 
-#questions-breadcrumb li:last-child a {
-  padding-right: 0;
+#breadcrumb p {
+  font-weight: normal;
 }
 
-#questions-breadcrumb li.breadcrumb-home a {
+.static #breadcrumb a, .static #breadcrumb p {
+  color: rgba(101, 122, 131, 1);
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+}
+
+#breadcrumb .breadcrumb-home a {
   background: url('/images/breadcrumb-home.png') no-repeat 45% center;
   width: 20px;
 }
 
-#questions-breadcrumb li.breadcrumb-home a > span {
+.static #breadcrumb .breadcrumb-home a {
+  background-image: url('/images/breadcrumb-home-static.png');
+}
+
+#breadcrumb li:last-child a {
+  padding-right: 0;
+}
+
+#breadcrumb .breadcrumb-home a > span {
   display: none;
 }
 
-/* Question & answers list */
+/* Listados y páginas estáticas */
 
 #questions-list, #answers-list {
 	background: url('/images/questions-list-bg.png');
@@ -421,6 +452,10 @@ header .title {
 	border-top: 0;
 	border-bottom: 0;
 	padding-bottom: 30px;
+}
+
+.static #questions-list {
+  padding: 20px;
 }
 
 #answers-list {
@@ -633,14 +668,14 @@ a.tag-follow span {
   width: 658px;
 }
 
-/* Question box & questions list & answers list footer */
+/* Pies */
 
 #ask-box-footer, #questions-footer {
 	background: url('/images/questions-footer-bg.png') repeat-x;
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 1px solid rgba(62, 116, 140, .3);
 	height: 35px;
-	padding: 10px;
+	padding: 10px 15px;
 	-webkit-border-radius: 0 0 7px 7px;
 	-moz-border-radius: 0 0 7px 7px;
 	border-radius: 0 0 7px 7px;
@@ -659,7 +694,7 @@ a.tag-follow span {
 	float: right;
 	font-weight: bold;
 	line-height: 30px;
-	padding: 0 20px;
+	padding: 0 15px;
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
 	text-align: center;
@@ -702,7 +737,7 @@ a.tag-follow span {
 
 #ask-box-footer button, #questions-footer button {
   line-height: 1;
-  padding: 7px 20px;
+  padding: 7px 15px;
 }
 
 #questions-footer a.load-more {
