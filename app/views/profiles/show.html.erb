@@ -52,7 +52,7 @@
   </div>
 
   <ul id="answers-list">
-  	<%= render :partial => 'shared/answers', :locals => { :question => @user } %>
+  	<%= render :partial => 'shared/answers', :locals => { :answers => @user.answers } %>
   </ul>
 
 	<%- if user_signed_in? %>
