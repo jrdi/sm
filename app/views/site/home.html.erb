@@ -1,14 +1,14 @@
-<% content_for :javascript do %>
-	<%= include_javascripts :home %>
-<% end %>
+<div id="home">
+  <% content_for :javascript do %>
+  	<%= include_javascripts :home %>
+  <% end %>
 
-<%- if user_signed_in? %>
-  <div id="ask">
-  	<%= render 'questions/form' %> 
-  </div>
-<% end -%>
+  <%- if user_signed_in? %>
+    <div id="ask">
+    	<%= render 'questions/form' %> 
+    </div>
+  <% end -%>
 
-<div id="questions-box">
 	<div id="questions-header">
 		<ul id="questions-header-menu">
 		  <!-- to fix -->

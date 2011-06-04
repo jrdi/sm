@@ -2,7 +2,7 @@
 <% meta(:keywords, @tag.questions.first.description.to_keywords) unless @tag.questions.empty? %>
 <% title "Consejos de #{@tag.name}" %>
 
-<div id="questions-box">
+<div id="tag">
   <ul id="questions-header">
     <ul id="breadcrumb" itemprop="breadcrumb">
       <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
@@ -11,7 +11,7 @@
       </li>
     </ul>
 
-		<ul id="questions-header-action">
+		<ul id="tag-header-action" class="questions-header-action">
       <li class="new-question menu-item">
     	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta"%>
     	</li>

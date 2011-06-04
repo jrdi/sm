@@ -6,7 +6,7 @@
 <% meta(:keywords, @question.description.to_keywords) %>
 <% title @question.title %>
 
-<div id="questions-box">
+<div id="questions">
   <ul id="questions-header">
     <ul id="breadcrumb" itemprop="breadcrumb">
       <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
@@ -14,7 +14,7 @@
         <%= link_to( @question.tags.first.name.capitalize, @question.tags.first, :title => "Ir al tema #{@question.tags.first.name.capitalize}") unless @question.tags.empty? %>
       </li>
       <li class="breadcrumb-item breadcrumb-tag">
-        <%= link_to "Pregunta", @question, :title => "Enlace permanente a #{@question.title}" %>
+        <p>Pregunta</p>
       </li>
     </ul>
 
