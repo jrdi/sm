@@ -18,9 +18,13 @@
   </ul>
 
   <ul id="questions-list">
-  	<%- @tag.questions.each do |question| %>
-      <%= render :partial => 'shared/question', :locals => { :question => question } %>
-  	<% end -%>
+		<%- if @tag.questions.empty? %>
+			<p>Aún no hay preguntas disponibles.</p>
+		<% else %>
+  		<%- @tag.questions.each do |question| %>
+	      <%= render :partial => 'shared/question', :locals => { :question => question } %>
+	  	<% end -%>
+		<% end -%>
   </ul> 
 
   <div id="questions-footer">

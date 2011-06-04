@@ -26,9 +26,13 @@
   </div>
 
   <ul id="questions-list">
-  	<%- @user.questions.each do |question| %>
-      <%= render :partial => 'shared/question', :locals => { :question => question } %>
-  	<% end -%>
+		<%- if @user.questions.empty? %>
+			<p>Aún no hay preguntas disponibles.</p>
+		<% else %>
+	  	<%- @user.questions.each do |question| %>
+	      <%= render :partial => 'shared/question', :locals => { :question => question } %>
+	  	<% end -%>
+	  <% end -%>
   </ul> 
   
   <div id="answers-header">

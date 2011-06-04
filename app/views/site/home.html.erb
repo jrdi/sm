@@ -36,7 +36,7 @@
 
 	<ul id="questions-list">
 		<%- if @questions.empty? %>
-			Aún no hay preguntas disponibles.
+			<p>Aún no hay preguntas disponibles.</p>
 		<% else %>
 			<%- @questions.each do |question| %>
 				<%= render :partial => 'shared/question', :locals => { :question => question } %>
