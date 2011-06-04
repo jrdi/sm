@@ -18,7 +18,7 @@
 	  <p>Si quieres hacer una sugerencia o reportar un error, por favor hazlo a través de nuestra página de <a href="http://socorromama.uservoice.com/">UserVoice</a> o haciendo click en la pestaña de "Sugerencias" a la izquierda.</p>
     <p>También puedes contactarnos directamente en <a href="mailto:mama@socorromama.com">mama@socorromama.com</a> y te contestaremos lo más pronto posible, o bien a través del siguiente formulario de contacto:</p>
 
-    <% if @email.errors.any? %>
+    <% if @email.present? && @email.errors.any? %>
 	    <div id="error_explanation">
 	      <h2><%= pluralize(@email.errors.count, "error", "errores") %> enviando el email:</h2>
 
