@@ -5,12 +5,12 @@
 
 <aside id="trending" class="widget">
 	<h3>Temas populares</h3>
-	<p>Estos son los temas con mayor actividad. Guarda los temas que más te interesen.</p>
+	<p>Estos son los temas con mayor actividad.<!-- Guarda los temas que más te interesen. --></p>
 	<ul>
 		<%- @featured_tags.each do |tag| %>
 			<li class="tag">
 				<%#= link_to content_tag(:span, "+"), tag, :title => "Sigue el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-				<%= link_to "\##{tag.name.capitalize}", tag, :title => "Ve al tema #{tag.name.capitalize}", :class => "tag-link" %> 
+				<%= link_to "##{tag.name.capitalize}", tag, :title => "Ve al tema #{tag.name.capitalize}", :class => "tag-link" %> 
 				<!-- 16 seguidores -->
 			</li>
 		<% end -%>
@@ -18,10 +18,7 @@
 </aside>
 
 <aside id="tuits" class="widget">
-	<ul id="twitter_update_list"></ul>
-</aside>
-
-<aside id="facebook-box" class="widget">
+	<ul id="twitter_update_list"><li>Cargando...</li></ul>
 </aside>
 
 <aside id="share" class="widget">

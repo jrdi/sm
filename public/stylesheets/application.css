@@ -758,6 +758,7 @@ a.tag-follow span {
 
 #sidebar .widget {
 	margin-bottom: 30px;
+	overflow: hidden;
 }
 
 #sidebar h3 {
@@ -768,7 +769,6 @@ a.tag-follow span {
 
 #sidebar p, #sidebar ul, #sidebar ol {
 	font-size: 12px;
-	margin-bottom: 15px;
 }
 
 #sidebar p {
@@ -777,6 +777,7 @@ a.tag-follow span {
 
 #sidebar #tuits {
 	background: url('/images/socorromama-logo-small.png') no-repeat 5px 5px;
+	min-height: 30px;
 	padding-left: 40px;
 }
 
@@ -803,7 +804,8 @@ a.tag-follow span {
 
 #sidebar #trending .tag {
 	color: #A9876F;
-	margin-bottom: 15px;
+	float: left;
+	margin-right: 15px;
 }
 
 #sidebar #trending a.tag-link {

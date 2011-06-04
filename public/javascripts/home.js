@@ -48,6 +48,15 @@ $(document).ready(function() {
     }
   });
 
+  $('.publish-question').live("click", function(e) {
+    title = $("#question_title").val();
+
+    if(!title) {
+      e.preventDefault();
+      alert("Necesitas escribir una pregunta para poder publicarla!")
+    }
+  });
+
   $('.questions-header-menu-item').live("click", function(e) {
     e.preventDefault();
     clickedItem = $(this);
