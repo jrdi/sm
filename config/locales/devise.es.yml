@@ -4,12 +4,12 @@ es:
       not_found: "no encontrado"
       already_confirmed: "ya ha sido confirmado"
       not_locked: "no está bloqueado"
+      not_saved:
+        one: "1 error no ha permitido que %{resource} sea guardado:"
+        other: "%{count} errores no han permitido que %{resource} sea guardado:"
 
   devise:
-    sessions:
-      link: 'Ingresar'
-      signed_in: 'Has ingresado correctamente.'
-      signed_out: 'Has salido correctamente.'
+    failure:
       unauthenticated: 'Debes ingresar como usuario registrado antes de continuar.'
       unconfirmed: 'Debes confirmar '
       locked: 'Tu cuenta est&aacute; boqueada.'
@@ -17,6 +17,10 @@ es:
       invalid_token: 'Token de autenticaticación incorrecto.'
       timeout: 'Tu sesión ha caducado. Por favor, vuelve a ingresar.'
       inactive: 'Tu cuenta todavia no ha sido activada.'
+    sessions:
+      link: 'Ingresar'
+      signed_in: 'Has ingresado correctamente.'
+      signed_out: 'Has salido correctamente.'
     passwords:
       link: '¿Olvidaste tu contraseña?'
       send_instructions: 'En unos minutos recibirás un email con las instrucciones de como redefinir tu contraseña.'
