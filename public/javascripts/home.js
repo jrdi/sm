@@ -92,7 +92,7 @@ $(document).ready(function() {
     }
   });
 
-  $('.new-question').live("click", function() {
+  $('.new-question.disabled').live("click", function() {
     $("#question_title").focus();
     return false;
   });
