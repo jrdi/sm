@@ -158,11 +158,19 @@ header .title a {
 /* Libretita */
 
 #new_question {
+	border: 1px solid rgba(62, 116, 140, .5);
   margin-bottom: 30px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 }
 
-#new_question fieldset, #new_answer fieldset, .edit_question fieldset {
+#new_answer fieldset {
 	border: 1px solid rgba(62, 116, 140, .5);
+	border-top: 0;
 	border-bottom: 0;
 }
 
@@ -673,9 +681,8 @@ a.tag-follow span {
 
 /* Pies */
 
-#ask-box-footer, #questions-footer {
+.questions-footer {
 	background: url('/images/questions-footer-bg.png') repeat-x;
-	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 1px solid rgba(62, 116, 140, .3);
 	height: 35px;
 	padding: 10px 15px;
@@ -687,7 +694,12 @@ a.tag-follow span {
 	box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 }
 
-#ask-box-footer button, #questions-footer a, #questions-footer button {
+#questions-footer {
+  border: 1px solid rgba(62, 116, 140, .5);
+	border-top: 1px solid rgba(62, 116, 140, .3);
+}
+
+.questions-footer button, #questions-footer a {
 	background: url('/images/question-footer-button-bg.png') repeat-x;
 	border: 1px solid rgba(92, 124, 137, .3);
 	border-bottom-color: rgba(169, 176, 179, 1);
@@ -715,14 +727,14 @@ a.tag-follow span {
 	  0 1px 0 rgba(255, 255, 255, 1);
 }
 
-#ask-box-footer button:hover, #questions-footer a:hover, #questions-footer button:hover {
+.questions-footer button:hover, #questions-footer a:hover {
 	background-image: url('/images/question-footer-button-hover-bg.png');
   border-color: rgba(92, 124, 137, .6);
 	border-bottom-color: rgba(127, 127, 127, 1);
 	color: rgba(83, 105, 115, 1);
 }
 
-#ask-box-footer button:active, #questions-footer a:active, #questions-footer button:active {
+.questions-footer button:active, #questions-footer a:active {
 	background-image: url('/images/question-footer-button-active-bg.png');
   border-color: rgba(92, 124, 137, .3);
 	border-bottom-color: rgba(193, 205, 210, 1);
@@ -738,7 +750,7 @@ a.tag-follow span {
   color: rgba(134, 152, 159, 1);
 }
 
-#ask-box-footer button, #questions-footer button {
+.questions-footer button {
   line-height: 1;
   padding: 7px 15px;
 }

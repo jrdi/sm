@@ -3,7 +3,7 @@
 <% end %>
 
 <%- if user_signed_in? %>
-  <div id="ask-box">
+  <div id="ask">
   	<%= render 'questions/form' %> 
   </div>
 <% end -%>
@@ -44,7 +44,7 @@
 		<% end -%>
 	</ul>
 
-	<div id="questions-footer">
+	<div id="questions-footer" class="questions-footer">
 		<%= link_to( 'Cargar más', root_path(:scope_questions => params[:scope_questions], :page => ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), :title => "Carga más preguntas", :class => "load-more", :remote => true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
 		<%- if user_signed_in? %>
 			<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question" %>

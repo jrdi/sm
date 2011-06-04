@@ -8,13 +8,28 @@ $(document).ready(function() {
     $('label[for="question_title"]').css("color", "rgba(157, 136, 81, 1)");
     $("#new_question").addClass("focus");
   } else {
-    $('#field_description, #field_tags').delay(2000).slideUp();
+    $('#field_description, #field_tags, #ask-footer').delay(2000).slideUp();
+    setTimeout( function(){      
+      cssTransform = {
+        "-webkit-border-radius" : "7px",
+        "-moz-border-radius" : "7px",
+        "border-radius" : "7px"
+      }
+      
+      $('#field_title, #new_question fieldset').css(cssTransform);
+    }, 2400);
   }
 
   $('#question_title').focus(function() {
+    cssTransform = {
+      "-webkit-border-radius" : "7px 7px 0 0",
+      "-moz-border-radius" : "7px 7px 0 0",
+      "border-radius" : "7px 7px 0 0"
+    }
+
+    $('#field_title, #new_question fieldset').css(cssTransform);
     $('label[for="question_title"]').css("color", "rgba(157, 136, 81, 1)");
-    $("#new_question").addClass("focus");
-    $('#field_description, #field_tags').slideDown();
+    $('#field_description, #field_tags, #ask-footer').slideDown();
   }).blur(function() {
     $('label[for="question_title"]').css("color", "rgba(204, 185, 134, 1)");
   });    
@@ -44,7 +59,16 @@ $(document).ready(function() {
 
     if(!isNewQuestionFocus && !title && !desc && !tags) {
       $("#new_question").removeClass("focus");
-      $('#field_description, #field_tags').delay(500).slideUp();
+      $('#field_description, #field_tags, #ask-footer').delay(500).slideUp();
+      setTimeout( function(){
+        cssTransform = {
+          "-webkit-border-radius" : "7px",
+          "-moz-border-radius" : "7px",
+          "border-radius" : "7px"
+        }
+
+        $('#field_title, #new_question fieldset').css(cssTransform);
+      }, 900);
     }
   });
 
