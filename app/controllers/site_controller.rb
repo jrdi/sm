@@ -29,7 +29,6 @@ class SiteController < ApplicationController
   def contact
     if request.post?
       @email = Email.new(params[:contact])
-      logger.info @email.inspect
       if @email.valid?
         ApplicationMailer.contact(@email).deliver
         flash[:notice] = "Email enviado correctamente"
