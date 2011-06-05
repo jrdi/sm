@@ -864,7 +864,7 @@ a.tag-follow span {
   padding-left: 60px;
 }
 
-.answer.no-answers p {
+.no-answers p {
   color: rgba(149, 169, 178, 1);
   font-size: 16px;
   text-shadow: 1px 1px 0 rgba (255, 255, 255, .5);

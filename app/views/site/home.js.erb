@@ -3,7 +3,7 @@
 <% end %>
 
 <%- if @questions.empty? %>
-	$("#questions-list").append("<p>Aún no hay preguntas disponibles.</p>");
+	$("#questions-list").append("<li class="answer no-answers"><p>Aún no hay preguntas disponibles.</p></li>");
 <% else %>
 	<%- @questions.each do |question| %>
 		$("#questions-list").append("<%= escape_javascript(render :partial => 'shared/question', :locals => { :question => question }) %>");
