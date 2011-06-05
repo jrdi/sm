@@ -72,6 +72,7 @@ header .title a {
 	color: #FFCBAC;
 	font-size: 16px;
 	margin: 0 20px 0 25px;
+	padding: 5px 0;
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
 }
 
@@ -166,24 +167,55 @@ header .title a {
 }
 
 #navbar ul {
-/*  display: none;
+  display: none;
 }
 
 #navbar li:hover > ul {
-*/  display: block;
+  display: block;
+  padding-top: 20px;
   position: absolute;
-  top: 30px;
-  right: -20px;
+  top: 20px;
+  right: 1px;
+}
+
+#navbar li li {
+  float: none;
 }
 
 #navbar li li a {
   background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(0, 0, 0, .2);
   display: block;
+  font-size: 13px;
+  font-weight: bold;
   margin: 0;
-  padding: 15px 20px;
-  width: 105px;
+  padding: 10px 15px 10px 30px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
+  width: 98px;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+	box-shadow: 0 1px 0 rgba(0, 0, 0, .3);
+	-webkit-border-radius: 0 0 3px 3px;
+	-moz-border-radius: 0 0 3px 3px;
+	border-radius: 0 0 3px 3px;
 }
 
+#navbar li li a:hover {
+  background: rgba(234, 237, 239, 1);
+}
+
+#navbar li li:first-child a {
+  border-bottom: 0;
+	-webkit-border-radius: 3px 3px 0 0;
+	-moz-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+}
+
+.dropdown-arrow {
+  position: absolute;
+  right: 15px;
+  top: -5px;
+}
 
 /* CONTENT */
 
@@ -201,8 +233,8 @@ header .title a {
   -moz-border-radius: 7px;
   border-radius: 7px;
 	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
-	box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
 
 #new_answer textarea {
