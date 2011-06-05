@@ -3,7 +3,6 @@ class Question < ActiveRecord::Base
   belongs_to :user
   has_many :answers, :dependent => :destroy
   has_and_belongs_to_many :tags, :uniq => true
-  #has_many :votes, :as => :votable, :dependent => :destroy
   # Validations
   validates_presence_of :title
   validates_presence_of :user_id, :on => :create
@@ -28,6 +27,12 @@ class Question < ActiveRecord::Base
   def answered?
     answers.each{|a| return true if a.votes_count > 0}
     return false
+  end
+  
+  def valid_answer
+    valid_answer = answers.order('votes_count DESC').limit(1).first
+    return valid_answer if valid_answer.present? && valid_answer.votes_count > 0
+    return nil
   end
   
   def as_json(options={})
