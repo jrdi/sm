@@ -485,10 +485,10 @@ header .title a {
 	margin-left: -80px;
 }
 
-.comments, .reply, .up, .down, .star {
+.comments, .reply, .star, .up, .down, .correct-answer {
 	display: block;
 	float: left;
-	height: 30px;
+	height: 31px;
 	width: 31px;
 }
 
@@ -499,7 +499,7 @@ header .title a {
 	box-shadow: 0 2px 0 rgba(255, 255, 255, 1);
 }
 
-.reply span, .up span, .down span, .star span {
+.reply span, .star span, .up span, .down span, .correct-answer span {
 	display: none;
 }
 
@@ -547,6 +547,21 @@ header .title a {
 
 .replied:hover {
 	background-position: 0 -93px;
+}
+
+.star {
+	background-position: -93px 0;
+	position: absolute;
+	right: 20px;
+	top: 60px;
+}
+
+.question:first-child .star {
+	top: 30px;
+}
+
+.starred {
+	background-position: -93px -31px;
 }
 
 .votes {
@@ -621,19 +636,10 @@ header .title a {
   padding-left: 16px;
 }
 
-.star {
-	background-position: -93px 0;
-	position: absolute;
-	right: 20px;
-	top: 60px;
-}
-
-.question:first-child .star {
-	top: 30px;
-}
-
-.starred {
-	background-position: -93px -31px;
+.correct-answer {
+  background: url('/images/correct-answer.png') no-repeat center 0;
+  margin: 10px auto 0;
+  width: 100%;
 }
 
 .question .title {
