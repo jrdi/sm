@@ -6,7 +6,7 @@
 	  <%- unless answer.id.blank? %>
 	    <li id="answer-<%= answer.id %>" class="answer">
 	    	<div class="commands">
-	  			<div class="votes">
+	  			<div class="votes voted">
 	      		<%- if user_signed_in? %>
 	    				<%= form_for(answer.votes.build, :remote => true, :html => {:class => "vote"}) do |f| %>
 	              <%= f.hidden_field :user_id, :value => current_user.id %>
@@ -27,10 +27,14 @@
 	    				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
 	        	<% end -%>
 
-					<%= answer.votes_count %>
-					<% if valid_answer.present? && answer == valid_answer %>
-						<p>Respuesta correcta!</p>
-					<% end %>
+            <!-- mostrar solo si votes>0 -->
+  					<div class="votes-count negative" title="18 votos totales: 10 positivos, 8 negativos">
+  					  <span><%= answer.votes_count %></span>
+  					</div>
+
+  					<% if valid_answer.present? && answer == valid_answer %>
+  						<p>Respuesta correcta!</p>
+  					<% end %>
 	  			</div>
 	    	</div>
 

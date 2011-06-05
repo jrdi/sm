@@ -55,9 +55,11 @@
   	<%= render :partial => 'shared/answers', :locals => { :answers => @user.answers } %>
   </ul>
 
-	<%- if user_signed_in? %>
-		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
-	<% else -%>
-	  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
-	<% end -%>
+  <ul id="questions-footer" class="questions-footer">
+    <%- if user_signed_in? %>
+  		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
+  	<% else -%>
+  	  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
+  	<% end -%>
+  </ul>
 </div>

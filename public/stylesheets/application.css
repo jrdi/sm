@@ -485,11 +485,11 @@ header .title a {
 	margin-left: -80px;
 }
 
-.comments, .reply, .vote, .up, .down, .star {
+.comments, .reply, .up, .down, .star {
 	display: block;
 	float: left;
 	height: 30px;
-	width: 30px;
+	width: 31px;
 }
 
 .comments, .reply, .up, .down {
@@ -499,7 +499,7 @@ header .title a {
 	box-shadow: 0 2px 0 rgba(255, 255, 255, 1);
 }
 
-.replies span, .votes span, .star span {
+.reply span, .up span, .down span, .star span {
 	display: none;
 }
 
@@ -514,7 +514,6 @@ header .title a {
 	-webkit-border-radius: 0 5px 5px 0;
 	-moz-border-radius: 0 5px 5px 0;
 	border-radius: 0 5px 5px 0;
-	width: 30px;
 }
 
 .comments {
@@ -550,21 +549,29 @@ header .title a {
 	background-position: 0 -93px;
 }
 
+.votes {
+  width: 62px;
+}
+
 .up {
 	background-position: -31px 0;
 }
 
 .up:hover, .down:hover {
 	border: 1px solid rgba(158, 180, 194, 1);
+	position: relative;
+	z-index: 2px;
 }
 
-.up:hover, .up:active {
+.up:hover, .up:active, .up.voted {
+	background-position: -31px -31px;
+	border-right: 0;
 	margin-right: -1px;
-	position: relative;
+	width: 32px;
 }
 
 .up:active, .up.voted {
-	background-position: -31px -31px;
+	background-position: -31px -62px;
 	border-top: 1px solid rgba(82, 173, 67, 1);
 	border-right: 1px solid rgba(82, 173, 67, 1);
 	border-bottom: 1px solid rgba(195, 222, 161, 1);
@@ -576,11 +583,42 @@ header .title a {
 }
 
 .down:active, .down.voted {
-	background-position: -62px -31px;
+	background-position: -63px -62px;
 	border-top-color: rgba(133, 78, 18, 1);
-	border-top-right: rgba(188, 126, 60, 1);
-	border-top-bottom: rgba(188, 126, 60, 1);
+	border-right-color: rgba(188, 126, 60, 1);
+	border-bottom-color: rgba(188, 126, 60, 1);
 	border-left-color: rgba(133, 78, 18, 1);
+}
+
+.voted .up, .voted .down {
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+
+.votes-count {
+  background: url('/images/voted-count-bg.png') repeat-x;
+  border: 1px solid rgba(161, 205, 153, 1);
+  clear: both;
+  color: rgba(71, 179, 53, 1);
+  float: left;
+  font-weight: bold;
+  padding: 7px 0;
+  text-align: center;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, .5);
+  margin-top: -5px;
+  width: 100%;
+  z-index: -2;
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.votes-count span {
+  background: url('/images/voted-up.png') no-repeat 0 center;
+  padding-left: 16px;
 }
 
 .star {
