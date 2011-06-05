@@ -3,8 +3,14 @@
 	<li><%= link_to 'Acerca de', '/about' %></li>
 	<li><%= link_to 'Blog', root_path %></li>
 	<%- if user_signed_in? %>
-		<li><%= link_to 'Mi cuenta', edit_user_registration_path, :class => selected?('users/registrations', 'edit') %></li>
-		<li><%= link_to 'Desconectar', destroy_session_path(current_user) %></li>
+    <li><%= link_to 'Perfil', root_path %></li>
+    <li class="prefs">
+      <%= link_to(content_tag(:span,content_tag(:span, 'Mi cuenta')), edit_user_registration_path, :class => selected?('users/registrations', 'edit')) %>
+  	  <ul>
+    		<li><%= link_to 'Preferencias', edit_user_registration_path %></li>
+    		<li><%= link_to 'Desconectar', destroy_session_path(current_user) %></li>
+  		</ul>
+		</li>
 	<% else -%>
 		<li><%= link_to 'Accede', new_user_session_path, :class => selected?('devise/sessions', 'new') %></li>
 		<li><%= link_to 'Regístrate', new_user_registration_path, :class => "signup" %></li>

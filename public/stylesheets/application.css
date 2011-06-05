@@ -64,21 +64,24 @@ header .title a {
 
 #navbar li {
 	float: left;
+	position: relative;
 }
 
-#navbar li a {
+
+#navbar > li > a {
 	color: #FFCBAC;
 	font-size: 16px;
-	margin: 0 20px;
+	margin: 0 20px 0 25px;
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
 }
 
-#navbar li a.selected, #navbar li a.signup {
+#navbar > li > a.selected, #navbar > li > a:hover, #navbar li a.signup {
 	background: url('/images/selected-bg.png') repeat-x;
 	border: 2px solid rgba(92, 46, 10, 1);
 	padding: 6px 18px;
-	margin: 0;
+	margin: 0 0 0 5px;
 	position: relative;
+	text-decoration: none;
 	-webkit-border-radius: 7px;
 	-moz-border-radius: 7px;
 	border-radius: 7px;
@@ -97,7 +100,7 @@ header .title a {
 	-webkit-background-clip: padding-box;
 }
 
-#navbar li a.selected:hover, #navbar li a.signup:hover {
+#navbar > li > a.selected:hover, #navbar li a.signup:hover {
 	background-image: url('/images/selected-hover-bg.png');
 	border: 2px solid rgba(68, 33, 5, 1);
 	-webkit-box-shadow:
@@ -114,7 +117,7 @@ header .title a {
 		0 1px 1px rgba(255, 255, 255, .1);
 }
 
-#navbar li a.selected:active, #navbar li a.signup:active {
+#navbar > li > a.selected:active, #navbar li a.signup:active {
 	background-image: url('/images/selected-active-bg.png');
 	border: 2px solid rgba(92, 46, 10, 1)
 	-webkit-box-shadow:
@@ -135,7 +138,7 @@ header .title a {
 	background: url('/images/signup-bg.png') repeat-x;
 	color: #72300A;
 	font-weight: normal;
-	margin: 0 0 0 10px;
+	margin: 0 0 0 15px;
 	text-shadow: 1px 1px 0 rgba(255, 255, 255, .2);
 }
 
@@ -145,6 +148,40 @@ header .title a {
 
 #navbar li a.signup:active {
 	background-image: url('/images/signup-active-bg.png');
+}
+
+#navbar li span a {
+  background: url('/images/navbar-prefs.png') no-repeat 0 center;
+	padding-left: 20px;
+}
+
+#navbar li a > span {
+	background: url('/images/navbar-prefs.png') no-repeat 0 center;
+	padding-left: 20px;
+}
+
+#navbar li a > span span {
+  background: url('/images/prefs-arrow.png') no-repeat right center;
+	padding-right: 16px;
+}
+
+#navbar ul {
+/*  display: none;
+}
+
+#navbar li:hover > ul {
+*/  display: block;
+  position: absolute;
+  top: 30px;
+  right: -20px;
+}
+
+#navbar li li a {
+  background: rgba(255, 255, 255, 1);
+  display: block;
+  margin: 0;
+  padding: 15px 20px;
+  width: 105px;
 }
 
 
@@ -172,6 +209,7 @@ header .title a {
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 0;
 	border-bottom: 1px solid rgba(62, 116, 140, .3);
+	margin-bottom: -4px;
 }
 
 #ask fieldset {
@@ -327,11 +365,8 @@ header .title a {
 	border-radius: 0;
 }
 
-#user .answers-header {
-  border-top: 0;
-}
-
 #user-answers-questions-header {
+  border-top: 0;
   -webkit-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.05);
   -moz-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.05);
   box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.05);
@@ -366,6 +401,7 @@ header .title a {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+	margin-left: 10px;
 }
 
 .menu-item.selected, .menu-item:active {
@@ -401,6 +437,18 @@ header .title a {
 
 .menu-item:first-child a {
 	border-left: 0;
+}
+
+#questions-header-prefs a {
+	display: block;
+	background: url('/images/prefs.png') no-repeat center center;
+	height: 35px;
+	width: 5px;
+}
+
+
+#questions-header-prefs span {
+	display: none;
 }
 
 .answers-header h3 {
@@ -482,18 +530,15 @@ header .title a {
   padding: 20px;
 }
 
-#user #questions-list {
-  border-bottom: 1px solid rgba(173, 189, 197, 1);
+#user #answers-list {
+  margin-bottom: -1px;
 }
 
-#answers-list,  {
+#answers-list {
+	border-bottom: 1px solid rgba(62, 116, 140, .3);
   -webkit-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.03);
   -moz-box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.03);
   box-shadow: inset 0 3px 0 rgba(0, 0, 0, 0.03);
-}
-
-#question #answers-list {
-  border-bottom: 1px solid rgba(62, 116, 140, .3);
 }
 
 .question, .answer {
@@ -820,7 +865,6 @@ a.tag-follow span {
 
 #question #questions-footer {
 	border-top: 0;
-	margin-top: -4px;
 }
 
 .questions-footer button, #questions-footer a {
