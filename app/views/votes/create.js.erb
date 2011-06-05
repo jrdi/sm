@@ -1,6 +1,8 @@
 <% if @vote.errors.blank? %>
 	var value = { "1": ".up", "-1":".down"};
 	$("#answer-" + "<%= @vote.votable.id %>" + " " + value["<%= @vote.value %>"]).addClass('voted');
+	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes-count").remove();
+	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes").append("<div class='votes-count <%= 'negative' if @vote.votable.votes_count < 0 %>' title='18 votos totales: 10 positivos, 8 negativos'><span><%= @vote.votable.votes_count %></span></div>");
 <% else %>
 	alert("Ya has votado esto amigo!");
 <% end %>
