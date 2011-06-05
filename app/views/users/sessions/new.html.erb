@@ -13,8 +13,8 @@
     </ul>
 	</div>
 
-	<div id="questions-list">
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "clearfix"}) do |f| %>
+	<div id="questions-list" class="clearfix">
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <fieldset class="clearfix">
         <legend>Accede a tu cuenta</legend>
         <p>
@@ -39,14 +39,11 @@
         <% end -%>
       </div>
 
-      <div class="clearfix">
-        <p>
-          <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-            <%= link_to "Has olvidado tu contraseña?", new_password_path(resource_name) %> Te la enviaremos por correo.
-          <% end -%>
-          
-        </p>
-      </div>
+      <p class="clearfix">
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+          <%= link_to "Has olvidado tu contraseña?", new_password_path(resource_name) %><br />Te la enviaremos por correo.
+        <% end -%>
+      </p>
     <% end %>
 	</div>
 </div>

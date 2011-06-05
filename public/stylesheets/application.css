@@ -890,9 +890,13 @@ a.tag-follow span {
 
 /* Formularios */
 
-#user_new fieldset {
+#login {
+  color: rgba(137, 156, 165, 1);
+}
+
+#user_new {
   float: left;
-  width: 400px;
+  width: 380px;
 }
 
 #user_new fieldset {
@@ -926,7 +930,7 @@ a.tag-follow span {
   float: right;
   font-size: 16px;
   padding: 8px 6px;
-  width: 300px;
+  width: 240px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -942,8 +946,8 @@ a.tag-follow span {
 }
 
 #user_new > div, #user_new > p {
-  margin: 0 0 15px 88px;
-  width: 312px;
+  margin: 0 0 15px 108px;
+  width: 252px;
 }
 
 #user_new small {
@@ -966,8 +970,43 @@ a.tag-follow span {
 }
 
 #user_new p {
-  color: rgba(137, 156, 165, 1);
   font-size: 12px;
+}
+
+.login-sidebar {
+  float: left;
+  margin: 5px 0 0 30px;
+  width: 248px;
+}
+
+.login-sidebar p {
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.login-sidebar p.goto-login {
+  font-size: 14px;
+}
+
+.fb-connect {
+  background: url('/images/fb-connect.png');
+  display: block;
+  float: left;
+  margin-bottom: 10px;
+  height: 25px;
+  width: 194px;
+}
+
+.twitter-connect {
+  background: url('/images/twitter-connect.png');
+  display: block;
+  float: left;
+  height: 24px;
+  width: 151px;
+}
+
+.fb-connect span, .twitter-connect span {
+  display: none;
 }
 
 /* Pies */
