@@ -17,6 +17,11 @@ h2.title {
 	font-size: 40px;
 }
 
+#login h2, #signup h2 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
 a {
 	color: #C3560D;
 }
@@ -559,7 +564,14 @@ header .title a {
 }
 
 .static #questions-list {
-  padding: 20px;
+	border-bottom: 1px solid rgba(62, 116, 140, .5);
+  padding: 20px 20px 30px;
+	-webkit-border-radius: 0 0 7px 7px;
+	-moz-border-radius: 0 0 7px 7px;
+	border-radius: 0 0 7px 7px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 }
 
 #user #answers-list {
@@ -653,10 +665,6 @@ header .title a {
 	background-position: 0 -62px;
 }
 
-.replied:hover {
-	background-position: 0 -93px;
-}
-
 .star {
 	background-position: -93px 0;
 	position: absolute;
@@ -711,6 +719,12 @@ a.up:hover, a.up:active, a.up.voted {
 	background-position: -32px -31px;
 	width: 31px;
 }
+
+a.up:active, a.up.voted {
+	background-position: -32px -62px;
+	width: 31px;
+}
+
 
 .down {
 	background-position: -62px 0;
@@ -872,6 +886,58 @@ a.tag-follow span {
 
 #new_answer label {
   display: none;
+}
+
+/* Formularios */
+
+#login fieldset {
+  border-top: 1px solid rgba(193, 200, 207, .5);
+  width: 400px;
+}
+
+#login legend {
+  color: rgba(65, 80, 87, 1);
+  font-size: 18px;
+  padding: 0 5px;
+}
+
+#login form p {
+  margin-bottom: 15px;
+  overflow: auto;
+}
+
+#login label {
+  color: rgba(101, 121, 130, 1);
+  float: left;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 38px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
+}
+
+#login input[type="text"], #login input[type="email"], #login input[type="password"] {
+  border: 1px solid rgba(189, 201, 209, 1);
+  color: rgba(101, 121, 130, 1);
+  float: right;
+  font-size: 16px;
+  padding: 8px 6px;
+  width: 300px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+	-webkit-box-shadow:
+	  0 2px 0 rgba(255, 255, 255, 1),
+	  inset 0 5px 5px rgba(171, 187, 195, .3);
+	-moz-box-shadow:
+	  0 2px 0 rgba(255, 255, 255, 1),
+	  inset 0 5px 5px rgba(171, 187, 195, .3);
+	box-shadow:
+	  0 2px 0 rgba(255, 255, 255, 1),
+	  inset 0 5px 5px rgba(171, 187, 195, .3);
+}
+
+#user_submit {
+  float: right;
 }
 
 /* Pies */
