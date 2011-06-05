@@ -190,6 +190,7 @@ header .title a {
   font-weight: bold;
   margin: 0;
   padding: 10px 15px 10px 30px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 1);
   width: 98px;
 	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .3);
 	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .3);
@@ -197,6 +198,10 @@ header .title a {
 	-webkit-border-radius: 0 0 3px 3px;
 	-moz-border-radius: 0 0 3px 3px;
 	border-radius: 0 0 3px 3px;
+}
+
+#navbar li li a:hover {
+  background: rgba(234, 237, 239, 1);
 }
 
 #navbar li li:first-child a {
