@@ -3,21 +3,28 @@ isNewQuestionFocus = false;
 
 $(document).ready(function() {
   // fire functions
-  if (window.location.hash.substring(1) === "new_question") {
+  if((window.location.hash.substring(1) === "new_question")) {
     $('#question_title').focus();
     $('label[for="question_title"]').css("color", "rgba(157, 136, 81, 1)");
     $("#new_question").addClass("focus");
+  } else if($("#question_title").is(":focus")) {
+    return true;
   } else {
-    $('#field_description, #field_tags, #ask-footer').delay(2000).slideUp();
-    setTimeout( function(){      
-      cssTransform = {
-        "-webkit-border-radius" : "7px",
-        "-moz-border-radius" : "7px",
-        "border-radius" : "7px"
+    setTimeout( function(){
+      if(!isNewQuestionFocus) {
+        $("#new_question").removeClass("focus");
+        $('#field_description, #field_tags, #ask-footer').slideUp();
+        setTimeout( function(){
+          cssTransform = {
+            "-webkit-border-radius" : "7px",
+            "-moz-border-radius" : "7px",
+            "border-radius" : "7px"
+          }
+
+          $('#field_title, #new_question fieldset').css(cssTransform);
+        }, 400);
       }
-      
-      $('#field_title, #new_question fieldset').css(cssTransform);
-    }, 2400);
+    }, 2000);
   }
 
   $('#question_title').focus(function() {
@@ -59,7 +66,7 @@ $(document).ready(function() {
 
     if(!isNewQuestionFocus && !title && !desc && !tags) {
       $("#new_question").removeClass("focus");
-      $('#field_description, #field_tags, #ask-footer').delay(500).slideUp();
+      $('#field_description, #field_tags, #ask-footer').slideUp();
       setTimeout( function(){
         cssTransform = {
           "-webkit-border-radius" : "7px",
@@ -68,7 +75,7 @@ $(document).ready(function() {
         }
 
         $('#field_title, #new_question fieldset').css(cssTransform);
-      }, 900);
+      }, 400);
     }
   });
 
@@ -77,7 +84,7 @@ $(document).ready(function() {
 
     if(!title) {
       e.preventDefault();
-      alert("Necesitas escribir una pregunta para poder publicarla!")
+      alert("Necesitas escribir una pregunta antes!")
     }
   });
 
