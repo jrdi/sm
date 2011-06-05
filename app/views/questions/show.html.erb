@@ -29,8 +29,10 @@
     <%= render :partial => 'shared/question', :locals => { :question => @question } %>
   </ul>
 
-  <div id="answers-header">
-  	<ul id="answers-header-menu">
+  <div class="answers-header">
+    <h3>Respuestas</h3>
+    
+  	<ul class="answers-header-menu">
   	  <!-- to fix -->
   		<li class="menu-item <%= tab_selected?(params[:order]) %>">
 				<%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item", :id => "votes_count", :remote => true %>

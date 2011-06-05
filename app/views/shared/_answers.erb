@@ -1,6 +1,8 @@
 <% valid_answer ||= nil %>
 <% if answers.empty? %>
-	<p>Aún no hay respuestas disponibles.</p>
+	<li class="answer no-answers">
+	  <p>Aún no hay respuestas disponibles.</p>
+	</li>
 <% else %>
 	<% answers.each do |answer| %>
 	  <%- unless answer.id.blank? %>

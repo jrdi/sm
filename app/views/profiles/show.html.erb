@@ -5,7 +5,7 @@
     <ul id="breadcrumb" itemprop="breadcrumb">
       <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
       <li class="breadcrumb-item breadcrumb-tag">
-        <%= content_tag(:h3, link_to(current_user.name, root_path, :title => "Preguntas y respuestas de #{@user.name}")) %>
+        <%= link_to(current_user.name, root_path, :title => "Preguntas y respuestas de #{@user.name}") %>
       </li>
     </ul>
 
@@ -16,15 +16,15 @@
   	</ul>
   </ul>
 
-  <div id="answers-header">
+  <div id="user-answers-questions-header" class="answers-header">
 	  <!-- to fix
-		<ul id="answers-header-menu">
+		<ul class="answers-header-menu">
 			<li class="menu-item" <%= tab_selected?(params[:scoped_questions]) %>><%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :id => "all", :remote => true %></li>
 			<li <%= tab_selected?(params[:scoped_questions], 'without_answers') %> class="menu-item"><%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :id => "without_answers", :remote => true %></li>
 			<li <%= tab_selected?(params[:scoped_questions], 'populars') %> class="menu-item"><%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :id => "populars", :remote => true %></li>
 		</ul>  -->
 
-  	<p>Preguntas del usuario</p>
+  	<h3>Preguntas del usuario</h3>
   </div>
 
   <ul id="questions-list">
@@ -37,9 +37,9 @@
 	  <% end -%>
   </ul> 
   
-  <div id="answers-header">
+  <div class="answers-header">
 	  <!-- to fix
-  	<ul id="answers-header-menu">
+  	<ul class="answers-header-menu">
   		<li class="menu-item" <%= tab_selected?(params[:order]) %>>
 				<%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item", :id => "votes_count", :remote => true %>
 			</li>
@@ -48,7 +48,7 @@
 			</li>
   	</ul> -->
 
-  	<p>Respuestas del usuario</p>
+  	<h3>Respuestas del usuario</h3>
   </div>
 
   <ul id="answers-list">
