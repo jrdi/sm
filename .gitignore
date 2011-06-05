@@ -17,3 +17,4 @@ config/*.yml
 config/deploy.rb
 rerun.txt
 pickle-email-*.html
+deploy_heroku.sh
