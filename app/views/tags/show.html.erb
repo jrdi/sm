@@ -24,7 +24,9 @@
 
   <ul id="questions-list">
 		<%- if @tag.questions.empty? %>
+	  <li class="answer no-answers">
 			<p>Aún no hay preguntas disponibles.</p>
+  	</li>
 		<% else %>
   		<%- @tag.questions.each do |question| %>
 	      <%= render :partial => 'shared/question', :locals => { :question => question } %>
