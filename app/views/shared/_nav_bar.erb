@@ -4,10 +4,13 @@
 	<li><%= link_to 'Blog', root_path %></li>
 	<%- if user_signed_in? %>
     <li><%= link_to 'Perfil', root_path %></li>
-    <li class="prefs">
+    <li>
       <%= link_to(content_tag(:span,content_tag(:span, 'Mi cuenta')), edit_user_registration_path, :class => selected?('users/registrations', 'edit')) %>
   	  <ul>
-    		<li><%= link_to 'Preferencias', edit_user_registration_path %></li>
+    		<li>
+    		  <img src="/images/dropdown-arrow.png" alt="" class="dropdown-arrow">
+          <%= link_to 'Preferencias', edit_user_registration_path %>
+        </li>
     		<li><%= link_to 'Desconectar', destroy_session_path(current_user) %></li>
   		</ul>
 		</li>
