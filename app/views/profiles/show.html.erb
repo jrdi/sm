@@ -14,6 +14,12 @@
     	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
     	</li>
   	</ul>
+
+		<ul id="questions-header-prefs">
+      <li class="menu-item">
+    	  <%= link_to content_tag(:span, 'Preferencias'), root_path, :title => "Preferencias de usuario" %>
+    	</li>
+  	</ul>
   </ul>
 
   <div id="user-answers-questions-header" class="answers-header">
