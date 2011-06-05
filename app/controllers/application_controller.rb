@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!, :featured_tags
   
   def featured_tags
-    @featured_tags = Tag.order('rand()').limit(6)
+    @featured_tags = Tag.order('rand()').limit(10)
   end
   
   protected
