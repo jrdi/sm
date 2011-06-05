@@ -904,7 +904,7 @@ a.tag-follow span {
   color: rgba(65, 80, 87, 1);
   font-size: 18px;
   margin-top: 5px;
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 #user_new p {
@@ -941,14 +941,14 @@ a.tag-follow span {
 	  inset 0 5px 5px rgba(171, 187, 195, .3);
 }
 
-#user_new div {
-  margin-left: 88px;
+#user_new > div, #user_new > p {
+  margin: 0 0 15px 88px;
   width: 312px;
 }
 
 #user_new small {
   float: left;
-  margin-top: -20px;
+  margin-top: -15px;
 }
 
 #user_new small label {
@@ -957,6 +957,17 @@ a.tag-follow span {
 
 #user_submit {
   float: right;
+  margin-top: -5px;
+}
+
+#user_new small {
+  float: left;
+  margin-top: -15px;
+}
+
+#user_new p {
+  color: rgba(137, 156, 165, 1);
+  font-size: 12px;
 }
 
 /* Pies */
@@ -994,7 +1005,6 @@ a.tag-follow span {
 	float: right;
 	font-weight: bold;
 	line-height: 30px;
-	margin-top: 2px;
 	padding: 0 15px;
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 1);

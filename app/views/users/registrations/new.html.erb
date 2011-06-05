@@ -1,18 +1,39 @@
-<h2>Sign up</h2>
+<% title("Registro") %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div id="login" class="static">
+	<div id="questions-header" class="answers-header">
+    <ul id="breadcrumb" itemprop="breadcrumb">
+      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
+      <li class="breadcrumb-item breadcrumb-tag">
+        <p>Registro</p>
+      </li>
+    </ul>
+	</div>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+	<div id="questions-list">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => "clearfix") do |f| %>
+      <%= devise_error_messages! %>
+      <fieldset class="clearfix">
+        <legend>Registro</legend>
+        <p>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </p>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+        <p>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </p>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+        <p>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </p>
+      </fieldset>
 
-  <p><%= f.submit "Sign up" %></p>
-<% end %>
-
-<%= render :partial => "shared/links" %>
+      <div class="clearfix">
+        <button type="submit" name="commit" id="user_submit">Registro</button>
+      </div>
+    <% end %>
+	</div>
+</div>
