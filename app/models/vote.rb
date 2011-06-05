@@ -9,11 +9,14 @@ class Vote < ActiveRecord::Base
   scope :positive, where(:value => 1)
   scope :negative, where(:value => -1)
   
-  def after_create
+  after_create :update_vote_created
+  after_destroy :update_vote_destroyed
+  
+  def update_vote_created
     votable.update_attribute(:votes_count, votable.votes_count + value) unless value.blank?
   end
   
-  def after_destroy
+  def update_vote_destroyed
     votable.update_attribute(:votes_count, votable.votes_count - value) unless value.blank?
   end
 end
