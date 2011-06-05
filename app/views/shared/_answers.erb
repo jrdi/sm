@@ -29,11 +29,9 @@
 	    				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
 	        	<% end -%>
 
-            <% if answer.votes_count != 0 %>
-	  					<div class="votes-count <%= 'negative' if answer.votes_count < 0 %>" title="18 votos totales: 10 positivos, 8 negativos">
-	  					  <span><%= answer.votes_count %></span>
-	  					</div>    
-						<% end %>
+  					<div class="votes-count <%= 'negative' if answer.votes_count < 0 %>" title="18 votos totales: 10 positivos, 8 negativos">
+  					  <span><%= answer.votes_count %></span>
+  					</div>    
 	  			</div>
 
 					<% if valid_answer.present? && answer == valid_answer %>
