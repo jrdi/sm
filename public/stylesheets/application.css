@@ -518,7 +518,6 @@ header .title a {
 	display: block;
 	float: left;
 	height: 31px;
-	width: 31px;
 }
 
 .comments, .reply, .up, .down {
@@ -543,6 +542,7 @@ header .title a {
 	-webkit-border-radius: 0 5px 5px 0;
 	-moz-border-radius: 0 5px 5px 0;
 	border-radius: 0 5px 5px 0;
+	width: 30px;
 }
 
 .comments {
@@ -551,6 +551,7 @@ header .title a {
 	font-size: 14px;
 	line-height: 31px;
 	text-align: center;
+	width: 31px;
 }
 
 .comments:hover {
@@ -559,11 +560,12 @@ header .title a {
 
 .command-item {
 	background: url('/images/sprites-commands.png') no-repeat;
-	float: left;
+	position: relative;
 }
 
 .reply {
 	border-left: 0;
+	width: 31px;
 }
 
 .reply:hover {
@@ -583,6 +585,7 @@ header .title a {
 	position: absolute;
 	right: 20px;
 	top: 60px;
+	width: 31px;
 }
 
 .question:first-child .star {
@@ -599,19 +602,20 @@ header .title a {
 
 .up {
 	background-position: -31px 0;
+	width: 32px;
 }
 
 .up:hover, .down:hover {
-	border: 1px solid rgba(158, 180, 194, 1);
+	border-color: rgba(158, 180, 194, 1);
 	position: relative;
 	z-index: 2px;
 }
 
 .up:hover, .up:active, .up.voted {
 	background-position: -31px -31px;
-	border-right: 0;
 	margin-right: -1px;
-	width: 32px;
+	width: 33px;
+	z-index: 4;
 }
 
 .up:active, .up.voted {
@@ -619,6 +623,16 @@ header .title a {
 	border-top-color: rgba(82, 173, 67, 1);
 	border-bottom-color: rgba(195, 222, 161, 1);
 	border-left-color: rgba(195, 222, 161, 1);
+}
+
+a.up {
+	background-position: -32px 0;
+	width: 30px;
+}
+
+a.up:hover, a.up:active, a.up.voted {
+	background-position: -32px -31px;
+	width: 31px;
 }
 
 .down {
@@ -631,6 +645,7 @@ header .title a {
 	border-right-color: rgba(188, 126, 60, 1);
 	border-bottom-color: rgba(188, 126, 60, 1);
 	border-left-color: rgba(133, 78, 18, 1);
+	z-index: 4;
 }
 
 .voted .up, .voted .down {
@@ -639,8 +654,13 @@ header .title a {
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
 
+a.down {
+	background-position: -63px 0;
+	width: 29px;
+}
+
 .votes-count {
-  background: url('/images/voted-count-bg.png') repeat-x;
+  background: url('/images/votes-count-bg.png') repeat-x;
   border: 1px solid rgba(161, 205, 153, 1);
   clear: both;
   color: rgba(71, 179, 53, 1);
@@ -651,7 +671,7 @@ header .title a {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, .5);
   margin-top: -5px;
   width: 100%;
-  z-index: -2;
+  z-index: -4;
 	-webkit-border-radius: 0 0 5px 5px;
 	-moz-border-radius: 0 0 5px 5px;
 	border-radius: 0 0 5px 5px;
@@ -659,9 +679,19 @@ header .title a {
   -moz-box-sizing: border-box;
 }
 
+.votes-count.negative {
+  background-image: url('/images/votes-count-negative-bg.png');
+  border-color: rgba(205, 170, 153, 1);
+  color: rgba(228, 119, 66, 1);
+}
+
 .votes-count span {
   background: url('/images/voted-up.png') no-repeat 0 center;
   padding-left: 16px;
+}
+
+.votes-count.negative span {
+  background-image: url('/images/voted-down.png');
 }
 
 .correct-answer {
