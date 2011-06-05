@@ -890,32 +890,37 @@ a.tag-follow span {
 
 /* Formularios */
 
-#login fieldset {
-  border-top: 1px solid rgba(193, 200, 207, .5);
+#user_new fieldset {
+  float: left;
   width: 400px;
 }
 
-#login legend {
-  color: rgba(65, 80, 87, 1);
-  font-size: 18px;
-  padding: 0 5px;
+#user_new fieldset {
+  border-top: 1px solid rgba(193, 200, 207, .5);
+  padding-top: 15px;
 }
 
-#login form p {
+#user_new legend {
+  color: rgba(65, 80, 87, 1);
+  font-size: 18px;
+  margin-top: 5px;
+  padding-right: 5px;
+}
+
+#user_new p {
   margin-bottom: 15px;
   overflow: auto;
 }
 
-#login label {
+#user_new label {
   color: rgba(101, 121, 130, 1);
-  float: left;
   font-size: 14px;
   font-weight: 500;
   line-height: 38px;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
 }
 
-#login input[type="text"], #login input[type="email"], #login input[type="password"] {
+#user_new input[type="text"], #user_new input[type="email"], #user_new input[type="password"] {
   border: 1px solid rgba(189, 201, 209, 1);
   color: rgba(101, 121, 130, 1);
   float: right;
@@ -934,6 +939,20 @@ a.tag-follow span {
 	box-shadow:
 	  0 2px 0 rgba(255, 255, 255, 1),
 	  inset 0 5px 5px rgba(171, 187, 195, .3);
+}
+
+#user_new div {
+  margin-left: 88px;
+  width: 312px;
+}
+
+#user_new small {
+  float: left;
+  margin-top: -20px;
+}
+
+#user_new small label {
+  font-size: 11px;
 }
 
 #user_submit {
@@ -965,7 +984,7 @@ a.tag-follow span {
 	border-top: 0;
 }
 
-.questions-footer button, #questions-footer a {
+.questions-footer button, #questions-footer a, #user_new button {
 	background: url('/images/question-footer-button-bg.png') repeat-x;
 	border: 1px solid rgba(92, 124, 137, .3);
 	border-bottom-color: rgba(169, 176, 179, 1);
@@ -994,14 +1013,14 @@ a.tag-follow span {
 	  0 1px 0 rgba(255, 255, 255, 1);
 }
 
-.questions-footer button:hover, #questions-footer a:hover {
+.questions-footer button:hover, #questions-footer a:hover, #user_new button:hover {
 	background-image: url('/images/question-footer-button-hover-bg.png');
   border-color: rgba(92, 124, 137, .6);
 	border-bottom-color: rgba(127, 127, 127, 1);
 	color: rgba(83, 105, 115, 1);
 }
 
-.questions-footer button:active, #questions-footer a:active {
+.questions-footer button:active, #questions-footer a:active, #user_new button:active {
 	background-image: url('/images/question-footer-button-active-bg.png');
   border-color: rgba(92, 124, 137, .3);
 	border-bottom-color: rgba(193, 205, 210, 1);
@@ -1017,7 +1036,7 @@ a.tag-follow span {
   color: rgba(134, 152, 159, 1);
 }
 
-.questions-footer button {
+.questions-footer button, #user_new button {
   line-height: 1;
   padding: 7px 15px;
 }

@@ -14,7 +14,7 @@
 	</div>
 
 	<div id="questions-list">
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "clearfix"}) do |f| %>
     <fieldset>
       <legend>Accede a tu cuenta</legend>
       <p>
@@ -27,14 +27,17 @@
         <%= f.password_field :password %>
       </p>
     </fieldset>
-      <p>
-        <button type="submit" name="commit" id="user_submit">Accede</button>
 
-        <% if devise_mapping.rememberable? -%>
+    <div>
+      <button type="submit" name="commit" id="user_submit">Accede</button>
+
+      <% if devise_mapping.rememberable? -%>
+        <small>
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
-        <% end -%>
-      </p>
+        </small>
+      <% end -%>
+    </div>
     <% end %>
 	</div>
 </div>
