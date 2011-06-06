@@ -5,7 +5,7 @@
     <ul id="breadcrumb" itemprop="breadcrumb">
       <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
       <li class="breadcrumb-item breadcrumb-tag">
-        <%= link_to(current_user.name, @user, :title => "Preguntas y respuestas de #{@user.name}") %>
+        <%= link_to(@user.name, @user, :title => "Preguntas y respuestas de #{@user.name}") %>
       </li>
     </ul>
 
