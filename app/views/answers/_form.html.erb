@@ -14,8 +14,10 @@
     <% end %>
 
     <fieldset>
-      <%= f.label :content %>
-      <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta", :id => "answer_description" %>
+      <div class="field" id="field_description">
+        <%= f.label :content %>
+        <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta" %>
+      </div>
     </fieldset>
 
     <div id="questions-footer" class="questions-footer">

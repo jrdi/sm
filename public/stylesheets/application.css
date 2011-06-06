@@ -12,9 +12,22 @@ h2.title {
 	font-size: 18px;
 }
 
-.static h2 {
+.static h2, .static h3 {
   color: rgba(101, 122, 131, 1);
+}
+
+.static h2 {
 	font-size: 40px;
+}
+
+.static h3 {
+	font-size: 30px;
+	font-weight: normal;
+}
+
+.static h4 {
+	color: rgba(195, 86, 13, 1);
+	font-size: 24px;
 }
 
 #login h2, #signup h2 {
@@ -23,7 +36,7 @@ h2.title {
 }
 
 a {
-	color: #C3560D;
+	color: rgba(195, 86, 13, 1);
 }
 
 body {
@@ -242,12 +255,6 @@ header .title a {
 	box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
 }
 
-#new_answer textarea {
-	border: 1px solid rgba(62, 116, 140, .5);
-	border-top: 0;
-	border-bottom: 1px solid rgba(62, 116, 140, .3);
-	margin-bottom: -4px;
-}
 
 #ask fieldset {
   -webkit-border-radius: 7px 7px 0 0;
@@ -264,7 +271,7 @@ header .title a {
   border-top: 1px solid rgba(241, 228, 194, 1);
 }
 
-#ask label {
+#ask label, #new_answer label {
   color: rgba(204, 185, 134, 1);
   float: left;
   font: bold 12px "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -272,7 +279,7 @@ header .title a {
   width: 85px;
 }
 
-#question_title, #question_description, #answer_description, #question_tags {
+#question_title, #question_description, #answer_content, #question_tags {
   background: url('/images/notefield.png') repeat-x;
   border: 0;
   border-left: 1px solid rgba(241, 228, 194, 1);
@@ -285,11 +292,11 @@ header .title a {
   width: 567px;
 }
 
-#question_title::-webkit-input-placeholder, #question_description::-webkit-input-placeholder, #answer_description::-webkit-input-placeholder, #question_tags::-webkit-input-placeholder {
+#question_title::-webkit-input-placeholder, #question_description::-webkit-input-placeholder, #answer_content::-webkit-input-placeholder, #question_tags::-webkit-input-placeholder {
   color: rgba(204, 185, 134, 1);
 }
 
-#question_title:focus, #question_description:focus, #answer_description:focus, #question_tags:focus {
+#question_title:focus, #question_description:focus, #answer_content:focus, #question_tags:focus {
   color: rgba(157, 136, 81, 1);
 }
 
@@ -304,8 +311,9 @@ header .title a {
   font-weight: 500;
 }
 
-#question_description {
+#question_description, #answer_content {
   height: 80px;
+  margin-bottom: -4px;
 }
 
 #question_tags {
@@ -313,12 +321,13 @@ header .title a {
   padding-bottom: 15px;
 }
 
-#answer_description {
+#new_answer fieldset {
+  border: 1px solid rgba(62, 116, 140, .5);
+  border-top: 0;
   border-bottom: 1px solid rgba(62, 116, 140, .3);
+}
+#answer_content{   
   font-size: 14px;
-  height: 90px;
-  padding: 20px;
-  width: 658px;
 }
 
 /* Migapan */
@@ -553,7 +562,7 @@ header .title a {
   color: rgba(134, 152, 159, 1);
 }
 
-/* Listados y páginas estáticas */
+/* Listados */
 
 #questions-list, #answers-list {
 	background: url('/images/questions-list-bg.png');
@@ -725,7 +734,6 @@ a.up:active, a.up.voted {
 	width: 31px;
 }
 
-
 .down {
 	background-position: -62px 0;
 }
@@ -796,7 +804,7 @@ a.down {
   margin-bottom: 8px;
 }
 
-.question .description, .answer .description {
+.question .description, .answer .description, .static p {
 	color: rgba(90, 108, 115, 1);
 	font-size: 13px;
 	margin-bottom: 15px;
@@ -884,8 +892,30 @@ a.tag-follow span {
   text-shadow: 1px 1px 0 rgba (255, 255, 255, .5);
 }
 
-#new_answer label {
-  display: none;
+/* Páginas estáticas */
+
+#team li + li {
+  margin-top: 50px;
+}
+
+#team li img {
+  background: rgba(255, 255, 255, 1);
+	border: 1px solid rgba(62, 116, 140, .3);
+	clear: left;
+	float: left;
+	margin-right: 30px;
+  max-width: 120px;
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+	box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+}
+
+#team li img + p {
+  padding-top: 10px;
 }
 
 /* Formularios */
@@ -1019,7 +1049,7 @@ a.tag-follow span {
 	-webkit-border-radius: 0 0 7px 7px;
 	-moz-border-radius: 0 0 7px 7px;
 	border-radius: 0 0 7px 7px;
-	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	-webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 	-moz-box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 	box-shadow: 0 1px 0 rgba(0, 0, 0, .1);
 }
