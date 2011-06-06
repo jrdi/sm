@@ -167,6 +167,24 @@
       even: "debe ser par"
 
   activerecord:
+    models:
+      question: "Pregunta"
+      answer: "Respuest"
+      user: "Usuario"
+    attributes:
+      user:
+        password: "Contraseña"
+        password_confirmation: "Confirmación"
+      question:
+        title: "Título"
+        description: "Descripción"
+        tags: "Temas"
+      answer:
+        content: "Respuesta"
+      email:
+        name: "Nombre"
+        message: "Mensaje"
+        
     errors:
       template:
         header:
