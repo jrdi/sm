@@ -1,7 +1,4 @@
-<%= render :partial => "shared/links" %>
-
-
-<% title("Accede a tu cuenta") %>
+<% title("Acceso") %>
 
 <div id="login" class="static">
 	<div id="questions-header" class="answers-header">
@@ -29,7 +26,7 @@
       </fieldset>
 
       <div class="clearfix">
-        <button type="submit" name="commit" id="user_submit">Accede</button>
+        <button type="submit" name="commit" id="user_submit">Entra!</button>
 
         <% if devise_mapping.rememberable? -%>
           <small>
@@ -41,9 +38,26 @@
 
       <p class="clearfix">
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-          <%= link_to "Has olvidado tu contraseña?", new_password_path(resource_name) %><br />Te la enviaremos por correo.
+          <%= link_to "¿Has olvidado tu contraseña?", new_password_path(resource_name) %><br />Te la enviaremos por correo.
         <% end -%>
       </p>
     <% end %>
+
+    <div class="login-sidebar">
+      <p class="goto-login"> ¿No tienes cuenta?
+        <%= link_to "Regístrate!", new_registration_path(resource_name) %><br />
+      </p>
+
+      <p>
+        Entra con tu perfil de <strong>Facebook</strong> o <strong>Twitter</strong> para usar esta web de forma más cómoda.
+      </p>
+
+      <p>
+        <%- if devise_mapping.omniauthable? %>
+    	    <%= link_to content_tag(:span, "Entra con Facebook"), omniauth_authorize_path(resource_name, :facebook), :class => "fb-connect" %>
+    	    <%= link_to content_tag(:span, "Entra con Twitter"), omniauth_authorize_path(resource_name, :twitter), :class => "twitter-connect" %>
+        <% end -%>
+      </p>
+    </div>
 	</div>
 </div>

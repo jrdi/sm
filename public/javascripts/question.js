@@ -14,4 +14,11 @@ $(document).ready(function() {
     $("#answer_content").focus();
     return false;
   });
+
+  $('.new-answer').live("click", function(e) {
+    if ($("#answer_content").val() === ""){
+      e.preventDefault();
+      alert("Primero tienes que escribir una respuesta!");
+    }
+  });
 });
