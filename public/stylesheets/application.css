@@ -924,29 +924,28 @@ a.tag-follow span {
   color: rgba(137, 156, 165, 1);
 }
 
-#user_new {
+#login form {
   float: left;
   width: 380px;
 }
 
-#user_new fieldset {
+#login form fieldset {
   border-top: 1px solid rgba(193, 200, 207, .5);
   padding-top: 15px;
 }
 
-#user_new legend {
+#login form legend {
   color: rgba(65, 80, 87, 1);
   font-size: 18px;
   margin-top: 5px;
   padding-right: 10px;
 }
 
-#user_new p {
+#login form div {
   margin-bottom: 15px;
-  overflow: auto;
 }
 
-#user_new label {
+#login form label {
   color: rgba(101, 121, 130, 1);
   font-size: 14px;
   font-weight: 500;
@@ -954,7 +953,7 @@ a.tag-follow span {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
 }
 
-#user_new input[type="text"], #user_new input[type="email"], #user_new input[type="password"] {
+#login form input[type="text"], #login form input[type="email"], #login form input[type="password"] {
   border: 1px solid rgba(189, 201, 209, 1);
   color: rgba(101, 121, 130, 1);
   float: right;
@@ -975,32 +974,31 @@ a.tag-follow span {
 	  inset 0 5px 5px rgba(171, 187, 195, .3);
 }
 
-#user_new > div, #user_new > p {
+#login form > div, #login form > p {
   margin: 0 0 15px 128px;
   width: 252px;
 }
 
-#user_new small {
+#login form p {
+  font-size: 12px;
+}
+
+#login form p.tip {
+  float: right;
+}
+
+#login form small {
   float: left;
   margin-top: -15px;
 }
 
-#user_new small label {
+#login form small label {
   font-size: 11px;
 }
 
 #user_submit {
   float: right;
   margin-top: -5px;
-}
-
-#user_new small {
-  float: left;
-  margin-top: -15px;
-}
-
-#user_new p {
-  font-size: 12px;
 }
 
 .login-sidebar {
@@ -1064,7 +1062,7 @@ a.tag-follow span {
 	border-top: 0;
 }
 
-.questions-footer button, #questions-footer a, #user_new button {
+.questions-footer button, #questions-footer a, #login form button {
 	background: url('/images/question-footer-button-bg.png') repeat-x;
 	border: 1px solid rgba(92, 124, 137, .3);
 	border-bottom-color: rgba(169, 176, 179, 1);
@@ -1092,14 +1090,14 @@ a.tag-follow span {
 	  0 1px 0 rgba(255, 255, 255, 1);
 }
 
-.questions-footer button:hover, #questions-footer a:hover, #user_new button:hover {
+.questions-footer button:hover, #questions-footer a:hover, #login form button:hover {
 	background-image: url('/images/question-footer-button-hover-bg.png');
   border-color: rgba(92, 124, 137, .6);
 	border-bottom-color: rgba(127, 127, 127, 1);
 	color: rgba(83, 105, 115, 1);
 }
 
-.questions-footer button:active, #questions-footer a:active, #user_new button:active {
+.questions-footer button:active, #questions-footer a:active, #login form button:active {
 	background-image: url('/images/question-footer-button-active-bg.png');
   border-color: rgba(92, 124, 137, .3);
 	border-bottom-color: rgba(193, 205, 210, 1);
@@ -1115,7 +1113,7 @@ a.tag-follow span {
   color: rgba(134, 152, 159, 1);
 }
 
-.questions-footer button, #user_new button {
+.questions-footer button, #login form button {
   line-height: 1;
   padding: 7px 15px;
 }

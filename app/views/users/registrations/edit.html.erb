@@ -1,22 +1,47 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<% title("Preferencias") %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div id="login" class="static">
+	<div id="questions-header" class="answers-header">
+    <ul id="breadcrumb" itemprop="breadcrumb">
+      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
+      <li class="breadcrumb-item breadcrumb-tag">
+        <p>Preferencias</p>
+      </li>
+    </ul>
+	</div>
 
-  <p><%= f.label :name %><br />
-  <%= f.text_field :name %></p>
+	<div id="questions-list" class="clearfix">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <fieldset class="clearfix">
+        <legend>Preferencias</legend>
+        <div>
+          <%= f.label :name %>
+          <%= f.email_field :name %>
+        </div>
 
-  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></p>
+        <div>
+          <%= f.label :password %>
+          <%= f.password_field :password %><br />
+          <p class="tip">(dejala en blanco si no quieres cambiarla)</p>
+        </div>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+        <div class="clearfix">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+        </div>
+      </fieldset>
 
-  <p><%= f.submit "Update" %></p>
-<% end %>
+      <div class="clearfix">
+        <button type="submit" name="commit" id="user_submit">Actualizar</button>
+      </div>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
-<%= link_to "Back", :back %>
+      <p>
+        ¿Quieres cancelar tu cuenta?<br />
+          <%- if controller_name != 'sessions' %>
+            <%= link_to "Cancelar cuenta", registration_path(resource_name), :confirm => "¿Estás seguro? No hay marcha atrás.", :method => :delete %>
+          <% end -%>
+      </p>
+    <% end %>
+	</div>
+</div>

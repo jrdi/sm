@@ -15,23 +15,23 @@
       <%= devise_error_messages! %>
       <fieldset class="clearfix">
         <legend>Registro</legend>
-        <p>
+        <div>
           <%= f.label :email %>
           <%= f.email_field :email %>
-        </p>
+        </div>
 
-        <p>
+        <div>
           <%= f.label :password %>
           <%= f.password_field :password %>
-        </p>
+        </div>
 
-        <p>
+        <div class="clearfix">
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation %>
-        </p>
+        </div>
       </fieldset>
 
-      <div class="clearfix">
+      <div>
         <button type="submit" name="commit" id="user_submit">Crear cuenta!</button>
       </div>
     <% end %>
