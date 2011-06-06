@@ -903,7 +903,7 @@ a.tag-follow span {
 	border: 1px solid rgba(62, 116, 140, .3);
 	clear: left;
 	float: left;
-	margin-right: 30px;
+	margin-right: 15px;
   max-width: 120px;
   padding: 10px;
   -webkit-border-radius: 5px;
@@ -918,34 +918,41 @@ a.tag-follow span {
   padding-top: 10px;
 }
 
+#legal h4 {
+  margin-bottom: 15px;
+}
+
 /* Formularios */
 
 #login {
   color: rgba(137, 156, 165, 1);
 }
 
-#login form {
+#login form, #contact form {
   float: left;
   width: 380px;
 }
 
-#login form fieldset {
-  border-top: 1px solid rgba(193, 200, 207, .5);
+#login form fieldset, #contact form fieldset {
   padding-top: 15px;
 }
 
-#login form legend {
+#login form fieldset {
+  border-top: 1px solid rgba(193, 200, 207, .5);
+}
+
+#login form legend, #contact form legend {
   color: rgba(65, 80, 87, 1);
   font-size: 18px;
   margin-top: 5px;
   padding-right: 10px;
 }
 
-#login form div {
+#login form div, #contact form div {
   margin-bottom: 15px;
 }
 
-#login form label {
+#login form label, #contact form label {
   color: rgba(101, 121, 130, 1);
   font-size: 14px;
   font-weight: 500;
@@ -953,7 +960,7 @@ a.tag-follow span {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);
 }
 
-#login form input[type="text"], #login form input[type="email"], #login form input[type="password"] {
+#login form input[type="text"], #contact form input[type="text"], #login form input[type="email"], #login form input[type="password"], #contact form textarea {
   border: 1px solid rgba(189, 201, 209, 1);
   color: rgba(101, 121, 130, 1);
   float: right;
@@ -983,7 +990,8 @@ a.tag-follow span {
   font-size: 12px;
 }
 
-#login form p.tip {
+#login form p.tip, #contact form p.tip {
+  clear: both;
   float: right;
 }
 
@@ -999,6 +1007,10 @@ a.tag-follow span {
 #user_submit {
   float: right;
   margin-top: -5px;
+}
+
+#contact_submit {
+  margin-top: -15px;
 }
 
 .login-sidebar {
@@ -1062,7 +1074,7 @@ a.tag-follow span {
 	border-top: 0;
 }
 
-.questions-footer button, #questions-footer a, #login form button {
+.questions-footer button, #questions-footer a, #login form button, #contact form button {
 	background: url('/images/question-footer-button-bg.png') repeat-x;
 	border: 1px solid rgba(92, 124, 137, .3);
 	border-bottom-color: rgba(169, 176, 179, 1);
@@ -1090,14 +1102,14 @@ a.tag-follow span {
 	  0 1px 0 rgba(255, 255, 255, 1);
 }
 
-.questions-footer button:hover, #questions-footer a:hover, #login form button:hover {
+.questions-footer button:hover, #questions-footer a:hover, #login form button:hover, #contact form button:hover {
 	background-image: url('/images/question-footer-button-hover-bg.png');
   border-color: rgba(92, 124, 137, .6);
 	border-bottom-color: rgba(127, 127, 127, 1);
 	color: rgba(83, 105, 115, 1);
 }
 
-.questions-footer button:active, #questions-footer a:active, #login form button:active {
+.questions-footer button:active, #questions-footer a:active, #login form button:hover, #contact form button:active {
 	background-image: url('/images/question-footer-button-active-bg.png');
   border-color: rgba(92, 124, 137, .3);
 	border-bottom-color: rgba(193, 205, 210, 1);
@@ -1113,7 +1125,7 @@ a.tag-follow span {
   color: rgba(134, 152, 159, 1);
 }
 
-.questions-footer button, #login form button {
+.questions-footer button, #login form button, #contact form button {
   line-height: 1;
   padding: 7px 15px;
 }
