@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :votes
   # Validations
-  validates_uniqueness_of :uid, :scope => :oauth
+  validates_uniqueness_of :uid, :scope => :oauth, :unless => Proc.new { |user| user.oauth.blank? }
   
   def answer_vote(answer)
     votes.where(:votable_id => answer.id, :votable_type => answer.class)
