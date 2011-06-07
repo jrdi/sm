@@ -32,6 +32,7 @@ es:
     registrations:
       link: 'Registrarse'
       signed_up: 'Te has registrado correctamente. Se ha enviado una confirmación a tu email. Revísalo por favor.'
+      inactive_signed_up: 'Te has registrado correctamente. Sin embargo, no puedes iniciar sesión debido a %{reason}.'
       updated: 'Actualizaste tu cuenta correctamente.'
       destroyed: 'Adios! Has cancelado tu cuenta correctamente. Esperamos verte por aquí otra vez...'
     unlocks:
