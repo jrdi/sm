@@ -1288,3 +1288,27 @@ a.tag-follow span {
 	float: left;
 	margin-right: 15px;
 }
+
+/* Notifications */
+
+.alert, .notice {
+  border-top: 2px solid rgba(0, 0, 0, 1);
+  bottom: 0;
+  background: rgba(0, 0, 0, .8) url("/images/alert.png") no-repeat 15px center;
+  color: rgba(255, 255, 255, 1);
+  display: none;
+  height: 50px;
+  font-size: 14px;
+  font-weight: bold;
+  left: 0;
+  line-height: 50px;
+  position: absolute;
+  text-align: center;
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 1);
+  width: 100%;
+  z-index: 2;
+}
+
+.notice {
+  background-image: url("/images/notice.png");
+}
