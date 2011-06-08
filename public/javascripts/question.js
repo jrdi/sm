@@ -18,7 +18,7 @@ $(document).ready(function() {
   $('.new-answer').live("click", function(e) {
     if ($("#answer_content").val() === ""){
       e.preventDefault();
-      alert("Primero tienes que escribir una respuesta!");
+      $(".alert").html("Primero tienes que escribir una respuesta!").show().delay(5000).fadeOut();
     }
   });
 });
