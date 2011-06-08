@@ -84,7 +84,7 @@ $(document).ready(function() {
 
     if(!title) {
       e.preventDefault();
-      alert("Necesitas escribir una pregunta antes!")
+      $(".alert").html("Primero necesitas escribir una pregunta!").show().delay(5000).fadeOut();
     }
   });
 

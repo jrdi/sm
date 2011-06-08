@@ -1302,7 +1302,7 @@ a.tag-follow span {
   font-weight: bold;
   left: 0;
   line-height: 50px;
-  position: absolute;
+  position: fixed;
   text-align: center;
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 1);
   width: 100%;
