@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :answers
   has_many :votes
   # Validations
-  validates_uniqueness_of :uid, :scope => :oauth
+  validates_uniqueness_of :uid, :scope => :oauth, :unless => Proc.new { |user| user.oauth.blank? }
   
   def answer_vote(answer)
     votes.where(:votable_id => answer.id, :votable_type => answer.class)
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
-    users = User.find(:all, :conditions => "uid = #{data['id']} AND oauth = 'Facebook'", :limit => 1)
+    users = User.find(:all, :conditions => "(uid = #{data['id']} AND oauth = 'Facebook') OR (email = '#{data['email']}')", :limit => 1)
     unless users.empty?
       users.first
     else # Create a user with a stub password.
