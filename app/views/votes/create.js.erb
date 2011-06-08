@@ -4,5 +4,5 @@
 	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes-count").remove();
 	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes").append("<div class='votes-count <%= 'negative' if @vote.votable.votes_count < 0 %>' title='18 votos totales: 10 positivos, 8 negativos'><span><%= @vote.votable.votes_count %></span></div>");
 <% else %>
-	alert("Ya has votado esto amigo!");
+  $(".alert").html("Ya has votado esta respuesta, amigo!").show().delay(5000).fadeOut();
 <% end %>
