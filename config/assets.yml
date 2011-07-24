@@ -6,7 +6,7 @@ gzip_assets: off
 javascripts:
   common:
     - public/javascripts/lib/jquery.js
-    - public/javascripts/lib/modernizr-1.7.min.js
+    - public/javascripts/lib/modernizr.js
     - public/javascripts/lib/rails.js
     - public/javascripts/application.js
 
