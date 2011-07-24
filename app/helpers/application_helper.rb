@@ -22,6 +22,23 @@ module ApplicationHelper
     end
   end
   
+  def accept_some_html(s)
+    s = ERB::Util::html_escape(s)
+    s.gsub!(/(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/) do |link|
+      link_to link
+    end
+    s.gsub!(/\*(.+)\*/) do |strong|
+      "<strong>#{strong.gsub!(/\*/, '')}</strong>"
+    end
+    s.gsub!(/\_(.+)\_/) do |em|
+      "<em>#{em.gsub!(/\_/, '')}</em>"
+    end
+    s.gsub!(/\-(.+)\-/) do |strike|
+      "<s>#{strike.gsub!(/\_/, '')}</s>"
+    end
+    s.html_safe
+  end
+  
   def meta(field = nil, list = nil)
     field = field.to_s
     @meta ||= {
