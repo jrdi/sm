@@ -29,7 +29,7 @@
 	    				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
 	        	<% end -%>
 
-  					<div class="votes-count <%= 'negative' if answer.votes_count < 0 %>" title="18 votos totales: 10 positivos, 8 negativos">
+  					<div class="votes-count <%= 'negative' if answer.votes_count < 0 %>" title='<%= "#{pluralize(answer.votes.count, 'voto en total', 'votos totales')}: #{pluralize(answer.votes.positive.count, 'positivo', 'positivos')}, #{pluralize(answer.votes.negative.count, 'negativo', 'negativos')}" %>'>
   					  <span><%= answer.votes_count %></span>
   					</div>    
 	  			</div>
@@ -39,7 +39,7 @@
 					<% end %>
 	    	</div>
 
-	      <p class="description"><%= answer.content %></p>
+	      <pre class="description"><%= answer.content.to_html %></pre>
 
 	      <div class="meta">
 	        <p>

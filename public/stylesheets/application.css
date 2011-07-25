@@ -806,8 +806,9 @@ a.down {
 
 .question .description, .answer .description, .static p {
 	color: rgba(90, 108, 115, 1);
-	font-size: 13px;
+	font: normal 13px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin-bottom: 15px;
+	padding: 0;
 }
 
 .question .meta, .answer .meta {
