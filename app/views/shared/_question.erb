@@ -10,7 +10,7 @@
 
 	<h2 class="title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
 	<p class="description">
-		<pre><%= accept_some_html question.description %></pre>
+		<pre><%= question.description.to_html %></pre>
 	</p>
 
 	<div class="meta">
