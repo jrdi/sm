@@ -9,9 +9,8 @@
 	</div>
 
 	<h2 class="title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
-	<p class="description">
-		<pre><%= question.description.to_html %></pre>
-	</p>
+
+	<pre class="description"><%= question.description.to_html %></pre>
 
 	<div class="meta">
 		<ul class="tags">
