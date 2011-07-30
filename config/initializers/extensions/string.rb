@@ -6,9 +6,6 @@ class String
   
   def to_html
     s = ERB::Util::html_escape(self)
-    s.gsub!(/(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/) do |link|
-      "<a href='#{link}'>#{link}</a>"
-    end
     s.gsub!(/\*(.+)\*/) do |strong|
       "<strong>#{strong.gsub!(/\*/, '')}</strong>"
     end
@@ -17,6 +14,9 @@ class String
     end
     s.gsub!(/\_(.+)\_/) do |italic|
       "<i>#{italic.gsub!(/\_/, '')}</i>"
+    end
+    s.gsub!(/(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/) do |link|
+      "<a href='#{link}' target='_blank'>#{link}</a>"
     end
     s.html_safe
   end
