@@ -23,7 +23,7 @@
 		</ul>
 
 		<p>
-			Por <%= link_to question.user.name, question.user %> hace <abbr title="<%= question.created_at %>"><%= time_ago_in_words(question.created_at) %></abbr>
+			Por <%= link_to gravatar_image_tag(question.user.email, :alt => question.user.name, :gravatar => {:size => 14}) + " " + question.user.name, question.user %> hace <abbr title="<%= question.created_at %>"><%= time_ago_in_words(question.created_at) %></abbr>
 			<%- if current_user === question.user %>
 				<%= link_to content_tag(:span, 'editar'), edit_question_path(question), :class => "edit", :title => "Editar" %> 
 				<%= link_to content_tag(:span, 'eliminar'), [question], :confirm => 'Estás seguro?', :method => :delete, :class => "delete", :title => "Eliminar" %>

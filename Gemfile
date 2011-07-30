@@ -6,6 +6,7 @@ gem 'devise'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem 'capistrano'
 gem 'jammit'
+gem 'gravatar_image_tag'
 
 group :test do  
   gem 'rspec-rails'
