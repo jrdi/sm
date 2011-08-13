@@ -43,5 +43,7 @@
           <% end -%>
       </p>
     <% end %>
+		
+		<%= gravatar_image_tag(resource.email, :alt => resource.name, :gravatar => {:size => 128}) %>
 	</div>
 </div>
