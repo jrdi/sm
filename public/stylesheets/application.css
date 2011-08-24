@@ -816,7 +816,6 @@ a.down {
 
 .avatar {
   border: 1px solid rgba(125, 150, 161, 1);
-  border-radius: 3px;
   float: left;
   height: 24px;
   line-height: 0;
@@ -824,6 +823,9 @@ a.down {
   overflow: hidden;
   position: relative;
   width: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 
 .avatar::after{
