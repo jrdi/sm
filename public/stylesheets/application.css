@@ -569,7 +569,6 @@ header .title a {
 	border: 1px solid rgba(62, 116, 140, .5);
 	border-top: 0;
 	border-bottom: 0;
-	padding-bottom: 30px;
 }
 
 .static #questions-list {
@@ -595,16 +594,11 @@ header .title a {
 }
 
 .question, .answer {
-	background: url('/images/question-bg.png') repeat-x 0 -4px;
+	background: url('/images/question-bg.png') repeat-x 0 -34px;
 	overflow: auto;
-	padding: 60px 20px 0 100px;
+	padding: 30px 20px 30px 100px;
 	position: relative;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-}
-
-.question:first-child, .answer:first-child {
-	padding-top: 30px;
-	background-position: 0 -34px;
 }
 
 .commands {
@@ -817,7 +811,38 @@ a.down {
 }
 
 .question .meta a, .answer .meta a {
-	color: rgba(106, 138, 153, 1)
+	color: rgba(106, 138, 153, 1);
+}
+
+.avatar {
+  border: 1px solid rgba(125, 150, 161, 1);
+  border-radius: 3px;
+  float: left;
+  height: 24px;
+  line-height: 0;
+  margin-right: 10px;
+  overflow: hidden;
+  position: relative;
+  width: 24px;
+}
+
+.avatar::after{
+  bottom: 0;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+.answer .avatar {
+  height: 16px;
+  border-radius: 2px;
+  width: 16px;
 }
 
 .question .tags {
