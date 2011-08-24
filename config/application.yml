@@ -1,0 +1,11 @@
+development:
+  facebook_app_id: 'dbdde6e9b2f024aebe1c8ec9c557f646'
+  facebook_app_secret: '147f9dcea6f5e22c716e4600b792a1fd'
+  twitter_consumer_key: 'CYX2siyQRCmzTHtiOIYA'
+  twitter_consumer_secret: 'K0iy67DSaBXrN4xmz6c2DzYfWvnwthWvtay8UZA9S0'
+
+production:
+  facebook_app_id: 'dbdde6e9b2f024aebe1c8ec9c557f646'
+  facebook_app_secret: '147f9dcea6f5e22c716e4600b792a1fd'
+  twitter_consumer_key: 'CYX2siyQRCmzTHtiOIYA'
+  twitter_consumer_secret: 'K0iy67DSaBXrN4xmz6c2DzYfWvnwthWvtay8UZA9S0'
