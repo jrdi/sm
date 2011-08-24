@@ -43,7 +43,10 @@
           <% end -%>
       </p>
     <% end %>
-		
-		<%= gravatar_image_tag(resource.email, :alt => resource.name, :gravatar => {:size => 128}) %>
+
+		<figure class="avatar huge">
+		  <%= gravatar_image_tag(resource.email, :alt => resource.name, :gravatar => {:size => 128}) %>
+		</figure>
+	  <figcaption><%= link_to "¿Qué es esto?", "http://es.gravatar.com/" %></figcaption>
 	</div>
 </div>
