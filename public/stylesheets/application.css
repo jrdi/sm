@@ -925,7 +925,7 @@ a.tag-follow span {
 }
 
 .answer.no-answers {
-  background: url('/images/no-answers.png') no-repeat 20px bottom;
+  background: url('/images/no-answers.png') no-repeat 20px center;
   padding-left: 60px;
 }
 
