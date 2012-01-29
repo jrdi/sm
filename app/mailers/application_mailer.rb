@@ -11,6 +11,7 @@ class ApplicationMailer < ActionMailer::Base
   def answer_notification(answer, question, user)
   	@answer = answer
   	@question = question
+  	@question_url = question_url(@question)
     @user = user
     mail(:to => user.email,
          :subject => "Nueva respuesta a tu pregunta en Socorro mamá!")
