@@ -12,6 +12,8 @@ class Answer < ActiveRecord::Base
   # Validations
   validates_presence_of :content
   validates_presence_of :user_id, :on => :create
+
+  after_save :answer_notification
   
   def self.ordered(order=nil)
     return ORDERS[order] if ORDERS.keys.include? order
@@ -31,5 +33,10 @@ class Answer < ActiveRecord::Base
   
   def update_votes_count
     update_attribute(:votes_count, votes.sum(:value))
+  end
+
+  protected
+  def answer_notification
+    ApplicationMailer.answer_notification(self, self.question, self.question.user).deliver
   end
 end
