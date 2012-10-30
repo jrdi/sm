@@ -1,2 +1,0 @@
-$("#answers-list").html("");
-$("#answers-list").append("<%= escape_javascript(render :partial => 'shared/answers', :locals => { :answers => @question.answers, :valid_answer => @question.valid_answer }) %>")

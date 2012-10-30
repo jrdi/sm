@@ -1,22 +1,7 @@
 Sm::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
-  root :to => "site#home"
-  
-  devise_for :users, :controllers => { 
-                                      :omniauth_callbacks => "users/omniauth_callbacks", 
-                                      :registrations => "users/registrations" }
-  match '/user/:id' => 'profiles#show', :as => :user                                                                            
-  
-  resources :questions, :only => [:show, :create, :edit, :update, :destroy] do
-    resources :answers, :only => [:create, :edit, :update, :destroy]
-  end
-  
-  resources :tags, :only => :show
-  resources :votes, :only => :create
-  
-  match '/:action(.:format)', :controller => 'site', :action => ':action'
-  
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
@@ -63,11 +48,11 @@ Sm::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  # match ':controller(/:action(/:id))(.:format)'
 end
