@@ -1,0 +1,56 @@
+<% valid_answer ||= nil %>
+<% if answers.empty? %>
+	<li class="answer no-answers">
+	  <p>Aún no hay respuestas disponibles.</p>
+	</li>
+<% else %>
+	<% answers.each do |answer| %>
+	  <%- unless answer.id.blank? %>
+	    <li id="answer-<%= answer.id %>" class="answer">
+	    	<div class="commands">
+	  			<div class="votes voted">
+	      		<%- if user_signed_in? %>
+	    				<%= form_for(answer.votes.build, :remote => true, :html => {:class => "vote"}) do |f| %>
+	              <%= f.hidden_field :user_id, :value => current_user.id %>
+	    					<%= f.hidden_field :value, :value => 1 %>
+	    					<%= f.hidden_field :votable_id, :value => answer.id %>
+	    					<%= f.hidden_field :votable_type, :value => answer.class %>
+	              <%= button_tag content_tag(:span, '+'), :class => "command-item up #{voted?(answer, 1)}", :title => "Voto positivo" %>
+	            <% end %>
+	    				<%= form_for(answer.votes.build, :remote => :true, :html => {:class => "vote"}) do |f| %>
+	              <%= f.hidden_field :user_id, :value => current_user.id %>
+	    					<%= f.hidden_field :value, :value => -1 %>
+	    					<%= f.hidden_field :votable_id, :value => answer.id %>
+	    					<%= f.hidden_field :votable_type, :value => answer.class %>
+	              <%= button_tag content_tag(:span, '-'), :class => "command-item down #{voted?(answer, -1)}", :title => "Voto negativo" %>
+	            <% end %>
+	          <% else -%>
+	    				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
+	    				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
+	        	<% end -%>
+
+  					<div class="votes-count <%= 'negative' if answer.votes_count < 0 %>" title='<%= "#{pluralize(answer.votes.count, 'voto en total', 'votos totales')}: #{pluralize(answer.votes.positive.count, 'positivo', 'positivos')}, #{pluralize(answer.votes.negative.count, 'negativo', 'negativos')}" %>'>
+  					  <span><%= answer.votes_count %></span>
+  					</div>    
+	  			</div>
+
+					<% if valid_answer.present? && answer == valid_answer %>
+						<div class="correct-answer" title="Respuesta correcta!"><span>Respuesta correcta!</span></div>
+					<% end %>
+	    	</div>
+
+	      <pre class="description"><%= answer.content.to_html %></pre>
+
+	      <div class="meta">
+	        <p>
+      		  <span itemscope itemtype="http://schema.org/Person" class="author"><figure class="avatar"><%= link_to gravatar_image_tag(answer.user.email, :alt => answer.user.name, :gravatar => {:size => 16}, :itemprop => "image"), answer.user, :itemprop => "name" %></figure> Por <%= link_to answer.user.name, answer.user, :itemprop => "name" %></span> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
+						<%- if current_user === answer.user %>
+						  <%= link_to content_tag(:span, 'editar'), edit_question_answer_path(answer.question, answer), :class => "edit", :title => "Editar" %> 
+	    				<%= link_to content_tag(:span, 'eliminar'), [answer.question, answer], :confirm => 'Estás seguro?', :method => :delete, :class => "delete", :title => "Eliminar" %>
+						<% end -%>
+					</p>
+	      </div>
+	    </li>
+	  <% end -%>
+	<% end %>
+<% end %>

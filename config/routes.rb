@@ -1,6 +1,16 @@
 Sm::Application.routes.draw do
-  devise_for :users
-
+  root :to => "pages#home"
+  
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
+  match '/user/:id' => 'profiles#show', :as => :user                                                                            
+  
+  resources :questions, :only => [:show, :create, :edit, :update, :destroy] do
+    resources :answers, :only => [:create, :edit, :update, :destroy]
+  end
+  
+  resources :tags, :only => :show
+  resources :votes, :only => :create
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
