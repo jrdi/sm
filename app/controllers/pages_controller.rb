@@ -17,7 +17,7 @@ class PagesController < ApplicationController
       @questions        = Question.populars(:limit => "10", :offset => page)
       @question_pages ||= (Question.populars_count/10.0).ceil
     else
-      @questions        = Question.all(:order => 'created_at DESC', :include => [:user], :limit => "10", :offset => page)
+      @questions        = Question.all(:order => 'created_at DESC', :include => [:user, :answers, :tags], :limit => "10", :offset => page)
       @question_pages ||= (Question.count/10.0).ceil
     end
   end
