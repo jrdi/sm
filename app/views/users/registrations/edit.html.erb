@@ -21,9 +21,19 @@
         </div>
 
         <div>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+        </div>
+
+        <div>
+          <%= f.label :current_password %>
+          <%= f.password_field :current_password %>
+          <p class="tip">(dejala en blanco si no quieres cambiarla)</p>
+        </div>
+
+        <div>
           <%= f.label :password %>
           <%= f.password_field :password %><br />
-          <p class="tip">(dejala en blanco si no quieres cambiarla)</p>
         </div>
 
         <div class="clearfix">

@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
   <title><%= "#{yield(:title)} — " if yield(:title).present? %>Socorro mamá! &mdash; Consejos de limpieza, recetas y cocina, mantenimiento del hogar y más</title>
   <%= stylesheet_link_tag :application %>
   <%= javascript_include_tag :application %>
 
-	<%= meta(:description) %>
-	<%= meta(:keywords) %>
+  <%= meta(:description) %>
+  <%= meta(:keywords) %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<div id="wrapper">
-		<header>
-			<div class="inner">
-				<%= render :partial => "shared/nav_bar" %>
+  <div id="wrapper">
+    <header>
+      <div class="inner">
+        <%= render :partial => "shared/nav_bar" %>
 
-				<%= content_tag(:h1, link_to("Socorro mamá!", root_path, :title => "Ir a la Portada"), :class => "title") %>
-			</div>
-		</header><!-- #banner -->
+        <%= content_tag(:h1, link_to("Socorro mamá!", root_path, :title => "Ir a la Portada"), :class => "title") %>
+      </div>
+    </header><!-- #banner -->
 
-		<div id="main" class="clearfix">
-			<div class="inner">
-				<p class="notice"><%= notice %></p>
-				<p class="alert"><%= alert %></p>
+    <div id="main" class="clearfix">
+      <div class="inner">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <% if current_user && current_user.email.match(/@example\.com/) %>
+          <p>Hemos detectado que tu email no es correcto, te recomendamos cambiarlo: <%= link_to 'editar email', edit_user_registration_path %></p>
+        <% end %>
 
-				<div id="content">
-					<%= yield %>
-				</div><!-- #content -->
+        <div id="content">
+          <%= yield %>
+        </div><!-- #content -->
 
-				<div id="sidebar">
-  				<%= render :partial => "shared/sidebar" %>
-				</div><!-- #sidebar -->
-			</div>
-		</div><!-- #main -->
+        <div id="sidebar">
+          <%= render :partial => "shared/sidebar" %>
+        </div><!-- #sidebar -->
+      </div>
+    </div><!-- #main -->
 
-		<footer id="colophon">
-			<div class="inner">
-				<p><%= link_to 'Socorro mamá!', root_path, :class => "meta" %> es una pequeña idea de <%= link_to "@alv", 'http://twitter.com/alv' %>, <%= link_to "@jrdi", 'http://twitter.com/jrdi' %> y <%= link_to "@matallo", 'http://twitter.com/matallo' %>.</p>
-				<ul id="footer-menu">
-					<li><%= link_to "Aviso legal", '/legal' %></li>
-					<li><%= link_to "Contacto", '/contact' %></li>
-				</ul>
-			</div>
-		</footer><!-- #colophon -->
-	</div><!-- #wrapper -->
+    <footer id="colophon">
+      <div class="inner">
+        <p><%= link_to 'Socorro mamá!', root_path, :class => "meta" %> es una pequeña idea de <%= link_to "@alv", 'http://twitter.com/alv' %>, <%= link_to "@jrdi", 'http://twitter.com/jrdi' %> y <%= link_to "@matallo", 'http://twitter.com/matallo' %>.</p>
+        <ul id="footer-menu">
+          <li><%= link_to "Aviso legal", '/legal' %></li>
+          <li><%= link_to "Contacto", '/contact' %></li>
+        </ul>
+      </div>
+    </footer><!-- #colophon -->
+  </div><!-- #wrapper -->
 
-	<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
-	<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/socorromama.json?callback=twitterCallback2&count=1"></script>
-	<script type="text/javascript">
-	  var uvOptions = {};
-	  (function() {
-	    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
-	    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/iHNKbUqetW77XPJHBvxX3A.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
-	  })();
-	</script>
-	<script type="text/javascript">
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-23137704-2']);
-	  _gaq.push(['_trackPageview']);
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	</script>
-	</body>
+  <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+  <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/socorromama.json?callback=twitterCallback2&count=1"></script>
+  <script type="text/javascript">
+    var uvOptions = {};
+    (function() {
+      var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+      uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/iHNKbUqetW77XPJHBvxX3A.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+    })();
+  </script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-23137704-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  </body>
 </html>

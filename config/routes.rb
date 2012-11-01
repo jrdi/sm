@@ -1,10 +1,10 @@
 Sm::Application.routes.draw do
   root :to => "pages#home"
   
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"} do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "users/registrations" } do
     match '/users/sign_up/email' => 'users/omniauth_callbacks#email'
+    match '/user/:id' => 'profiles#show', :as => :user
   end
-  match '/user/:id' => 'profiles#show', :as => :user                                                                            
   
   resources :questions, :only => [:show, :create, :edit, :update, :destroy] do
     resources :answers, :only => [:create, :edit, :update, :destroy]

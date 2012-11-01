@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   has_many :votes
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+  attr_accessible :name, :email, :current_password, :password, :password_confirmation, :remember_me
+  attr_accessor :current_password
 
   def answer_vote(answer)
     votes.where(:votable_id => answer.id, :votable_type => answer.class)
