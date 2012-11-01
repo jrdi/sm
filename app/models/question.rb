@@ -8,6 +8,8 @@ class Question < ActiveRecord::Base
   validates_presence_of :user_id, :on => :create
   validates_uniqueness_of :title
   
+  attr_accessible :title, :description
+
   scope :without_answers, lambda {
     where(answers_count: 0).order('created_at DESC')
   }

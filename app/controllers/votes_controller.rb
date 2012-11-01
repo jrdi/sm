@@ -1,14 +1,16 @@
 class VotesController < ApplicationController
   def create
-    @vote = current_user.votes.build(params[:vote])
+    answer = Answer.find(params[:answer_id])
+    @vote = answer.votes.build(
+      value: params[:vote][:value],
+      user_id: current_user.id
+    )
     
-    if @vote.save
-      respond_to do |format|
+    respond_to do |format|    
+      if @vote.save
         format.html { redirect_to(root_url, :notice => 'El voto ha sido guardado correctamente.') }
         format.js
-      end
-    else
-      respond_to do |format|
+      else
         format.html { redirect_to(root_url, :alert => 'El voto no ha podido ser guardado correctamente.') }
         format.js
       end

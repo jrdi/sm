@@ -7,11 +7,18 @@ Sm::Application.routes.draw do
   end
   
   resources :questions, :only => [:show, :create, :edit, :update, :destroy] do
-    resources :answers, :only => [:create, :edit, :update, :destroy]
+    resources :answers, :only => [:create, :edit, :update, :destroy] do
+      resources :votes, :only => :create
+    end
   end
   
   resources :tags, :only => :show
-  resources :votes, :only => :create
+
+  {get: [:about, :legal, :contact], post: [:contact]}.each do |method, actions|
+    actions.each do |action|
+      match action, controller: 'pages', via: method
+    end
+  end
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
