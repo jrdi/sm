@@ -1,0 +1,8 @@
+<%= devise_error_messages! %>
+
+<%= form_tag users_sign_up_email_url do %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email %>
+
+  <%= button_tag 'Submit' %>
+<% end %>

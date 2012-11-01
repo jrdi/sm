@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable, :omniauthable, 
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :oauth_provisions, dependent: :destroy
   has_many :questions
   has_many :answers
   has_many :votes
@@ -17,37 +18,41 @@ class User < ActiveRecord::Base
     votes.where(:votable_id => answer.id, :votable_type => answer.class)
   end
 
+  def add_oauth_provision!(auth)
+    self.oauth_provisions.build(uid: auth.uid, provider: auth.provider).save
+  end
+
   protected
+  def self.create_with_oauth!(email, auth, skip_confirmation = false)
+    user = new(email: email, 
+              password: Devise.friendly_token[0,20], 
+              name: auth.info.name)
+
+    user.skip_confirmation! if skip_confirmation
+    user.save && user.add_oauth_provision!(auth) && user
+    user
+  end
+
+  def self.find_for_oauth(auth)
+    User.joins(:oauth_provisions).readonly(false).where('oauth_provisions.uid' => auth.uid, 'oauth_provisions.provider' => auth.provider).first
+  end
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    users = User.find(:all, :conditions => "(uid = #{auth.uid} AND oauth = 'Facebook') OR (email = '#{auth.info.email}')", :limit => 1)
-    unless users.empty?
-      users.first
-    else # Create a user with a stub password.
-      user = User.new(:email => data["email"], 
-                      :password => Devise.friendly_token[0,20], 
-                      :uid => data['id'], 
-                      :name => data['name'],
-                      :oauth => 'Facebook')
-      user.skip_confirmation!
-      user.save 
-      user
+    user = User.find_for_oauth(auth)
+
+    # Find user with Facebook account email
+    if user.blank? 
+      if (user = User.where(email: auth.info.email).first)
+        user.add_oauth_provision!(auth)
+      else # Create a user with a stub password.
+        user = User.create_with_oauth!(auth.info.email, auth, true)
+      end
     end
+    user
   end
   
   def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
-    users = User.find(:all, :conditions => "uid = #{auth.id} AND oauth = 'Twitter'", :limit => 1)
-    unless users.empty?
-      users.first
-    else # Create a user with a stub password. 
-      user = User.new(:email => "#{data['screen_name']}@example.com", 
-                      :password => Devise.friendly_token[0,20], 
-                      :uid => data['id'], 
-                      :name => data['screen_name'],
-                      :oauth => 'Twitter')
-      user.skip_confirmation!
-      user.save
-      user
-    end
+    User.find_for_oauth(auth) || User.new
   end
   
   def self.new_with_session(params, session)

@@ -1,2 +1,4 @@
 export FACEBOOK_APP_ID='xxx'
 export FACEBOOK_APP_SECRET='xxx'
+export TWITTER_CONSUMER_KEY='xxx'
+export TWITTER_CONSUMER_SECRET='xxx'

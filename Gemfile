@@ -43,4 +43,5 @@ gem 'gravatar_image_tag'
 group :development do
   # To use debugger
   gem 'debugger'
+  gem 'thin'
 end
