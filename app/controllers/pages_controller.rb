@@ -32,7 +32,7 @@ class PagesController < ApplicationController
       @email = Email.new(params[:contact])
       if @email.valid?
         ApplicationMailer.contact(@email).deliver
-        flash[:notice] = "Email enviado correctamente"
+        flash[:notice] = "Email enviado correctamente."
       else
         render :action => 'contact'
       end

@@ -17,18 +17,18 @@
       <%= f.text_field :title, :placeholder => "Escribe aquí tu pregunta" %>
     </div>
 
-    <div class="field" id="field_description">
+    <div class="field field_description-js" id="field_description">
       <%= f.label :description %>
       <%= f.text_area :description, :rows => "1", :placeholder => "Escribe aquí la descripción (opcional)" %>
     </div>
 
-    <div class="field" id="field_tags">
+    <div class="field field_tags-js" id="field_tags">
       <label for="question_tags">Temas</label>
       <input type="text" size="30" placeholder="Escribe aquí los temas separados por comas (opcional)" name="question_tags" id="question_tags">
     </div>
   </fieldset>
 
-	<div id="ask-footer" class="questions-footer">
+	<div id="ask-footer" class="questions-footer questions_footer-js">
 	  <button type="submit" class="publish-question">Publicar pregunta</button>
 	</div>
 <% end %>

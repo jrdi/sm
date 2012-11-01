@@ -13,7 +13,7 @@ $(document).ready(function() {
     setTimeout( function(){
       if(!isNewQuestionFocus) {
         $("#new_question").removeClass("focus");
-        $('#field_description, #field_tags, #ask-footer').slideUp();
+        $('.field_description-js, .field_tags-js, .questions_footer-js').slideUp();
         setTimeout( function(){
           cssTransform = {
             "-webkit-border-radius" : "7px",
@@ -36,7 +36,7 @@ $(document).ready(function() {
 
     $('#field_title, #new_question fieldset').css(cssTransform);
     $('label[for="question_title"]').css("color", "rgba(157, 136, 81, 1)");
-    $('#field_description, #field_tags, #ask-footer').slideDown();
+    $('.field_description-js, .field_tags-js, .questions_footer-js').slideDown();
   }).blur(function() {
     $('label[for="question_title"]').css("color", "rgba(204, 185, 134, 1)");
   });    
@@ -66,7 +66,7 @@ $(document).ready(function() {
 
     if(!isNewQuestionFocus && !title && !desc && !tags) {
       $("#new_question").removeClass("focus");
-      $('#field_description, #field_tags, #ask-footer').slideUp();
+      $('.field_description-js, .field_tags-js, .questions_footer-js').slideUp();
       setTimeout( function(){
         cssTransform = {
           "-webkit-border-radius" : "7px",
