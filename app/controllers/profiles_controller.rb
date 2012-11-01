@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
   def show
-    @user = User.where(id: params[:id]).includes(:questions => [:answers, :tags, :user], :answers => :votes).first
+    @user       = User.find(params[:id])
+    @questions  = @user.questions.includes(:answers, :tags, :user)
+    @answers    = @user.answers.includes(:question, :votes, :user)
   end
 end
