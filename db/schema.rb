@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110509135744) do
+ActiveRecord::Schema.define(:version => 20121101101030) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(:version => 20110509135744) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "votes_count", :default => 0
+  end
+
+  create_table "oauth_provisions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "uid"
+    t.string   "provider"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "questions", :force => true do |t|
@@ -57,9 +65,8 @@ ActiveRecord::Schema.define(:version => 20110509135744) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "uid"
     t.string   "name"
-    t.string   "oauth"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

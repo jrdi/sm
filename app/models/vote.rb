@@ -3,12 +3,15 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   belongs_to :votable, :polymorphic => true
   # Validations
-  validates_presence_of :votable_id, :votable_type, :user_id, :value
+  validates :votable_id, :votable_type, :user_id, :value, presence: true
   validates_uniqueness_of :user_id, :scope => [:votable_id, :votable_type]
+  validates :value, inclusion: { in: [-1, 1] }
+
+  scope :positive, lambda { where(value: 1) }
+  scope :negative, lambda { where(value: -1) }
   
-  scope :positive, where(:value => 1)
-  scope :negative, where(:value => -1)
-  
+  attr_accessible :value, :user_id
+
   after_create :update_vote_created
   after_destroy :update_vote_destroyed
   

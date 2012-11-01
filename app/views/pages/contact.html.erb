@@ -34,11 +34,11 @@
       <fieldset>
         <div>
           <label for="name">nombre*</label>
-          <input id="name" name="contact[name]" type="text" />
+          <input id="name" name="contact[name]" type="text" value="<%= current_user && current_user.name %>"/>
         </div>
         <div>
           <label for="email">email*</label>
-          <input id="email" name="contact[email]" type="text" />
+          <input id="email" name="contact[email]" type="text" value="<%= current_user && current_user.email %>" />
         </div>
         <div>
           <label for="subject">asunto</label>

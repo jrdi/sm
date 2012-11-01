@@ -13,11 +13,13 @@ class Answer < ActiveRecord::Base
   validates_presence_of :content
   validates_presence_of :user_id, :on => :create
 
-  after_save :answer_notification
+  after_create :answer_notification
   
+  attr_accessible :content
+
   def self.ordered(order=nil)
     return ORDERS[order] if ORDERS.keys.include? order
-    return 'votes_count DESC'
+    'votes_count DESC'
   end
   
   def as_json(options={})

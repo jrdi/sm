@@ -8,21 +8,15 @@ class Question < ActiveRecord::Base
   validates_presence_of :user_id, :on => :create
   validates_uniqueness_of :title
   
-  def self.without_answers(options = {})
-    Question.all(:conditions => 'answers_count = 0', :include => [:user], :order => 'created_at DESC', :limit => options[:limit], :offset => options[:offset])
-  end
-  
-  def self.without_answers_count(options = {})
-    Question.count(:conditions => 'answers_count = 0')
-  end
-  
-  def self.populars(options = {})
-    Question.all(:conditions => 'answers_count > 0', :include => [:user], :order => 'answers_count DESC', :limit => options[:limit], :offset => options[:offset])
-  end
-  
-  def self.populars_count(options = {})
-    Question.count(:conditions => 'answers_count > 0')
-  end
+  attr_accessible :title, :description
+
+  scope :without_answers, lambda {
+    where(answers_count: 0).order('created_at DESC')
+  }
+
+  scope :populars, lambda { 
+    where('answers_count > ?', 0).order('answers_count DESC')
+  }
   
   def answered?
     answers.each{|a| return true if a.votes_count > 0}
