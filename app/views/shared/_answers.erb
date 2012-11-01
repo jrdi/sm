@@ -10,20 +10,20 @@
 	    	<div class="commands">
 	  			<div class="votes voted">
 	      		<%- if user_signed_in? %>
-	    				<%= form_for([@question, answer, answer.votes.build], :remote => true, :html => {:class => "vote"}) do |f| %>
+	    				<%= form_for([answer, answer.votes.build], :remote => true, :html => {:class => "vote"}) do |f| %>
 	    					<%= f.hidden_field :value, :value => 1 %>
-	              <%= button_tag content_tag(:span, '+'), :class => "command-item up #{voted?(answer, 1)}", :title => "Voto positivo" %>
+	              <%= button_tag content_tag(:span, '+'), :class => "command-item up #{answer_voted_by_user?(current_user.id, answer.votes, 1)}", :title => "Voto positivo" %>
 	            <% end %>
-	    				<%= form_for([@question, answer, answer.votes.build], :remote => :true, :html => {:class => "vote"}) do |f| %>
+	    				<%= form_for([answer, answer.votes.build], :remote => :true, :html => {:class => "vote"}) do |f| %>
 	    					<%= f.hidden_field :value, :value => -1 %>
-	              <%= button_tag content_tag(:span, '-'), :class => "command-item down #{voted?(answer, -1)}", :title => "Voto negativo" %>
+	              <%= button_tag content_tag(:span, '-'), :class => "command-item down #{answer_voted_by_user?(current_user.id, answer.votes, -1)}", :title => "Voto negativo" %>
 	            <% end %>
 	          <% else -%>
 	    				<%= link_to content_tag(:span, "+"), new_user_session_path, :title => "Voto positivo", :class => "command-item up" %>
 	    				<%= link_to content_tag(:span, "-"), new_user_session_path, :title => "Voto negativo", :class => "command-item down" %>
 	        	<% end -%>
 
-  					<div class="votes-count <%= 'negative' if answer.votes_count < 0 %>" title='<%= "#{pluralize(answer.votes.count, 'voto en total', 'votos totales')}: #{pluralize(answer.votes.positive.count, 'positivo', 'positivos')}, #{pluralize(answer.votes.negative.count, 'negativo', 'negativos')}" %>'>
+  					<div class="votes-count <%= answer_votes_class(answer) %>" title='<%= answer_votes_title(answer) %>'>
   					  <span><%= answer.votes_count %></span>
   					</div>    
 	  			</div>

@@ -2,7 +2,7 @@
 	var value = { "1": ".up", "-1":".down"};
 	$("#answer-" + "<%= @vote.votable.id %>" + " " + value["<%= @vote.value %>"]).addClass('voted');
 	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes-count").remove();
-	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes").append("<div class='votes-count <%= 'negative' if @vote.votable.votes_count < 0 %>' title='18 votos totales: 10 positivos, 8 negativos'><span><%= @vote.votable.votes_count %></span></div>");
+	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes").append("<div class='votes-count <%= answer_votes_class(@vote.votable) %>' title='<%= answer_votes_title(@vote.votable) %>'><span><%= @vote.votable.votes_count %></span></div>");
 <% else %>
   $(".alert").html("Ya has votado esta respuesta, amigo!").show().delay(5000).fadeOut();
 <% end %>

@@ -16,10 +16,10 @@ class Vote < ActiveRecord::Base
   after_destroy :update_vote_destroyed
   
   def update_vote_created
-    votable.update_attribute(:votes_count, votable.votes_count + value) unless value.blank?
+    votable.update_column(:votes_count, votable.votes_count + value) unless value.blank?
   end
   
   def update_vote_destroyed
-    votable.update_attribute(:votes_count, votable.votes_count - value) unless value.blank?
+    votable.update_column(:votes_count, votable.votes_count - value) unless value.blank?
   end
 end

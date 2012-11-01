@@ -14,10 +14,6 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :current_password, :password, :password_confirmation, :remember_me
   attr_accessor :current_password
 
-  def answer_vote(answer)
-    votes.where(:votable_id => answer.id, :votable_type => answer.class)
-  end
-
   def add_oauth_provision!(auth)
     self.oauth_provisions.build(uid: auth.uid, provider: auth.provider).save
   end

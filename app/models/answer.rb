@@ -34,7 +34,7 @@ class Answer < ActiveRecord::Base
   end
   
   def update_votes_count
-    update_attribute(:votes_count, votes.sum(:value))
+    update_column(:votes_count, votes.sum(:value))
   end
 
   protected
