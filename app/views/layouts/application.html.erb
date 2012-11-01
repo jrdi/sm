@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html class="no-js">
 <head>
-  <link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title><%= "#{yield(:title)} — " if yield(:title).present? %>Socorro mamá! &mdash; Consejos de limpieza, recetas y cocina, mantenimiento del hogar y más</title>
-  <%= stylesheet_link_tag :application %>
-  <%= javascript_include_tag :application %>
-
   <%= meta(:description) %>
   <%= meta(:keywords) %>
+  <meta name="viewport" content="width=device-width">
+
+  <%= stylesheet_link_tag :application %>
+  <%= javascript_include_tag :application %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="wrapper">
-    <header>
+  <div class="wrapper">
+    <header class="banner">
       <div class="inner">
         <%= render :partial => "shared/nav_bar" %>
 
         <%= content_tag(:h1, link_to("Socorro mamá!", root_path, :title => "Ir a la Portada"), :class => "title") %>
       </div>
-    </header><!-- #banner -->
+    </header><!-- .banner -->
 
-    <div id="main" class="clearfix">
+    <div class="main clearfix">
       <div class="inner">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
@@ -28,29 +30,28 @@
           <p>Hemos detectado que tu email no es correcto, te recomendamos cambiarlo: <%= link_to 'editar email', edit_user_registration_path %></p>
         <% end %>
 
-        <div id="content">
+        <div class="content">
           <%= yield %>
-        </div><!-- #content -->
+        </div><!-- .content -->
 
-        <div id="sidebar">
+        <div class="sidebar">
           <%= render :partial => "shared/sidebar" %>
-        </div><!-- #sidebar -->
+        </div><!-- .sidebar -->
       </div>
-    </div><!-- #main -->
+    </div><!-- .main -->
 
-    <footer id="colophon">
+    <footer class="colophon">
       <div class="inner">
         <p><%= link_to 'Socorro mamá!', root_path, :class => "meta" %> es una pequeña idea de <%= link_to "@alv", 'http://twitter.com/alv' %>, <%= link_to "@jrdi", 'http://twitter.com/jrdi' %> y <%= link_to "@matallo", 'http://twitter.com/matallo' %>.</p>
-        <ul id="footer-menu">
+
+        <ul class="footer-menu">
           <li><%= link_to "Aviso legal", '/legal' %></li>
           <li><%= link_to "Contacto", '/contact' %></li>
         </ul>
       </div>
-    </footer><!-- #colophon -->
-  </div><!-- #wrapper -->
+    </footer><!-- .colophon -->
+  </div><!-- .wrapper -->
 
-  <script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
-  <script type="text/javascript" src="http://twitter.com/statuses/user_timeline/socorromama.json?callback=twitterCallback2&count=1"></script>
   <script type="text/javascript">
     var uvOptions = {};
     (function() {
@@ -58,8 +59,7 @@
       uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/iHNKbUqetW77XPJHBvxX3A.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
     })();
-  </script>
-  <script type="text/javascript">
+
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-23137704-2']);
     _gaq.push(['_trackPageview']);
@@ -68,6 +68,8 @@
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
+
+    <%= yield(:javascript) %>
   </script>
-  </body>
+</body>
 </html>
