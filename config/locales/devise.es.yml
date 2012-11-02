@@ -21,7 +21,7 @@ es:
       unlock_instructions:
         subject: Instrucciones para desbloquear
     omniauth_callbacks:
-      failure: No has sido autorizado en la cuenta %{kind} porque "%{reason}".
+      failure: No has sido autorizado en la cuenta %{kind} porque %{reason}.
       success: Has sido autorizado satisfactoriamente de la cuenta %{kind}.
     passwords:
       no_token: No puedes acceder a esta página si no es a través de un un enlace para resetear tu contraseña. Si has llegado hasta aquí desde el email para resetear tu contraseña, por favor asegúrate de que la URL introducida está completa.

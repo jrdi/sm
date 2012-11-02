@@ -1,4 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  before_filter :twitter_data_present, only: :email
+  
   def facebook
     # You need to implement the method below in your model
     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
@@ -38,6 +40,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           flash[:alert] = 'Algo ha ido mal.'
         end
       end
+    end
+  end
+
+  protected
+  def twitter_data_present
+    if session["devise.twitter_data"].blank?
+      redirect_to root_path, alert: I18n.t("devise.omniauth_callbacks.failure", 
+        kind: "Twitter", reason: 'no hemos podido recoger tus datos') and return
     end
   end
 end
