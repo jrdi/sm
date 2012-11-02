@@ -1,4 +1,6 @@
-<%= devise_error_messages! %>
+<% if @user.present? %>
+  <%= devise_error_messages! %>
+<% end %>
 
 <%= form_tag users_sign_up_email_url do %>
   <%= label_tag :email %>
