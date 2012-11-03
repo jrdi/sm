@@ -9,7 +9,13 @@
  @import "compass/css3/text-shadow";
 
 h1 { margin: 0; }
-ul { margin: 0; }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 a { text-decoration: none; }
 
 .inner {
@@ -19,14 +25,14 @@ a { text-decoration: none; }
 }
 
 .banner {
-  background: url(<%= asset_path('header-bg.png')%>) repeat-x center 0;
+  background: image-url('header-bg.png') repeat-x center 0;
   height: 135px;
 
   .title {
     float: left;
 
     a {
-      background: url(<%= asset_path('socorromama-logo.png')%>) no-repeat 0 10px;
+      background: image-url('socorromama-logo.png') no-repeat 0 10px;
       color: #EBBF95;
       display: block;
       font: 40px/90px 'Copse', Georgia, serif;
@@ -38,8 +44,7 @@ a { text-decoration: none; }
 
   .navbar {
     float: right;
-    list-style: none;
-    margin-top: 25px;
+    margin-top: 27px;
 
     li {
       float: left;
@@ -48,14 +53,14 @@ a { text-decoration: none; }
         color: #FFCBAC;
         display: block;
         font: 500 16px/36px "Helvetica Neue";
-        margin-left: 40px;
+        margin: 0 28px;
         @include text-shadow(-1px -1px 0 rgba(#000, .4));
 
-        &.selected {
-          background: url(<%= asset_path('navbar_button-bg.png')%>) repeat-x;
-          border: 2px solid #5C2E0A;
-          margin: -2px -18px 0 22px;
-          padding: 0 16px;
+        &.selected{
+          background: image-url('navbar_button-bg.png') repeat-x;
+          border: 2px solid #442005;
+          margin: -2px 8px;
+          padding: 0 18px;
           @include border-radius(8px);
           @include box-shadow(
             0 0 0 1px rgba(#FFFFBD, .06) inset,
@@ -63,23 +68,30 @@ a { text-decoration: none; }
           );
         }
 
-        &:hover{
+        &:hover {
           @extend .selected;
           background-position: 0 -72px;
-          border-color: #442005;
+          border-color: #5C2E0A;
+          margin: -2px 8px;
         }
 
         &.signup {
           background-position: 0 -36px;
+          color: #72300A;
+          margin: -2px -2px -2px 8px;
           @include box-shadow(
             0 0 0 1px rgba(#FFFFBD, .09) inset,
             0 1px 0 rgba(#FFC6A1, .5) inset
           );
+          @include text-shadow(1px 1px 0 rgba(#fff, .2));
 
           &:hover{
             background-position: 0 -108px;
+            margin-right: -2px;
           }
         }
+
+        &.first { margin-left: 0; }
       }
     }
   }
