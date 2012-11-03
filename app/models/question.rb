@@ -10,11 +10,11 @@ class Question < ActiveRecord::Base
   
   attr_accessible :title, :description
 
-  scope :without_answers, lambda {
+  scope :without_answers, -> {
     where(answers_count: 0).order('created_at DESC')
   }
 
-  scope :populars, lambda { 
+  scope :populars, -> { 
     where('answers_count > ?', 0).order('answers_count DESC')
   }
   

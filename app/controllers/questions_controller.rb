@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   def show
-    @question = Question.find(params[:id], :include => :answers, :order => "answers.#{Answer.ordered(params[:order])}")
+    @question = Question.where(id: params[:id]).includes(:answers => [:user, :votes]).order("answers.#{Answer.ordered(params[:order])}").first
   end
 
   # GET /questions/1/edit

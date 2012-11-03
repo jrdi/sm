@@ -44,4 +44,5 @@ group :development do
   # To use debugger
   gem 'debugger'
   gem 'thin'
+  gem 'foreman'
 end

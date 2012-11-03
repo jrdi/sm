@@ -7,9 +7,11 @@ Sm::Application.routes.draw do
   end
   
   resources :questions, :only => [:show, :create, :edit, :update, :destroy] do
-    resources :answers, :only => [:create, :edit, :update, :destroy] do
-      resources :votes, :only => :create
-    end
+    resources :answers, :only => [:create, :edit, :update, :destroy]
+  end
+
+  resources :answers, only: {} do
+    resources :votes, :only => :create
   end
   
   resources :tags, :only => :show
