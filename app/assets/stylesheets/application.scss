@@ -3,11 +3,14 @@
  *= require_self
  */
 
- @import url(http://fonts.googleapis.com/css?family=Copse);
- @import 'compass/css3/box-shadow';
- @import "compass/css3/border-radius";
- @import "compass/css3/text-shadow";
+@import url(http://fonts.googleapis.com/css?family=Copse);
+@import 'compass/css3/box-shadow';
+@import "compass/css3/border-radius";
+@import "compass/css3/text-shadow";
 
+
+/* typography */
+ 
 h1 { margin: 0; }
 
 ul {
@@ -18,11 +21,17 @@ ul {
 
 a { text-decoration: none; }
 
+
+/* layout */
+
 .inner {
   margin: 0 auto;
   padding: 0 20px;
   width: 960px;
 }
+
+
+/* banner */
 
 .banner {
   background: image-url('header-bg.png') repeat-x center 0;
@@ -58,7 +67,7 @@ a { text-decoration: none; }
 
         &.selected{
           background: image-url('navbar_button-bg.png') repeat-x;
-          border: 2px solid #442005;
+          border: 2px solid #5C2E0A;
           margin: -2px 8px;
           padding: 0 18px;
           @include border-radius(8px);
@@ -66,13 +75,6 @@ a { text-decoration: none; }
             0 0 0 1px rgba(#FFFFBD, .06) inset,
             0 1px 0 rgba(#FFC6A1, .3) inset
           );
-        }
-
-        &:hover {
-          @extend .selected;
-          background-position: 0 -72px;
-          border-color: #5C2E0A;
-          margin: -2px 8px;
         }
 
         &.signup {
@@ -89,6 +91,25 @@ a { text-decoration: none; }
             background-position: 0 -108px;
             margin-right: -2px;
           }
+
+          &:active { background-position: 0 -180px; }
+        }
+
+        &:hover {
+          @extend .selected;
+          background-position: 0 -72px;
+          border-color: #442005;
+          margin: -2px 8px;
+        }
+
+        &:active {
+          @extend :hover;
+          background-position: 0 -144px;
+          border: 2px solid #5C2E0A;
+          @include box-shadow(
+            0 0 0 1px rgba(#FFFFBD, .06) inset,
+            0 2px 3px rgba(#000, .3) inset
+          );
         }
 
         &.first { margin-left: 0; }
