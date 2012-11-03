@@ -16,9 +16,9 @@
   <div class="wrapper">
     <header class="banner">
       <div class="inner">
-        <%= render :partial => "shared/nav_bar" %>
+        <h1 class="title"><%= link_to("Socorro mamá!", root_path, :title => "Ir a la Portada") %></h1>
 
-        <%= content_tag(:h1, link_to("Socorro mamá!", root_path, :title => "Ir a la Portada"), :class => "title") %>
+        <%= render :partial => "shared/navbar" %>
       </div>
     </header><!-- .banner -->
 

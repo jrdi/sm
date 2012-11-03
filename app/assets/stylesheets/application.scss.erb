@@ -1,0 +1,86 @@
+/*
+ *= require normalize
+ *= require_self
+ */
+
+ @import url(http://fonts.googleapis.com/css?family=Copse);
+ @import 'compass/css3/box-shadow';
+ @import "compass/css3/border-radius";
+ @import "compass/css3/text-shadow";
+
+h1 { margin: 0; }
+ul { margin: 0; }
+a { text-decoration: none; }
+
+.inner {
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 960px;
+}
+
+.banner {
+  background: url(<%= asset_path('header-bg.png')%>) repeat-x center 0;
+  height: 135px;
+
+  .title {
+    float: left;
+
+    a {
+      background: url(<%= asset_path('socorromama-logo.png')%>) no-repeat 0 10px;
+      color: #EBBF95;
+      display: block;
+      font: 40px/90px 'Copse', Georgia, serif;
+      margin-left: -20px;
+      padding: 0 0 35px 100px;
+      @include text-shadow(-1px -1px 0 rgba(#000, .3));
+    }
+  }
+
+  .navbar {
+    float: right;
+    list-style: none;
+    margin-top: 25px;
+
+    li {
+      float: left;
+
+      a {
+        color: #FFCBAC;
+        display: block;
+        font: 500 16px/36px "Helvetica Neue";
+        margin-left: 40px;
+        @include text-shadow(-1px -1px 0 rgba(#000, .4));
+
+        &.selected {
+          background: url(<%= asset_path('navbar_button-bg.png')%>) repeat-x;
+          border: 2px solid #5C2E0A;
+          margin: -2px -18px 0 22px;
+          padding: 0 16px;
+          @include border-radius(8px);
+          @include box-shadow(
+            0 0 0 1px rgba(#FFFFBD, .06) inset,
+            0 1px 0 rgba(#FFC6A1, .3) inset
+          );
+        }
+
+        &:hover{
+          @extend .selected;
+          background-position: 0 -72px;
+          border-color: #442005;
+        }
+
+        &.signup {
+          background-position: 0 -36px;
+          @include box-shadow(
+            0 0 0 1px rgba(#FFFFBD, .09) inset,
+            0 1px 0 rgba(#FFC6A1, .5) inset
+          );
+
+          &:hover{
+            background-position: 0 -108px;
+          }
+        }
+      }
+    }
+  }
+}
