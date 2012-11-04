@@ -4,7 +4,7 @@ gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'thin'
 gem 'pg'
 
 
@@ -22,6 +22,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'pjax_rails'
+
 gem 'devise'
 gem 'omniauth'
 gem 'oauth2'
@@ -44,6 +46,5 @@ gem 'gravatar_image_tag'
 group :development do
   # To use debugger
   gem 'debugger'
-  gem 'thin'
   gem 'foreman'
 end

@@ -13,9 +13,13 @@
 //= require modernizr
 //= require jquery
 //= require jquery_ujs
+//= require jquery.pjax
 //= require_tree .
 
 $(document).ready(function() {
+
+  $('[data-pjax-container]').pjax('a[data-perform-pjax]');
+
   if($(".alert").text() != "") {
     $(".alert").show().delay(5000).fadeOut();
   }
