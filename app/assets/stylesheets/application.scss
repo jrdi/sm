@@ -1,5 +1,6 @@
 /*
  *= require normalize
+ *= require font-awesome
  *= require_self
  */
 
@@ -10,7 +11,9 @@
 
 
 /* typography */
- 
+
+body { background: image-url('noise-bg.png'); }
+
 h1 { margin: 0; }
 
 ul {
@@ -35,7 +38,7 @@ a { text-decoration: none; }
 
 .banner {
   background: image-url('header-bg.png') repeat-x center 0;
-  height: 135px;
+  height: 150px;
 
   .title {
     float: left;
@@ -116,4 +119,98 @@ a { text-decoration: none; }
       }
     }
   }
+}
+
+
+/* content */
+
+.content {
+  float: left;
+  width: 700px;
+
+  .content_header {
+    height: 36px;
+    padding: 10px;
+    position: relative;
+    @include border-top-radius(7px);
+    @include box-shadow(0 1px 0 rgba(#fff, .3) inset);
+
+    .header_title {}
+
+    .header_menu {
+      background: image-url('questions_header_menu-bg.png') repeat-x;
+      border: 1px solid #573124;
+      overflow: hidden;
+      @include box-shadow(
+        0 1px 0 rgba(#fff, .1) inset,
+        0 1px 0 rgba(#fff, .2)
+      );
+      @include border-radius(5px);
+
+      &.tabbed_menu {
+        left: 50%;
+        margin-left: -180px;
+        position: absolute;
+
+        .menu_item { width: 130px; }
+      }
+
+      &.action_menu { float: right; }
+    }
+
+    .menu_item {
+      float: left;
+      text-align: center;
+      @include text-shadow(-1px -1px 0 rgba(#000, .5));
+
+      a {
+        border-left: 1px solid #573124;
+        color: #fff;
+        display: block;
+        font: bold 14px/35px "Helvetica Neue";
+        padding: 0 16px;
+        text-decoration: none;
+        @include text-shadow(-1px -1px 0 rgba(#000, .5));
+        @include box-shadow(1px 0 0 rgba(#fff, .1) inset);
+
+        &.selected {
+          background: image-url('questions_header_menu-bg.png') repeat-x 0 -35px;
+          color: #BFA392;
+          @include text-shadow(none);
+        }
+
+        &.new_question_link {
+          font-size: 18px;
+          padding: 0 8px;
+
+          i { line-height: 1; }
+        }
+
+        &:active { @extend .selected }
+      }
+
+      &:first-child a {
+        border-left: 0;
+        @include border-left-radius(5px);
+        @include box-shadow(none);
+      }
+
+      &:last-child a { @include border-right-radius(5px); }
+    }
+
+    &.questions_header {
+      background: image-url('questions_header-bg.png') repeat-x;
+      border: 1px solid rgba(#363636, .8);
+      @include box-shadow(0 1px 0 rgba(#fff, .3) inset);
+    }
+  }
+}
+
+
+/* sidebar */
+
+.sidebar {
+  float: left;
+  margin: 10px 0 0 20px;
+  width: 240px;
 }
