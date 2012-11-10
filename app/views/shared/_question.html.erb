@@ -8,8 +8,8 @@
   <% end -%>
 
   <div class="buttons replies">
-    <%= link_to question.answers_count, question, :title => "Ir a las respuestas", :class => "button" %>
-    <%= link_to content_tag(:i, content_tag(:span, "Responder"), :class => "#{question.answered? ? 'icon-ok' : 'icon-share-alt'}"), "#{question_path(question)}#new_answer", :title => "Responder", :class => "button" %>
+    <%= link_to question.answers_count, question, :title => "Ir a las respuestas", :class => "button num" %>
+    <%= link_to content_tag(:i, content_tag(:span, "Responder"), :class => "#{question.answered? ? 'icon-ok' : 'icon-share-alt'}"), "#{question_path(question)}#new_answer", :title => "Responder", :class => "button reply" %>
   </div>
 
   <h2 class="title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
@@ -25,7 +25,7 @@
       <%- question.tags.each do |tag| %>
         <li class="tag">
           <%#= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-          <%= link_to "##{tag.name.capitalize}", tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
+          <%= link_to "#{content_tag(:i, content_tag(:span, '#'), :class => 'icon-tag')} #{tag.name.capitalize}".html_safe, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
         </li>
       <% end -%>
     </ul>

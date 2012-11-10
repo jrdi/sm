@@ -1,18 +1,19 @@
 <% if params[:page].to_i == 1 %>
-	$("#questions-list").html("");
+  $(".questions-js").html("");
 <% end %>
 
 <%- if @questions.empty? %>
-	$("#questions-list").append("<li class="answer no-answers"><p>Aún no hay preguntas disponibles.</p></li>");
+  $(".questions-js").append("<%= render 'shared/no_answers' %>");
 <% else %>
-	<%- @questions.each do |question| %>
-		$("#questions-list").append("<%= escape_javascript(render :partial => 'shared/question', :locals => { :question => question }) %>");
-	<% end -%>
-<% end -%>   
-$(".load-more").attr('href', "/?page=<%= params[:page].to_i + 1 %>&scoped_questions=<%= params[:scoped_questions] %>&question_pages=<%= @question_pages %>");
+  <%- @questions.each do |question| %>
+    $(".questions-js").append("<%= escape_javascript(render :partial => 'shared/question', :locals => { :question => question }) %>");
+  <% end -%>
+<% end -%>
+
+$(".load_more-js").attr('href', "/?page=<%= params[:page].to_i + 1 %>&scoped_questions=<%= params[:scoped_questions] %>&question_pages=<%= @question_pages %>");
 
 <% if params[:page].to_i + 1 > @question_pages %>
-	$(".load-more").fadeOut();
+  $(".load_more-js").fadeOut();
 <% else %>
-	$(".load-more").fadeIn();
+  $(".load_more-js").fadeIn();
 <% end %>

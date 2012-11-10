@@ -7,34 +7,26 @@
 <div class="content_header questions_header">
   <ul class="header_menu tabbed_menu">
     <li class="menu_item">
-      <%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :class => "questions_header_menu_item questions_header_menu_item_all-js #{tab_selected?(params[:scoped_questions])}", data: { 'perform-pjax' => true } %>
+      <%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :class => "questions_header_menu_item questions_header_menu_item_all-js #{tab_selected?(params[:scoped_questions])}", :remote => true %>
     </li>
 
     <li class="menu_item">
-      <%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :class => "questions_header_menu_item questions_header_menu_item_without_answers-js #{tab_selected?(params[:scoped_questions], 'without_answers')}", data: { 'perform-pjax' => true } %>
+      <%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :class => "questions_header_menu_item questions_header_menu_item_without_answers-js #{tab_selected?(params[:scoped_questions], 'without_answers')}", :remote => true %>
     </li>
 
     <li class="menu_item">
-      <%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :class => "questions_header_menu_item questions_header_menu_item_populars-js #{tab_selected?(params[:scoped_questions], 'populars')}", data: { 'perform-pjax' => true } %>
+      <%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :class => "questions_header_menu_item questions_header_menu_item_populars-js #{tab_selected?(params[:scoped_questions], 'populars')}", :remote => true %>
     </li>
   </ul>
 
   <ul class="header_menu action_menu">
-    <li class="menu_item">
-      <%- if user_signed_in? %>
-      <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link disabled" %>
-      <% else -%>
-        <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta", :class => "new_question_link" %>
-      <% end -%>
-    </li>
+    <%= render 'shared/new_question_button' %>
   </ul>
 </div>
 
-<ul class="questions">
+<ul class="questions questions-js">
   <%- if @questions.empty? %>
-    <li class="answer no_answers">
-      <p>Aún no hay preguntas disponibles.</p>
-    </li>
+    <%= render 'shared/no_answers' %>
   <% else %>
     <%- @questions.each do |question| %>
       <%= render :partial => 'shared/question', :locals => { :question => question } %>
@@ -43,15 +35,15 @@
 </ul>
 
 <div class="content_footer questions_footer">
-  <ul class="footer_menu action_menu">
+  <%= link_to( 'Cargar más', root_path(:scope_questions => params[:scope_questions], :page => ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), :title => "Carga más preguntas", :class => "menu_item load_more-js", :remote => true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
+
+  <ul class="answers_menu action_menu">
     <li class="menu_item">
       <%- if user_signed_in? %>
-        <%= link_to content_tag(:i, "", :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link menu_item disabled" %>
+        <%= link_to "Nueva pregunta", "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link new_question_link-js menu_item" %>
       <% else -%>
-        <%= link_to content_tag(:i, "", :class => "icon-edit"), new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta", :class => "new_question_link menu_item" %>
+        <%= link_to "Nueva pregunta", new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta", :class => "new_question_link new_question_link-js" %>
       <% end -%>
     </li>
   </ul>
-
-  <%= link_to( 'Cargar más', root_path(:scope_questions => params[:scope_questions], :page => ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), :title => "Carga más preguntas", :class => "menu_item load-more", :remote => true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
 </div>

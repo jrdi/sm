@@ -1,0 +1,7 @@
+<li class="menu_item">
+  <%- if user_signed_in? %>
+    <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link disabled" %>
+  <% else -%>
+    <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta", :class => "new_question_link" %>
+  <% end -%>
+</li>
