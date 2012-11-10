@@ -357,6 +357,7 @@ abbr { cursor: help; }
 
 .question {
   padding: 33px 18px 33px 98px;
+  overflow: hidden;
   position: relative;
   @include text-shadow(0 1px 0 rgba(#fff, .5));
 
@@ -420,6 +421,16 @@ abbr { cursor: help; }
 .meta {
   font-size: 12px;
 
+  &:before {
+    background: image-url('tags-bg.png') no-repeat right 0;
+    bottom: 22px;
+    right: 0;
+    position: absolute;
+    width: 22px;
+    height: 30px;
+    z-index: 1;
+  }
+
   p {
     color: #ADBABF;
     float: left;
@@ -428,7 +439,14 @@ abbr { cursor: help; }
 
   .author a:hover { text-decoration: underline; }
 
-  .tags { float: right; }
+  .tags {
+    left: 50%;
+    position: absolute;
+    min-width: 328px;
+    white-space: nowrap;
+
+    .tag { float: right; }
+  }
 
   a { color: #71919F; }
 
