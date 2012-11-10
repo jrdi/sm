@@ -106,24 +106,6 @@ abbr { cursor: help; }
           );
         }
 
-        &.signup {
-          background-position: 0 -36px;
-          color: #72300A;
-          margin: -2px -2px -2px 8px;
-          @include box-shadow(
-            0 0 0 1px rgba(#FFFFBD, .09) inset,
-            0 1px 0 rgba(#FFC6A1, .5) inset
-          );
-          @include text-shadow(1px 1px 0 rgba(#fff, .2));
-
-          &:hover{
-            background-position: 0 -108px;
-            margin-right: -2px;
-          }
-
-          &:active { background-position: 0 -180px; }
-        }
-
         &:hover {
           @extend .selected;
           background-position: 0 -72px;
@@ -148,8 +130,9 @@ abbr { cursor: help; }
 
         i {
           color: #5C2E0A;
-          line-height: 1;
           font-size: 12px;
+          line-height: 1;
+          margin: 0 10px;
           @include text-shadow(0 0 3px rgba(#FFC39F, .2));
         }
       }
@@ -157,9 +140,26 @@ abbr { cursor: help; }
       &:first-child a { margin-left: 0; }
 
       &:last-child a {
-        margin-right: 0;
+        margin-right: -18px;
+        padding-right: 0;
 
-        &.selected { margin-right: -20px; }
+        &.signup {
+          background-position: 0 -36px;
+          color: #72300A;
+          margin: -2px -20px -2px 8px;
+          padding-right: 18px;
+          @include box-shadow(
+            0 0 0 1px rgba(#FFFFBD, .09) inset,
+            0 1px 0 rgba(#FFC6A1, .5) inset
+          );
+          @include text-shadow(1px 1px 0 rgba(#fff, .2));
+
+          &:hover{ background-position: 0 -108px; }
+
+          &:active { background-position: 0 -180px; }
+        }
+
+        &:hover { margin-right: -20px; }
       }
 
       ul { display: none; }
@@ -520,7 +520,11 @@ abbr { cursor: help; }
   width: 240px;
   @include text-shadow(0 1px 0 rgba(#fff, .5));
 
-  .widget { margin-bottom: 30px; }
+  .widget {
+    margin-bottom: 30px;
+
+    &:last-child { margin-bottom: 0; }
+  }
 
   h3 {
     color: #C3550D;
