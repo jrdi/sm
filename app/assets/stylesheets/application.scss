@@ -32,16 +32,17 @@ p {
 a {
   color: #C3550D;
   text-decoration: none;
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    display: inline-block;
+    text-decoration: inherit;
+
+    span { display: none; }
+  }
 }
 
-a [class^="icon-"],
-a [class*=" icon-"] {
-  display: inline-block;
-  text-decoration: inherit;
-
-  span { display: none; }
-}
-
+abbr { cursor: help; }
 
 /* layout */
 
@@ -93,6 +94,7 @@ a [class*=" icon-"] {
           padding: 0 18px;
           @include border-radius(8px);
           @include box-shadow(
+            0 0 3px rgba(#FFC39F, .2),
             0 0 0 1px rgba(#FFFFBD, .06) inset,
             0 1px 0 rgba(#FFC6A1, .3) inset
           );
@@ -121,19 +123,36 @@ a [class*=" icon-"] {
           background-position: 0 -72px;
           border-color: #442005;
           margin: -2px 8px;
+
+          i { color: #442005; }
         }
 
         &:active {
           @extend :hover;
           background-position: 0 -144px;
-          border: 2px solid #5C2E0A;
+          border-color: #5C2E0A;
           @include box-shadow(
-            0 0 0 1px rgba(#FFFFBD, .06) inset,
+            0 0 0 1px rgba(#FFFFBD, .05) inset,
             0 2px 3px rgba(#000, .3) inset
           );
+
+          i { color: #5C2E0A; }
         }
 
-        &.first { margin-left: 0; }
+        i {
+          color: #5C2E0A;
+          line-height: 1;
+          font-size: 12px;
+          @include text-shadow(0 0 3px rgba(#FFC39F, .2));
+        }
+      }
+
+      &:first-child a { margin-left: 0; }
+
+      &:last-child a {
+        margin-right: 0;
+
+        &.selected { margin-right: -20px; }
       }
 
       ul { display: none; }
@@ -177,6 +196,24 @@ a [class*=" icon-"] {
   }
 }
 
+.menu {
+  border: 1px solid #573124;
+  overflow: hidden;
+  @include box-shadow(
+    0 1px 0 rgba(#fff, .1) inset,
+    0 1px 0 rgba(#fff, .2)
+  );
+  @include border-radius(5px);
+}
+
+
+.tabbed_menu {
+  left: 50%;
+  position: absolute;
+}
+
+.action_menu { float: right; }
+
 .menu_item {
   float: left;
   text-align: center;
@@ -200,7 +237,14 @@ a [class*=" icon-"] {
     }
 
     &:active { @extend .selected }
+
+    &.new_question_link-icon {
+      font-size: 18px;
+      padding: 0 8px;
+    }
   }
+
+  i { line-height: 1; }
 
   &:first-child a {
     border-left: 0;
@@ -209,24 +253,6 @@ a [class*=" icon-"] {
   }
 
   &:last-child a { @include border-right-radius(5px); }
-}
-
-.tabbed_menu {
-  left: 50%;
-  position: absolute;
-}
-
-.action_menu { float: right; }
-
-.header_menu,
-.questions_menu,
-.answers_menu {
-  overflow: hidden;
-  @include box-shadow(
-    0 1px 0 rgba(#fff, .1) inset,
-    0 1px 0 rgba(#fff, .2)
-  );
-  @include border-radius(5px);
 }
 
 .content_header {
@@ -243,38 +269,33 @@ a [class*=" icon-"] {
     border: 1px solid rgba(#363636, .8);
     @include box-shadow(0 1px 0 rgba(#fff, .3) inset);
 
-    .header_menu {
+    .menu {
       background: image-url('questions_menu-bg.png') repeat-x;
-      border: 1px solid #573124;
-      margin-left: -196px;
 
-      &.tabbed_menu .menu_item { width: 130px; }
+      &.tabbed_menu {
+        margin-left: -196px;
 
-      .new_question_link {
-        font-size: 18px;
-        padding: 0 8px;
-
-        i { line-height: 1; }
+        .menu_item { width: 130px; }
       }
     }
   }
 
-  &.answers_header {
-    &.answers_menu {
-      margin-left: -151px;
-
-      &.tabbed_menu.menu_item { width: 100px; }
-    }
-  }
+  &.answers_header {}
 }
 
 .answers_menu {
   background: image-url('answers_menu-bg.png') repeat-x;
-  border: 0;
+  border-color: rgba(#5C7B89, .4);
   @include box-shadow(0 1px 0 #fff);
 
+  &.tabbed_menu {
+    margin-left: -151px;
+
+    .menu_item { width: 100px; }
+  }
+
   .menu_item a {
-    border: 1px solid rgba(#5C7B89, .4);
+    border-color: rgba(#5C7B89, .4);
     color: #657983;
     line-height: 30px;
     @include text-shadow(1px 1px 0 #fff);
@@ -388,15 +409,20 @@ a [class*=" icon-"] {
 
   .author a:hover { text-decoration: underline; }
 
-  .tags {
-    float: right;
-
-    a { font-weight: 500; }
-  }
+  .tags { float: right; }
 
   a { color: #71919F; }
 
   i { font-size: 14px; }
+}
+
+.tag {
+  float: left;
+  margin-right: 15px;
+
+  &:last-child { margin-right: 0; }
+
+  a { font: 500 12px "Helvetica Neue", sans-serif; }
 }
 
 .avatar {
@@ -437,13 +463,6 @@ a [class*=" icon-"] {
     font: bold 12px 'Copse', Georgia, serif;
     margin-top: 0;
     text-transform: uppercase;
-  }
-
-  .tag {
-    float: left;
-    margin-right: 15px;
-
-    a { font: 500 12px "Helvetica Neue", sans-serif; }
   }
 }
 

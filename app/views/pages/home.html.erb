@@ -5,7 +5,7 @@
 <% end -%>
 
 <div class="content_header questions_header">
-  <ul class="header_menu tabbed_menu">
+  <ul class="menu tabbed_menu">
     <li class="menu_item">
       <%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :class => "questions_header_menu_item questions_header_menu_item_all-js #{tab_selected?(params[:scoped_questions])}", :remote => true %>
     </li>
@@ -19,7 +19,7 @@
     </li>
   </ul>
 
-  <ul class="header_menu action_menu">
+  <ul class="menu action_menu">
     <%= render 'shared/new_question_button' %>
   </ul>
 </div>
@@ -37,7 +37,7 @@
 <div class="content_footer questions_footer">
   <%= link_to( 'Cargar más', root_path(:scope_questions => params[:scope_questions], :page => ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), :title => "Carga más preguntas", :class => "menu_item load_more-js", :remote => true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
 
-  <ul class="answers_menu action_menu">
+  <ul class="menu answers_menu action_menu">
     <li class="menu_item">
       <%- if user_signed_in? %>
         <%= link_to "Nueva pregunta", "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link new_question_link-js menu_item" %>
