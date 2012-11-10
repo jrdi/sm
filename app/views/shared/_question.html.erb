@@ -25,7 +25,7 @@
       <%- question.tags.each do |tag| %>
         <li class="tag">
           <%#= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-          <%= link_to "#{content_tag(:i, content_tag(:span, '#'), :class => 'icon-tag')} #{tag.name.capitalize}".html_safe, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
+          <%= link_to "#{content_tag(:i, content_tag(:span, '#'), :class => 'icon-tag')}#{tag.name.capitalize}".html_safe, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
         </li>
       <% end -%>
     </ul>

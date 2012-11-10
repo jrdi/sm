@@ -65,7 +65,7 @@
                 <%- Tag.order('random()').limit(10).each do |tag| %>
                   <li class="tag">
                     <%#= link_to content_tag(:span, "+"), tag, :title => "Sigue el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-                    <%= link_to "#{content_tag(:i, content_tag(:span, '#'), :class => 'icon-tag')} #{tag.name.capitalize}".html_safe, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %> 
+                    <%= link_to "#{content_tag(:i, content_tag(:span, '#'), :class => 'icon-tag')}#{tag.name.capitalize}".html_safe, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %> 
                     <!-- 16 seguidores -->
                   </li>
                 <% end -%>

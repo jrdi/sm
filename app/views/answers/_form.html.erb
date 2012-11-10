@@ -14,19 +14,27 @@
     <% end %>
 
     <fieldset>
-      <div class="field" id="field_description">
+      <div class="field field_description">
         <%= f.label :content %>
         <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta" %>
       </div>
     </fieldset>
 
-    <div id="questions-footer" class="questions-footer">
-      <button type="submit" class="new-answer">Publicar respuesta</button>
-    </div>
 
+    <div class="content_footer questions_footer">
+      <ul class="menu answers_menu action_menu">
+        <li class="menu_item">
+          <button type="submit" class="menu_item new_answer-js">Publicar respuesta</button>
+        </li>
+      </ul>
+    </div>
   <% end %>
 <% else %>
-  <div id="questions-footer" class="questions-footer">
-    <%= link_to "Publicar respuesta", new_user_session_path, :class => "new-answer" %>
+  <div class="content_footer questions_footer">
+    <ul class="menu answers_menu action_menu">
+      <li class="menu_item">
+        <%= link_to "Publicar respuesta", new_user_session_path, :class => "menu_item new_answer-js" %>
+      </li>
+    </ul>
   </div>
 <% end %>
