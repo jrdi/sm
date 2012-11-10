@@ -22,15 +22,15 @@
   <ul class="header_menu action_menu">
     <li class="menu_item">
       <%- if user_signed_in? %>
-      <%= link_to content_tag(:i, "", :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link disabled" %>
+      <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link disabled" %>
       <% else -%>
-        <%= link_to content_tag(:i, "", :class => "icon-edit"), new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta", :class => "new_question_link" %>
+        <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta", :class => "new_question_link" %>
       <% end -%>
     </li>
   </ul>
 </div>
 
-<ul class="questions_list">
+<ul class="questions">
   <%- if @questions.empty? %>
     <li class="answer no_answers">
       <p>Aún no hay preguntas disponibles.</p>
@@ -42,11 +42,16 @@
   <% end -%>
 </ul>
 
-<div class="questions_footer">
-  <%= link_to( 'Cargar más', root_path(:scope_questions => params[:scope_questions], :page => ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), :title => "Carga más preguntas", :class => "load-more", :remote => true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
-  <%- if user_signed_in? %>
-  <%= link_to 'Nueva pregunta', "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link disabled" %>
-  <% else -%>
-    <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta", :class => "new_question_link" %>
-  <% end -%>
+<div class="content_footer questions_footer">
+  <ul class="footer_menu action_menu">
+    <li class="menu_item">
+      <%- if user_signed_in? %>
+        <%= link_to content_tag(:i, "", :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question_link menu_item disabled" %>
+      <% else -%>
+        <%= link_to content_tag(:i, "", :class => "icon-edit"), new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta", :class => "new_question_link menu_item" %>
+      <% end -%>
+    </li>
+  </ul>
+
+  <%= link_to( 'Cargar más', root_path(:scope_questions => params[:scope_questions], :page => ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), :title => "Carga más preguntas", :class => "menu_item load-more", :remote => true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
 </div>
