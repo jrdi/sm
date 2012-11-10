@@ -7,15 +7,15 @@
 <div class="content_header questions_header">
   <ul class="header_menu tabbed_menu">
     <li class="menu_item">
-      <%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :class => "questions_header_menu_item questions_header_menu_item_all-js #{tab_selected?(params[:scoped_questions])}", :remote => true %>
+      <%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :class => "questions_header_menu_item #{tab_selected?(params[:scoped_questions])}", data: { 'perform-pjax' => true } %>
     </li>
 
     <li class="menu_item">
-      <%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :class => "questions_header_menu_item questions_header_menu_item_without_answers-js #{tab_selected?(params[:scoped_questions], 'without_answers')}", :remote => true %>
+      <%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :class => "questions_header_menu_item #{tab_selected?(params[:scoped_questions], 'without_answers')}", data: { 'perform-pjax' => true } %>
     </li>
 
     <li class="menu_item">
-      <%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :class => "questions_header_menu_item questions_header_menu_item_populars-js #{tab_selected?(params[:scoped_questions], 'populars')}", :remote => true %>
+      <%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :class => "questions_header_menu_item #{tab_selected?(params[:scoped_questions], 'populars')}", data: { 'perform-pjax' => true } %>
     </li>
   </ul>
 
