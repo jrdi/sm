@@ -1,33 +1,20 @@
-ActiveAdmin.register_page "Dashboard" do
+ActiveAdmin::Dashboards.build do
 
-  menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
-
-  content :title => proc{ I18n.t("active_admin.dashboard") } do
-    div :class => "blank_slate_container", :id => "dashboard_default_message" do
-      span :class => "blank_slate" do
-        span "Welcome to Active Admin. This is the default dashboard page."
-        small "To add dashboard sections, checkout 'app/admin/dashboards.rb'"
-      end
+  section "Last questions" do
+    table_for Question.order('id desc').limit(10) do |question|
+      question.column("Status") { |question| status_tag (question.answered? ? "Answered" : "Pending"), (question.answered? ? :ok : :error) }
+      question.column("Title") { |question| link_to question.title, admin_question_path(question) }
+      question.column("User") { |question| question.user.name || question.user.email }
+      question.column("Date") { |question| l(question.created_at, format: :short) }
     end
+  end
 
-    # Here is an example of a simple dashboard with columns and panels.
-    #
-    # columns do
-    #   column do
-    #     panel "Recent Posts" do
-    #       ul do
-    #         Post.recent(5).map do |post|
-    #           li link_to(post.title, admin_post_path(post))
-    #         end
-    #       end
-    #     end
-    #   end
-
-    #   column do
-    #     panel "Info" do
-    #       para "Welcome to ActiveAdmin."
-    #     end
-    #   end
-    # end
-  end # content
+  section "Last questions" do
+    table_for Answer.order('id desc').limit(10) do |answer|
+      answer.column("Question") { |answer| link_to answer.question.title, admin_question_path(answer.question) }
+      answer.column("Content") { |answer| truncate(answer.content, length: 50) }
+      answer.column("User") { |answer| answer.user.name || answer.user.email }
+      answer.column("Date") { |answer| l(answer.created_at, format: :short) }
+    end
+  end
 end
