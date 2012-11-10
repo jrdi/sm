@@ -40,7 +40,7 @@
       		  <span itemscope itemtype="http://schema.org/Person" class="author">
       		  	<figure class="avatar"><%= link_to gravatar_image_tag(answer.user.email, :alt => answer.user.name, :gravatar => {:size => 16}, :itemprop => "image"), answer.user, :itemprop => "name" %></figure> 
       		  	Por <%= link_to answer.user.name, answer.user, :itemprop => "name" %></span> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
-						<%- if current_user.id == answer.user.id %>
+						<%- if current_user && current_user.id == answer.user.id %>
 						  <%= link_to content_tag(:span, 'editar'), edit_question_answer_path(answer.question, answer), :class => "edit", :title => "Editar" %> 
 	    				<%= link_to content_tag(:span, 'eliminar'), [answer.question, answer], :confirm => 'Estás seguro?', :method => :delete, :class => "delete", :title => "Eliminar" %>
 						<% end -%>

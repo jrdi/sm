@@ -1,5 +1,5 @@
 <li class="question">
-  <%- if current_user === question.user %>
+  <%- if current_user && current_user === question.user %>
     <div class="actions">
       <%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito" %>
       <%= link_to content_tag(:i, content_tag(:span, "Editar"), :class => "icon-edit"), edit_question_path(question), :title => "Editar" %>

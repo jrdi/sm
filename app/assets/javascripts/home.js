@@ -88,17 +88,6 @@ $(document).ready(function() {
     }
   });
 
-  $('.questions-header-menu-item').live("click", function(e) {
-    e.preventDefault();
-    clickedItem = $(this);
-    selectedItem = $("#questions-header-menu").find(".selected a");
-
-    if (clickedItem != selectedItem){
-      $(selectedItem).parent().removeClass('selected');
-      $(clickedItem).parent().addClass('selected');
-    }
-  });
-
   $('.new-question.disabled').live("click", function() {
     $("#question_title").focus();
     return false;
