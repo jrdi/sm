@@ -443,9 +443,8 @@ abbr { cursor: help; }
     left: 50%;
     position: absolute;
     min-width: 328px;
+    text-align: right;
     white-space: nowrap;
-
-    .tag { float: right; }
   }
 
   a { color: #71919F; }
@@ -454,8 +453,8 @@ abbr { cursor: help; }
 }
 
 .tag {
-  float: left;
-  margin-right: 15px;
+  display: inline-block;
+  margin-right: 10px;
 
   &:last-child { margin-right: 0; }
 
