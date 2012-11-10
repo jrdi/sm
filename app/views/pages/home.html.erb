@@ -26,7 +26,7 @@
 
 <ul class="questions questions-js">
   <%- if @questions.empty? %>
-    <%= render 'shared/no_answers' %>
+  <%= render 'shared/no_questions' %>
   <% else %>
     <%- @questions.each do |question| %>
       <%= render :partial => 'shared/question', :locals => { :question => question } %>
