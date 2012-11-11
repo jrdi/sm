@@ -30,11 +30,17 @@ $(document).ready(function() {
     },
     show: {
       event: 'click',
-      effect: function() { $(this).show().css('opacity', '0').animate({ opacity: 1, "top": "-=10px" }, { duration: 200 }); }
+      effect: function() {
+        $('.dropdown_link-js').addClass('selected');
+        $(this).show().css('opacity', '0').animate({ opacity: 1, "top": "-=5px" }, { duration: 200 });
+      }
     },
     hide: {
       event: 'unfocus click',
-      effect: function() { $(this).animate({ opacity: 0, "top": "+=10px" }, { duration: 200 }); }
+      effect: function() {
+        $(this).animate({ opacity: 0, "top": "+=5px" }, { duration: 200 });
+        $('.dropdown_link-js').removeClass('selected');
+      }
     },
     style: {
       classes: 'ui-tooltip-dropdown',

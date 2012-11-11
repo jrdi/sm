@@ -62,7 +62,6 @@ fieldset {
 label {
   display: block;
   float: left;
-  width: 100px;
 }
 
 /* layout */
@@ -127,7 +126,6 @@ label {
           @extend .selected;
           background-position: 0 -72px;
           border-color: #442005;
-          margin: -2px 8px;
           text-decoration: none;
 
           i { color: #442005; }
@@ -160,10 +158,12 @@ label {
         margin-right: -18px;
         padding-right: 0;
 
+        &.selected{ margin: -2px -20px -2px 8px; }
+
         &.signup {
+          @extend .selected;
           background-position: 0 -36px;
           color: #72300A;
-          margin: -2px -20px -2px 8px;
           padding-right: 18px;
           @include box-shadow(
             0 0 0 1px rgba(#FFFFBD, .09) inset,
@@ -238,7 +238,7 @@ label {
     font-size: 12px;
     font-weight: bold;
     padding: 15px 20px;
-    width: 55px;
+    width: 75px;
   }
 
   ::-webkit-input-placeholder { color: #CBB885; }
@@ -254,7 +254,7 @@ label {
     line-height: 20px;
     outline: none;
     padding: 15px;
-    width: 567px;
+    width: 547px;
   }
 
   textarea {
