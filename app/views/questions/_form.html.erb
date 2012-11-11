@@ -18,12 +18,12 @@
         <%= f.text_field :title, :placeholder => "Escribe aquí tu pregunta", :class => "question_title-js" %>
       </div>
 
-      <div class="notefield field_description-js">
+      <div class="notefield question_desc_field-js">
         <%= f.label :description %>
         <%= f.text_area :description, :rows => "1", :placeholder => "Escribe aquí la descripción (opcional)", :class => "question_desc-js" %>
       </div>
 
-      <div class="notefield field_tags-js">
+      <div class="notefield question_tags_field-js">
         <label for="question_tags">Temas</label>
         <input type="text" size="30" placeholder="Escribe aquí los temas separados por comas (opcional)" id="question_tags" class="question_tags-js">
       </div>
@@ -32,7 +32,7 @@
     <div class="content_footer ask_footer-js">
       <ul class="menu answers_menu action_menu">
         <li class="menu_item">
-          <button type="submit" class="menu_item new_question-js">Publicar pregunta</button>
+          <button type="submit" class="menu_item publish_question-js">Publicar pregunta</button>
         </li>
       </ul>
     </div>

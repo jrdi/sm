@@ -193,7 +193,6 @@ label {
 .ask { margin-bottom: 30px; }
 
 .ask_content {
-  background: #FFF4D4;
   border-color: rgba(#000, .3);
   border-bottom: 0;
   @include border-top-radius(7px);
@@ -211,7 +210,10 @@ label {
 }
 
 .notefield {
+  background: #FFF4D4;
   border-bottom: 1px solid #F1E4BF;
+
+  &:first-child { @include border-top-radius(7px); }
 
   &:last-child { border: 0;}
 
@@ -236,12 +238,12 @@ label {
     outline: none;
     padding: 15px 20px;
     width: 547px;
-  }
 
-  &:first-child input {
-    padding: 15px 20px;
-    font-size: 24px;
-    font-weight: 500;
+    &:first-child {
+      padding: 15px 20px;
+      font-size: 24px;
+      font-weight: 500;
+    }
   }
 
   textarea {
