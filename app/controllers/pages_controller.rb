@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     @question_pages = params[:question_pages].present? ? params[:question_pages].to_i : nil
     @questions      = Question.includes(:user, :answers, :tags).limit(10).offset(offset)
     
-    case params[:scoped_questions]
+    case params[:scope]
     when 'without_answers'
       @questions        = @questions.without_answers
       @question_pages ||= (Question.without_answers.count/10.0).ceil
