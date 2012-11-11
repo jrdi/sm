@@ -2,46 +2,50 @@
 <% meta(:keywords, @question.description.to_keywords) %>
 <% title @question.title %>
 
-<div class="content_header questions_header">
-  <ul class="breadcrumbs" itemprop="breadcrumb">
-    <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
-    <li class="breadcrumb breadcrumb_tag">
-      <%= link_to( @question.tags.first.name.capitalize, @question.tags.first, :title => "Ir al tema #{@question.tags.first.name.capitalize}") unless @question.tags.empty? %>
-    </li>
-    <li class="breadcrumb">
-      <p>Pregunta</p>
-    </li>
-  </ul>
+<div id="questions">
+  <div class="content_header questions_header">
+    <ul class="breadcrumbs" itemprop="breadcrumb">
+      <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+      <li class="breadcrumb breadcrumb_tag">
+        <%= link_to( @question.tags.first.name.capitalize, @question.tags.first, :title => "Ir al tema #{@question.tags.first.name.capitalize}") unless @question.tags.empty? %>
+      </li>
+      <li class="breadcrumb">
+        <p>Pregunta</p>
+      </li>
+    </ul>
 
-  <ul class="menu action_menu">
-    <%= render 'shared/new_question_button' %>
-  </ul>
-</div>
+    <ul class="menu action_menu">
+      <%= render 'shared/new_question_button' %>
+    </ul>
+  </div>
 
-<ul class="questions">
-  <%= render :partial => 'shared/question', :locals => { :question => @question } %>
-</ul>
-
-<div class="content_header answers_header">
-  <h3 class="title">Respuestas</h3>
-
-  <ul class="menu answers_menu tabbed_menu">
-    <li class="menu_item <%= tab_selected?(params[:order]) %>">
-      <%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "votes_count", :remote => true %>
-    </li>
-
-    <li class="menu_item <%= tab_selected?(params[:order], 'oldest') %>">
-      <%= link_to "Antiguas", question_path(@question, :order => 'oldest'), :title => "Ordenar respuestas por antiguas", :class => "oldest", :remote => true %>
-    </li>
-
-    <li class="menu_item <%= tab_selected?(params[:order], 'created_at') %>">
-      <%= link_to "Recientes", question_path(@question, :order => 'active'), :title => "Ordenar respuestas por recientes", :class => "active", :remote => true %>
-    </li>
+  <ul class="questions question-js">
+    <%= render :partial => 'shared/question', :locals => { :question => @question } %>
   </ul>
 </div>
 
-<ul class="answers">
-  <%= render :partial => 'shared/answers', :locals => { :answers => @question.answers, :valid_answer => @question.valid_answer } %>
-</ul>
+<div id="answers">
+  <div class="content_header answers_header">
+    <h3 class="title">Respuestas</h3>
 
-<%= render 'answers/form' %>
+    <ul class="menu answers_menu tabbed_menu">
+      <li class="menu_item">
+        <%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "tab-js #{tab_selected?(params[:order])}", data: { 'perform-pjax' => true } %>
+      </li>
+
+      <li class="menu_item">
+        <%= link_to "Antiguas", question_path(@question, :order => 'oldest'), :title => "Ordenar respuestas por antiguas", :class => "tab-js #{tab_selected?(params[:order], 'oldest')}", data: { 'perform-pjax' => true } %>
+      </li>
+
+      <li class="menu_item">
+        <%= link_to "Recientes", question_path(@question, :order => 'active'), :title => "Ordenar respuestas por recientes", :class => "tab-js #{tab_selected?(params[:order], 'active')}", data: { 'perform-pjax' => true } %>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="answers answers-js">
+    <%= render :partial => 'shared/answers', :locals => { :answers => @question.answers, :valid_answer => @question.valid_answer } %>
+  </ul>
+
+  <%= render 'answers/form' %>
+</div>

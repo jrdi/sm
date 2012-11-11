@@ -1,34 +1,40 @@
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+<div class="ask ask-js">
+  <%= form_for(@question) do |f| %>
+    <% if @question.errors.any? %>
+      <div class="error_explanation">
+        <h2>No ha sido posible publicar esta pregunta debido a <%= pluralize(@question.errors.count, "error") %></h2>
 
-      <ul>
-      <% @question.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <ul>
+        <% @question.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <fieldset class="ask_content ask_content-js">
+      <div class="field">
+        <%= f.label :title %>
+        <%= f.text_field :title, :placeholder => "Escribe aquí tu pregunta", :class => "notefield question_title-js" %>
+      </div>
+
+      <div class="field field_description-js">
+        <%= f.label :description %>
+        <%= f.text_area :description, :rows => "1", :placeholder => "Escribe aquí la descripción (opcional)", :class => "notefield question_desc-js" %>
+      </div>
+
+      <div class="field field_tags-js">
+        <label for="question_tags">Temas</label>
+        <input type="text" size="30" placeholder="Escribe aquí los temas separados por comas (opcional)" id="question_tags" class="notefield question_tags-js">
+      </div>
+    </fieldset>
+
+    <div class="content_footer ask_footer-js">
+      <ul class="menu answers_menu action_menu">
+        <li class="menu_item">
+          <button type="submit" class="menu_item new_question-js">Publicar pregunta</button>
+        </li>
       </ul>
     </div>
   <% end %>
-
-  <fieldset>
-    <div class="field" id="field_title">
-      <%= f.label :title %>
-      <%= f.text_field :title, :placeholder => "Escribe aquí tu pregunta" %>
-    </div>
-
-    <div class="field field_description-js" id="field_description">
-      <%= f.label :description %>
-      <%= f.text_area :description, :rows => "1", :placeholder => "Escribe aquí la descripción (opcional)" %>
-    </div>
-
-    <div class="field field_tags-js" id="field_tags">
-      <label for="question_tags">Temas</label>
-      <input type="text" size="30" placeholder="Escribe aquí los temas separados por comas (opcional)" name="question_tags" id="question_tags">
-    </div>
-  </fieldset>
-
-	<div id="ask-footer" class="questions-footer questions_footer-js">
-	  <button type="submit" class="publish-question">Publicar pregunta</button>
-	</div>
-<% end %>
+</div>

@@ -1,24 +1,19 @@
 $(document).ready(function() {
-  $('.answers-header-menu-item').live("click", function(e) {
+  if(url('#') === "new_answer") {
+    $('.answer_desc-js').focus();
+  }
+
+  $(".question-js").on("click", ".reply-js", function(e){
     e.preventDefault();
-    clickedItem = $(this);
-    selectedItem = $(this).parent().parent().find(".selected a");
-
-    if (clickedItem != selectedItem){
-      $(selectedItem).parent().removeClass('selected');
-      $(clickedItem).parent().addClass('selected');
-    }
+    $(".answer_desc-js").focus();
   });
 
-  $('#question .reply').live("click", function() {
-    $("#answer_content").focus();
-    return false;
-  });
+  $(".answers_footer-js").on("click", ".new_answer-js", function(e){
+    title = $(".answer_desc-js").val();
 
-  $('.new-answer').live("click", function(e) {
-    if ($("#answer_content").val() === ""){
+    if(!title) {
       e.preventDefault();
-      $(".alert").html("Primero tienes que escribir una respuesta!").show().delay(5000).fadeOut();
+      $(".alert").html("Primero necesitas escribir una respuesta!").show().delay(5000).fadeOut();
     }
   });
 });

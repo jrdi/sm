@@ -16,12 +16,11 @@
     <fieldset>
       <div class="field field_description">
         <%= f.label :content %>
-        <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta" %>
+        <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta", :class => "answer_desc-js" %>
       </div>
     </fieldset>
 
-
-    <div class="content_footer questions_footer">
+    <div class="content_footer answers_footer-js">
       <ul class="menu answers_menu action_menu">
         <li class="menu_item">
           <button type="submit" class="menu_item new_answer-js">Publicar respuesta</button>
@@ -30,10 +29,10 @@
     </div>
   <% end %>
 <% else %>
-  <div class="content_footer questions_footer">
+  <div class="content_footer">
     <ul class="menu answers_menu action_menu">
       <li class="menu_item">
-        <%= link_to "Publicar respuesta", new_user_session_path, :class => "menu_item new_answer-js" %>
+        <%= link_to "Publicar respuesta", new_user_session_path, :class => "menu_item" %>
       </li>
     </ul>
   </div>

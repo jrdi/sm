@@ -1,86 +1,66 @@
-// init variables
 isNewQuestionFocus = false;
 
+collapseAskContent = function() {
+  $('.field_description-js, .field_tags-js, .ask_footer-js').slideUp();
+
+  setTimeout( function(){
+    $('.ask_content').addClass('collapsed');
+  }, 400);
+}
+
+expandAskContent = function() {
+  $('.ask_content').removeClass('collapsed');
+  $('.field_description-js, .field_tags-js, .ask_footer-js').slideDown();
+}
+
 $(document).ready(function() {
-  // fire functions
-  if((window.location.hash.substring(1) === "new_question")) {
-    $('#question_title').focus();
-    $('label[for="question_title"]').css("color", "rgba(157, 136, 81, 1)");
-    $("#new_question").addClass("focus");
-  } else if($("#question_title").is(":focus")) {
-    return true;
+  $('.ask-js').hover(function() {
+    isNewQuestionFocus = true;
+  }, function(){
+    isNewQuestionFocus = false;
+  });
+
+  if(url('#') === "new_question") {
+    $('.question_title-js').focus();
   } else {
     setTimeout( function(){
       if(!isNewQuestionFocus) {
-        $("#new_question").removeClass("focus");
-        $('.field_description-js, .field_tags-js, .questions_footer-js').slideUp();
-        setTimeout( function(){
-          cssTransform = {
-            "-webkit-border-radius" : "7px",
-            "-moz-border-radius" : "7px",
-            "border-radius" : "7px"
-          }
-
-          $('#field_title, #new_question fieldset').css(cssTransform);
-        }, 400);
+        collapseAskContent();
       }
     }, 2000);
   }
 
-  $('#question_title').focus(function() {
-    cssTransform = {
-      "-webkit-border-radius" : "7px 7px 0 0",
-      "-moz-border-radius" : "7px 7px 0 0",
-      "border-radius" : "7px 7px 0 0"
-    }
-
-    $('#field_title, #new_question fieldset').css(cssTransform);
-    $('label[for="question_title"]').css("color", "rgba(157, 136, 81, 1)");
-    $('.field_description-js, .field_tags-js, .questions_footer-js').slideDown();
+  $('.question_title-js').focus(function() {
+    $(this).parent().addClass("focus");
+    expandAskContent();
   }).blur(function() {
-    $('label[for="question_title"]').css("color", "rgba(204, 185, 134, 1)");
-  });    
-
-  $('#question_description').focus(function() {
-    $('label[for="question_description"]').css("color", "rgba(157, 136, 81, 1)");
-  }).blur(function() {
-    $('label[for="question_description"]').css("color", "rgba(204, 185, 134, 1)");
+    $(this).parent().removeClass("focus");
   });
 
-  $('#question_tags').focus(function() {
-    $('label[for="question_tags"]').css("color", "rgba(157, 136, 81, 1)");
+  $('.question_desc-js').focus(function() {
+    $(this).parent().addClass("focus");
   }).blur(function() {
-    $('label[for="question_tags"]').css("color", "rgba(204, 185, 134, 1)");
+    $(this).parent().removeClass("focus");
   });
 
-  $('#new_question, .new-question').hover(function() { 
-      isNewQuestionFocus = true; 
-  }, function(){ 
-      isNewQuestionFocus = false; 
+  $('.question_tags-js').focus(function() {
+    $(this).parent().addClass("focus");
+  }).blur(function() {
+    $(this).parent().removeClass("focus");
   });
 
   $(document).mouseup(function() {
-    title = $("#question_title").val();
-    desc = $("#question_description").val();
-    tags = $("#question_tags").val();
+    title = $('.question_title-js').val();
+    desc = $('.question_desc-js').val();
+    tags = $('.question_tags-js').val();
 
-    if(!isNewQuestionFocus && !title && !desc && !tags) {
-      $("#new_question").removeClass("focus");
-      $('.field_description-js, .field_tags-js, .questions_footer-js').slideUp();
-      setTimeout( function(){
-        cssTransform = {
-          "-webkit-border-radius" : "7px",
-          "-moz-border-radius" : "7px",
-          "border-radius" : "7px"
-        }
-
-        $('#field_title, #new_question fieldset').css(cssTransform);
-      }, 400);
+    if(!isNewQuestionFocus && !title && !desc && !tags && !$('.ask_content-js').is('.collapsed')) {
+      collapseAskContent();
     }
   });
 
-  $('.publish-question').live("click", function(e) {
-    title = $("#question_title").val();
+  $(".ask_footer-js").on("click", ".new_question-js", function(e){
+    title = $(".question_title-js").val();
 
     if(!title) {
       e.preventDefault();
@@ -88,8 +68,8 @@ $(document).ready(function() {
     }
   });
 
-  $('.new-question.disabled').live("click", function() {
-    $("#question_title").focus();
-    return false;
+  $(".questions_footer-js, .questions_header-js").on("click", ".new_question-js", function(e){
+    e.preventDefault();
+    $(".question_title-js").focus();
   });
 });
