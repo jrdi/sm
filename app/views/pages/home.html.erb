@@ -6,15 +6,15 @@
   <div class="content_header questions_header questions_header-js">
     <ul class="menu tabbed_menu">
       <li class="menu_item">
-        <%= link_to "Recientes", root_path, title: "Ver las preguntas recientes", class: "tab-js #{tab_selected?(params[:scope])}", data: { 'perform-pjax' => true } %>
+        <%= link_to "Recientes", root_path(page: 1), title: "Ver las preguntas recientes", class: "tab-js #{tab_selected?(params[:scope])}", remote: true %>
       </li>
 
       <li class="menu_item">
-        <%= link_to "Sin responder", scoped_home_path(scope: 'without_answers', page: 1), title: "Ver las preguntas sin responder", class: "tab-js #{tab_selected?(params[:scope], 'without_answers')}", data: { 'perform-pjax' => true } %>
+        <%= link_to "Sin responder", scoped_home_path(scope: 'without_answers', page: 1), title: "Ver las preguntas sin responder", class: "tab-js #{tab_selected?(params[:scope], 'without_answers')}", remote: true %>
       </li>
 
       <li class="menu_item">
-        <%= link_to "Populares", scoped_home_path(scope: 'populars', page: 1), title: "Ver las preguntas populares", class: "tab-js #{tab_selected?(params[:scope], 'populars')}", data: { 'perform-pjax' => true } %>
+        <%= link_to "Populares", scoped_home_path(scope: 'populars', page: 1), title: "Ver las preguntas populares", class: "tab-js #{tab_selected?(params[:scope], 'populars')}", remote: true %>
       </li>
     </ul>
 

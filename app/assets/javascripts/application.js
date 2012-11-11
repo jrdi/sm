@@ -6,9 +6,6 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $.pjax.defaults.timeout = 5000;
-  $('[data-pjax-container]').pjax('a[data-perform-pjax]');
-
   if($(".alert").text() != "") {
     $(".alert").show().delay(5000).fadeOut();
   }
@@ -17,7 +14,7 @@ $(document).ready(function() {
     $(".notice").show().delay(5000).fadeOut();
   }
 
-  $('[data-pjax-container]').on("click", ".tab-js", function(e){
+  $('.questions_header-js, .answers_header-js').on("click", ".tab-js", function(e){
     clickedItem = $(this);
     selectedItem = $(this).parent().parent().find(".selected");
 
