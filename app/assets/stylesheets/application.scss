@@ -53,6 +53,7 @@ a {
 abbr { cursor: help; }
 
 fieldset {
+  border: 1px solid rgba(#000, .3);
   margin: 0;
   padding: 0;
 }
@@ -192,8 +193,12 @@ label {
 
 .ask { margin-bottom: 30px; }
 
+.ask_answer {
+  border-top-color: rgba(#3E748C, .2);
+  border-bottom: 0;
+}
+
 .ask_content {
-  border-color: rgba(#000, .3);
   border-bottom: 0;
   @include border-top-radius(7px);
 
@@ -203,7 +208,6 @@ label {
 
     .notefield:first-child {
       border-bottom: 0;
-      overflow: hidden;
       @include border-radius(7px);
     }
   }
@@ -213,21 +217,33 @@ label {
   background: #FFF4D4;
   border-bottom: 1px solid #F1E4BF;
 
-  &:first-child { @include border-top-radius(7px); }
+  &:first-child {
+    @include border-top-radius(7px);
 
-  &:last-child { border: 0;}
+    input {
+      padding: 15px;
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+
+  &:last-child {
+    border: 0;
+    @include border-top-radius(0);
+  }
 
   label {
     color: #CBB885;
     font-size: 12px;
     font-weight: bold;
     padding: 15px 20px;
-    width: 70px;
+    width: 55px;
   }
 
   ::-webkit-input-placeholder { color: #CBB885; }
 
-  input {
+  input,
+  textarea {
     background: image-url('notes-bg.png');
     border: 0;
     border-left: 1px solid #F1E4BF;
@@ -236,22 +252,15 @@ label {
     height: 29px;
     line-height: 20px;
     outline: none;
-    padding: 15px 20px;
-    width: 547px;
-
-    &:first-child {
-      padding: 15px 20px;
-      font-size: 24px;
-      font-weight: 500;
-    }
+    padding: 15px;
+    width: 567px;
   }
 
   textarea {
-    @extend input;
     height: 79px;
     resize: none;
     overflow: auto; 
-    padding: 20px;
+    padding: 20px 15px;
   }
 
   &.focus {
@@ -452,7 +461,7 @@ label {
 }
 
 .question {
-  padding: 33px 18px 33px 98px;
+  padding: 33px 20px 33px 115px;
   overflow: hidden;
   position: relative;
   @include text-shadow(0 1px 0 rgba(#fff, .5));
@@ -482,7 +491,7 @@ label {
   display: none;
   position: absolute;
   top: 33px;
-  right: 18px;
+  right: 15px;
 
   a { color: #71919F; }
 }
@@ -490,7 +499,7 @@ label {
 .buttons {
   border: 1px solid #D5E1E6;
   float: left;
-  margin-left: -80px;
+  margin-left: -85px;
   @include border-radius(5px);
   @include box-shadow(0 1px 0 #fff);
   @include text-shadow(0 1px 0 #fff);
@@ -584,7 +593,7 @@ label {
 .answer { @extend .question; }
 
 .no_answers {
-  background: image-url('no_answers-bg.png') no-repeat 40px;
+  background: image-url('no_answers-bg.png') no-repeat 70px;
 
   p {
     color: #95A9B2;
@@ -632,7 +641,7 @@ label {
   .copy {
     float: left;
     font: 18px "Copse", Georgia, serif;
-    margin: -5px 5px 0 0;
+    margin: -4px 4px 0 0;
 
     &:hover { text-decoration: none; }
   }

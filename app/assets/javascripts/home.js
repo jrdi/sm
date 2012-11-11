@@ -47,7 +47,7 @@ $(document).ready(function() {
     $(this).parent().removeClass("focus");
   });
 
-  $('.question_desc-js').focus(function() {
+  $('.desc-js').focus(function() {
     $(this).parent().addClass("focus");
   }).blur(function() {
     $(this).parent().removeClass("focus");
