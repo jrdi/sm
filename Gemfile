@@ -22,7 +22,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'pjax_rails'
 
 gem 'devise'
 gem 'omniauth'

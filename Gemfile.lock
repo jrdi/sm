@@ -142,8 +142,6 @@ GEM
       omniauth-oauth (~> 1.0)
     orm_adapter (0.4.0)
     pg (0.14.1)
-    pjax_rails (0.3.4)
-      jquery-rails
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -217,7 +215,6 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-twitter
   pg
-  pjax_rails
   rails (= 3.2.8)
   sass-rails
   thin

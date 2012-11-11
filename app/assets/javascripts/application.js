@@ -2,7 +2,6 @@
 //= require modernizr
 //= require jquery
 //= require jquery_ujs
-//= require jquery.pjax
 //= require_tree .
 
 $(document).ready(function() {
@@ -23,4 +22,7 @@ $(document).ready(function() {
       $(clickedItem).addClass('selected');
     }
   });
+
+  $('.questions_header-js a[data-remote=true], .answers_header-js a[data-remote=true]').live('ajax:success', function(e){ window.history.pushState('', '', $(e.target).attr('href')) })
+  $(window).bind('popstate', function(){ $.ajax({url:window.location, dataType:'script'}) ; return true });
 });
