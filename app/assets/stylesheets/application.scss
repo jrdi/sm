@@ -193,14 +193,70 @@ label {
 .ask { margin-bottom: 30px; }
 
 .ask_content {
+  background: #FFF4D4;
+  border-color: rgba(#000, .3);
+  border-bottom: 0;
   @include border-top-radius(7px);
 
-  &.collapsed { @include border-bottom-radius(7px); }
+  &.collapsed {
+    border-bottom: 1px solid rgba(#000, .3);
+    @include border-bottom-radius(7px);
+
+    .notefield:first-child {
+      border-bottom: 0;
+      overflow: hidden;
+      @include border-radius(7px);
+    }
+  }
 }
 
 .notefield {
-  background: image-url('notes-bg.png');
-  border: 0;
+  border-bottom: 1px solid #F1E4BF;
+
+  &:last-child { border: 0;}
+
+  label {
+    color: #CBB885;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 15px 20px;
+    width: 70px;
+  }
+
+  ::-webkit-input-placeholder { color: #CBB885; }
+
+  input {
+    background: image-url('notes-bg.png');
+    border: 0;
+    border-left: 1px solid #F1E4BF;
+    color: #CBB885;
+    font-weight: 300;
+    height: 29px;
+    line-height: 20px;
+    outline: none;
+    padding: 15px 20px;
+    width: 547px;
+  }
+
+  &:first-child input {
+    padding: 15px 20px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  textarea {
+    @extend input;
+    height: 79px;
+    resize: none;
+    overflow: auto; 
+    padding: 20px;
+  }
+
+  &.focus {
+    label,
+    input,
+    textarea { color: #9D8751; }
+  }
 }
 
 .breadcrumbs {

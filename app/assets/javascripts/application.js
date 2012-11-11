@@ -6,7 +6,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-  // $.pjax.defaults.timeout = 5000;
+  $.pjax.defaults.timeout = 5000;
   $('[data-pjax-container]').pjax('a[data-perform-pjax]');
 
   if($(".alert").text() != "") {
