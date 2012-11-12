@@ -68,7 +68,7 @@ $(document).ready(function() {
     }
   });
 
-  $(".questions_footer-js, .questions_header-js").on("click", ".new_question-js", function(e){
+  $(".questions_footer-js, .content_header-js").on("click", ".new_question-js", function(e){
     e.preventDefault();
     if ($('.ask_content-js').is('.collapsed'))
       expandAsk();

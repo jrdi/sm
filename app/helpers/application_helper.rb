@@ -28,7 +28,7 @@ module ApplicationHelper
       'robots' => ['all'],
       'copyright' => ['My Copyright'],
       'content-language' => ['es'],
-      'description' => ["Socorro Mamá es una aplicación de preguntas y respuestas para resolver tus dudas del hogar (cocina, limpieza, mantenimiento...) sin tener que molestar a tu madre una vez más."],
+      'description' => ["Socorro mamá! es una aplicación de preguntas y respuestas para resolver tus dudas del hogar (cocina, limpieza, mantenimiento...) sin tener que molestar a tu madre una vez más."],
       'keywords' => ['consejos', 'respuestas', 'hogar', 'casa', 'limpieza', 'cocina', 'recetas', 'mantenimiento']
     }
 

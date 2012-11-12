@@ -1,81 +1,82 @@
 <% title("Acerca de") %>
 
 <div id="about" class="static">
-	<div id="questions-header" class="answers-header">
-    <ul id="breadcrumb" itemprop="breadcrumb">
-      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
-      <li class="breadcrumb-item breadcrumb-tag">
-        <p>Acerca de</p>
+  <div class="content_header static_header content_header-js">
+    <ul class="breadcrumbs" itemprop="breadcrumb">
+      <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+      <li class="breadcrumb"><p>Acerca de</p></li>
+    </ul>
+
+    <ul class="menu action_menu answers_menu">
+      <li class="menu_item">
+        <%- if user_signed_in? %>
+          <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question-icon new_question-js" %>
+        <% else -%>
+          <%= link_to "Empieza a publicar preguntas", new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta" %>
+        <% end -%>
       </li>
     </ul>
-	</div>
+  </div>
 
-	<div id="questions-list" class="clearfix">
-	  <h2>Acerca de</h2>
-	  <p><strong>Socorro Mamá!</strong> es una comunidad de preguntas y respuestas para resolver dudas y compartir consejos de todo lo relacionado con el hogar. Cocina, limpieza, compras y ahorro, mantenimiento del hogar... nuestro objetivo es ayudar a los jóvenes, y no tanto, a resolver sus dudas del hogar, a la vez que animar a la gente a compartir sus recetas favoritas, trucos de limpieza o consejos de ahorro preferidos.</p>
-	  <p><strong>Socorro Mamá!</strong> nace como un pequeño proyecto personal en los ratos libres de tres recién independizados, cuyas mamás ya están un poco hartas de llamadas telefónicas para preguntar por absolutamente todo, y han creado esta web para resolver sus dudas y las de otros en su misma situación.</p>
-	  <p>Es muy sencillo de utilizar: envías tu pregunta, añades una descripción, y le añades etiquetas para que sea más fácil de encontrar. También puedes compartir tu experiencia con otros usuarios respondiendo sus preguntas.</p>
-	  <h3>Equipo</h3>
-	  <ul id="team">
-			<li class="clearfix">
-				<h4>Mamá bot</h4>
-				<p>
-					<strong>Chief Executive Mother</strong> | 
-					<a href="http://twitter.com/socorromama">Twitter</a>
-				</p>
-				<img src="https://si0.twimg.com/profile_images/1334356554/socorromama_twitter.jpg" />
-				<p>Se encarga de recordar al equipo que se pongan chaqueta y asegurarse de que están comiendo lo suficiente. Vive entre líneas de Rails, HTML y Javascript, y se encarga de que todo el código esté limpio y en su cajón correspondiente.</p>
-				<p>
-				  <strong>Le gusta:</strong> Ponerse el delantal y azotar con la zapatilla.<br />
-				  <strong>No le gusta:</strong> Que le pregunten cuánta agua se echa al arroz.
-				</p>
-			</li>
+  <div class="questions">
+    <h2 class="title">Acerca de</h2>
+    <p><strong>Socorro mamá!</strong> es una comunidad de preguntas y respuestas para resolver dudas y compartir consejos de todo lo relacionado con el hogar. Cocina, limpieza, compras y ahorro, mantenimiento del hogar... nuestro objetivo es ayudar a los jóvenes, y no tanto, a resolver sus dudas del hogar, a la vez que animar a la gente a compartir sus recetas favoritas, trucos de limpieza o consejos de ahorro preferidos.</p>
+    <p><strong>Socorro mamá!</strong> nace como un pequeño proyecto personal en los ratos libres de tres recién independizados, cuyas mamás ya están un poco hartas de llamadas telefónicas para preguntar por absolutamente todo, y han creado esta web para resolver sus dudas y las de otros en su misma situación.</p>
+    <p>Es muy sencillo de utilizar: envías tu pregunta, añades una descripción, y le añades etiquetas para que sea más fácil de encontrar. También puedes compartir tu experiencia con otros usuarios respondiendo sus preguntas.</p>
 
-			<li class="clearfix">
-	      <h4>Álvaro</h4>
-				<p>
-					<strong>UI designer</strong> | 
-					<a href="http://twitter.com/alv">Twitter</a> · 
-					<a href="http://vivaestudio.com">vivaestudio</a>
-				</p>
-	      <img src="https://si2.twimg.com/profile_images/999311010/cara_ebay.jpg" alt="" />
-	      <p>Se encarga del diseño y de los contenidos en <strong>Socorro Mamá!</strong> Vive solo en un piso en el centro de Oviedo desde 2010, donde además trabaja como diseñador web. Tiene 23 años.</p>
+    <h2 class="title">Equipo</h2>
+    <ul>
+      <li class="clearfix">
+        <h3 class="title">Mamá bot</h3>
+        <p class="position">
+          <strong>Chief Executive Mother</strong> | <a href="http://twitter.com/socorromama">Twitter</a> · <a href="http://facebook.com/socorromama">Facebook</a>
+        </p>
+        <%= image_tag "sm.jpg" %>
+        <p>Se encarga de recordar al equipo que se pongan chaqueta y asegurarse de que están comiendo lo suficiente. Vive entre líneas de Rails, HTML5, CSS3 y Javascript, y se encarga de que todo el código esté limpio y en su cajón correspondiente.</p>
+        <p>
+          <strong>Le gusta:</strong> Ponerse el delantal y azotar con la zapatilla.<br />
+          <strong>No le gusta:</strong> Que le pregunten cuánta agua se echa al arroz.
+        </p>
+      </li>
+
+      <li class="clearfix">
+        <h3 class="title">Álvaro</h3>
+        <p>
+          <strong>UI designer</strong> | <a href="http://twitter.com/alv">Twitter</a> · <a href="http://vivaestudio.com">vivaestudio</a>
+        </p>
+        <%= image_tag "alv.jpg" %>
+        <p>Se encarga del diseño y de los contenidos en <strong>Socorro mamá!</strong> Vive solo en un piso en el centro de Oviedo desde 2010, donde además trabaja como diseñador web. Tiene 23 años.</p>
         <p>
           <strong>Le gusta:</strong> La cocina y las pequeñas reparaciones.<br />
           <strong>No le gusta:</strong> Poner la lavadora y pasar la aspiradora.
         </p>
-	    </li>
+      </li>
 
-			<li class="clearfix">
-	      <h4>Carlos</h4>
-				<p>
-					<strong>UI developer</strong> | 
-					<a href="http://twitter.com/matallo">Twitter</a> · 
-					<a href="http://matallo.org">matallo.org</a>
-				</p>
-	      <img src="https://si2.twimg.com/profile_images/1373691028/1363306686_04d7bb3035.jpg" alt="" />
-	      
-	      <p>Se encarga de que todo esté al alcance de la mano en <strong>Socorro Mamá!</strong> y se vea lo mejor posible. Ha pasado por varios pisos compartidos y actualmente vive en Barcelona, donde trabaja como diseñador web desde principios de 2011. Tiene 23 años.</p>
+      <li class="clearfix">
+        <h3 class="title">Carlos</h3>
+        <p>
+          <strong>UI developer</strong> | <a href="http://twitter.com/matallo">Twitter</a> · <a href="http://matallo.org">matallo.org</a>
+        </p>
+        <%= image_tag "matallo.jpg" %>
+        <p>Se encarga de que todo esté al alcance de la mano en <strong>Socorro mamá!</strong> y se vea lo mejor posible. Ha pasado por varios pisos compartidos y actualmente vive solo en Barcelona, donde trabaja como diseñador web desde principios de 2011. Tiene 23 años.</p>
         <p>
           <strong>Le gusta:</strong> Los macarrones con tomate.<br />
           <strong>No le gusta:</strong> Doblar camisetas, de planchar ni hablamos.
         </p>
-	    </li>
-	    <li>
-	      <h4>Jordi</h4>
-				<p>
-					<strong>Web developer</strong> | 
-					<a href="http://twitter.com/jrdi">Twitter</a> · 
-					<a href="http://jordivillar.com">jordivillar.com</a>
-				</p>
-	      <img src="https://si1.twimg.com/profile_images/1383113796/j.jpg" alt="" />
+      </li>
 
-	      <p>Se encarga de engrasar motores y hacer que todo funcione en <strong>Socorro Mamá!</strong> Comparte piso con dos chicas en el barrio de Gràcia en Barcelona desde 2010. Trabaja como desarrollador web. Tiene 24 años.</p>
+      <li class="clearfix">
+        <h3 class="title">Jordi</h3>
+        <p>
+          <strong>Web developer</strong> | <a href="http://twitter.com/jrdi">Twitter</a> · <a href="http://jordivillar.com">jordivillar.com</a>
+        </p>
+        <%= image_tag "jrdi.jpg" %>
+        <p>Se encarga de engrasar motores y hacer que todo funcione en <strong>Socorro mamá!</strong> Comparte piso con dos chicas en el barrio de Gràcia en Barcelona desde 2010. Trabaja como desarrollador web. Tiene 24 años.</p>
         <p>
           <strong>Le gusta:</strong> Tumbarse en su sofá.<br />
           <strong>No le gusta:</strong> Limpiar el lavabo y fregar los platos.
         </p>
-	    </li>
-	  </ul>
-	</div>
+      </li>
+    </ul>
+  </div>
 </div>

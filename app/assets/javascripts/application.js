@@ -48,7 +48,7 @@ $(document).ready(function() {
     }
   });
 
-  $('.questions_header-js, .answers_header-js').on("click", ".tab-js", function(e){
+  $('.content_header-js').on("click", ".tab-js", function(e){
     clickedItem = $(this);
     selectedItem = $(this).closest('.menu').find(".selected");
 
@@ -57,7 +57,4 @@ $(document).ready(function() {
       $(clickedItem).addClass('selected');
     }
   });
-
-  $('.questions_header-js a[data-remote=true], .answers_header-js a[data-remote=true]').live('ajax:success', function(e){ window.history.pushState('', '', $(e.target).attr('href')) })
-  $(window).bind('popstate', function(){ $.ajax({url:window.location, dataType:'script'}) ; return true });
 });

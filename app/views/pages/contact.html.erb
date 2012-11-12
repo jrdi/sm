@@ -1,58 +1,71 @@
 <% title("Contacto") %>
 
-<div id="contact" class="static">
-	<div id="questions-header" class="answers-header">
-    <ul id="breadcrumb" itemprop="breadcrumb">
-      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
-      <li class="breadcrumb-item breadcrumb-tag">
-        <%= link_to("Acerca de", "/about", :title => "Ir a la página de Información") %>
-      </li>
-      <li class="breadcrumb-item breadcrumb-tag">
-        <p>Contacto</p>
+<div id="about" class="static">
+  <div class="content_header static_header content_header-js">
+    <ul class="breadcrumbs" itemprop="breadcrumb">
+      <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+      <li class="breadcrumb"><p>Contacto</p></li>
+    </ul>
+
+    <ul class="menu action_menu answers_menu">
+      <li class="menu_item">
+        <%- if user_signed_in? %>
+          <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question-icon new_question-js" %>
+        <% else -%>
+          <%= link_to "Empieza a publicar preguntas", new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta" %>
+        <% end -%>
       </li>
     </ul>
-	</div>
+  </div>
 
-	<div id="questions-list" class="clearfix">
-	  <h2>Contacto</h2>
-	  <p>Si quieres hacer una sugerencia o reportar un error, por favor hazlo a través de nuestra página de <a href="http://socorromama.uservoice.com/">UserVoice</a> o haciendo click en la pestaña de "Sugerencias" a la izquierda.</p>
+  <div class="questions clearfix">
+    <h2>Contacto</h2>
+    <p>Si quieres hacer una sugerencia o reportar un error, por favor hazlo a través de nuestra página de <a href="http://socorromama.uservoice.com/">UserVoice</a> o haciendo click en la pestaña de "Sugerencias" a la izquierda.</p>
     <p>También puedes contactarnos directamente en <a href="mailto:mama@socorromama.com">mama@socorromama.com</a> y te contestaremos lo más pronto posible, o bien a través del siguiente formulario de contacto:</p>
 
     <% if @email.present? && @email.errors.any? %>
-	    <div id="error_explanation">
-	      <h2><%= pluralize(@email.errors.count, "error", "errores") %> enviando el email:</h2>
+      <div id="error_explanation">
+        <h2><%= pluralize(@email.errors.count, "error", "errores") %> enviando el email:</h2>
 
-	      <ul>
-	      <% @email.errors.full_messages.each do |msg| %>
-	        <li><%= msg %></li>
-	      <% end %>
-	      </ul>
-	    </div>
-	  <% end %>
-	
-    <form action="/contact" method='post'>
-      <fieldset>
-        <div>
-          <label for="name">nombre*</label>
-          <input id="name" name="contact[name]" type="text" value="<%= current_user && current_user.name %>"/>
-        </div>
-        <div>
-          <label for="email">email*</label>
-          <input id="email" name="contact[email]" type="text" value="<%= current_user && current_user.email %>" />
-        </div>
-        <div>
-          <label for="subject">asunto</label>
-          <input id="subject" name="contact[subject]" type="text" />
-        </div>
-        <div class="clearfix">
-          <label for="message">mensaje*</label>
-          <textarea id="message" name="contact[message]"></textarea>
-          <p class="tip">(* requeridos)</p>
-        </div>
-        <div>
-          <button type="submit" name="commit" id="contact_submit">Enviar</button>
-        </div>
-      </fieldset>
-    </form>
-	</div>
+        <ul>
+          <% @email.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="fields_group">
+      <form action="/contact" method='post'>
+        <fieldset>
+          <div class="field">
+            <label for="name">nombre*</label>
+            <input id="name" name="contact[name]" type="text" value="<%= current_user && current_user.name %>"/>
+          </div>
+
+          <div class="field">
+            <label for="email">email*</label>
+            <input id="email" name="contact[email]" type="text" value="<%= current_user && current_user.email %>" />
+          </div>
+
+          <div class="field">
+            <label for="subject">asunto</label>
+            <input id="subject" name="contact[subject]" type="text" />
+          </div>
+
+          <div class="field">
+            <label for="message">mensaje*</label>
+            <textarea id="message" name="contact[message]"></textarea>
+          </div>
+        </fieldset>
+        <small>* requeridos</small>
+
+        <ul class="menu answers_menu action_menu">
+          <li class="menu_item">
+            <button type="submit" name="commit">Enviar!</button>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
 </div>

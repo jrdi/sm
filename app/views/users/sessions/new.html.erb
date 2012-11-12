@@ -1,63 +1,62 @@
 <% title("Acceso") %>
 
-<div id="login" class="static">
-	<div id="questions-header" class="answers-header">
-    <ul id="breadcrumb" itemprop="breadcrumb">
-      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
-      <li class="breadcrumb-item breadcrumb-tag">
-        <p>Accede a tu cuenta</p>
-      </li>
+<div id="login" class="static login">
+  <div class="content_header static_header content_header-js">
+    <ul class="breadcrumbs" itemprop="breadcrumb">
+      <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+      <li class="breadcrumb"><p>Accede a tu cuenta</p></li>
     </ul>
-	</div>
+  </div>
 
-	<div id="questions-list" class="clearfix">
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-      <fieldset class="clearfix">
-        <legend>Accede a tu cuenta</legend>
-        <p>
-          <%= f.label :email %>
-          <%= f.email_field :email %>
-        </p>
+  <div class="questions clearfix">
+    <div class="fields_group">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <fieldset>
+          <legend>Accede a tu cuenta</legend>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email %>
+          </div>
 
-        <p>
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-        </p>
-      </fieldset>
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+          </div>
 
-      <div class="clearfix">
-        <button type="submit" name="commit" id="user_submit">Entra!</button>
+          <div class="submit_field clearfix">
+            <% if devise_mapping.rememberable? -%>
+              <small>
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </small>
+            <% end -%>
 
-        <% if devise_mapping.rememberable? -%>
-          <small>
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
-          </small>
-        <% end -%>
-      </div>
+            <ul class="menu answers_menu action_menu">
+              <li class="menu_item">
+                <button type="submit" name="commit">Accede!</button>
+              </li>
+            </ul>
+          </div>
+        </fieldset>
+      <% end %>
 
-      <p class="clearfix">
+      <p>
         <%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
           <%= link_to "¿Has olvidado tu contraseña?", new_password_path(resource_name) %><br />Te la enviaremos por correo.
         <% end -%>
       </p>
-    <% end %>
-
-    <div class="login-sidebar">
-      <p class="goto-login"> ¿No tienes cuenta?
-        <%= link_to "Regístrate!", new_registration_path(resource_name) %><br />
-      </p>
-
-      <p>
-        Entra con tu perfil de <strong>Facebook</strong> o <strong>Twitter</strong> para usar esta web de forma más cómoda.
-      </p>
-
-      <p>
-        <%- if devise_mapping.omniauthable? %>
-    	    <%= link_to content_tag(:span, "Entra con Facebook"), user_omniauth_authorize_path(:facebook), :class => "fb-connect" %>
-    	    <%= link_to content_tag(:span, "Entra con Twitter"), user_omniauth_authorize_path(:twitter), :class => "twitter-connect" %>
-        <% end -%>
-      </p>
     </div>
-	</div>
+
+    <div class="social">
+      <p>¿No tienes cuenta? <%= link_to "Regístrate!", new_registration_path(resource_name) %></p>
+      <p>Entra con tu perfil de <strong>Facebook</strong> o <strong>Twitter</strong> para usar esta web de forma más cómoda.</p>
+
+      <%- if devise_mapping.omniauthable? %>
+        <p>
+          <%= link_to content_tag(:span, "Entra con Facebook"), user_omniauth_authorize_path(:facebook), :class => "facebook_connect" %>
+          <%= link_to content_tag(:span, "Entra con Twitter"), user_omniauth_authorize_path(:twitter), :class => "twitter_connect" %>
+        </p>
+      <% end -%>
+    </div>
+  </div>
 </div>

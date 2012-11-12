@@ -15,7 +15,13 @@
     </ul>
 
     <ul class="menu action_menu">
-      <%= render 'shared/new_question_button' %>
+      <li class="menu_item">
+        <%- if user_signed_in? %>
+          <%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question-icon new_question-js" %>
+        <% else -%>
+          <%= link_to "Empieza a publicar preguntas", new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta" %>
+        <% end -%>
+      </li>
     </ul>
   </div>
 
@@ -25,7 +31,7 @@
 </div>
 
 <div id="answers">
-  <div class="content_header answers_header answers_header-js">
+  <div class="content_header answers_header content_header-js">
     <h3 class="title">Respuestas</h3>
 
     <ul class="menu answers_menu tabbed_menu">
