@@ -62,6 +62,8 @@ fieldset {
   padding: 0;
 }
 
+label { float: left; }
+
 
 /* layout */
 
@@ -319,7 +321,11 @@ fieldset {
   position: absolute;
 }
 
-.action_menu { float: right; }
+.action_menu {
+  float: right;
+
+  + .action_menu { margin-right: 10px; }
+}
 
 .action_menu_secondary { float: left; }
 
@@ -674,8 +680,8 @@ fieldset {
 
 .fields_group {
   float: left;
-  margin: 15px 20px 0 0;
-  width: 400px;
+  margin: 15px 30px 0 0;
+  width: 380px;
 
   &:first-child { margin-top: 0; }
 
@@ -686,16 +692,15 @@ fieldset {
 
   legend {
     color: #415057;
+    font-size: 16px;
     padding-right: 10px;
   }
 
   .field {
     label {
       color: #657981;
-      float: left;
-      font: 14px/38px "Helvetica Neue", sans-serif;
-      padding-right: 20px;
-      width: 140px;
+      font: 13px/38px "Helvetica Neue", sans-serif;
+      width: 150px;
     }
 
     input,
@@ -703,7 +708,7 @@ fieldset {
       border: 1px solid #BDC9D1;
       height: 28px;
       padding: 4px;
-      width: 230px;
+      width: 220px;
       @include border-radius(3px);
       @include box-shadow(
         0 5px 5px rgba(#ABBBC3, .3) inset,
@@ -715,6 +720,12 @@ fieldset {
       height: 84px;
       resize: vertical;
     }
+
+    small {
+      margin-top: 10px;
+      text-align: right;
+      width: 230px;
+    }
   }
 
   p { text-align: right; }
@@ -722,7 +733,13 @@ fieldset {
   small {
     color: #657981;
     float: left;
-    margin-left: 160px;
+    font-size: 11px;
+    margin-left: 150px;
+
+    input {
+      float: left;
+      margin-right: 5px;
+    }
   }
 }
 
@@ -731,12 +748,18 @@ fieldset {
 
 .social {
   float: left;
-  width: 238px;
+  width: 248px;
+
+  figure { margin: 32px 0 10px; }
 
   p {
     font-size: 12px;
 
-    &:first-child { font-size: 14px; }
+    &:first-child {
+      font-size: 14px;
+
+      .long { font-size: 13px; }
+    }
   }
 }
 

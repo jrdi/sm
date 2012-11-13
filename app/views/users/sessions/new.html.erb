@@ -15,10 +15,10 @@
           <legend>Accede a tu cuenta</legend>
           <div class="field">
             <%= f.label :email %>
-            <%= f.email_field :email %>
+            <%= f.email_field :email, :autofocus => "autofocus" %>
           </div>
 
-          <div class="field">
+          <div class="field clearfix">
             <%= f.label :password %>
             <%= f.password_field :password %>
           </div>

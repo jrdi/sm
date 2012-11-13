@@ -1,62 +1,75 @@
 <% title("Preferencias") %>
 
-<div id="login" class="static">
-	<div id="questions-header" class="answers-header">
-    <ul id="breadcrumb" itemprop="breadcrumb">
-      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
-      <li class="breadcrumb-item breadcrumb-tag">
-        <p>Preferencias</p>
-      </li>
+<div id="settings" class="static login">
+  <div class="content_header static_header content_header-js">
+    <ul class="breadcrumbs" itemprop="breadcrumb">
+      <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+      <li class="breadcrumb"><p>Preferencias</p></li>
     </ul>
-	</div>
 
-	<div id="questions-list" class="clearfix">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-      <%= devise_error_messages! %>
-      <fieldset class="clearfix">
-        <legend>Preferencias</legend>
-        <div>
-          <%= f.label :name %>
-          <%= f.text_field :name %>
-        </div>
+    <ul class="menu action_menu answers_menu">
+      <li class="menu_item"><%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path(:scoped_questions => params[:scoped_questions])}#new_question", :title => "Crea una nueva pregunta", :class => "new_question-icon" %></li>
+    </ul>
 
-        <div>
-          <%= f.label :email %>
-          <%= f.text_field :email %>
-        </div>
+    <ul class="menu action_menu answers_menu">
+      <li class="menu_item"><%= link_to "Ver perfil", current_user %></li>
+    </ul>
+  </div>
 
-        <div>
-          <%= f.label :current_password %>
-          <%= f.password_field :current_password %>
-          <p class="tip">(dejala en blanco si no quieres cambiarla)</p>
-        </div>
+  <div class="questions clearfix">
+    <div class="fields_group">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "new_user" }) do |f| %>
+        <%= devise_error_messages! %>
+        <fieldset>
+          <legend>Preferencias</legend>
+          <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name, :autofocus => "autofocus" %>
+          </div>
 
-        <div>
-          <%= f.label :password %>
-          <%= f.password_field :password %><br />
-        </div>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email %>
+          </div>
 
-        <div class="clearfix">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation %>
-        </div>
-      </fieldset>
+          <div class="field clearfix">
+            <%= f.label :current_password %>
+            <%= f.password_field :current_password %>
+            <small>(déjala en blanco si no quieres cambiarla)</small>
+          </div>
 
-      <div class="clearfix">
-        <button type="submit" name="commit" id="user_submit">Actualizar</button>
-      </div>
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password %><br />
+          </div>
 
-      <p>
-        ¿Quieres cancelar tu cuenta?<br />
-          <%- if controller_name != 'sessions' %>
-            <%= link_to "Cancelar cuenta", registration_path(resource_name), :confirm => "¿Estás seguro? No hay marcha atrás.", :method => :delete %>
-          <% end -%>
+          <div class="field">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation %>
+          </div>
+
+          <div class="submit_field clearfix">
+            <ul class="menu answers_menu action_menu">
+              <li class="menu_item">
+                <button type="submit" name="commit" id="user_submit">Actualizar</button>
+              </li>
+            </ul>
+          </div>
+        </fieldset>
+      <% end %>
+
+      <p>¿Quieres cancelar tu cuenta?<br />
+        <%- if controller_name != 'sessions' %>
+        <%= link_to "Borrar ahora", registration_path(resource_name), :confirm => "¿Estás seguro? No hay marcha atrás.", :method => :delete %>
+        <% end -%>
       </p>
-    <% end %>
+    </div>
 
-		<figure class="avatar huge">
-		  <%= gravatar_image_tag(resource.email, :alt => resource.name, :gravatar => {:size => 128}) %>
-		</figure>
-	  <figcaption><%= link_to "¿Qué es esto?", "http://es.gravatar.com/" %></figcaption>
-	</div>
+    <div class="social">
+      <figure class="clearfix">
+        <%= gravatar_image_tag(resource.email, :alt => resource.name, :gravatar => {:size => 100}, :class => "avatar") %>
+      </figure>
+      <p><%= link_to "¿Qué es esto?", "http://es.gravatar.com/" %></p>
+    </div>
+  </div>
 </div>

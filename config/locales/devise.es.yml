@@ -7,7 +7,7 @@ es:
     failure:
       already_authenticated: Ya has iniciado una sesión.
       inactive: Tu cuenta aún no ha sido activada.
-      invalid: Contraseña o Correo inválidos.
+      invalid: El usuario y/o la contraseña son incorrectos.
       invalid_token: Código de autenticación inválido.
       locked: Tu cuenta está bloqueada.
       timeout: Tu sesión expiró, por favor inicia sesión nuevamente para continuar.
