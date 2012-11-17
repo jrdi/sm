@@ -23,6 +23,7 @@ pre {
   font: 13px/1.5 "Helvetica Neue", sans-serif;
 }
 
+ol,
 ul {
   list-style: none;
   margin: 0;
@@ -751,6 +752,8 @@ label { float: left; }
     }
 
     a { background-position: right -57px; }
+
+    p { line-height: 54px; }
   }
 
   h2 {
@@ -764,7 +767,7 @@ label { float: left; }
   h3 {
     color: #C3550D;
     font-size: 24px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 
   img {
@@ -792,9 +795,11 @@ label { float: left; }
 
   &:first-child { margin-top: 0; }
 
-  .new_user fieldset {
+  fieldset {
     border-top: 1px solid rgba(#BFCAD1, .5);
     padding-top: 15px;
+
+    + fieldset { margin-top: 15px; }
   }
 
   legend {
@@ -950,6 +955,8 @@ label { float: left; }
     float: left;
     margin-right: 15px;
   }
+
+  p { margin-bottom: 10px; }
 }
 
 .sidebar,
