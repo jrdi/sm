@@ -44,17 +44,16 @@ a {
 
     i { text-decoration: none; }
   }
-
-  [class^="icon-"],
-  [class*=" icon-"] {
-    display: inline-block;
-    line-height: 1;
-    text-decoration: inherit;
-  }
 }
 
 [class^="icon-"],
-[class*=" icon-"] { span { display: none; } }
+[class*=" icon-"] {
+  display: inline-block;
+  line-height: 1;
+  text-decoration: inherit;
+
+  span { display: none; }
+}
 
 abbr { cursor: help; }
 
@@ -113,7 +112,8 @@ label { float: left; }
         @include text-shadow(-1px -1px 0 rgba(#000, .4));
 
         &.selected,
-        &:hover {
+        &:hover,
+        &:active {
           background: image-url('navbar-bg.png') repeat-x;
           border: 2px solid #5C2E0A;
           margin: -2px 8px;
@@ -281,8 +281,8 @@ label { float: left; }
 .breadcrumb {
   float: left;
 
-  p,
-  a {
+  a,
+  p {
     color: #FFCBAC;
     display: block;
     height: 56px;
@@ -291,14 +291,17 @@ label { float: left; }
     @include text-shadow(-1px -1px 0 rgba(#000, .4));
   }
 
-  p { margin-bottom: 0; }
-
   a {
     background: image-url('breadcrumb-bg.png') no-repeat right 0;
     font-weight: bold;
     padding-right: 20px;
 
     i { line-height: 1; }
+  }
+
+  p {
+    line-height: 54px;
+    margin-bottom: 0;
   }
 }
 
@@ -481,6 +484,7 @@ label { float: left; }
   border: 1px solid rgba(#000, .3);
   border-top: none;
   border-bottom: none;
+  min-height: 66px;
 }
 
 .question {
@@ -493,7 +497,7 @@ label { float: left; }
 
   &:last-child { padding-bottom: 22px; }
 
-  &:hover .actions { display: block; }
+  &:hover .actions { display: inline-block; }
 
   .title {
     font-size: 18px;
@@ -504,15 +508,6 @@ label { float: left; }
 }
 
 .question + .question { background: image-url('question-bg.png') no-repeat 0 -33px; }
-
-.actions {
-  display: none;
-  position: absolute;
-  top: 33px;
-  right: 15px;
-
-  a { color: #71919F; }
-}
 
 .buttons {
   float: left;
@@ -552,7 +547,7 @@ label { float: left; }
   .button {
     border: 1px solid #B4C7D5;
     background: image-url('button-bg.png') repeat-x;
-    line-height: 31px;
+    height: 31px;
     width: 31px;
 
     &.voted,
@@ -604,6 +599,8 @@ label { float: left; }
   }
 
   button.button {
+    height: 33px;
+    line-height: 26px;
     width: 33px;
 
     &:active:hover i {
@@ -664,14 +661,15 @@ label { float: left; }
   p {
     color: #ADBABF;
     float: left;
-    line-height: 2;
+    line-height: 26px;
     margin: 0;
   }
 
   .tags {
     left: 50%;
-    position: absolute;
+    line-height: 26px;
     min-width: 328px;
+    position: absolute;
     text-align: right;
     white-space: nowrap;
   }
@@ -712,6 +710,13 @@ label { float: left; }
   }
 }
 
+.actions {
+  display: none;
+  margin-left: 5px;
+
+  a { color: #71919F; }
+}
+
 
 /* answers */
 
@@ -725,7 +730,7 @@ label { float: left; }
   }
 }
 
-.answer .meta p { line-height: 1.5; }
+.answer .meta p { line-height: 18px; }
 
 
 /* static */
@@ -742,7 +747,8 @@ label { float: left; }
   }
 
   .breadcrumb {
-    p, a {
+    a,
+    p {
       color: #657983;
       @include text-shadow(1px 1px 0 #fff);
     }
@@ -810,6 +816,7 @@ label { float: left; }
     input,
     textarea {
       border: 1px solid #BDC9D1;
+      color: #666;
       height: 28px;
       padding: 4px;
       width: 220px;
@@ -818,6 +825,8 @@ label { float: left; }
         0 5px 5px rgba(#ABBBC3, .3) inset,
         0 1px 0 #fff
       );
+
+      &:focus { border-color: #ABBBC3; }
     }
 
     textarea {
@@ -854,7 +863,11 @@ label { float: left; }
   float: left;
   width: 248px;
 
-  figure { margin: 32px 0 10px; }
+  figure {
+    margin: 32px 0 10px;
+
+    + p { margin-left: 6px; }
+  }
 
   p {
     font-size: 12px;
@@ -862,7 +875,7 @@ label { float: left; }
     &:first-child {
       font-size: 14px;
 
-      .long { font-size: 13px; }
+      &.long { font-size: 13px; }
     }
   }
 }

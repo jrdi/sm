@@ -3,9 +3,28 @@
 //= require jquery_ujs
 //= require js-url.min
 //= require jquery.qtip.min
+//= require spin.min
 //= require_tree .
 
 $(document).ready(function() {
+  // spinner
+  $.fn.spin = function(opts) {
+    this.each(function() {
+      var $this = $(this),
+          data = $this.data();
+
+      if (data.spinner) {
+        data.spinner.stop();
+        delete data.spinner;
+      }
+      if (opts !== false) {
+        data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
+      }
+    });
+    return this;
+  };
+
+  // alerts
   if($(".alert").text() != "") {
     $(".alert").show().delay(5000).fadeOut();
   }
@@ -14,6 +33,7 @@ $(document).ready(function() {
     $(".notice").show().delay(5000).fadeOut();
   }
 
+  // dropdowns
   $('.navbar-js').on('click', '.dropdown_link-js', function(e) {
     e.preventDefault();
   });
@@ -56,5 +76,13 @@ $(document).ready(function() {
       $(selectedItem).removeClass('selected');
       $(clickedItem).addClass('selected');
     }
+  });
+
+  $('.questions_header-js').on("click", ".tab-js", function(e){
+    $('.questions-js').html('').spin();
+  });
+
+  $('.answers_header-js').on("click", ".tab-js", function(e){
+    $('.answers-js').html('').spin();
   });
 });

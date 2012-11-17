@@ -1,12 +1,4 @@
 <li class="question">
-  <%- if current_user && current_user === question.user %>
-    <div class="actions">
-      <%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito" %>
-      <%= link_to content_tag(:i, content_tag(:span, "Editar"), :class => "icon-edit"), edit_question_path(question), :title => "Editar" %>
-      <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [question], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
-    </div>
-  <% end -%>
-
   <div class="buttons">
     <div class="replies">
       <%= link_to question.answers_count, question, :title => "Ir a las respuestas", :class => "button num" %>
@@ -20,7 +12,15 @@
 
   <div class="meta clearfix">
     <p>
-      <span itemscope itemtype="http://schema.org/Person" class="author"><%= link_to gravatar_image_tag(question.user.email, :alt => question.user.name, :gravatar => {:size => 24}, :itemprop => "image"), question.user, :itemprop => "name", :class => "avatar" %> Por <%= link_to question.user.name, question.user, :itemprop => "name" %></span> hace <abbr title="<%= question.created_at %>"><%= time_ago_in_words(question.created_at) %></abbr>
+      <span itemscope itemtype="http://schema.org/Person" class="author"><%= link_to gravatar_image_tag(question.user.email, :alt => question.user.name, :gravatar => {:size => 24}, :itemprop => "image"), question.user, :itemprop => "name", :class => "avatar" %> Por <%= link_to question.user.name, question.user, :itemprop => "name" %></span>
+      hace <abbr title="<%= question.created_at %>"><%= time_ago_in_words(question.created_at) %></abbr>
+      <%- if current_user && current_user === question.user %>
+        <span class="actions">
+          <%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito" %>
+          <%= link_to content_tag(:i, content_tag(:span, "Editar"), :class => "icon-edit"), edit_question_path(question), :title => "Editar" %>
+          <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [question], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
+        </span>
+      <% end -%>
     </p>
 
     <ul class="tags">

@@ -5,14 +5,6 @@
   <% answers.each do |answer| %>
     <%- unless answer.id.blank? %>
       <li id="answer-<%= answer.id %>" class="question answer">
-        <%- if current_user && current_user.id == answer.user.id %>
-          <div class="actions">
-            <%#= link_to content_tag(:span, "☆"), root_path, :title => "Marcar como correcta" %>
-            <%= link_to content_tag(:i, content_tag(:span, "Editar"), :class => "icon-edit"), edit_question_answer_path(answer.question, answer), :title => "Editar" %>
-            <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [answer.question, answer], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
-          </div>
-        <% end -%>
-
         <div class="buttons">
           <div class="votes clearfix">
             <%- if user_signed_in? %>
@@ -44,6 +36,15 @@
         <div class="meta clearfix">
           <p>
             <span itemscope itemtype="http://schema.org/Person" class="author"><%= link_to gravatar_image_tag(answer.user.email, :alt => answer.user.name, :gravatar => {:size => 16}, :itemprop => "image"), answer.user, :itemprop => "name", :class => "avatar" %> Por <%= link_to answer.user.name, answer.user, :itemprop => "name" %></span> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
+
+            <%- if current_user && current_user.id == answer.user.id %>
+              <span class="actions">
+                <%#= link_to content_tag(:span, "☆"), root_path, :title => "Marcar como correcta" %>
+                <%= link_to content_tag(:i, content_tag(:span, "Editar"), :class => "icon-edit"), edit_question_answer_path(answer.question, answer), :title => "Editar" %>
+                <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [answer.question, answer], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
+              </span>
+            <% end -%>
+
           </p>
         </div>
       </li>
