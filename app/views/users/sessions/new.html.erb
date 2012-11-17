@@ -48,10 +48,16 @@
     </div>
 
     <div class="social">
-      <p>¿No tienes cuenta? <%= link_to "Regístrate!", new_registration_path(resource_name) %></p>
-      <p>Entra con tu perfil de <strong>Facebook</strong> o <strong>Twitter</strong> para usar esta web de forma más cómoda.</p>
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <p class="short">
+          ¿No tienes cuenta?
+          <%= link_to "Regístrate!", new_registration_path(resource_name) %>
+        </p>
+      <% end -%>
 
       <%- if devise_mapping.omniauthable? %>
+        <p>Entra con tu perfil de <strong>Facebook</strong> o <strong>Twitter</strong> para usar esta web de forma más cómoda.</p>
+
         <p>
           <%= link_to content_tag(:span, "Entra con Facebook"), user_omniauth_authorize_path(:facebook), :class => "facebook_connect" %>
           <%= link_to content_tag(:span, "Entra con Twitter"), user_omniauth_authorize_path(:twitter), :class => "twitter_connect" %>

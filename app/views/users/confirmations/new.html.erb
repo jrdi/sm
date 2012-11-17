@@ -1,12 +1,37 @@
-<h2>Resend confirmation instructions</h2>
+<% title("Volver a enviar instrucciones") %>
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<div id="register" class="static login">
+  <div class="content_header static_header content_header-js">
+    <ul class="breadcrumbs" itemprop="breadcrumb">
+      <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+      <li class="breadcrumb"><p>Cambiar contraseña</p></li>
+    </ul>
+  </div>
 
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <div class="questions clearfix">
+    <div class="fields_group">
+      <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+        <%= devise_error_messages! %>
 
-  <p><%= f.submit "Resend confirmation instructions" %></p>
-<% end %>
+        <fieldset>
+          <legend>Volver a enviar instrucciones</legend>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: 'autofocus' %>
+          </div>
+        </fieldset>
 
-<%= render :partial => "devise/shared/links" %>
+        <ul class="menu answers_menu action_menu">
+          <li class="menu_item">
+            <%= f.button "Volver a enviar!" %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="social">
+      <p>Las instrucciones pueden tardar unos minutos en llegar, así que paciencia!</p>
+      <p>Si aún no llegan pasados unos minutos, busca en la carpeta de spam (o en el cajón de los calcetines).</p>
+    </div>
+  </div>
+</div>

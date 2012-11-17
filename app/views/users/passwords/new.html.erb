@@ -1,10 +1,10 @@
-<% title("Enviar contraseña") %>
+<% title("Enviar instrucciones") %>
 
 <div id="register" class="static login">
   <div class="content_header static_header content_header-js">
     <ul class="breadcrumbs" itemprop="breadcrumb">
       <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
-      <li class="breadcrumb"><p>Enviar contraseña</p></li>
+      <li class="breadcrumb"><p>Cambiar contraseña</p></li>
     </ul>
   </div>
 
@@ -13,7 +13,7 @@
       <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
         <%= devise_error_messages! %>
         <fieldset>
-          <legend>Enviar contraseña</legend>
+          <legend>Enviar instrucciones</legend>
           <div class="field">
             <%= f.label :email %>
             <%= f.email_field :email, :autofocus => "autofocus" %>
@@ -22,16 +22,19 @@
 
         <ul class="menu answers_menu action_menu">
           <li class="menu_item">
-            <button type="submit" name="commit">Enviar contraseña!</button>
+            <button type="submit" name="commit">Enviar instrucciones!</button>
           </li>
         </ul>
       <% end %>
     </div>
 
     <div class="social">
-      <p class="long">
-        ¿Ya tienes una cuenta? <%- if controller_name != 'sessions' %><%= link_to "Pasa por aquí!", new_session_path(resource_name) %><% end -%>
-      </p>
+      <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+        <p class="short">
+          ¿No has recibido las instrucciones?<br />
+          <%= link_to "Volver a enviar", new_confirmation_path(resource_name) %><br />
+        </p>
+      <% end -%>
     </div>
   </div>
 </div>

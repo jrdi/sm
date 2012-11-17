@@ -51,25 +51,36 @@
           <div class="submit_field clearfix">
             <ul class="menu answers_menu action_menu">
               <li class="menu_item">
-                <button type="submit" name="commit" id="user_submit">Actualizar</button>
+                <%= f.button "Actualizar" %>
               </li>
             </ul>
           </div>
         </fieldset>
       <% end %>
 
-      <p>¿Quieres cancelar tu cuenta?<br />
-        <%- if controller_name != 'sessions' %>
-        <%= link_to "Borrar ahora", registration_path(resource_name), :confirm => "¿Estás seguro? No hay marcha atrás.", :method => :delete %>
-        <% end -%>
-      </p>
+      <%- if controller_name != 'sessions' %>
+        <p>
+          ¿Quieres cancelar tu cuenta?<br />
+          <%= link_to "Borrar todos mis datos", registration_path(resource_name), :confirm => "¿Estás seguro? No hay marcha atrás.", :method => :delete %>
+        </p>
+      <% end -%>
     </div>
 
     <div class="social">
       <figure class="clearfix">
         <%= gravatar_image_tag(resource.email, :alt => resource.name, :gravatar => {:size => 100}, :class => "avatar") %>
       </figure>
+
       <p><%= link_to "¿Qué es esto?", "http://es.gravatar.com/", target: '_blanck' %></p>
+
+      <%- if devise_mapping.omniauthable? %>
+        <p>Enlaza tu perfil de <strong>Facebook</strong> o <strong>Twitter</strong> para usar esta web de forma más cómoda.</p>
+
+        <p>
+          <%= link_to content_tag(:span, "Entra con Facebook"), user_omniauth_authorize_path(:facebook), :class => "facebook_connect" %>
+          <%= link_to content_tag(:span, "Entra con Twitter"), user_omniauth_authorize_path(:twitter), :class => "twitter_connect" %>
+        </p>
+      <% end -%>
     </div>
   </div>
 </div>

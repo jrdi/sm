@@ -1,16 +1,47 @@
-<h2>Change your password</h2>
+<% title("Cambiar contraseña") %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+<div id="register" class="static login">
+  <div class="content_header static_header content_header-js">
+    <ul class="breadcrumbs" itemprop="breadcrumb">
+      <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+      <li class="breadcrumb"><p>Cambiar contraseña</p></li>
+    </ul>
+  </div>
 
-  <p><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password %></p>
+  <div class="questions clearfix">
+    <div class="fields_group">
+      <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :reset_password_token %>
 
-  <p><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></p>
+        <fieldset>
+          <legend>Nueva contraseña</legend>
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password, autofocus: 'autofocus' %>
+          </div>
 
-  <p><%= f.submit "Change my password" %></p>
-<% end %>
+          <div class="field">
+            <%= f.label :password_confirmation %>
+           <%= f.password_field :password_confirmation %>
+          </div>
+        </fieldset>
 
-<%= render :partial => "devise/shared/links" %>
+        <ul class="menu answers_menu action_menu">
+          <li class="menu_item">
+            <%= f.button "Cambiar contraseña!" %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+
+    <div class="social">
+      <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+        <p>
+          ¿No has recibido las instrucciones?
+          <%= link_to "Volver a enviar", new_confirmation_path(resource_name) %><br />
+        </p>
+      <% end -%>
+    </div>
+  </div>
+</div>
