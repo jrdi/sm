@@ -20,4 +20,16 @@ module AnswersHelper
     title << ": #{pluralize(positive_votes, 'positivo', 'positivos')}, "
     title << "#{pluralize(negative_votes, 'negativo', 'negativos')}"
   end
+
+  def answer_votes_count(answer)
+    caret = 'icon-caret-'
+
+    if answer.votes_count < 0
+      caret << "down"
+    else
+      caret << "up"
+    end
+
+    return "#{content_tag(:i, "", :class => caret)} #{answer.votes_count.abs}"
+  end
 end

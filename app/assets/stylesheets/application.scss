@@ -48,11 +48,13 @@ a {
   [class^="icon-"],
   [class*=" icon-"] {
     display: inline-block;
+    line-height: 1;
     text-decoration: inherit;
-
-    span { display: none; }
   }
 }
+
+[class^="icon-"],
+[class*=" icon-"] { span { display: none; } }
 
 abbr { cursor: help; }
 
@@ -129,8 +131,6 @@ label { float: left; }
           background-position: 0 -72px;
           border-color: #442005;
           text-decoration: none;
-
-          i { color: #442005; }
         }
 
         &:active {
@@ -140,16 +140,12 @@ label { float: left; }
             0 0 0 1px rgba(#FFFFBD, .05) inset,
             0 2px 3px rgba(#000, .3) inset
           );
-
-          i { color: #5C2E0A; }
         }
 
         i {
-          color: #5C2E0A;
           font-size: 12px;
           line-height: 1;
           margin: 0 10px;
-          @include text-shadow(0 0 3px rgba(#FFC39F, .2));
         }
       }
 
@@ -480,16 +476,14 @@ label { float: left; }
 
 /* questions */
 
-.questions,
-.answers {
+.questions {
   background: image-url('questions_list-bg.png');
   border: 1px solid rgba(#000, .3);
   border-top: none;
   border-bottom: none;
 }
 
-.question,
-.answer {
+.question {
   padding: 33px 20px 33px 115px;
   overflow: hidden;
   position: relative;
@@ -509,8 +503,7 @@ label { float: left; }
   }
 }
 
-.question + .question,
-.answer + .answer { background: image-url('question-bg.png') no-repeat 0 -33px; }
+.question + .question { background: image-url('question-bg.png') no-repeat 0 -33px; }
 
 .actions {
   display: none;
@@ -522,9 +515,14 @@ label { float: left; }
 }
 
 .buttons {
-  border: 1px solid #D5E1E6;
   float: left;
   margin-left: -85px;
+  width: 66px;
+}
+
+.replies {
+  border: 1px solid #D5E1E6;
+  overflow: hidden;
   @include border-radius(5px);
   @include box-shadow(0 1px 0 #fff);
   @include text-shadow(0 1px 0 #fff);
@@ -538,12 +536,116 @@ label { float: left; }
   text-align: center;
   width: 32px;
   @include text-shadow(1px 1px 0 #fff);
+}
 
-  &.reply:hover {
-    text-decoration: none;
+.reply:hover {
+  text-decoration: none;
 
-    .icon-ok:before { content:"\f064"; }
+  i:before { content:"\f064"; }
+}
+
+.votes {
+  position: relative;
+  @include border-radius(5px);
+  @include box-shadow(0 1px 1px rgba(#000, .1));
+
+  .button {
+    border: 1px solid #B4C7D5;
+    background: image-url('button-bg.png') repeat-x;
+    line-height: 31px;
+    width: 31px;
+
+    &.voted,
+    &:hover,
+    &:active {
+      border-color: #9EB4C2;
+      position: relative;
+      text-decoration: none;
+      z-index: 1;
+    }
+
+    &.voted,
+    &:active { @include text-shadow(none); }
+
+    &.up {
+      @include border-left-radius(5px);
+
+      i { color: #3C9D2C; }
+
+      &.voted,
+      &:active {
+        background-color: rgba(#42B52F, .5);
+        background-position: 0 -31px;
+        border-color: #52AD43;
+        @include box-shadow(0 4px 5px rgba(#408C33, .4) inset);
+
+        i { color: #D5FFCF; }
+      }
+    }
+
+    &.down {
+      margin-left: -1px;
+      @include border-right-radius(5px);
+      @include box-shadow(1px 0 0 #fff inset);
+      width: 32px;
+
+      i { color: #CD7314; }
+
+      &.voted,
+      &:active {
+        background-color: rgba(#D14E07, .5);
+        background-position: 0 -62px;
+        border-color: #BC7D3B;
+        @include box-shadow(0 4px 5px rgba(#CD5914, .4) inset);
+
+        i { color: #FFE6CC;}
+      }
+    }
   }
+
+  button.button {
+    width: 33px;
+
+    &:active:hover i {
+      position: relative;
+      left: -1px;
+    }
+
+    &.down { width: 34px; }
+  }
+}
+
+.votes_count {
+  background: #E4FAE0 image-url('votes_count-bg.png') repeat-x;
+  border: 1px solid #A0CD98;
+  color: #46B234;
+  font: bold 12px/26px "Helvetica", sans-serif;
+  margin-top: -5px;
+  padding-top: 5px;
+  text-align: center;
+  @include border-bottom-radius(5px);
+  @include box-shadow(0 1px 0 #fff);
+  @include text-shadow(1px 1px 0 #fff);
+
+  i { color: #73C565; }
+
+  &.negative {
+    background-color: #FCE7DE;
+    background-position: 0 -31px;
+    border-color: #CCA998;
+    color: #E47742;
+
+    i { color: #DD9671; }
+  }
+}
+
+.correct_answer {
+  background: image-url('badge.png') no-repeat center;
+  display: block;
+  height: 31px;
+  margin-top: 10px;
+
+  span { display: none; }
 }
 
 .meta {
@@ -622,6 +724,8 @@ label { float: left; }
     margin: 0;
   }
 }
+
+.answer .meta p { line-height: 1.5; }
 
 
 /* static */

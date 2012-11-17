@@ -26,7 +26,7 @@
             <%- if user_signed_in? %>
               <li><%= link_to 'Perfil', current_user %></li>
               <li>
-                <%= link_to "Mi cuenta#{content_tag(:i, "", :class => 'icon-chevron-down')}".html_safe, edit_user_registration_path, :class => "dropdown_link-js #{selected?('users/registrations', 'edit')}" %>
+                <%= link_to "Mi cuenta#{content_tag(:i, "", :class => 'icon-caret-down')}".html_safe, edit_user_registration_path, :class => "dropdown_link-js #{selected?('users/registrations', 'edit')}" %>
                 <ul class="navbar_dropdown">
                   <li><%= link_to 'Preferencias', edit_user_registration_path %></li>
                   <li><%= link_to 'Desconectar', destroy_session_path(current_user), :method => :delete %></li>

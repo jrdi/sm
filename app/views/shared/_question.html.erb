@@ -7,9 +7,11 @@
     </div>
   <% end -%>
 
-  <div class="buttons buttons-js replies">
-    <%= link_to question.answers_count, question, :title => "Ir a las respuestas", :class => "button num" %>
-    <%= link_to content_tag(:i, content_tag(:span, "Responder"), :class => "#{question.answered? ? 'icon-ok' : 'icon-share-alt'}"), "#{question_path(question)}#new_answer", :title => "Responder", :class => "button reply reply-js" %>
+  <div class="buttons">
+    <div class="replies">
+      <%= link_to question.answers_count, question, :title => "Ir a las respuestas", :class => "button num" %>
+      <%= link_to content_tag(:i, content_tag(:span, "Responder"), :class => "#{question.answered? ? 'icon-ok' : 'icon-share-alt'}"), "#{question_path(question)}#new_answer", :title => "Responder", :class => "button reply reply-js" %>
+    </div>
   </div>
 
   <h2 class="title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>

@@ -1,0 +1,52 @@
+<% valid_answer ||= nil %>
+<% if answers.empty? %>
+  <%= render 'shared/no_answers' %>
+<% else %>
+  <% answers.each do |answer| %>
+    <%- unless answer.id.blank? %>
+      <li id="answer-<%= answer.id %>" class="question answer">
+        <%- if current_user && current_user.id == answer.user.id %>
+          <div class="actions">
+            <%#= link_to content_tag(:span, "☆"), root_path, :title => "Marcar como correcta" %>
+            <%= link_to content_tag(:i, content_tag(:span, "Editar"), :class => "icon-edit"), edit_question_answer_path(answer.question, answer), :title => "Editar" %>
+            <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [answer.question, answer], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
+          </div>
+        <% end -%>
+
+        <div class="buttons">
+          <div class="votes clearfix">
+            <%- if user_signed_in? %>
+              <%= form_for([answer, answer.votes.build], :remote => true) do |f| %>
+                <%= f.hidden_field :value, :value => 1 %>
+                <%= button_tag content_tag(:i, content_tag(:span, "+1"), :class => 'icon-caret-up'), :class => "button up #{answer_voted_by_user?(current_user.id, answer.votes, 1)}", :title => "Voto positivo" %>
+              <% end %>
+              <%= form_for([answer, answer.votes.build], :remote => :true) do |f| %>
+                <%= f.hidden_field :value, :value => -1 %>
+                <%= button_tag content_tag(:i, content_tag(:span, "-1"), :class => 'icon-caret-down'), :class => "button down #{answer_voted_by_user?(current_user.id, answer.votes, -1)}", :title => "Voto negativo" %>
+              <% end %>
+            <% else -%>
+              <%= link_to content_tag(:i, content_tag(:span, "+1"), :class => 'icon-caret-up'), new_user_session_path, :title => "Voto positivo", :class => "button up" %>
+              <%= link_to content_tag(:i, content_tag(:span, "-1"), :class => 'icon-caret-down'), new_user_session_path, :title => "Voto negativo", :class => "button down" %>
+            <% end -%>
+          </div>
+
+          <div class="votes_count <%= answer_votes_class(answer) %>" title='<%= answer_votes_title(answer) %>'>
+            <%= answer_votes_count(answer).html_safe %>
+          </div>
+
+          <% if valid_answer.present? && answer == valid_answer %>
+            <div class="correct_answer" title="Respuesta correcta!"><span>Respuesta correcta!</span></div>
+          <% end %>
+        </div>
+
+        <pre class="description"><%= answer.content.to_html %></pre>
+
+        <div class="meta clearfix">
+          <p>
+            <span itemscope itemtype="http://schema.org/Person" class="author"><%= link_to gravatar_image_tag(answer.user.email, :alt => answer.user.name, :gravatar => {:size => 16}, :itemprop => "image"), answer.user, :itemprop => "name", :class => "avatar" %> Por <%= link_to answer.user.name, answer.user, :itemprop => "name" %></span> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr>
+          </p>
+        </div>
+      </li>
+    <% end -%>
+  <% end %>
+<% end %>
