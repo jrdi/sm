@@ -7,12 +7,6 @@
 //= require_tree .
 
 
-// questions spinner
-questionsSpinnerOpts = {
-  color: '#5A6C73', // #rgb or #rrggbb
-};
-
-
 $(document).ready(function() {
   // spinner
   $.fn.spin = function(opts) {
@@ -24,8 +18,15 @@ $(document).ready(function() {
         data.spinner.stop();
         delete data.spinner;
       }
+
       if (opts !== false) {
-        data.spinner = new Spinner($.extend({color: $this.css('color')}, opts)).spin(this);
+        data.spinner = new Spinner($.extend({
+          lines: 9,
+          length: 4,
+          width: 3,
+          radius: 4,
+          color: $this.css('color')
+        }, opts)).spin(this);
       }
     });
     return this;
@@ -75,23 +76,21 @@ $(document).ready(function() {
     }
   });
 
+  // tabs spinner
   $('.content_header-js').on("click", ".tab-js", function(){
-    $('.load_more-js').hide();
-
     clickedItem = $(this);
     selectedItem = $(this).closest('.menu').find(".selected");
+    txt = clickedItem.text();
 
     if (!$(this).is(".selected")){
       $(selectedItem).removeClass('selected');
       $(clickedItem).addClass('selected');
     }
-  });
 
-  $('.questions_header-js').on("click", ".tab-js", function(){
-    $('.questions-js').html('&nbsp;').spin(questionsSpinnerOpts);
-  });
-
-  $('.answers_header-js').on("click", ".tab-js", function(){
-    $('.answers-js').html('&nbsp;').spin(questionsSpinnerOpts);
+    $(this).ajaxStart(function(){
+      $(clickedItem).html('&nbsp;').spin();
+    }).ajaxStop(function(){
+      $(clickedItem).spin(false).text(txt);
+    });
   });
 });

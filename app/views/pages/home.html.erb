@@ -42,7 +42,7 @@
   <div class="content_footer questions_footer-js">
     <ul class="menu answers_menu action_menu_secondary">
       <li class="menu_item">
-        <%= link_to( 'Cargar más', scoped_home_path(scope: params[:scope], page: ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), title: "Carga más preguntas", class: "menu_item load_more load_more-js", remote: true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
+        <%= link_to( 'Cargar más', scoped_home_path(scope: params[:scope], page: ((params[:page].blank? || params[:page].to_i < 1) ? 2 : params[:page].to_i + 1)), title: "Carga más preguntas", class: "menu_item load_more load_more-js tab-js", remote: true) unless @question_pages == 1 || params[:page].to_i + 1 > @question_pages %>
       </li>
     </ul>
 
