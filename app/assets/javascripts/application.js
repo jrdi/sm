@@ -6,6 +6,13 @@
 //= require spin.min
 //= require_tree .
 
+
+// questions spinner
+questionsSpinnerOpts = {
+  color: '#5A6C73', // #rgb or #rrggbb
+};
+
+
 $(document).ready(function() {
   // spinner
   $.fn.spin = function(opts) {
@@ -52,13 +59,13 @@ $(document).ready(function() {
       event: 'click',
       effect: function() {
         $('.dropdown_link-js').addClass('selected');
-        $(this).show().css('opacity', '0').animate({ opacity: 1, "top": "-=5px" }, { duration: 200 });
+        $(this).show().css('opacity', '0').animate({ opacity: 1, "top": "-=3px" }, { duration: 100 });
       }
     },
     hide: {
       event: 'unfocus click',
       effect: function() {
-        $(this).animate({ opacity: 0, "top": "+=5px" }, { duration: 200 });
+        $(this).animate({ opacity: 0, "top": "+=3px" }, { duration: 100 });
         $('.dropdown_link-js').removeClass('selected');
       }
     },
@@ -68,7 +75,9 @@ $(document).ready(function() {
     }
   });
 
-  $('.content_header-js').on("click", ".tab-js", function(e){
+  $('.content_header-js').on("click", ".tab-js", function(){
+    $('.load_more-js').hide();
+
     clickedItem = $(this);
     selectedItem = $(this).closest('.menu').find(".selected");
 
@@ -78,11 +87,11 @@ $(document).ready(function() {
     }
   });
 
-  $('.questions_header-js').on("click", ".tab-js", function(e){
-    $('.questions-js').html('').spin();
+  $('.questions_header-js').on("click", ".tab-js", function(){
+    $('.questions-js').html('&nbsp;').spin(questionsSpinnerOpts);
   });
 
-  $('.answers_header-js').on("click", ".tab-js", function(e){
-    $('.answers-js').html('').spin();
+  $('.answers_header-js').on("click", ".tab-js", function(){
+    $('.answers-js').html('&nbsp;').spin(questionsSpinnerOpts);
   });
 });

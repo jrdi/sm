@@ -34,19 +34,21 @@
   <div class="content_header answers_header content_header-js answers_header-js">
     <h3 class="title">Respuestas</h3>
 
-    <ul class="menu answers_menu tabbed_menu">
-      <li class="menu_item">
-        <%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "tab-js #{tab_selected?(params[:order])}", remote: true %>
-      </li>
+    <% if @question.answers.count > 1 %>
+      <ul class="menu answers_menu tabbed_menu">
+        <li class="menu_item">
+          <%= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "tab-js #{tab_selected?(params[:order])}", remote: true %>
+        </li>
 
-      <li class="menu_item">
-        <%= link_to "Antiguas", question_path(@question, :order => 'oldest'), :title => "Ordenar respuestas por antiguas", :class => "tab-js #{tab_selected?(params[:order], 'oldest')}", remote: true %>
-      </li>
+        <li class="menu_item">
+          <%= link_to "Antiguas", question_path(@question, :order => 'oldest'), :title => "Ordenar respuestas por antiguas", :class => "tab-js #{tab_selected?(params[:order], 'oldest')}", remote: true %>
+        </li>
 
-      <li class="menu_item">
-        <%= link_to "Recientes", question_path(@question, :order => 'active'), :title => "Ordenar respuestas por recientes", :class => "tab-js #{tab_selected?(params[:order], 'active')}", remote: true %>
-      </li>
-    </ul>
+        <li class="menu_item">
+          <%= link_to "Recientes", question_path(@question, :order => 'active'), :title => "Ordenar respuestas por recientes", :class => "tab-js #{tab_selected?(params[:order], 'active')}", remote: true %>
+        </li>
+      </ul>
+    <% end %>
   </div>
 
   <ul class="questions answers answers-js">

@@ -55,5 +55,15 @@ module ApplicationHelper
       end
       return tags.join("\n")
     end
-  end  
+  end
+
+  def user_name(user)
+    if user.name.blank?
+      name = "Usuario #{user.id}"
+    else
+      name = user.name
+    end
+
+    return name
+  end
 end

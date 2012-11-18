@@ -1,73 +1,62 @@
-<% title "Preguntas y respuestas de #{@user.name}" %>
+<% title = title @user.name.blank? ? "Preguntas y respuestas del usuario" : "Preguntas y respuestas de #{@user.name}" %>
 
 <div id="user">
-  <ul id="questions-header">
-    <ul id="breadcrumb" itemprop="breadcrumb">
-      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
-      <li class="breadcrumb-item breadcrumb-tag">
-        <%= link_to(@user.name, @user, :title => "Preguntas y respuestas de #{@user.name}") %>
-      </li>
+  <div id="questions">
+    <div class="content_header questions_header">
+      <ul class="breadcrumbs" itemprop="breadcrumb">
+        <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+        <li class="breadcrumb breadcrumb_tag">
+          <%= link_to(user_name(@user), @user, title: title) %>
+        </li>
+      </ul>
+
+      <%- if user_signed_in? %>
+        <ul class="menu action_menu">
+          <li class="menu_item"><%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path}#new_question", :title => "Crea una nueva pregunta", :class => "new_question-icon" %></li>
+        </ul>
+
+        <ul class="menu action_menu">
+          <li class="menu_item"><%= link_to "Preferencias", edit_user_registration_path, :title => "Ir a las preferencias" %></li>
+        </ul>
+      <% else -%>
+        <%= link_to "Empieza a publicar preguntas", new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta" %>
+      <% end -%>
+    </div>
+
+    <div class="content_header answers_header">
+      <h3 class="title">Preguntas del usuario</h3>
+    </div>
+
+    <ul class="questions">
+      <%- if @questions.empty? %>
+        <li class="answer no_answers"><%= render 'shared/no_questions' %></li>
+      <% else %>
+        <%- @questions.each do |question| %>
+          <%= render :partial => 'shared/question', :locals => { :question => question } %>
+        <% end -%>
+      <% end -%>
     </ul>
-
-		<ul id="questions-header-action">
-      <li class="menu-item">
-    	  <%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
-    	</li>
-  	</ul>
-
-		<ul id="questions-header-prefs">
-      <li class="menu-item">
-    	  <%= link_to content_tag(:span, 'Preferencias'), edit_user_registration_path, :title => "Preferencias de usuario" %>
-    	</li>
-  	</ul>
-  </ul>
-
-  <div id="user-answers-questions-header" class="answers-header">
-	  <!-- to fix
-		<ul class="answers-header-menu">
-			<li class="menu-item" <%= tab_selected?(params[:scoped_questions]) %>><%= link_to "Recientes", root_path(:page => 1), :title => "Ver las preguntas recientes", :id => "all", :remote => true %></li>
-			<li <%= tab_selected?(params[:scoped_questions], 'without_answers') %> class="menu-item"><%= link_to "Sin responder", root_path(:scoped_questions => 'without_answers', :page => 1), :title => "Ver las preguntas sin responder", :id => "without_answers", :remote => true %></li>
-			<li <%= tab_selected?(params[:scoped_questions], 'populars') %> class="menu-item"><%= link_to "Populares", root_path(:scoped_questions => 'populars', :page => 1), :title => "Ver las preguntas populares", :id => "populars", :remote => true %></li>
-		</ul>  -->
-
-  	<h3>Preguntas del usuario</h3>
   </div>
 
-  <ul id="questions-list">
-		<%- if @questions.empty? %>
-		  <li class="answer no-answers">
-    	  <p>Aún no hay preguntas disponibles.</p>
-    	</li>
-		<% else %>
-	  	<%- @questions.each do |question| %>
-	      <%= render :partial => 'shared/question', :locals => { :question => question } %>
-	  	<% end -%>
-	  <% end -%>
-  </ul> 
-  
-  <div class="answers-header">
-	  <!-- to fix
-  	<ul class="answers-header-menu">
-  		<li class="menu-item" <%#= tab_selected?(params[:order]) %>>
-				<%#= link_to "Votos", question_path(@question, :order => 'votes_count'), :title => "Ordenar respuestas por número de votos", :class => "answers-header-menu-item", :id => "votes_count", :remote => true %>
-			</li>
-  		<li class="menu-item" <%#= tab_selected?(params[:order], 'created_at') %>>
-				<%#= link_to "Fecha", question_path(@question, :order => 'created_at'), :title => "Ordenar respuestas por fecha", :class => "answers-header-menu-item", :id => "created_at", :remote => true %>
-			</li>
-  	</ul> -->
+  <div id="answers">
+    <div class="content_header answers_header">
+      <h3 class="title">Respuestas del usuario</h3>
+    </div>
 
-  	<h3>Respuestas del usuario</h3>
+    <ul class="questions answers">
+      <%= render :partial => 'shared/answers', locals: { answers: @answers } %>
+    </ul>
   </div>
+</div>
 
-  <ul id="answers-list">
-  	<%= render :partial => 'shared/answers', locals: { answers: @answers } %>
-  </ul>
-
-  <ul id="questions-footer" class="questions-footer">
-    <%- if user_signed_in? %>
-  		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
-  	<% else -%>
-  	  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
-  	<% end -%>
+<div class="content_footer questions_footer-js">
+  <ul class="menu answers_menu action_menu">
+    <li class="menu_item">
+      <%- if user_signed_in? %>
+        <%= link_to "Nueva pregunta", "#{root_path}#new_question", title: "Crea una nueva pregunta" %>
+      <% else -%>
+        <%= link_to "Nueva pregunta", new_user_session_path, title: "Regístrate o accede para crear una nueva pregunta" %>
+      <% end -%>
+    </li>
   </ul>
 </div>
