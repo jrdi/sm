@@ -43,11 +43,29 @@
 
     <div class="main clearfix">
       <div class="inner">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <% if current_user && current_user.email.match(/@example\.com/) %>
-          <p>Hemos detectado que tu email no es correcto, te recomendamos cambiarlo: <%= link_to 'editar email', edit_user_registration_path %></p>
-        <% end %>
+        <div class="alerts-js">
+          <% if current_user && current_user.email.match(/@example\.com/) && controller_name != 'registrations' %>
+            <div class="alert alert-js">
+              <a href="javascript:void(0);" class="close close-js">×</a>
+              <strong>Necesitamos confirmar tu email</strong>, puedes cambiarlo en <%= link_to 'preferencias', edit_user_registration_path %> para recibir notificaciones!
+            </div>
+          <% end %>
+
+          <% if current_user && current_user.name.blank? && controller_name != 'registrations' %>
+            <div class="alert alert-js">
+              <a href="javascript:void(0);" class="close close-js">×</a>
+              <strong>Necesitamos confirmar tu nombre</strong>, puedes cambiarlo en <%= link_to 'preferencias', edit_user_registration_path %> para que el resto sepa quien eres!
+            </div>
+          <% end %>
+
+          <% if flash[:alert].present? %>
+            <div class="alert error error-js"><%= alert %></div>
+          <% end %>
+
+          <% if flash[:notice].present? %>
+            <div class="alert notice notice-js"><%= notice %></div>
+          <% end %>
+        </div>
 
         <div class="content">
           <%= yield %>

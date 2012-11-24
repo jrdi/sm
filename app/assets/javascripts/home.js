@@ -64,23 +64,25 @@ $(document).ready(function() {
 
     if(!title) {
       e.preventDefault();
-      $(".alert").html("Primero necesitas escribir una pregunta!").show().delay(5000).fadeOut();
+      window.scrollTo(0, 125);
+      $('.alerts-js').append("<div class=\"alert error error-js\">Primero necesitas escribir una pregunta!</div>");
+      $('.error-js').delay(5000).fadeOut();
     }
   });
 
-  $(".questions_footer-js, .content_header-js").on("click", ".new_question-js", function(e){
+  $('.questions_footer-js, .content_header-js').on('click', '.new_question-js', function(e){
     e.preventDefault();
     if ($('.ask_content-js').is('.collapsed'))
       expandAsk();
-    $(".question_title-js").focus();
+    $('.question_title-js').focus();
   });
 
   // load more spinner
-  $('.questions_footer-js').on("click", ".load_more-js", function(){
+  $('.questions_footer-js').on('click', '.load_more-js', function(){
     $(this).ajaxStart(function(){
       $(this).html('&nbsp;').spin();
     }).ajaxStop(function(){
-      $(this).spin(false).text('Cargar más');
+      $(this).spin(false).text("Cargar más");
     });
   });
 });

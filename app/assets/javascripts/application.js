@@ -33,12 +33,16 @@ $(document).ready(function() {
   };
 
   // alerts
-  if($(".alert").text() != "") {
-    $(".alert").show().delay(5000).fadeOut();
+  $('.alert-js').on('click', '.close-js', function() {
+    $(this).closest('.alert-js').fadeOut();
+  });
+
+  if($('.notice-js').text()) {
+    $('.notice-js').delay(5000).fadeOut();
   }
 
-  if($(".notice").text() != "" ) {
-    $(".notice").show().delay(5000).fadeOut();
+  if($('.error-js').text()) {
+    $('.error-js').delay(5000).fadeOut();
   }
 
   // dropdowns

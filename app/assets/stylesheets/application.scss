@@ -5,13 +5,17 @@
  *= require_self
  */
 
+
 @import url(http://fonts.googleapis.com/css?family=Copse);
 @import 'compass/css3/box-shadow';
 @import "compass/css3/border-radius";
 @import "compass/css3/text-shadow";
+@import "compass/utilities/text/ellipsis";
 
 
-/* typography */
+/* ==========================================================================
+   Base
+   ========================================================================== */
 
 body { background: image-url('noise-bg.png'); }
 
@@ -66,8 +70,16 @@ fieldset {
 
 label { float: left; }
 
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-/* layout */
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
 
 .inner {
   margin: 0 auto;
@@ -76,7 +88,9 @@ label { float: left; }
 }
 
 
-/* banner */
+/*
+ * Banner
+ */
 
 .banner {
   background: image-url('header-bg.png') repeat-x center 0;
@@ -183,7 +197,9 @@ label { float: left; }
 }
 
 
-/* content */
+/*
+ * Content
+ */
 
 .content {
   float: left;
@@ -302,7 +318,10 @@ label { float: left; }
 
   &:last-child a { background: none; }
 
-  p { margin-bottom: 0; }
+  p {
+    line-height: 53px;
+    margin-bottom: 0;
+  }
 }
 
 .menu {
@@ -486,7 +505,9 @@ label { float: left; }
 }
 
 
-/* home */
+/*
+ * Home
+ */
 
 .load_more {
   height: 30px;
@@ -494,7 +515,9 @@ label { float: left; }
 }
 
 
-/* questions */
+/*
+ * Questions
+ */
 
 .questions {
   background: image-url('questions_list-bg.png');
@@ -670,27 +693,33 @@ label { float: left; }
 .meta {
   font-size: 12px;
 
+  a { color: #71919F; }
+
+  i { font-size: 14px; }
+
   p {
     color: #ADBABF;
     float: left;
     margin: 0;
   }
 
+  .author { line-height: 24px; }
+
+  .name {
+    display: inline-block;
+    max-width: 115px;
+    vertical-align: bottom;
+  }
+
   .tags {
-    left: 50%;
+    left: 500px;
     line-height: 26px;
-    min-width: 328px;
+    min-width: 178px;
     position: absolute;
     text-align: right;
     white-space: nowrap;
   }
-
-  a { color: #71919F; }
-
-  i { font-size: 14px; }
 }
-
-.author { line-height: 26px; }
 
 .tag {
   display: inline-block;
@@ -731,7 +760,9 @@ label { float: left; }
 }
 
 
-/* answers */
+/*
+ * Answers
+ */
 
 .no_answers {
   background: image-url('no_answers-bg.png') no-repeat 70px;
@@ -746,7 +777,9 @@ label { float: left; }
 .answer .author { line-height: 18px; }
 
 
-/* static */
+/*
+ * Static
+ */
 
 .static {
   .questions {
@@ -767,8 +800,6 @@ label { float: left; }
     }
 
     a { background-position: right -57px; }
-
-    p { line-height: 54px; }
   }
 
   h2 {
@@ -920,7 +951,9 @@ label { float: left; }
 }
 
 
-/* sidebar */
+/*
+ * Sidebar
+ */
 
 .sidebar {
   float: left;
@@ -942,8 +975,15 @@ label { float: left; }
   }
 }
 
+.sidebar,
+.colophon {
+  p { color: #94694B; }
+}
 
-/* footer */
+
+/*
+ * Footer
+ */
 
 .colophon {
   margin: 30px 0;
@@ -974,7 +1014,65 @@ label { float: left; }
   p { margin-bottom: 10px; }
 }
 
-.sidebar,
-.colophon {
-  p { color: #94694B; }
+
+/* ==========================================================================
+   Widgets
+   ========================================================================== */
+
+/*
+ * Alerts
+ */
+
+.alert {
+  background-color: #FCF8E3;
+  border: 1px solid #FBEED5;
+  color: #C09853;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  padding: 8px 35px 8px 14px;
+  @include border-radius(4px);
+  @include text-shadow(0 1px 0 rgba(#fff, .5));
+
+  &.notice {
+    background-color: #DFF0D8;
+    border-color: #D6E9C6;
+    color: #468847;
+  }
+
+  &.error {
+    background-color: #F2DEDE;
+    border-color: #EED3D7;
+    color: #B94A48;
+
+    li { margin-bottom: 0; }
+  }
+
+  &:last-child { margin-bottom: 30px; }
+
+  a {
+    color: #C09853;
+    text-decoration: underline;
+  }
+
+  .close {
+    color: #000;
+    float: right;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 20px;
+    opacity: .2;
+    position: relative;
+    right: -21px;
+    text-decoration: none;
+    top: -2px;
+    @include text-shadow(0 1px 0 #fff);
+
+    &:hover {
+      cursor: pointer;
+      opacity: .4;
+      text-decoration: none;
+    }
+  }
 }

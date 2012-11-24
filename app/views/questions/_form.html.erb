@@ -1,17 +1,17 @@
+<% if @question.errors.any? %>
+  <div class="alert error">
+    <strong>No ha sido posible publicar esta pregunta debido a <%= pluralize(@question.errors.count, "error") %></strong>
+
+    <ul>
+    <% @question.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="ask ask-js">
   <%= form_for(@question) do |f| %>
-    <% if @question.errors.any? %>
-      <div class="error_explanation">
-        <h2>No ha sido posible publicar esta pregunta debido a <%= pluralize(@question.errors.count, "error") %></h2>
-
-        <ul>
-        <% @question.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
-
     <fieldset class="ask_content ask_content-js">
       <div class="notefield">
         <%= f.label :title %>

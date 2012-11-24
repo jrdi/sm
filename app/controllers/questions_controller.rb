@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
     
     if @question.save
       @question.tags = params[:question_tags]
-      redirect_to(@question, :notice => 'La pregunta ha sido guardada correctamente.')
+      redirect_to(@question, :notice => 'La pregunta ha sido publicada correctamente.')
     else
       render :action => "edit"     
     end

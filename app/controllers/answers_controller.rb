@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     
     if @answer.save
-      redirect_to(@question, :notice => 'La respuesta ha sido guardada correctamente.')
+      redirect_to(@question, :notice => 'La respuesta ha sido publicada correctamente.')
     else
       render :action => "edit"     
     end

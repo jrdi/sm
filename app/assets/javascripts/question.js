@@ -13,7 +13,9 @@ $(document).ready(function() {
 
     if(!title) {
       e.preventDefault();
-      $(".alert").html("Primero necesitas escribir una respuesta!").show().delay(5000).fadeOut();
+      window.scrollTo(0, 125);
+      $('.alerts-js').append("<div class=\"alert error error-js\">Primero necesitas escribir una respuesta!</div>");
+      $('.error-js').delay(5000).fadeOut();
     }
   });
 });
