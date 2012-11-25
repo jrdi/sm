@@ -1,6 +1,6 @@
 <%- if user_signed_in? %>
-	<% @answer ||= @question.answers.build %>
-	<%= form_for([@question, @answer]) do |f| %>
+  <% @answer ||= @question.answers.build %>
+  <%= form_for([@question, @answer]) do |f| %>
     <% if @answer.errors.any? %>
       <div class="alert error">
         <strong>No se ha podido publicar la respuesta debido a <%= pluralize(@answer.errors.count, "error") %></strong>
@@ -13,17 +13,23 @@
       </div>
     <% end %>
 
-    <fieldset class="ask_answer">
+    <fieldset class="ask_answer<%= " edit_answer" if action_name == "edit" %>">
       <div class="notefield">
         <%= f.label :content %>
-        <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta", :class => "answer_desc-js desc-js" %>
+        <%= f.text_area :content, :rows => "1", :placeholder => "Escribe aquí tu respuesta", :class => "answer_desc-js desc-js", :autofocus => "autofocus" if action_name = "edit" %>
       </div>
     </fieldset>
 
     <div class="content_footer answers_footer-js">
+      <ul class="menu answers_menu action_menu_secondary">
+        <li class="menu_item">
+          <%= link_to 'Volver a la pregunta', @question if action_name == "edit" %>
+        </li>
+      </ul>
+
       <ul class="menu answers_menu action_menu">
         <li class="menu_item">
-          <%= f.button "Publicar respuesta", class: 'new_answer-js' %>
+          <%= f.button "Guardar respuesta", class: 'new_answer-js' %>
         </li>
       </ul>
     </div>

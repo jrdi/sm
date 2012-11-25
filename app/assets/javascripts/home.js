@@ -20,7 +20,7 @@ $(document).ready(function() {
     isAskFocus = false;
   });
 
-  if(url('#') === "new_question") {
+  if((url('#') === "new_question") || (url(-1) === "edit")) {
     $('.question_title-js').focus();
   } else {
     setTimeout( function(){

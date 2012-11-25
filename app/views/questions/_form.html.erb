@@ -30,6 +30,16 @@
     </fieldset>
 
     <div class="content_footer ask_footer-js">
+      <ul class="menu answers_menu action_menu_secondary">
+        <li class="menu_item">
+          <% if action_name == "edit" %>
+            <%= link_to 'Volver a la pregunta', @question %>
+          <% elsif action_name == "create" %>
+            <%= link_to 'Volver a la portada', root_path %>
+          <% end %>
+        </li>
+      </ul>
+
       <ul class="menu answers_menu action_menu">
         <li class="menu_item">
           <%= f.button 'Publicar pregunta', class: 'publish_question-js' %>
