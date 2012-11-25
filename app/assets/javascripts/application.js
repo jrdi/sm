@@ -4,6 +4,7 @@
 //= require js-url.min
 //= require jquery.qtip.min
 //= require spin.min
+//= require jquery.timeago
 //= require_tree .
 
 
@@ -83,6 +84,21 @@ $(document).ready(function() {
     style: {
       classes: 'ui-tooltip-dropdown',
       tip: { width: 18, height: 10, corner: 'top right',  mimic: 'center', offset: 5 }
+    }
+  });
+
+  // time ago
+  $('.timeago-js').timeago({
+    strings: {
+      suffixAgo: null,
+      suffixFromNow: null,
+      seconds: "1 m",
+      minute: "1 m",
+      minutes: "%d m",
+      hour: "1 h",
+      hours: "%d h",
+      day: "1 d",
+      days: "%d d"
     }
   });
 

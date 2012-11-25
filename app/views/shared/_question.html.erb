@@ -6,27 +6,36 @@
     </div>
   </div>
 
-  <h2 class="title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
+  <div class="clearfix">
+    <h2 class="title"><%= link_to question.title, question, :title => "Enlace permanente a #{question.title}" %></h2>
+
+    <div class="meta time">
+      <%- if current_user && current_user === question.user %>
+        <time datetime="<%= question.created_at.to_time.iso8601 %>" class="timeago-js actionable"><%= question.created_at.to_s(:long) %></time>
+
+        <div class="actions">
+          <%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito" %>
+          <%= link_to content_tag(:i, content_tag(:span, "Editar"), :class => "icon-edit"), edit_question_path(question), :title => "Editar" %>
+          <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [question], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
+        </div>
+      <% else %>
+        <time datetime="<%= question.created_at.to_time.iso8601 %>" class="timeago-js"><%= question.created_at.to_s(:long) %></time>
+      <% end -%>
+    </div>
+  </div>
 
   <pre class="description"><%= question.description.to_html %></pre>
 
   <div class="meta clearfix">
-    <p>
-      <span itemscope itemtype="http://schema.org/Person" class="author"><%= link_to gravatar_image_tag(question.user.email, :alt => user_name(question.user), :gravatar => {:size => 24}, :itemprop => "image"), question.user, :class => "avatar" %> Por <%= link_to user_name(question.user), question.user, :itemprop => "name", :class => "name ellipsis", :title => user_name(question.user) %> hace <abbr title="<%= question.created_at %>"><%= time_ago_in_words(question.created_at) %></abbr></span>
-      <%- if current_user && current_user === question.user %>
-        <span class="actions">
-          <%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito" %>
-          <%= link_to content_tag(:i, content_tag(:span, "Editar"), :class => "icon-edit"), edit_question_path(question), :title => "Editar" %>
-          <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [question], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
-        </span>
-      <% end -%>
+    <p itemscope itemtype="http://schema.org/Person">
+      <%= link_to gravatar_image_tag(question.user.email, :alt => user_name(question.user), :gravatar => {:size => 24}, :itemprop => "image"), question.user, :class => "avatar" %> Por <%= link_to user_name(question.user), question.user, :itemprop => "name", :class => "name ellipsis", :title => user_name(question.user), :rel =>"author" %>
     </p>
 
     <ul class="tags">
       <%- question.tags.each do |tag| %>
         <li class="tag">
           <%#= link_to content_tag(:span, "+"), root_path, :title => "Seguir el tema #{tag.name.capitalize}", :class => "tag-follow" %>
-          <%= link_to "#{content_tag(:i, content_tag(:span, '#'), :class => 'icon-tag')}#{tag.name.capitalize}".html_safe, tag, :title => "Ir al tema #{tag.name.capitalize}", :class => "tag-link" %>
+          <%= link_to "#{content_tag(:i, content_tag(:span, '#'), :class => 'icon-tag')}#{tag.name.capitalize}".html_safe, tag, :title => "Ir al tema #{tag.name.capitalize}" %>
         </li>
       <% end -%>
     </ul>

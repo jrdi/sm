@@ -10,7 +10,7 @@
 @import 'compass/css3/box-shadow';
 @import "compass/css3/border-radius";
 @import "compass/css3/text-shadow";
-@import "compass/utilities/text/ellipsis";
+@import "compass/typography/text/ellipsis";
 
 
 /* ==========================================================================
@@ -54,13 +54,12 @@ a {
 [class^="icon-"],
 [class*=" icon-"] {
   display: inline-block;
-  line-height: 1;
   text-decoration: inherit;
 
   span { display: none; }
 }
 
-abbr { cursor: help; }
+time { cursor: help; }
 
 fieldset {
   border: 0;
@@ -325,10 +324,7 @@ label { float: left; }
 
   &:last-child a { background: none; }
 
-  p {
-    line-height: 53px;
-    margin-bottom: 0;
-  }
+  p { margin-bottom: 0; }
 }
 
 .menu {
@@ -554,11 +550,17 @@ label { float: left; }
 
   &:last-child { padding-bottom: 22px; }
 
-  &:hover .actions { display: inline-block; }
+  &:hover {
+    time.actionable { display: none; }
+    .actions { display: inline-block; }
+  }
 
   .title {
+    display: inline-block;
+    float: left;
     font-size: 18px;
     margin: 0;
+    max-width: 518px;
 
     a { color: #C3550D; }
   }
@@ -668,7 +670,7 @@ label { float: left; }
   background: #E4FAE0 image-url('votes_count-bg.png') repeat-x;
   border: 1px solid #A0CD98;
   color: #46B234;
-  font: bold 12px/26px "Helvetica", sans-serif;
+  font: bold 12px/24px "Helvetica Neue", sans-serif;
   margin-top: -5px;
   padding-top: 5px;
   text-align: center;
@@ -707,26 +709,34 @@ label { float: left; }
   p {
     color: #ADBABF;
     float: left;
+    line-height: 26px;
     margin: 0;
   }
 
-  .author { line-height: 24px; }
-
   .name {
     display: inline-block;
-    max-width: 115px;
-    vertical-align: bottom;
+    max-width: 160px;
   }
 
   .tags {
-    left: 500px;
-    line-height: 26px;
-    min-width: 178px;
+    left: 50%;
+    line-height: 28px;
+    min-width: 328px;
     position: absolute;
     text-align: right;
     white-space: nowrap;
   }
 }
+
+.time {
+  color: #71919F;
+  float: right;
+  line-height: 2;
+  width: 44px;
+  text-align: right;
+}
+
+.actions { display: none; }
 
 .tag {
   display: inline-block;
@@ -734,7 +744,7 @@ label { float: left; }
 
   &:last-child { margin-right: 0; }
 
-  a { font: 500 12px/1.6 "Helvetica Neue", sans-serif; }
+  a { font: 500 12px "Helvetica Neue", sans-serif; }
 }
 
 .avatar {
@@ -759,13 +769,6 @@ label { float: left; }
   }
 }
 
-.actions {
-  display: none;
-  margin-left: 5px;
-
-  a { color: #71919F; }
-}
-
 
 /*
  * Answers
@@ -781,7 +784,7 @@ label { float: left; }
   }
 }
 
-.answer .author { line-height: 18px; }
+.answer p { line-height: 18px; }
 
 
 /*
@@ -807,6 +810,8 @@ label { float: left; }
     }
 
     a { background-position: right -57px; }
+
+    p { line-height: 55px; }
   }
 
   h2 {

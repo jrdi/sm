@@ -23,13 +23,13 @@
     <div class="content_footer answers_footer-js">
       <ul class="menu answers_menu action_menu_secondary">
         <li class="menu_item">
-          <%= link_to 'Volver a la pregunta', @question if action_name == "edit" %>
+          <%= link_to 'Volver a la pregunta', @question if controller_name == "answers" %>
         </li>
       </ul>
 
       <ul class="menu answers_menu action_menu">
         <li class="menu_item">
-          <%= f.button "Guardar respuesta", class: 'new_answer-js' %>
+          <%= f.button "Publicar respuesta", class: 'new_answer-js' %>
         </li>
       </ul>
     </div>

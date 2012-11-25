@@ -30,6 +30,6 @@ module AnswersHelper
       caret << "up"
     end
 
-    return "#{content_tag(:i, "", :class => caret)} #{answer.votes_count.abs}"
+    return "#{content_tag(:i, '', :class => caret)} #{answer.votes_count.abs}"
   end
 end

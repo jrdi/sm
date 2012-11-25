@@ -34,8 +34,8 @@
         <pre class="description"><%= answer.content.to_html %></pre>
 
         <div class="meta clearfix">
-          <p>
-            <span itemscope itemtype="http://schema.org/Person" class="author"><%= link_to gravatar_image_tag(answer.user.email, :alt => user_name(answer.user), :gravatar => {:size => 16}, :itemprop => "image"), answer.user, :class => "avatar" %> Por <%= link_to user_name(answer.user), answer.user, :itemprop => "name", :class => "name ellipsis", :title => user_name(answer.user) %> hace <abbr title="<%= answer.created_at %>"><%= time_ago_in_words(answer.created_at) %></abbr></span>
+          <p itemscope itemtype="http://schema.org/Person">
+            <%= link_to gravatar_image_tag(answer.user.email, :alt => user_name(answer.user), :gravatar => {:size => 16}, :itemprop => "image"), answer.user, :class => "avatar" %> Por <%= link_to user_name(answer.user), answer.user, :itemprop => "name", :class => "name", :title => user_name(answer.user) %> hace <time datetime="<%= answer.created_at.to_time.iso8601 %>" title="<%= answer.created_at.to_time.iso8601 %>"><%= time_ago_in_words(answer.created_at) %></time>
 
             <%- if current_user && current_user.id == answer.user.id %>
               <span class="actions">
@@ -44,7 +44,6 @@
                 <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [answer.question, answer], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
               </span>
             <% end -%>
-
           </p>
         </div>
       </li>
