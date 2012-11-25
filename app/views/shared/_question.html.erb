@@ -11,7 +11,7 @@
 
     <div class="meta time">
       <%- if current_user && current_user === question.user %>
-        <time datetime="<%= question.created_at.to_time.iso8601 %>" class="timeago-js actionable"><%= question.created_at.to_s(:long) %></time>
+        <%= question_time(question.created_at, true) %>
 
         <div class="actions">
           <%#= link_to content_tag(:span, "☆"), root_path, :title => "Favorito" %>
@@ -19,7 +19,7 @@
           <%= link_to content_tag(:i, content_tag(:span, "Eliminar"), :class => "icon-trash"), [question], :confirm => 'Estás seguro?', :method => :delete, :title => "Eliminar" %>
         </div>
       <% else %>
-        <time datetime="<%= question.created_at.to_time.iso8601 %>" class="timeago-js"><%= question.created_at.to_s(:long) %></time>
+        <%= question_time(question.created_at) %>
       <% end -%>
     </div>
   </div>

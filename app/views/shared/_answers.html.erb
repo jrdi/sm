@@ -35,7 +35,7 @@
 
         <div class="meta clearfix">
           <p itemscope itemtype="http://schema.org/Person">
-            <%= link_to gravatar_image_tag(answer.user.email, :alt => user_name(answer.user), :gravatar => {:size => 16}, :itemprop => "image"), answer.user, :class => "avatar" %> Por <%= link_to user_name(answer.user), answer.user, :itemprop => "name", :class => "name", :title => user_name(answer.user) %> hace <time datetime="<%= answer.created_at.to_time.iso8601 %>" title="<%= answer.created_at.to_time.iso8601 %>"><%= time_ago_in_words(answer.created_at) %></time>
+            <%= link_to gravatar_image_tag(answer.user.email, :alt => user_name(answer.user), :gravatar => {:size => 16}, :itemprop => "image"), answer.user, :class => "avatar" %> Por <%= link_to user_name(answer.user), answer.user, :itemprop => "name", :class => "name", :title => user_name(answer.user) %> <%= answer_time(answer.created_at) %>
 
             <%- if current_user && current_user.id == answer.user.id %>
               <span class="actions">

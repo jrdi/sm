@@ -8,6 +8,32 @@
 //= require_tree .
 
 
+opts = {
+  short : {
+    strings: {
+      suffixAgo: null,
+      suffixFromNow: null,
+      seconds: "1 m",
+      minute: "1 m",
+      minutes: "%d m",
+      hour: "1 h",
+      hours: "%d h"
+    }
+  },
+  long : {
+    strings: {
+      prefixAgo: "hace",
+      suffixAgo: null,
+      seconds: "menos de un minuto",
+      minute: "un minuto",
+      minutes: "alrededor de %d minutos",
+      hour: "una hora",
+      hours: "alrededor de %d horas"
+    }
+  }
+}
+
+
 $(document).ready(function() {
   // spinner
   $.fn.spin = function(opts) {
@@ -88,19 +114,8 @@ $(document).ready(function() {
   });
 
   // time ago
-  $('.timeago-js').timeago({
-    strings: {
-      suffixAgo: null,
-      suffixFromNow: null,
-      seconds: "1 m",
-      minute: "1 m",
-      minutes: "%d m",
-      hour: "1 h",
-      hours: "%d h",
-      day: "1 d",
-      days: "%d d"
-    }
-  });
+  $('.timeago_short-js').timeago(opts['short']);
+  $('.timeago-js').timeago(opts['long']);
 
   // tabs spinner
   $('.content_header-js').on("click", ".tab-js", function(){
@@ -117,6 +132,9 @@ $(document).ready(function() {
       $(clickedItem).html('&nbsp;').spin();
     }).ajaxStop(function(){
       $(clickedItem).spin(false).text(txt);
+
+      $('.timeago_short-js').timeago(opts['short']);
+      $('.timeago-js').timeago(opts['long']);
     });
   });
 });

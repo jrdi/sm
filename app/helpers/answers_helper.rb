@@ -32,4 +32,14 @@ module AnswersHelper
 
     return "#{content_tag(:i, '', :class => caret)} #{answer.votes_count.abs}"
   end
+
+  def answer_time(time)
+    date = "<time datetime='#{time.iso8601}' title='#{time.iso8601}'"
+
+    date << " class='timeago-js' " if (DateTime.now-time.to_date).to_i < 1
+
+    date << ">#{time.to_date.to_s(:long)}</time>"
+
+    return date.html_safe
+  end
 end

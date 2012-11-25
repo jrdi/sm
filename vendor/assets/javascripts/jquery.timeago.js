@@ -59,7 +59,7 @@
       var seconds = distanceMillis / 1000;
       var minutes = seconds / 60;
       var hours = minutes / 60;
-      var days = hours / 24;
+      // var days = hours / 24;
       // var years = days / 365;
 
       function substitute(stringOrFunction, number) {
@@ -73,13 +73,13 @@
         minutes < 45 && substitute($l.minutes, Math.round(minutes)) ||
         minutes < 90 && substitute($l.hour, 1) ||
         hours < 24 && substitute($l.hours, Math.round(hours)) ||
-        hours < 48 && substitute($l.day, 1) ||
-        substitute($l.days, Math.floor(days));
+        // hours < 48 && substitute($l.day, 1) ||
         // days < 30 && substitute($l.days, Math.floor(days)) ||
         // days < 60 && substitute($l.month, 1) ||
         // days < 365 && substitute($l.months, Math.floor(days / 30)) ||
         // years < 2 && substitute($l.year, 1) ||
         // substitute($l.years, Math.floor(years));
+        substitute($l.hours, Math.floor(hours));
 
       return $.trim([prefix, words, suffix].join(" "));
     },
@@ -124,7 +124,7 @@
     if (!data.datetime) {
       data = $.extend(true, {}, data, { datetime: $t.datetime(element) })
       element.data("timeago", data);
-      var text = $.trim(element.text());
+      var text = $.trim(element.attr("datetime"));
       if (text.length > 0) element.attr("title", text);
     }
     return data;

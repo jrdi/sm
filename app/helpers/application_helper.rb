@@ -66,4 +66,15 @@ module ApplicationHelper
 
     return name
   end
+
+  def question_time(time, actionable = nil)
+    date = "<time datetime='#{time.iso8601}' title='#{time.iso8601}' class='"
+
+    date << "actionable " if actionable
+    date << "timeago_short-js" if (DateTime.now-time.to_date).to_i < 1
+
+    date << "'>#{time.to_date.to_s(:short)}</time>"
+
+    return date.html_safe
+  end
 end

@@ -9,19 +9,7 @@
     $(".questions-js").append("<%= escape_javascript(render :partial => 'shared/question', :locals => { :question => question }) %>");
   <% end -%>
 
-  $('.timeago-js').timeago({
-    strings: {
-      suffixAgo: null,
-      suffixFromNow: null,
-      seconds: "1 m",
-      minute: "1 minute",
-      minutes: "%d m",
-      hour: "1 h",
-      hours: "%d h",
-      day: "1 d",
-      days: "%d d"
-    }
-  });
+  $('.timeago-js').timeago(opts['long']);
 <% end -%>
 
 $(".load_more-js").attr('href', "/?page=<%= params[:page].to_i + 1 %>&scoped_questions=<%= params[:scoped_questions] %>&question_pages=<%= @question_pages %>");
