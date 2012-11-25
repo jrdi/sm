@@ -10,17 +10,13 @@
         </li>
       </ul>
 
-      <%- if user_signed_in? %>
-        <ul class="menu action_menu">
-          <li class="menu_item"><%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path}#new_question", :title => "Crea una nueva pregunta", :class => "new_question-icon" %></li>
-        </ul>
+      <ul class="menu action_menu">
+        <li class="menu_item"><%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path}#new_question", :title => "Crea una nueva pregunta", :class => "new_question-icon" %></li>
+      </ul>
 
-        <ul class="menu action_menu">
-          <li class="menu_item"><%= link_to "Preferencias", edit_user_registration_path, :title => "Ir a las preferencias" %></li>
-        </ul>
-      <% else -%>
-        <%= link_to "Empieza a publicar preguntas", new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta" %>
-      <% end -%>
+      <ul class="menu action_menu">
+        <li class="menu_item"><%= link_to "Preferencias", edit_user_registration_path, :title => "Ir a las preferencias" %></li>
+      </ul>
     </div>
 
     <div class="content_header answers_header">
@@ -52,11 +48,7 @@
 <div class="content_footer questions_footer-js">
   <ul class="menu answers_menu action_menu">
     <li class="menu_item">
-      <%- if user_signed_in? %>
-        <%= link_to "Nueva pregunta", "#{root_path}#new_question", title: "Crea una nueva pregunta" %>
-      <% else -%>
-        <%= link_to "Nueva pregunta", new_user_session_path, title: "Regístrate o accede para crear una nueva pregunta" %>
-      <% end -%>
+      <%= link_to "Nueva pregunta", new_user_session_path, title: "Regístrate o accede para crear una nueva pregunta" %>
     </li>
   </ul>
 </div>

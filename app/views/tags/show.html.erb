@@ -3,42 +3,44 @@
 <% title "Consejos de #{@tag.name}" %>
 
 <div id="tag">
-  <ul id="questions-header">
-    <ul id="breadcrumb" itemprop="breadcrumb">
-      <li class="breadcrumb-item breadcrumb-home"><a href="/" title="Ir a la Portada"><span>Portada</span></a></li>
-      <li class="breadcrumb-item breadcrumb-tag">
-        <%= content_tag(:h3, link_to(@tag.name, @tag, :title => "Página de preguntas de #{@tag.name}")) %>
+  <div class="content_header questions_header content_header-js questions_header-js">
+    <ul class="breadcrumbs" itemprop="breadcrumb">
+      <li class="breadcrumb"><%= link_to content_tag(:i, content_tag(:span, "Portada"), :class => "icon-home"), root_path, :title => "Ir a la Portada" %></li>
+      <li class="breadcrumb breadcrumb_tag">
+        <%= link_to(@tag.name, @tag, :title => "Ir al tema #{@tag.name}") %>
       </li>
     </ul>
 
-		<ul id="tag-header-action" class="questions-header-action">
-      <li class="menu-item">
-      	<%- if user_signed_in? %>
-      		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
-      	<% else -%>
-      	  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
-        <% end -%>
-    	</li>
-  	</ul>
-  </ul>
-
-  <ul id="questions-list">
-		<%- if @tag.questions.empty? %>
-	  <li class="answer no-answers">
-			<p>Aún no hay preguntas disponibles.</p>
-  	</li>
-		<% else %>
-  		<%- @tag.questions.each do |question| %>
-	      <%= render :partial => 'shared/question', :locals => { :question => question } %>
-	  	<% end -%>
-		<% end -%>
-  </ul> 
-
-  <ul id="questions-footer" class="questions-footer">
     <%- if user_signed_in? %>
-  		<%= link_to 'Nueva pregunta', root_path(:scoped_questions => params[:scoped_questions]) + '#new_question', :title => "Crea una nueva pregunta", :class => "new-question disabled" %>
-  	<% else -%>
-  	  <%= link_to 'Nueva pregunta', new_user_session_path, :title => "Crea una nueva pregunta", :class => "new-question" %>
-  	<% end -%>
+      <ul class="menu action_menu">
+        <li class="menu_item"><%= link_to content_tag(:i, content_tag(:span, "Nueva pregunta"), :class => "icon-edit"), "#{root_path}#new_question", :title => "Crea una nueva pregunta", :class => "new_question-icon" %></li>
+      </ul>
+    <% else -%>
+      <ul class="menu action_menu">
+        <li class="menu_item"><%= link_to "Empieza a publicar preguntas", new_user_session_path, :title => "Regístrate o accede para crear una nueva pregunta" %></li>
+      </ul>
+    <% end -%>
+  </div>
+
+  <ul class="questions questions-js">
+    <%- if @tag.questions.empty? %>
+      <%= render 'shared/no_questions' %>
+    <% else %>
+      <%- @tag.questions.each do |question| %>
+        <%= render partial: 'shared/question', locals: { question: question } %>
+      <% end -%>
+    <% end -%>
   </ul>
+
+  <div class="content_footer questions_footer-js">
+    <ul class="menu answers_menu action_menu">
+      <li class="menu_item">
+        <%- if user_signed_in? %>
+          <%= link_to "Nueva pregunta", "#{root_path}#new_question", title: "Crea una nueva pregunta" %>
+        <% else -%>
+          <%= link_to "Nueva pregunta", new_user_session_path, title: "Regístrate o accede para crear una nueva pregunta" %>
+        <% end -%>
+      </li>
+    </ul>
+  </div>
 </div>
