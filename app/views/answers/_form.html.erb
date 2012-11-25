@@ -2,8 +2,8 @@
 	<% @answer ||= @question.answers.build %>
 	<%= form_for([@question, @answer]) do |f| %>
     <% if @answer.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+      <div class="alert error">
+        <strong>No se ha podido publicar la respuesta debido a <%= pluralize(@answer.errors.count, "error") %></strong>
 
         <ul>
         <% @answer.errors.full_messages.each do |msg| %>

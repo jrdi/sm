@@ -16,6 +16,10 @@ $(document).ready(function() {
       window.scrollTo(0, 125);
       $('.alerts-js').append("<div class=\"alert error error-js\">Primero necesitas escribir una respuesta!</div>");
       $('.error-js').delay(5000).fadeOut();
+      setTimeout( function(){
+        $('.error-js').remove();
+        $(".answer_desc-js").focus();
+      }, 5400);
     }
   });
 });

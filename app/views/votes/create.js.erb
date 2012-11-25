@@ -4,6 +4,10 @@
 	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes-count").remove();
 	$("#answer-"+ "<%= @vote.votable.id %>" +" .votes").append("<div class='votes-count <%= answer_votes_class(@vote.votable) %>' title='<%= answer_votes_title(@vote.votable) %>'><span><%= @vote.votable.votes_count %></span></div>");
 <% else %>
+  window.scrollTo(0, 125);
   $('.alerts-js').append("<div class=\"alert error error-js\">Ya has votado esta respuesta, amigo!</div>");
   $('.error-js').delay(5000).fadeOut();
+  setTimeout( function(){
+    $('.error-js').remove();
+  }, 5400);
 <% end %>

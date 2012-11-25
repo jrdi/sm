@@ -37,8 +37,8 @@
 
     <div class="social">
       <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-        <p>
-          ¿No has recibido las instrucciones?
+        <p class="short">
+          ¿No has recibido las instrucciones?<br />
           <%= link_to "Volver a enviar", new_confirmation_path(resource_name) %><br />
         </p>
       <% end -%>

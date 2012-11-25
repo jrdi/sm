@@ -15,8 +15,13 @@
         <fieldset>
           <legend>Regístrate</legend>
           <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name, :autofocus => "autofocus" %>
+          </div>
+
+          <div class="field">
             <%= f.label :email %>
-            <%= f.email_field :email, :autofocus => "autofocus" %>
+            <%= f.email_field :email %>
           </div>
 
           <div class="field">

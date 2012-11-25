@@ -173,6 +173,7 @@
       user: "Usuario"
     attributes:
       user:
+        name: "Nombre de usuario"
         current_password: "Contraseña actual"
         password: "Contraseña"
         password_confirmation: "Confirmar contraseña"

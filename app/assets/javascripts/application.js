@@ -34,15 +34,21 @@ $(document).ready(function() {
 
   // alerts
   $('.alert-js').on('click', '.close-js', function() {
-    $(this).closest('.alert-js').fadeOut();
+    $(this).closest('.alert-js').addClass('hidden').fadeOut();
   });
 
   if($('.notice-js').text()) {
     $('.notice-js').delay(5000).fadeOut();
+    setTimeout( function(){
+      $('.notice-js').remove();
+    }, 5400);
   }
 
   if($('.error-js').text()) {
     $('.error-js').delay(5000).fadeOut();
+    setTimeout( function(){
+      $('.error-js').remove();
+    }, 5400);
   }
 
   // dropdowns

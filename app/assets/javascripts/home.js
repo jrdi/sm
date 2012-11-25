@@ -67,6 +67,10 @@ $(document).ready(function() {
       window.scrollTo(0, 125);
       $('.alerts-js').append("<div class=\"alert error error-js\">Primero necesitas escribir una pregunta!</div>");
       $('.error-js').delay(5000).fadeOut();
+      setTimeout( function(){
+        $('.error-js').remove();
+        $(".question_title-js").focus();
+      }, 5400);
     }
   });
 
