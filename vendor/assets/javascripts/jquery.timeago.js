@@ -124,6 +124,7 @@
     if (!data.datetime) {
       data = $.extend(true, {}, data, { datetime: $t.datetime(element) })
       element.data("timeago", data);
+      // var text = $.trim(element.text());
       var text = $.trim(element.attr("datetime"));
       if (text.length > 0) element.attr("title", text);
     }

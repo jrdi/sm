@@ -1116,3 +1116,34 @@ label { float: left; }
     font-size: 13px;
   }
 }
+
+
+/*
+ * Dropdowns
+ */
+
+.ui-tooltip-dropdown {
+  background-color: #f5f5f5;
+  border-color: rgba(#000, .1);
+  font-size: 13px;
+  @include border-radius(3px);
+  @include box-shadow(0 1px 0 rgba(#000, .2));
+
+  a {
+    display: block;
+    line-height: 36px;
+    width: 90px;
+    padding: 0 18px;
+    @include text-shadow(1px 1px 0 #fff);
+
+    &:hover { background-color: rgba(#fff, .5); }
+  }
+
+  li + li a {
+    border-top: 1px solid rgba(#000, .1);
+  }
+}
+
+.ui-tooltip-content {
+  padding: 0;
+}

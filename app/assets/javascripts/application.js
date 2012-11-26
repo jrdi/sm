@@ -8,6 +8,7 @@
 //= require_tree .
 
 
+// timeago opts
 opts = {
   short : {
     strings: {
@@ -91,7 +92,7 @@ $(document).ready(function() {
     position: {
       my: 'top right',
       at: 'bottom right',
-      adjust: { x: -8, y: +5 }
+      adjust: { x: -13, y: +5 }
     },
     show: {
       event: 'click',
@@ -109,7 +110,7 @@ $(document).ready(function() {
     },
     style: {
       classes: 'ui-tooltip-dropdown',
-      tip: { width: 18, height: 10, corner: 'top right',  mimic: 'center', offset: 5 }
+      tip: { width: 11, height: 6, corner: 'top right',  mimic: 'center', offset: 9 }
     }
   });
 
