@@ -5,7 +5,9 @@
 //= require jquery.qtip.min
 //= require spin.min
 //= require jquery.timeago
-//= require_tree .
+//= require home
+//= require question
+//= require_self
 
 
 // timeago opts

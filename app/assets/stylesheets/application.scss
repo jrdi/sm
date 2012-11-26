@@ -17,7 +17,7 @@
    Base
    ========================================================================== */
 
-body { background: image-url('noise-bg.png'); }
+body { background: inline-image('noise-bg.png'); }
 
 .title { margin: 0; }
 
@@ -128,7 +128,7 @@ label { float: left; }
         &.selected,
         &:hover,
         &:active {
-          background: image-url('navbar-bg.png') repeat-x;
+          background: inline-image('navbar-bg.png') repeat-x;
           border: 2px solid #5C2E0A;
           margin: -2px 8px;
           padding: 0 18px;
@@ -268,7 +268,7 @@ label { float: left; }
 
   input,
   textarea {
-    background: image-url('notes-bg.png');
+    background: inline-image('notes-bg.png');
     border: 0;
     border-left: 1px solid #F1E4BF;
     color: #CBB885;
@@ -315,7 +315,7 @@ label { float: left; }
   }
 
   a {
-    background: image-url('breadcrumb-bg.png') no-repeat right 0;
+    background: inline-image('breadcrumb-bg.png') no-repeat right 0;
     font-weight: bold;
     padding-right: 20px;
 
@@ -373,7 +373,7 @@ label { float: left; }
 
     &.selected,
     &:active {
-      background: image-url('questions_menu-bg.png') repeat-x 0 -35px;
+      background: inline-image('questions_menu-bg.png') repeat-x 0 -35px;
       color: #BFA392;
       @include box-shadow(none);
       @include text-shadow(none);
@@ -403,7 +403,7 @@ label { float: left; }
 }
 
 .content_header {
-  background: image-url('answers_header-bg.png');
+  background: inline-image('answers_header-bg.png');
   height: 36px;
   padding: 10px 15px;
   position: relative;
@@ -411,12 +411,12 @@ label { float: left; }
   @include border-top-radius(7px);
   
   &.questions_header {
-    background: image-url('questions_header-bg.png') repeat-x;
+    background: inline-image('questions_header-bg.png') repeat-x;
     border: 1px solid rgba(#363636, .8);
     @include box-shadow(0 1px 0 rgba(#fff, .3) inset);
 
     .menu {
-      background: image-url('questions_menu-bg.png') repeat-x;
+      background: inline-image('questions_menu-bg.png') repeat-x;
 
       &.tabbed_menu {
         margin-left: -196px;
@@ -458,7 +458,7 @@ label { float: left; }
 }
 
 .answers_menu {
-  background: image-url('answers_menu-bg.png') repeat-x;
+  background: inline-image('answers_menu-bg.png') repeat-x;
   border-color: rgba(#5C7B89, .4);
   @include box-shadow(0 1px 0 #fff);
 
@@ -483,7 +483,7 @@ label { float: left; }
 
       &.selected,
       &:active {
-        background: image-url('answers_menu-bg.png') repeat-x 0 -31px;
+        background: inline-image('answers_menu-bg.png') repeat-x 0 -31px;
         color: #86979F;
         @include box-shadow(0 2px 3px rgba(#778B93, .2));
         @include text-shadow(1px 1px 0 #fff);
@@ -493,7 +493,7 @@ label { float: left; }
 }
 
 .content_footer {
-  background: image-url('questions_footer-bg.png') repeat-x;
+  background: inline-image('questions_footer-bg.png') repeat-x;
   border: 1px solid rgba(#000, .3);
   border-top-color: rgba(#3E748C, .2);
   height: 31px;
@@ -523,14 +523,14 @@ label { float: left; }
  */
 
 .questions {
-  background: image-url('questions_list-bg.png');
+  background: inline-image('questions_list-bg.png');
   border: 1px solid rgba(#000, .3);
   border-top: none;
   border-bottom: none;
   min-height: 66px;
 
   .meta:before {
-    background: image-url('tags-bg.png') no-repeat right 0;
+    background: inline-image('tags-bg.png') no-repeat right 0;
     bottom: 22px;
     right: 0;
     position: absolute;
@@ -566,7 +566,7 @@ label { float: left; }
   }
 }
 
-.question + .question { background: image-url('question-bg.png') no-repeat 0 -33px; }
+.question + .question { background: inline-image('question-bg.png') no-repeat 0 -33px; }
 
 .buttons {
   float: left;
@@ -605,7 +605,7 @@ label { float: left; }
 
   .button {
     border: 1px solid #B4C7D5;
-    background: image-url('button-bg.png') repeat-x;
+    background: inline-image('button-bg.png') repeat-x;
     height: 31px;
     width: 31px;
 
@@ -667,7 +667,7 @@ label { float: left; }
 }
 
 .votes_count {
-  background: #E4FAE0 image-url('votes_count-bg.png') repeat-x;
+  background: #E4FAE0 inline-image('votes_count-bg.png') repeat-x;
   border: 1px solid #A0CD98;
   color: #46B234;
   font: bold 12px/24px "Helvetica Neue", sans-serif;
@@ -691,7 +691,7 @@ label { float: left; }
 }
 
 .correct_answer {
-  background: image-url('badge.png') no-repeat center;
+  background: inline-image('badge.png') no-repeat center;
   display: block;
   height: 31px;
   margin-top: 10px;
@@ -709,13 +709,14 @@ label { float: left; }
   p {
     color: #ADBABF;
     float: left;
-    line-height: 26px;
+    line-height: 25px;
     margin: 0;
   }
 
   .name {
     display: inline-block;
     max-width: 160px;
+    vertical-align: bottom;
   }
 
   .tags {
@@ -775,7 +776,7 @@ label { float: left; }
  */
 
 .no_answers {
-  background: image-url('no_answers-bg.png') no-repeat 70px;
+  background: inline-image('no_answers-bg.png') no-repeat 70px;
 
   p {
     color: #95A9B2;
@@ -784,7 +785,7 @@ label { float: left; }
   }
 }
 
-.answer p { line-height: 18px; }
+.answer p { line-height: 17px; }
 
 
 /*
@@ -857,7 +858,7 @@ label { float: left; }
     border-top: 1px solid rgba(#BFCAD1, .5);
     padding-top: 15px;
 
-    + fieldset { margin-top: 15px; }
+    + fieldset { margin-top: 30px; }
   }
 
   legend {
@@ -950,14 +951,14 @@ label { float: left; }
 }
 
 .facebook_connect {
-  background: image-url('facebook_connect-button.png');
+  background: inline-image('facebook_connect-button.png');
   height: 25px;
   margin-bottom: 10px;
   width: 194px;
 }
 
 .twitter_connect {
-  background: image-url('sign-in-with-twitter-gray.png');
+  background: inline-image('sign-in-with-twitter-gray.png');
   height: 28px;
   width: 158px;
 }
